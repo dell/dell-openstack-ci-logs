@@ -1,0 +1,156 @@
+
+[image]
+images_manifest_file = /opt/stack/os-test-images/images/manifest.yaml
+
+[image-feature-enabled]
+os_glance_reserved = True
+import_image = False
+image_format_enforcement = True
+
+[network]
+default_network = 10.1.0.0/20
+public_router_id = 
+public_network_id = d6bd4775-2400-432f-8d48-4044a028944e
+project_networks_reachable = false
+project_network_cidr = 10.1.0.0/20
+
+[DEFAULT]
+debug = True
+log_file = tempest.log
+use_stderr = False
+use_syslog = False
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/tempest
+
+[compute]
+min_compute_nodes = 1
+max_microversion = latest
+flavor_ref_alt = 84
+flavor_ref = 42
+image_ref_alt = ac462ace-d1f3-4f0c-b63b-a4ba0a3e1fb6
+image_ref = ac462ace-d1f3-4f0c-b63b-a4ba0a3e1fb6
+build_timeout = 196
+
+[volume]
+storage_protocol = NFS
+vendor_name = Dell EMC
+max_microversion = latest
+backup_driver = swift
+build_timeout = 196
+
+[identity]
+ca_certificates_file = /opt/stack/data/ca-bundle.pem
+auth_version = v3
+user_unique_last_password_count = 2
+user_lockout_duration = 10
+user_lockout_failure_attempts = 2
+uri_v3 = https://10.19.119.86/identity/v3
+
+[auth]
+use_dynamic_credentials = True
+admin_domain_name = Default
+admin_project_name = admin
+admin_password = secretadmin
+admin_username = admin
+
+[identity-feature-enabled]
+access_rules = True
+application_credentials = True
+project_tags = True
+security_compliance = True
+
+[validation]
+network_for_ssh = private
+image_alt_ssh_user = cirros
+image_ssh_user = cirros
+ssh_timeout = 196
+ip_version_for_ssh = 4
+run_validation = True
+connect_method = floating
+
+[compute-feature-enabled]
+swap_volume = True
+stable_rescue = True
+shelve_migrate = True
+nova_policy_roles = admin,manager,member,reader,service
+vnc_console = True
+scheduler_enabled_filters = ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter,SameHostFilter,DifferentHostFilter
+hostname_fqdn_sanitization = True
+attach_encrypted_volume = True
+live_migrate_back_and_forth = False
+block_migration_for_live_migration = False
+change_password = False
+live_migration = False
+resize = True
+personality = False
+
+[network-feature-enabled]
+api_extensions = address-group,address-scope,agent,allowed-address-pairs,auto-allocated-topology,availability_zone,bgp,bgp_4byte_asn,bgp_dragent_scheduler,binding,binding-extended,default-subnetpools,dhcp_agent_scheduler,dns-domain-ports,dns-integration,dns-integration-domain-keywords,empty-string-filtering,enable-default-route-bfd,enable-default-route-ecmp,expose-port-forwarding-in-fip,external-gateway-multihoming,external-net,ext-gw-mode,extra_dhcp_opt,extraroute,extraroute-atomic,filter-validation,fip-port-details,flavors,floatingip-pools,floating-ip-port-forwarding,floating-ip-port-forwarding-description,floating-ip-port-forwarding-detail,floating-ip-port-forwarding-port-ranges,fwaas_v2,l3-flavors,l3-ha,logging,multi-provider,net-mtu,net-mtu-writable,network_availability_zone,network_ha,network-ip-availability,pagination,port-device-profile,port-hardware-offload-type,port-mac-address-regenerate,port-numa-affinity-policy,port-numa-affinity-policy-socket,port-resource-request,port-security,port-trusted-vif,project-id,provider,qinq,qos,qos-bw-limit-direction,qos-default,qos-fip,qos-gateway-ip,qos-rules-alias,qos-rule-type-details,qos-rule-type-filter,quota-check-limit,quota-check-limit-default,quota_details,quotas,rbac-address-scope,rbac-policies,rbac-security-groups,router,router_availability_zone,router-enable-snat,security-group,security-groups-default-rules,security-groups-normalized-cidr,security-groups-remote-address-group,security-groups-rules-belongs-to-default-sg,security-groups-shared-filtering,segment,sorting,standard-attr-description,standard-attr-fwaas-v2,standard-attr-revisions,standard-attr-tag,standard-attr-timestamp,stateful-security-group,subnet_allocation,subnet-dns-publish-fixed-ip,subnet-external-network,subnetpool-prefix-ops,subnet-service-types,tag-creation,tap-mirror,trunk,uplink-status-propagation,uplink-status-propagation-updatable,vlan-transparent,vpnaas,vpn-endpoint-groups
+port_security = True
+ipv6_subnet_attributes = True
+ipv6 = True
+
+[enforce_scope]
+manila = False
+glance = true
+nova = true
+neutron = True
+
+[scenario]
+dhcp_client = dhcpcd
+img_file = /opt/stack/devstack/files/cirros-0.6.3-x86_64-disk.img
+
+[volume-feature-enabled]
+api_extensions = OS-SCH-HNT,backups,capabilities,cgsnapshots,consistencygroups,encryption,os-admin-actions,os-availability-zone,os-extended-services,os-extended-snapshot-attributes,os-hosts,os-quota-class-sets,os-quota-sets,os-services,os-snapshot-actions,os-snapshot-manage,os-snapshot-unmanage,os-types-extra-specs,os-types-manage,os-used-limits,os-vol-host-attr,os-vol-image-meta,os-vol-mig-status-attr,os-vol-tenant-attr,os-volume-actions,os-volume-encryption-metadata,os-volume-manage,os-volume-transfer,os-volume-type-access,os-volume-unmanage,qos-specs,scheduler-stats
+extend_attached_encrypted_volume = False
+volume_revert = False
+extend_attached_volume = False
+manage_volume = False
+manage_snapshot = False
+
+[placement]
+max_microversion = latest
+
+[service_available]
+horizon = False
+swift = True
+cinder = True
+neutron = True
+nova = True
+glance = True
+key = True
+
+[object-storage-feature-enabled]
+discoverable_apis = account_quotas,bulk_delete,bulk_upload,container_quotas,container_sync,crossdomain,formpost,ratelimit,slo,staticweb,tempauth,tempurl,versioned_writes
+
+[share]
+backend_names = powerscale
+capability_create_share_from_snapshot_support = True
+create_networks_when_multitenancy_enabled = False
+default_share_type_name = dhss_false
+enable_ip_rules_for_protocols = nfs,cifs
+enable_protocols = nfs,cifs
+enable_sid_rules_for_protocols = cifs
+enable_user_rules_for_protocols = cifs
+multitenancy_enabled = False
+run_consistency_group_tests = False
+run_driver_assisted_migration_tests = False
+run_extend_tests = True
+run_host_assisted_migration_tests = False
+run_ipv6_tests = False
+run_manage_unmanage_snapshot_tests = False
+run_manage_unmanage_tests = False
+run_migration_with_preserve_snapshots_tests = False
+run_mount_snapshot_tests = False
+run_quota_tests = True
+run_replication_tests = False
+run_revert_to_snapshot_tests = False
+run_share_group_tests = False
+run_shrink_tests = False
+run_snapshot_tests = True
+share_creation_retry_number = 2
+share_size = 10
+suppress_errors_in_cleanup = True
+username_for_user_rules = root
+image_with_share_tools = manila-service-image-master
