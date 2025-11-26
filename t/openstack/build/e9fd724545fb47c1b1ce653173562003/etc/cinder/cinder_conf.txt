@@ -1,0 +1,112 @@
+
+[keystone_authtoken]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = cinder
+auth_url = https://10.19.119.126/identity
+interface = public
+auth_type = password
+
+[DEFAULT]
+cinder_internal_tenant_user_id = f5c25825524d4fd2850c32899cccd989
+cinder_internal_tenant_project_id = 6bdeee0622e64a42b4b7acf3edeed89e
+quota_gigabytes = 1000
+graceful_shutdown_timeout = 5
+glance_ca_certificates_file = /opt/stack/data/ca-bundle.pem
+glance_protocol = https
+glance_api_servers = https://10.19.119.126/image
+osapi_volume_workers = 2
+log_color = False
+logging_exception_prefix = ERROR %(name)s [01;35m%(instance)s[00m
+logging_default_format_string = %(color)s%(levelname)s %(name)s [[00;36m-%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_context_format_string = %(color)s%(levelname)s %(name)s [[01;36m%(global_request_id)s %(request_id)s [00;36m%(project_name)s %(user_name)s%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_debug_format_suffix = [00;33m{{(pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d}}[00m
+transport_url = rabbit://stackrabbit:secretrabbit@10.19.119.126:5672/
+osapi_volume_listen_port = 18776
+backup_swift_ca_cert_file = /opt/stack/data/ca-bundle.pem
+backup_swift_url = https://10.19.119.126:8080/v1/AUTH_
+backup_driver = cinder.backup.drivers.swift.SwiftBackupDriver
+default_volume_type = isilon
+enabled_backends = isilon
+service_down_time = 720
+report_interval = 120
+rpc_response_timeout = 120
+quota_snapshots = 50
+quota_backups = 10
+quota_volumes = 50
+my_ip = 10.19.119.126
+state_path = /opt/stack/data/cinder
+osapi_volume_listen = 0.0.0.0
+osapi_volume_extension = cinder.api.contrib.standard_extensions
+rootwrap_config = /etc/cinder/rootwrap.conf
+api_paste_config = /etc/cinder/api-paste.ini
+target_helper = lioadm
+debug = True
+
+[database]
+connection = mysql+pymysql://root:secretdatabase@10.19.119.126/cinder?charset=utf8&plugin=dbcounter
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/cinder
+
+[key_manager]
+fixed_key = bae3516cc1c0eb18b05440eba8012a4a880a2ee04d584a9c1579445e675b12defdc716ec
+backend = cinder.keymgr.conf_key_mgr.ConfKeyManager
+
+[isilon]
+image_volume_cache_enabled = True
+
+[oslo_middleware]
+enable_proxy_headers_parsing = True
+
+[glance]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = glance
+auth_url = https://10.19.119.126/identity
+interface = public
+auth_type = password
+
+[nova]
+region_name = RegionOne
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = nova
+auth_url = https://10.19.119.126/identity
+interface = public
+auth_type = password
+
+[coordination]
+backend_url = etcd3+http://10.19.119.126:2379?api_version=v3
+
+[oslo_policy]
+enforce_new_defaults = false
+enforce_scope = false
+
+[service_user]
+send_service_user_token = True
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = cinder
+auth_url = https://10.19.119.126/identity
+interface = public
+auth_type = password
+
+[os_brick]
+lock_path = /opt/stack/data/os_brick
