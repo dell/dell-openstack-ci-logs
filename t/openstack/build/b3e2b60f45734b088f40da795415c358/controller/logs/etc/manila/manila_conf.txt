@@ -1,0 +1,134 @@
+
+[keystone_authtoken]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = manila
+auth_url = https://10.19.119.115/identity
+interface = public
+auth_type = password
+
+[DEFAULT]
+data_node_access_ips = 10.2.5.0/24
+log_color = False
+logging_exception_prefix = ERROR %(name)s [01;35m%(instance)s[00m
+logging_default_format_string = %(color)s%(levelname)s %(name)s [[00;36m-%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_context_format_string = %(color)s%(levelname)s %(name)s [[01;36m%(global_request_id)s %(request_id)s [00;36m%(project_name)s %(user_name)s%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_debug_format_suffix = [00;33m{{(pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d}}[00m
+transport_url = rabbit://stackrabbit:secretrabbit@10.19.119.115:5672/
+osapi_share_listen_port = 18786
+manila_service_keypair_name = manila-service
+enabled_share_backends = london
+use_scheduler_creating_share_from_snapshot = False
+replica_state_update_interval = 300
+lvm_share_volume_group = lvm-shares
+wsgi_keep_alive = False
+enabled_share_protocols = NFS,CIFS
+check_hash = True
+periodic_deferred_delete_interval = 10
+default_share_group_type = default
+default_share_type = default
+state_path = /opt/stack/data/manila
+osapi_share_extension = manila.api.contrib.standard_extensions
+rootwrap_config = /etc/manila/rootwrap.conf
+api_paste_config = /etc/manila/api-paste.ini
+share_name_template = CI-%s
+scheduler_driver = manila.scheduler.drivers.filter.FilterScheduler
+debug = True
+auth_strategy = keystone
+
+[DATABASE]
+max_pool_size = 40
+connection = mysql+pymysql://root:secretdatabase@10.19.119.115/manila?charset=utf8&plugin=dbcounter
+
+[oslo_concurrency]
+lock_path = /opt/stack/manila/manila_locks
+
+[neutron]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = neutron
+auth_url = https://10.19.119.115/identity
+interface = public
+auth_type = password
+
+[nova]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = nova
+auth_url = https://10.19.119.115/identity
+interface = public
+auth_type = password
+
+[cinder]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = cinder
+auth_url = https://10.19.119.115/identity
+interface = public
+auth_type = password
+
+[glance]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = glance
+auth_url = https://10.19.119.115/identity
+interface = public
+auth_type = password
+
+[generic1]
+admin_subnet_id = 086a74c8-770e-400f-a8fa-4381e7ab4819
+admin_network_id = e25fa1fc-4eb3-4fe4-8ca6-5bb496289a30
+ssh_conn_timeout = 180
+driver_handles_share_servers = True
+service_instance_user = manila
+service_image_name = manila-service-image-master
+path_to_private_key = /opt/stack/.ssh/id_ecdsa
+path_to_public_key = /opt/stack/.ssh/id_ecdsa.pub
+share_backend_name = GENERIC1
+share_driver = manila.share.drivers.generic.GenericShareDriver
+
+[generic2]
+admin_subnet_id = 086a74c8-770e-400f-a8fa-4381e7ab4819
+admin_network_id = e25fa1fc-4eb3-4fe4-8ca6-5bb496289a30
+ssh_conn_timeout = 180
+driver_handles_share_servers = True
+service_instance_user = manila
+service_image_name = manila-service-image-master
+path_to_private_key = /opt/stack/.ssh/id_ecdsa
+path_to_public_key = /opt/stack/.ssh/id_ecdsa.pub
+share_backend_name = GENERIC2
+share_driver = manila.share.drivers.generic.GenericShareDriver
+
+[oslo_middleware]
+enable_proxy_headers_parsing = True
+
+[london]
+dell_nas_backend_host = 10.228.224.227
+dell_nas_login = admin
+dell_nas_password = Password123!
+dell_nas_server = OpenStack_701
+driver_handles_share_servers = False
+emc_share_backend = powerstore
+enabled_share_protocols = NFS,CIFS
+share_backend_name = london
+share_driver = manila.share.drivers.dell_emc.driver.EMCShareDriver
