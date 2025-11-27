@@ -1,0 +1,41 @@
+{
+    "namespace": "OS::Compute::TPM",
+    "display_name": "TPM Options",
+    "description": "Configuration options for TPM",
+    "visibility": "public",
+    "protected": true,
+    "resource_type_associations": [
+        {
+            "name": "OS::Nova::Flavor",
+            "prefix": "hw:"
+        },
+        {
+            "name": "OS::Glance::Image",
+            "prefix": "hw_"
+        }
+    ],
+    "properties": {
+        "tpm_model": {
+            "title": "TPM model",
+            "description": "TPM model to use. Option tpm-crb is only valid for TPM version 2.0. Defaults to tpm-tis.",
+            "operators": ["<or>"],
+            "type": "string",
+            "enum": [
+                "tpm-tis",
+                "tpm-crb"
+            ],
+            "default": "tpm-tis"
+        },
+        "tpm_version": {
+            "title": "TPM version",
+            "description": "TPM version to use. Required if requesting a vTPM. Model tpm-tis supports both, tpm-crb supports only 2.0.",
+            "operators": ["<or>"],
+            "type": "string",
+            "enum": [
+                "1.2",
+                "2.0"
+            ]
+        }
+    },
+    "objects": []
+}
