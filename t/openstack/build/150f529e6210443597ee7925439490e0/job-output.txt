@@ -1,0 +1,1864 @@
+2025-12-01 13:06:22.575605 | Job console starting
+2025-12-01 13:06:22.581682 | Updating git repos
+2025-12-01 13:06:22.957821 | Cloning repos into workspace
+2025-12-01 13:06:24.266467 | Restoring repo states
+2025-12-01 13:06:24.384883 | Merging changes
+2025-12-01 13:06:25.441669 | Checking out repos
+2025-12-01 13:06:27.668606 | Preparing playbooks
+2025-12-01 13:06:29.022991 | Running Ansible setup
+2025-12-01 13:06:32.762290 | PRE-RUN START: [trusted : gerrit/zuul-config/playbooks/base/pre.yaml@master]
+2025-12-01 13:06:33.357458 | 
+2025-12-01 13:06:33.357586 | PLAY [localhost]
+2025-12-01 13:06:33.366640 | 
+2025-12-01 13:06:33.366803 | TASK [Gathering Facts]
+2025-12-01 13:06:34.202888 | localhost | ok
+2025-12-01 13:06:34.210997 | 
+2025-12-01 13:06:34.211150 | TASK [Setup log path fact]
+2025-12-01 13:06:34.239358 | localhost | ok
+2025-12-01 13:06:34.248630 | 
+2025-12-01 13:06:34.248709 | TASK [set-zuul-log-path-fact : Set log path for a build]
+2025-12-01 13:06:34.275297 | localhost | ok
+2025-12-01 13:06:34.281249 | 
+2025-12-01 13:06:34.281338 | TASK [emit-job-header : Print job information]
+2025-12-01 13:06:34.320506 | # Job Information
+2025-12-01 13:06:34.320759 | Ansible Version: 2.16.14
+2025-12-01 13:06:34.320833 | Job: powerscale-manila-tempest
+2025-12-01 13:06:34.320879 | Pipeline: dell-emc-powerscale-ci-check
+2025-12-01 13:06:34.320926 | Executor: e71bebddd1fa
+2025-12-01 13:06:34.321019 | Triggered by: https://review.opendev.org/c/openstack/manila/+/957200
+2025-12-01 13:06:34.321073 | Event ID: 56d618f7da644b45a04709a56fd066c1
+2025-12-01 13:06:34.326024 | 
+2025-12-01 13:06:34.326114 | LOOP [emit-job-header : Print node information]
+2025-12-01 13:06:34.409465 | localhost | ok:
+2025-12-01 13:06:34.409684 | localhost | # Node Information
+2025-12-01 13:06:34.409737 | localhost | Inventory Hostname: controller
+2025-12-01 13:06:34.409775 | localhost | Hostname: np0000045440
+2025-12-01 13:06:34.409808 | localhost | Username: zuul
+2025-12-01 13:06:34.409849 | localhost | Distro: Ubuntu 22.04
+2025-12-01 13:06:34.409882 | localhost | Provider: ci-cloud
+2025-12-01 13:06:34.409912 | localhost | Label: nodepool-jammy
+2025-12-01 13:06:34.409941 | localhost | Product Name: OpenStack Nova
+2025-12-01 13:06:34.410014 | localhost | Interface IP: 10.234.188.137
+2025-12-01 13:06:34.423015 | 
+2025-12-01 13:06:34.423125 | LOOP [ensure-output-dirs : Empty Zuul Output directories by removing them]
+2025-12-01 13:06:34.810153 | localhost | ok: "logs"
+2025-12-01 13:06:34.810444 | localhost | ok: All items complete
+2025-12-01 13:06:34.810489 | 
+2025-12-01 13:06:35.027568 | localhost | ok: "artifacts"
+2025-12-01 13:06:35.241796 | localhost | ok: "docs"
+2025-12-01 13:06:35.249901 | 
+2025-12-01 13:06:35.250040 | LOOP [ensure-output-dirs : Ensure Zuul Output directories exist]
+2025-12-01 13:06:35.474380 | localhost | changed: "logs"
+2025-12-01 13:06:35.679632 | localhost | changed: "artifacts"
+2025-12-01 13:06:35.894465 | localhost | changed: "docs"
+2025-12-01 13:06:35.907997 | 
+2025-12-01 13:06:35.908117 | PLAY [all]
+2025-12-01 13:06:35.916438 | 
+2025-12-01 13:06:35.916520 | TASK [Start zuul console daemon]
+2025-12-01 13:06:36.294809 | controller | ok
+2025-12-01 13:06:36.298983 | 
+2025-12-01 13:06:36.299065 | TASK [add-build-sshkey : Check to see if ssh key was already created for this build]
+2025-12-01 13:06:36.659882 | controller -> localhost | ok
+2025-12-01 13:06:36.665489 | 
+2025-12-01 13:06:36.665585 | TASK [add-build-sshkey : Create a new key in workspace based on build UUID]
+2025-12-01 13:06:36.696563 | controller | ok
+2025-12-01 13:06:36.708714 | controller | included: /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/trusted/project_0/gerrit/zuul-config/roles/add-build-sshkey/tasks/create-key-and-replace.yaml
+2025-12-01 13:06:36.713280 | 
+2025-12-01 13:06:36.713359 | TASK [add-build-sshkey : Create Temp SSH key]
+2025-12-01 13:06:37.649423 | controller -> localhost | Generating public/private rsa key pair.
+2025-12-01 13:06:37.649661 | controller -> localhost | Your identification has been saved in /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/150f529e6210443597ee7925439490e0_id_rsa
+2025-12-01 13:06:37.649716 | controller -> localhost | Your public key has been saved in /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/150f529e6210443597ee7925439490e0_id_rsa.pub
+2025-12-01 13:06:37.649747 | controller -> localhost | The key fingerprint is:
+2025-12-01 13:06:37.649775 | controller -> localhost | SHA256:KYSJIxy03/208jRSYICLT7+dhkf54YvbOqsyL1Z9SXw zuul-build-sshkey
+2025-12-01 13:06:37.649801 | controller -> localhost | The key's randomart image is:
+2025-12-01 13:06:37.649826 | controller -> localhost | +---[RSA 3072]----+
+2025-12-01 13:06:37.649854 | controller -> localhost | |.o  ..           |
+2025-12-01 13:06:37.649880 | controller -> localhost | |. oo o.          |
+2025-12-01 13:06:37.649904 | controller -> localhost | |.o+ + .o.        |
+2025-12-01 13:06:37.649929 | controller -> localhost | | o.+..o .+ E     |
+2025-12-01 13:06:37.649983 | controller -> localhost | |  o...o.Soo      |
+2025-12-01 13:06:37.650013 | controller -> localhost | |   . o =++.      |
+2025-12-01 13:06:37.650038 | controller -> localhost | |    . =o==.      |
+2025-12-01 13:06:37.650061 | controller -> localhost | |   = o *Bo.      |
+2025-12-01 13:06:37.650085 | controller -> localhost | |  . =o+==+.      |
+2025-12-01 13:06:37.650108 | controller -> localhost | +----[SHA256]-----+
+2025-12-01 13:06:37.650162 | controller -> localhost | ok: Runtime: 0:00:00.530242
+2025-12-01 13:06:37.655678 | 
+2025-12-01 13:06:37.655770 | TASK [add-build-sshkey : Remote setup ssh keys (linux)]
+2025-12-01 13:06:37.687421 | controller | ok
+2025-12-01 13:06:37.705141 | controller | included: /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/trusted/project_0/gerrit/zuul-config/roles/add-build-sshkey/tasks/remote-linux.yaml
+2025-12-01 13:06:37.711575 | 
+2025-12-01 13:06:37.711661 | TASK [add-build-sshkey : Remove previously added zuul-build-sshkey]
+2025-12-01 13:06:37.736015 | controller | skipping: Conditional result was False
+2025-12-01 13:06:37.742995 | 
+2025-12-01 13:06:37.743091 | TASK [add-build-sshkey : Enable access via build key on all nodes]
+2025-12-01 13:06:38.318920 | controller | changed
+2025-12-01 13:06:38.324749 | 
+2025-12-01 13:06:38.324846 | TASK [add-build-sshkey : Make sure user has a .ssh]
+2025-12-01 13:06:38.554855 | controller | ok
+2025-12-01 13:06:38.560882 | 
+2025-12-01 13:06:38.560989 | TASK [add-build-sshkey : Install build private key as SSH key on all nodes]
+2025-12-01 13:06:39.326620 | controller | changed
+2025-12-01 13:06:39.332936 | 
+2025-12-01 13:06:39.333047 | TASK [add-build-sshkey : Install build public key as SSH key on all nodes]
+2025-12-01 13:06:39.962923 | controller | changed
+2025-12-01 13:06:39.968112 | 
+2025-12-01 13:06:39.968199 | TASK [add-build-sshkey : Remote setup ssh keys (windows)]
+2025-12-01 13:06:39.992029 | controller | skipping: Conditional result was False
+2025-12-01 13:06:40.001018 | 
+2025-12-01 13:06:40.001096 | TASK [remove-zuul-sshkey : Remove master key from local agent]
+2025-12-01 13:06:40.361189 | controller -> localhost | changed
+2025-12-01 13:06:40.409651 | 
+2025-12-01 13:06:40.409750 | TASK [add-build-sshkey : Add back temp key]
+2025-12-01 13:06:40.689369 | controller -> localhost | Identity added: /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/150f529e6210443597ee7925439490e0_id_rsa (zuul-build-sshkey)
+2025-12-01 13:06:40.689564 | controller -> localhost | ok: Runtime: 0:00:00.018383
+2025-12-01 13:06:40.694988 | 
+2025-12-01 13:06:40.695082 | TASK [add-build-sshkey : Verify we can still SSH to all nodes]
+2025-12-01 13:06:40.995522 | controller | ok
+2025-12-01 13:06:41.000412 | 
+2025-12-01 13:06:41.000505 | TASK [add-build-sshkey : Verify we can still SSH to all nodes (windows)]
+2025-12-01 13:06:41.026607 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.039253 | 
+2025-12-01 13:06:41.039335 | LOOP [prepare-workspace-git : Filter zuul projects if sync-only-required-projects flag is set]
+2025-12-01 13:06:41.066384 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.067259 | controller | changed: All items complete
+2025-12-01 13:06:41.067383 | 
+2025-12-01 13:06:41.070187 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.071508 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.072281 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.073068 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.073874 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.075699 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.077597 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.079304 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.081194 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.083037 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.084887 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.087124 | controller | skipping: Conditional result was False
+2025-12-01 13:06:41.109738 | 
+2025-12-01 13:06:41.109819 | TASK [prepare-workspace-git : Don't filter zuul projects if flag is false]
+2025-12-01 13:06:41.153805 | controller | ok
+2025-12-01 13:06:41.160086 | 
+2025-12-01 13:06:41.160168 | TASK [prepare-workspace-git : Set initial repo states in workspace]
+2025-12-01 13:06:41.717596 | controller | changed
+2025-12-01 13:06:41.725682 | 
+2025-12-01 13:06:41.725776 | TASK [prepare-workspace-git : Synchronize src repos to workspace directory]
+2025-12-01 13:06:43.178784 | controller -> localhost | changed
+2025-12-01 13:06:43.193292 | 
+2025-12-01 13:06:43.193387 | TASK [prepare-workspace-git : Update remote repository state]
+2025-12-01 13:06:44.521229 | controller | changed
+2025-12-01 13:06:44.532404 | 
+2025-12-01 13:06:44.532491 | TASK [validate-host : Define zuul_info_dir fact]
+2025-12-01 13:06:44.565355 | controller | ok
+2025-12-01 13:06:44.570742 | 
+2025-12-01 13:06:44.570822 | TASK [validate-host : Ensure Zuul Ansible directory exists]
+2025-12-01 13:06:44.809740 | controller -> localhost | changed
+2025-12-01 13:06:44.825100 | 
+2025-12-01 13:06:44.825233 | TASK [validate-host : Collect information about the host]
+2025-12-01 13:06:45.641041 | controller | ok
+2025-12-01 13:06:45.649644 | 
+2025-12-01 13:06:45.649739 | TASK [validate-host : Sanitize hostname]
+2025-12-01 13:06:45.702034 | controller | ok
+2025-12-01 13:06:45.706408 | 
+2025-12-01 13:06:45.706497 | TASK [validate-host : Write out all ansible variables/facts known for each host]
+2025-12-01 13:06:46.140070 | controller -> localhost | changed
+2025-12-01 13:06:46.145481 | 
+2025-12-01 13:06:46.145580 | TASK [validate-host : Collect information about zuul worker]
+2025-12-01 13:06:46.548370 | controller | ok
+2025-12-01 13:06:46.552384 | 
+2025-12-01 13:06:46.552479 | TASK [validate-host : Write out all zuul information for each host]
+2025-12-01 13:06:46.985254 | controller -> localhost | changed
+2025-12-01 13:06:47.000155 | 
+2025-12-01 13:06:47.000261 | TASK [log-inventory : Ensure Zuul Ansible directory exists]
+2025-12-01 13:06:47.239349 | controller -> localhost | ok
+2025-12-01 13:06:47.249549 | 
+2025-12-01 13:06:47.249685 | TASK [log-inventory : Copy ansible inventory to logs dir]
+2025-12-01 13:06:47.835009 | controller -> localhost | changed
+2025-12-01 13:06:47.851092 | 
+2025-12-01 13:06:47.851166 | TASK [configure-resolvconf : Configure resolv.conf with Dell servers]
+2025-12-01 13:06:48.229240 | controller | changed: Block inserted
+2025-12-01 13:06:48.235538 | 
+2025-12-01 13:06:48.235593 | PLAY RECAP
+2025-12-01 13:06:48.235630 | controller | ok: 26 changed: 14 unreachable: 0 failed: 0 skipped: 4 rescued: 0 ignored: 0
+2025-12-01 13:06:48.235652 | localhost | ok: 6 changed: 1 unreachable: 0 failed: 0 skipped: 0 rescued: 0 ignored: 0
+2025-12-01 13:06:48.235666 | 
+2025-12-01 13:06:48.336934 | PRE-RUN END RESULT_NORMAL: [trusted : gerrit/zuul-config/playbooks/base/pre.yaml@master]
+2025-12-01 13:06:48.350856 | PRE-RUN START: [trusted : gerrit/zuul-config/playbooks/pre-devstack.yaml@master]
+2025-12-01 13:06:48.919819 | 
+2025-12-01 13:06:48.919994 | PLAY [all]
+2025-12-01 13:06:48.935587 | 
+2025-12-01 13:06:48.935688 | TASK [Fix the permissions of the zuul home directory]
+2025-12-01 13:06:49.297896 | controller | changed
+2025-12-01 13:06:49.305772 | 
+2025-12-01 13:06:49.305871 | TASK [Gather minimum local MTU]
+2025-12-01 13:06:49.381612 | controller | ok
+2025-12-01 13:06:49.386938 | 
+2025-12-01 13:06:49.387027 | TASK [Calculate external_bridge_mtu]
+2025-12-01 13:06:49.442154 | controller | ok
+2025-12-01 13:06:49.448085 | 
+2025-12-01 13:06:49.448190 | TASK [configure-swap : Set ephemeral device if /dev/xvde exists]
+2025-12-01 13:06:49.471064 | controller | skipping: Conditional result was False
+2025-12-01 13:06:49.477908 | 
+2025-12-01 13:06:49.478007 | TASK [configure-swap : Get ephemeral0 device node]
+2025-12-01 13:06:50.005342 | controller | ok: Runtime: 0:00:00.009972
+2025-12-01 13:06:50.017092 | 
+2025-12-01 13:06:50.017237 | TASK [configure-swap : Set ephemeral device if LABEL exists]
+2025-12-01 13:06:50.052622 | controller | skipping: Conditional result was False
+2025-12-01 13:06:50.062586 | 
+2025-12-01 13:06:50.062717 | TASK [configure-swap : Setup swap on ephemeral storage]
+2025-12-01 13:06:50.086874 | controller | skipping: Conditional result was False
+2025-12-01 13:06:50.093875 | 
+2025-12-01 13:06:50.093998 | TASK [configure-swap : Setup swap file on root device]
+2025-12-01 13:06:50.147918 | controller | ok
+2025-12-01 13:06:50.157177 | controller | included: /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/trusted/project_2/opendev.org/openstack/openstack-zuul-jobs/roles/configure-swap/tasks/root.yaml
+2025-12-01 13:06:50.162014 | 
+2025-12-01 13:06:50.162099 | TASK [configure-swap : Calculate required swap]
+2025-12-01 13:06:50.216560 | controller | ok
+2025-12-01 13:06:50.222210 | 
+2025-12-01 13:06:50.222293 | TASK [configure-swap : Get root filesystem]
+2025-12-01 13:06:50.029838 | controller | ext4
+2025-12-01 13:06:50.780047 | controller | ok: Runtime: 0:00:00.010474
+2025-12-01 13:06:50.790857 | 
+2025-12-01 13:06:50.790980 | TASK [configure-swap : Save root filesystem]
+2025-12-01 13:06:50.834570 | controller | ok
+2025-12-01 13:06:50.840433 | 
+2025-12-01 13:06:50.840514 | TASK [configure-swap : Debug the root_filesystem variable]
+2025-12-01 13:06:50.871612 | controller | ok:
+2025-12-01 13:06:50.871848 | controller | {
+2025-12-01 13:06:50.871898 | controller |   "root_filesystem": "ext4"
+2025-12-01 13:06:50.871935 | controller | }
+2025-12-01 13:06:50.877156 | 
+2025-12-01 13:06:50.877255 | TASK [configure-swap : Create swap backing file]
+2025-12-01 13:07:02.690237 | controller | 8192+0 records in
+2025-12-01 13:07:02.690722 | controller | 8192+0 records out
+2025-12-01 13:07:02.690767 | controller | 8589934592 bytes (8.6 GB, 8.0 GiB) copied, 12.021 s, 715 MB/s
+2025-12-01 13:07:03.438294 | controller | ok: Runtime: 0:00:12.030743
+2025-12-01 13:07:03.449055 | 
+2025-12-01 13:07:03.449171 | TASK [configure-swap : Ensure swapfile perms]
+2025-12-01 13:07:03.722273 | controller | changed
+2025-12-01 13:07:03.727660 | 
+2025-12-01 13:07:03.727758 | TASK [configure-swap : Make swapfile]
+2025-12-01 13:07:03.704091 | controller | Setting up swapspace version 1, size = 8 GiB (8589930496 bytes)
+2025-12-01 13:07:03.704218 | controller | no label, UUID=c5a34d9b-6d21-4d04-aadc-413ce3144795
+2025-12-01 13:07:04.253980 | controller | ok: Runtime: 0:00:00.189936
+2025-12-01 13:07:04.265480 | 
+2025-12-01 13:07:04.265596 | TASK [configure-swap : Write swap to fstab]
+2025-12-01 13:07:04.595925 | controller | changed
+2025-12-01 13:07:04.601934 | 
+2025-12-01 13:07:04.602049 | TASK [configure-swap : Add all swap]
+2025-12-01 13:07:05.129303 | controller | ok: Runtime: 0:00:00.015767
+2025-12-01 13:07:05.140887 | 
+2025-12-01 13:07:05.141008 | TASK [configure-swap : Debug the swap_required variable]
+2025-12-01 13:07:05.184745 | controller | ok:
+2025-12-01 13:07:05.184941 | controller | {
+2025-12-01 13:07:05.184998 | controller |   "swap_required": "8192"
+2025-12-01 13:07:05.185028 | controller | }
+2025-12-01 13:07:05.190225 | 
+2025-12-01 13:07:05.190310 | TASK [configure-swap : Set swappiness]
+2025-12-01 13:07:05.584253 | controller | changed
+2025-12-01 13:07:05.589558 | 
+2025-12-01 13:07:05.589644 | TASK [configure-swap : Debug the ephemeral_device variable]
+2025-12-01 13:07:05.622547 | controller | ok:
+2025-12-01 13:07:05.622697 | controller | {
+2025-12-01 13:07:05.622719 | controller |   "ephemeral_device": "VARIABLE IS NOT DEFINED!: 'ephemeral_device' is undefined. 'ephemeral_device' is undefined"
+2025-12-01 13:07:05.622742 | controller | }
+2025-12-01 13:07:05.630101 | 
+2025-12-01 13:07:05.630186 | TASK [setup-stack-user : Create stack group]
+2025-12-01 13:07:06.073651 | controller | changed
+2025-12-01 13:07:06.078371 | 
+2025-12-01 13:07:06.078458 | TASK [setup-stack-user : Create the stack user home folder]
+2025-12-01 13:07:06.336723 | controller | changed
+2025-12-01 13:07:06.342743 | 
+2025-12-01 13:07:06.342838 | TASK [setup-stack-user : Create stack user]
+2025-12-01 13:07:06.915974 | controller | changed
+2025-12-01 13:07:06.920921 | 
+2025-12-01 13:07:06.921042 | TASK [setup-stack-user : Set stack user home directory permissions and ownership]
+2025-12-01 13:07:07.180693 | controller | changed
+2025-12-01 13:07:07.186580 | 
+2025-12-01 13:07:07.186663 | TASK [setup-stack-user : Copy 50_stack_sh file to /etc/sudoers.d]
+2025-12-01 13:07:08.299425 | controller | changed
+2025-12-01 13:07:08.305753 | 
+2025-12-01 13:07:08.305842 | TASK [setup-stack-user : Create .cache folder within BASE]
+2025-12-01 13:07:08.555450 | controller | changed
+2025-12-01 13:07:08.563928 | 
+2025-12-01 13:07:08.564038 | TASK [setup-tempest-user : Create tempest group]
+2025-12-01 13:07:08.875869 | controller | changed
+2025-12-01 13:07:08.881441 | 
+2025-12-01 13:07:08.881525 | TASK [setup-tempest-user : Create tempest user]
+2025-12-01 13:07:09.275613 | controller | changed
+2025-12-01 13:07:09.280601 | 
+2025-12-01 13:07:09.280692 | TASK [setup-tempest-user : Copy 51_tempest_sh to /etc/sudoers.d]
+2025-12-01 13:07:10.122036 | controller | changed
+2025-12-01 13:07:10.130679 | 
+2025-12-01 13:07:10.130766 | TASK [setup-devstack-source-dirs : Find all OpenStack source repos used by this job]
+2025-12-01 13:07:10.495517 | controller | ok: Not all paths examined, check warnings for details
+2025-12-01 13:07:10.504245 | 
+2025-12-01 13:07:10.504334 | TASK [setup-devstack-source-dirs : debug found_repos]
+2025-12-01 13:07:10.552686 | controller | ok:
+2025-12-01 13:07:10.552870 | controller | {
+2025-12-01 13:07:10.552906 | controller |   "found_repos": {
+2025-12-01 13:07:10.552934 | controller |     "changed": false,
+2025-12-01 13:07:10.552974 | controller |     "examined": 13,
+2025-12-01 13:07:10.552999 | controller |     "failed": false,
+2025-12-01 13:07:10.553021 | controller |     "files": [
+2025-12-01 13:07:10.553043 | controller |       {
+2025-12-01 13:07:10.553064 | controller |         "atime": 1764594403.508,
+2025-12-01 13:07:10.553085 | controller |         "ctime": 1764594403.5,
+2025-12-01 13:07:10.553107 | controller |         "dev": 64513,
+2025-12-01 13:07:10.553127 | controller |         "gid": 1000,
+2025-12-01 13:07:10.553148 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.553169 | controller |         "inode": 4835429,
+2025-12-01 13:07:10.553190 | controller |         "isblk": false,
+2025-12-01 13:07:10.553211 | controller |         "ischr": false,
+2025-12-01 13:07:10.553235 | controller |         "isdir": true,
+2025-12-01 13:07:10.553256 | controller |         "isfifo": false,
+2025-12-01 13:07:10.553282 | controller |         "isgid": false,
+2025-12-01 13:07:10.553305 | controller |         "islnk": false,
+2025-12-01 13:07:10.553326 | controller |         "isreg": false,
+2025-12-01 13:07:10.553347 | controller |         "issock": false,
+2025-12-01 13:07:10.553367 | controller |         "isuid": false,
+2025-12-01 13:07:10.553388 | controller |         "mode": "0775",
+2025-12-01 13:07:10.553408 | controller |         "mtime": 1764594403.5,
+2025-12-01 13:07:10.553429 | controller |         "nlink": 13,
+2025-12-01 13:07:10.553449 | controller |         "path": "src/opendev.org/openstack/swift",
+2025-12-01 13:07:10.553483 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.553505 | controller |         "rgrp": true,
+2025-12-01 13:07:10.553525 | controller |         "roth": true,
+2025-12-01 13:07:10.553546 | controller |         "rusr": true,
+2025-12-01 13:07:10.553567 | controller |         "size": 4096,
+2025-12-01 13:07:10.553587 | controller |         "uid": 1000,
+2025-12-01 13:07:10.553608 | controller |         "wgrp": true,
+2025-12-01 13:07:10.553628 | controller |         "woth": false,
+2025-12-01 13:07:10.553648 | controller |         "wusr": true,
+2025-12-01 13:07:10.553668 | controller |         "xgrp": true,
+2025-12-01 13:07:10.553689 | controller |         "xoth": true,
+2025-12-01 13:07:10.553709 | controller |         "xusr": true
+2025-12-01 13:07:10.553729 | controller |       },
+2025-12-01 13:07:10.553750 | controller |       {
+2025-12-01 13:07:10.553770 | controller |         "atime": 1764594403.076,
+2025-12-01 13:07:10.553790 | controller |         "ctime": 1764594403.06,
+2025-12-01 13:07:10.553811 | controller |         "dev": 64513,
+2025-12-01 13:07:10.553830 | controller |         "gid": 1000,
+2025-12-01 13:07:10.553851 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.553871 | controller |         "inode": 4834952,
+2025-12-01 13:07:10.553891 | controller |         "isblk": false,
+2025-12-01 13:07:10.553911 | controller |         "ischr": false,
+2025-12-01 13:07:10.553931 | controller |         "isdir": true,
+2025-12-01 13:07:10.553961 | controller |         "isfifo": false,
+2025-12-01 13:07:10.553985 | controller |         "isgid": false,
+2025-12-01 13:07:10.554006 | controller |         "islnk": false,
+2025-12-01 13:07:10.554027 | controller |         "isreg": false,
+2025-12-01 13:07:10.554047 | controller |         "issock": false,
+2025-12-01 13:07:10.554067 | controller |         "isuid": false,
+2025-12-01 13:07:10.554087 | controller |         "mode": "0775",
+2025-12-01 13:07:10.554107 | controller |         "mtime": 1764594403.06,
+2025-12-01 13:07:10.554127 | controller |         "nlink": 3,
+2025-12-01 13:07:10.554147 | controller |         "path": "src/opendev.org/openstack/os-test-images",
+2025-12-01 13:07:10.554168 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.554189 | controller |         "rgrp": true,
+2025-12-01 13:07:10.554208 | controller |         "roth": true,
+2025-12-01 13:07:10.554228 | controller |         "rusr": true,
+2025-12-01 13:07:10.554248 | controller |         "size": 4096,
+2025-12-01 13:07:10.554269 | controller |         "uid": 1000,
+2025-12-01 13:07:10.554289 | controller |         "wgrp": true,
+2025-12-01 13:07:10.554310 | controller |         "woth": false,
+2025-12-01 13:07:10.554330 | controller |         "wusr": true,
+2025-12-01 13:07:10.554351 | controller |         "xgrp": true,
+2025-12-01 13:07:10.554371 | controller |         "xoth": true,
+2025-12-01 13:07:10.554391 | controller |         "xusr": true
+2025-12-01 13:07:10.554411 | controller |       },
+2025-12-01 13:07:10.554431 | controller |       {
+2025-12-01 13:07:10.554451 | controller |         "atime": 1764594403.288,
+2025-12-01 13:07:10.554471 | controller |         "ctime": 1764594403.252,
+2025-12-01 13:07:10.554492 | controller |         "dev": 64513,
+2025-12-01 13:07:10.554512 | controller |         "gid": 1000,
+2025-12-01 13:07:10.554532 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.554552 | controller |         "inode": 4834956,
+2025-12-01 13:07:10.554572 | controller |         "isblk": false,
+2025-12-01 13:07:10.554592 | controller |         "ischr": false,
+2025-12-01 13:07:10.554612 | controller |         "isdir": true,
+2025-12-01 13:07:10.554632 | controller |         "isfifo": false,
+2025-12-01 13:07:10.554653 | controller |         "isgid": false,
+2025-12-01 13:07:10.554673 | controller |         "islnk": false,
+2025-12-01 13:07:10.554694 | controller |         "isreg": false,
+2025-12-01 13:07:10.554714 | controller |         "issock": false,
+2025-12-01 13:07:10.554735 | controller |         "isuid": false,
+2025-12-01 13:07:10.554755 | controller |         "mode": "0775",
+2025-12-01 13:07:10.554779 | controller |         "mtime": 1764594403.252,
+2025-12-01 13:07:10.554800 | controller |         "nlink": 12,
+2025-12-01 13:07:10.554820 | controller |         "path": "src/opendev.org/openstack/glance",
+2025-12-01 13:07:10.554841 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.554861 | controller |         "rgrp": true,
+2025-12-01 13:07:10.554881 | controller |         "roth": true,
+2025-12-01 13:07:10.554902 | controller |         "rusr": true,
+2025-12-01 13:07:10.554922 | controller |         "size": 4096,
+2025-12-01 13:07:10.554943 | controller |         "uid": 1000,
+2025-12-01 13:07:10.554981 | controller |         "wgrp": true,
+2025-12-01 13:07:10.555004 | controller |         "woth": false,
+2025-12-01 13:07:10.555026 | controller |         "wusr": true,
+2025-12-01 13:07:10.555046 | controller |         "xgrp": true,
+2025-12-01 13:07:10.555066 | controller |         "xoth": true,
+2025-12-01 13:07:10.555087 | controller |         "xusr": true
+2025-12-01 13:07:10.555107 | controller |       },
+2025-12-01 13:07:10.555127 | controller |       {
+2025-12-01 13:07:10.555147 | controller |         "atime": 1764594403.128,
+2025-12-01 13:07:10.555167 | controller |         "ctime": 1764594403.112,
+2025-12-01 13:07:10.555187 | controller |         "dev": 64513,
+2025-12-01 13:07:10.555208 | controller |         "gid": 1000,
+2025-12-01 13:07:10.555228 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.555249 | controller |         "inode": 4834948,
+2025-12-01 13:07:10.555269 | controller |         "isblk": false,
+2025-12-01 13:07:10.555289 | controller |         "ischr": false,
+2025-12-01 13:07:10.555318 | controller |         "isdir": true,
+2025-12-01 13:07:10.555339 | controller |         "isfifo": false,
+2025-12-01 13:07:10.555359 | controller |         "isgid": false,
+2025-12-01 13:07:10.555380 | controller |         "islnk": false,
+2025-12-01 13:07:10.555399 | controller |         "isreg": false,
+2025-12-01 13:07:10.555420 | controller |         "issock": false,
+2025-12-01 13:07:10.555440 | controller |         "isuid": false,
+2025-12-01 13:07:10.555460 | controller |         "mode": "0775",
+2025-12-01 13:07:10.555480 | controller |         "mtime": 1764594403.112,
+2025-12-01 13:07:10.555500 | controller |         "nlink": 9,
+2025-12-01 13:07:10.555520 | controller |         "path": "src/opendev.org/openstack/manila-tempest-plugin",
+2025-12-01 13:07:10.555540 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.555560 | controller |         "rgrp": true,
+2025-12-01 13:07:10.555580 | controller |         "roth": true,
+2025-12-01 13:07:10.555600 | controller |         "rusr": true,
+2025-12-01 13:07:10.555620 | controller |         "size": 4096,
+2025-12-01 13:07:10.555640 | controller |         "uid": 1000,
+2025-12-01 13:07:10.555690 | controller |         "wgrp": true,
+2025-12-01 13:07:10.555713 | controller |         "woth": false,
+2025-12-01 13:07:10.555734 | controller |         "wusr": true,
+2025-12-01 13:07:10.555754 | controller |         "xgrp": true,
+2025-12-01 13:07:10.555774 | controller |         "xoth": true,
+2025-12-01 13:07:10.555794 | controller |         "xusr": true
+2025-12-01 13:07:10.555814 | controller |       },
+2025-12-01 13:07:10.555834 | controller |       {
+2025-12-01 13:07:10.555854 | controller |         "atime": 1764594403.72,
+2025-12-01 13:07:10.555874 | controller |         "ctime": 1764594403.704,
+2025-12-01 13:07:10.555894 | controller |         "dev": 64513,
+2025-12-01 13:07:10.555914 | controller |         "gid": 1000,
+2025-12-01 13:07:10.555934 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.555972 | controller |         "inode": 4834953,
+2025-12-01 13:07:10.555994 | controller |         "isblk": false,
+2025-12-01 13:07:10.556014 | controller |         "ischr": false,
+2025-12-01 13:07:10.556034 | controller |         "isdir": true,
+2025-12-01 13:07:10.556054 | controller |         "isfifo": false,
+2025-12-01 13:07:10.556075 | controller |         "isgid": false,
+2025-12-01 13:07:10.556099 | controller |         "islnk": false,
+2025-12-01 13:07:10.556120 | controller |         "isreg": false,
+2025-12-01 13:07:10.556140 | controller |         "issock": false,
+2025-12-01 13:07:10.556161 | controller |         "isuid": false,
+2025-12-01 13:07:10.556181 | controller |         "mode": "0775",
+2025-12-01 13:07:10.556200 | controller |         "mtime": 1764594403.704,
+2025-12-01 13:07:10.556212 | controller |         "nlink": 12,
+2025-12-01 13:07:10.556224 | controller |         "path": "src/opendev.org/openstack/cinder",
+2025-12-01 13:07:10.556236 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.556248 | controller |         "rgrp": true,
+2025-12-01 13:07:10.556259 | controller |         "roth": true,
+2025-12-01 13:07:10.556271 | controller |         "rusr": true,
+2025-12-01 13:07:10.556282 | controller |         "size": 4096,
+2025-12-01 13:07:10.556294 | controller |         "uid": 1000,
+2025-12-01 13:07:10.556306 | controller |         "wgrp": true,
+2025-12-01 13:07:10.556317 | controller |         "woth": false,
+2025-12-01 13:07:10.556329 | controller |         "wusr": true,
+2025-12-01 13:07:10.556341 | controller |         "xgrp": true,
+2025-12-01 13:07:10.556352 | controller |         "xoth": true,
+2025-12-01 13:07:10.556364 | controller |         "xusr": true
+2025-12-01 13:07:10.556375 | controller |       },
+2025-12-01 13:07:10.556387 | controller |       {
+2025-12-01 13:07:10.556399 | controller |         "atime": 1764594403.096,
+2025-12-01 13:07:10.556410 | controller |         "ctime": 1764594403.076,
+2025-12-01 13:07:10.556422 | controller |         "dev": 64513,
+2025-12-01 13:07:10.556433 | controller |         "gid": 1000,
+2025-12-01 13:07:10.556445 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.556457 | controller |         "inode": 4834955,
+2025-12-01 13:07:10.556468 | controller |         "isblk": false,
+2025-12-01 13:07:10.556480 | controller |         "ischr": false,
+2025-12-01 13:07:10.556492 | controller |         "isdir": true,
+2025-12-01 13:07:10.556503 | controller |         "isfifo": false,
+2025-12-01 13:07:10.556515 | controller |         "isgid": false,
+2025-12-01 13:07:10.556526 | controller |         "islnk": false,
+2025-12-01 13:07:10.556538 | controller |         "isreg": false,
+2025-12-01 13:07:10.556549 | controller |         "issock": false,
+2025-12-01 13:07:10.556561 | controller |         "isuid": false,
+2025-12-01 13:07:10.556572 | controller |         "mode": "0775",
+2025-12-01 13:07:10.556584 | controller |         "mtime": 1764594403.076,
+2025-12-01 13:07:10.556595 | controller |         "nlink": 15,
+2025-12-01 13:07:10.556607 | controller |         "path": "src/opendev.org/openstack/devstack",
+2025-12-01 13:07:10.556619 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.556631 | controller |         "rgrp": true,
+2025-12-01 13:07:10.556642 | controller |         "roth": true,
+2025-12-01 13:07:10.556653 | controller |         "rusr": true,
+2025-12-01 13:07:10.556665 | controller |         "size": 4096,
+2025-12-01 13:07:10.556676 | controller |         "uid": 1000,
+2025-12-01 13:07:10.556688 | controller |         "wgrp": true,
+2025-12-01 13:07:10.556699 | controller |         "woth": false,
+2025-12-01 13:07:10.556711 | controller |         "wusr": true,
+2025-12-01 13:07:10.556722 | controller |         "xgrp": true,
+2025-12-01 13:07:10.556734 | controller |         "xoth": true,
+2025-12-01 13:07:10.556745 | controller |         "xusr": true
+2025-12-01 13:07:10.556757 | controller |       },
+2025-12-01 13:07:10.556768 | controller |       {
+2025-12-01 13:07:10.556780 | controller |         "atime": 1764594403.78,
+2025-12-01 13:07:10.556791 | controller |         "ctime": 1764594403.76,
+2025-12-01 13:07:10.556803 | controller |         "dev": 64513,
+2025-12-01 13:07:10.556815 | controller |         "gid": 1000,
+2025-12-01 13:07:10.556826 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.556838 | controller |         "inode": 4834949,
+2025-12-01 13:07:10.556849 | controller |         "isblk": false,
+2025-12-01 13:07:10.556863 | controller |         "ischr": false,
+2025-12-01 13:07:10.556875 | controller |         "isdir": true,
+2025-12-01 13:07:10.556887 | controller |         "isfifo": false,
+2025-12-01 13:07:10.556898 | controller |         "isgid": false,
+2025-12-01 13:07:10.556909 | controller |         "islnk": false,
+2025-12-01 13:07:10.556921 | controller |         "isreg": false,
+2025-12-01 13:07:10.556932 | controller |         "issock": false,
+2025-12-01 13:07:10.556944 | controller |         "isuid": false,
+2025-12-01 13:07:10.556972 | controller |         "mode": "0775",
+2025-12-01 13:07:10.556985 | controller |         "mtime": 1764594403.76,
+2025-12-01 13:07:10.556997 | controller |         "nlink": 14,
+2025-12-01 13:07:10.557009 | controller |         "path": "src/opendev.org/openstack/nova",
+2025-12-01 13:07:10.557021 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.557032 | controller |         "rgrp": true,
+2025-12-01 13:07:10.557044 | controller |         "roth": true,
+2025-12-01 13:07:10.557055 | controller |         "rusr": true,
+2025-12-01 13:07:10.557067 | controller |         "size": 4096,
+2025-12-01 13:07:10.557078 | controller |         "uid": 1000,
+2025-12-01 13:07:10.557090 | controller |         "wgrp": true,
+2025-12-01 13:07:10.557102 | controller |         "woth": false,
+2025-12-01 13:07:10.557113 | controller |         "wusr": true,
+2025-12-01 13:07:10.557125 | controller |         "xgrp": true,
+2025-12-01 13:07:10.557137 | controller |         "xoth": true,
+2025-12-01 13:07:10.557149 | controller |         "xusr": true
+2025-12-01 13:07:10.557160 | controller |       },
+2025-12-01 13:07:10.557172 | controller |       {
+2025-12-01 13:07:10.557184 | controller |         "atime": 1764594403.172,
+2025-12-01 13:07:10.557196 | controller |         "ctime": 1764594403.152,
+2025-12-01 13:07:10.557208 | controller |         "dev": 64513,
+2025-12-01 13:07:10.557219 | controller |         "gid": 1000,
+2025-12-01 13:07:10.557231 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.557242 | controller |         "inode": 4834954,
+2025-12-01 13:07:10.557254 | controller |         "isblk": false,
+2025-12-01 13:07:10.557265 | controller |         "ischr": false,
+2025-12-01 13:07:10.557277 | controller |         "isdir": true,
+2025-12-01 13:07:10.557289 | controller |         "isfifo": false,
+2025-12-01 13:07:10.557300 | controller |         "isgid": false,
+2025-12-01 13:07:10.557312 | controller |         "islnk": false,
+2025-12-01 13:07:10.557323 | controller |         "isreg": false,
+2025-12-01 13:07:10.557335 | controller |         "issock": false,
+2025-12-01 13:07:10.557346 | controller |         "isuid": false,
+2025-12-01 13:07:10.557358 | controller |         "mode": "0775",
+2025-12-01 13:07:10.557370 | controller |         "mtime": 1764594403.152,
+2025-12-01 13:07:10.557381 | controller |         "nlink": 11,
+2025-12-01 13:07:10.557392 | controller |         "path": "src/opendev.org/openstack/placement",
+2025-12-01 13:07:10.557404 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.557416 | controller |         "rgrp": true,
+2025-12-01 13:07:10.557427 | controller |         "roth": true,
+2025-12-01 13:07:10.557439 | controller |         "rusr": true,
+2025-12-01 13:07:10.557450 | controller |         "size": 4096,
+2025-12-01 13:07:10.557462 | controller |         "uid": 1000,
+2025-12-01 13:07:10.557474 | controller |         "wgrp": true,
+2025-12-01 13:07:10.557485 | controller |         "woth": false,
+2025-12-01 13:07:10.557497 | controller |         "wusr": true,
+2025-12-01 13:07:10.557508 | controller |         "xgrp": true,
+2025-12-01 13:07:10.557520 | controller |         "xoth": true,
+2025-12-01 13:07:10.557531 | controller |         "xusr": true
+2025-12-01 13:07:10.557543 | controller |       },
+2025-12-01 13:07:10.557555 | controller |       {
+2025-12-01 13:07:10.557567 | controller |         "atime": 1764594403.232,
+2025-12-01 13:07:10.557578 | controller |         "ctime": 1764594403.176,
+2025-12-01 13:07:10.557590 | controller |         "dev": 64513,
+2025-12-01 13:07:10.557604 | controller |         "gid": 1000,
+2025-12-01 13:07:10.557616 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.557627 | controller |         "inode": 4835348,
+2025-12-01 13:07:10.557639 | controller |         "isblk": false,
+2025-12-01 13:07:10.557650 | controller |         "ischr": false,
+2025-12-01 13:07:10.557662 | controller |         "isdir": true,
+2025-12-01 13:07:10.557674 | controller |         "isfifo": false,
+2025-12-01 13:07:10.557685 | controller |         "isgid": false,
+2025-12-01 13:07:10.557696 | controller |         "islnk": false,
+2025-12-01 13:07:10.557708 | controller |         "isreg": false,
+2025-12-01 13:07:10.557719 | controller |         "issock": false,
+2025-12-01 13:07:10.557731 | controller |         "isuid": false,
+2025-12-01 13:07:10.557742 | controller |         "mode": "0775",
+2025-12-01 13:07:10.557754 | controller |         "mtime": 1764594403.176,
+2025-12-01 13:07:10.557766 | controller |         "nlink": 10,
+2025-12-01 13:07:10.557778 | controller |         "path": "src/opendev.org/openstack/requirements",
+2025-12-01 13:07:10.557789 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.557801 | controller |         "rgrp": true,
+2025-12-01 13:07:10.557813 | controller |         "roth": true,
+2025-12-01 13:07:10.557825 | controller |         "rusr": true,
+2025-12-01 13:07:10.557836 | controller |         "size": 4096,
+2025-12-01 13:07:10.557848 | controller |         "uid": 1000,
+2025-12-01 13:07:10.557859 | controller |         "wgrp": true,
+2025-12-01 13:07:10.557871 | controller |         "woth": false,
+2025-12-01 13:07:10.557882 | controller |         "wusr": true,
+2025-12-01 13:07:10.557894 | controller |         "xgrp": true,
+2025-12-01 13:07:10.557905 | controller |         "xoth": true,
+2025-12-01 13:07:10.557917 | controller |         "xusr": true
+2025-12-01 13:07:10.557929 | controller |       },
+2025-12-01 13:07:10.557940 | controller |       {
+2025-12-01 13:07:10.557959 | controller |         "atime": 1764594403.468,
+2025-12-01 13:07:10.557973 | controller |         "ctime": 1764594403.456,
+2025-12-01 13:07:10.557985 | controller |         "dev": 64513,
+2025-12-01 13:07:10.557996 | controller |         "gid": 1000,
+2025-12-01 13:07:10.558008 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.558019 | controller |         "inode": 4834951,
+2025-12-01 13:07:10.558031 | controller |         "isblk": false,
+2025-12-01 13:07:10.558042 | controller |         "ischr": false,
+2025-12-01 13:07:10.558054 | controller |         "isdir": true,
+2025-12-01 13:07:10.558065 | controller |         "isfifo": false,
+2025-12-01 13:07:10.558077 | controller |         "isgid": false,
+2025-12-01 13:07:10.558088 | controller |         "islnk": false,
+2025-12-01 13:07:10.558100 | controller |         "isreg": false,
+2025-12-01 13:07:10.558112 | controller |         "issock": false,
+2025-12-01 13:07:10.558123 | controller |         "isuid": false,
+2025-12-01 13:07:10.558135 | controller |         "mode": "0775",
+2025-12-01 13:07:10.558146 | controller |         "mtime": 1764594403.456,
+2025-12-01 13:07:10.558158 | controller |         "nlink": 15,
+2025-12-01 13:07:10.558169 | controller |         "path": "src/opendev.org/openstack/manila",
+2025-12-01 13:07:10.558181 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.558192 | controller |         "rgrp": true,
+2025-12-01 13:07:10.558204 | controller |         "roth": true,
+2025-12-01 13:07:10.558215 | controller |         "rusr": true,
+2025-12-01 13:07:10.558227 | controller |         "size": 4096,
+2025-12-01 13:07:10.558238 | controller |         "uid": 1000,
+2025-12-01 13:07:10.558250 | controller |         "wgrp": true,
+2025-12-01 13:07:10.558261 | controller |         "woth": false,
+2025-12-01 13:07:10.558273 | controller |         "wusr": true,
+2025-12-01 13:07:10.558284 | controller |         "xgrp": true,
+2025-12-01 13:07:10.558295 | controller |         "xoth": true,
+2025-12-01 13:07:10.558307 | controller |         "xusr": true
+2025-12-01 13:07:10.558318 | controller |       },
+2025-12-01 13:07:10.558333 | controller |       {
+2025-12-01 13:07:10.558345 | controller |         "atime": 1764594403.68,
+2025-12-01 13:07:10.558356 | controller |         "ctime": 1764594403.656,
+2025-12-01 13:07:10.558368 | controller |         "dev": 64513,
+2025-12-01 13:07:10.558379 | controller |         "gid": 1000,
+2025-12-01 13:07:10.558391 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.558402 | controller |         "inode": 4834947,
+2025-12-01 13:07:10.558413 | controller |         "isblk": false,
+2025-12-01 13:07:10.558425 | controller |         "ischr": false,
+2025-12-01 13:07:10.558436 | controller |         "isdir": true,
+2025-12-01 13:07:10.558448 | controller |         "isfifo": false,
+2025-12-01 13:07:10.558460 | controller |         "isgid": false,
+2025-12-01 13:07:10.558471 | controller |         "islnk": false,
+2025-12-01 13:07:10.558483 | controller |         "isreg": false,
+2025-12-01 13:07:10.558494 | controller |         "issock": false,
+2025-12-01 13:07:10.558506 | controller |         "isuid": false,
+2025-12-01 13:07:10.558517 | controller |         "mode": "0775",
+2025-12-01 13:07:10.558529 | controller |         "mtime": 1764594403.656,
+2025-12-01 13:07:10.558541 | controller |         "nlink": 15,
+2025-12-01 13:07:10.558552 | controller |         "path": "src/opendev.org/openstack/neutron",
+2025-12-01 13:07:10.558564 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.558575 | controller |         "rgrp": true,
+2025-12-01 13:07:10.558587 | controller |         "roth": true,
+2025-12-01 13:07:10.558599 | controller |         "rusr": true,
+2025-12-01 13:07:10.558610 | controller |         "size": 4096,
+2025-12-01 13:07:10.558622 | controller |         "uid": 1000,
+2025-12-01 13:07:10.558633 | controller |         "wgrp": true,
+2025-12-01 13:07:10.558645 | controller |         "woth": false,
+2025-12-01 13:07:10.558656 | controller |         "wusr": true,
+2025-12-01 13:07:10.558668 | controller |         "xgrp": true,
+2025-12-01 13:07:10.558679 | controller |         "xoth": true,
+2025-12-01 13:07:10.558691 | controller |         "xusr": true
+2025-12-01 13:07:10.558702 | controller |       },
+2025-12-01 13:07:10.558714 | controller |       {
+2025-12-01 13:07:10.558725 | controller |         "atime": 1764594403.524,
+2025-12-01 13:07:10.558737 | controller |         "ctime": 1764594403.508,
+2025-12-01 13:07:10.558749 | controller |         "dev": 64513,
+2025-12-01 13:07:10.558761 | controller |         "gid": 1000,
+2025-12-01 13:07:10.558772 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.558784 | controller |         "inode": 4835483,
+2025-12-01 13:07:10.558796 | controller |         "isblk": false,
+2025-12-01 13:07:10.558808 | controller |         "ischr": false,
+2025-12-01 13:07:10.558819 | controller |         "isdir": true,
+2025-12-01 13:07:10.558831 | controller |         "isfifo": false,
+2025-12-01 13:07:10.558843 | controller |         "isgid": false,
+2025-12-01 13:07:10.558854 | controller |         "islnk": false,
+2025-12-01 13:07:10.558866 | controller |         "isreg": false,
+2025-12-01 13:07:10.558877 | controller |         "issock": false,
+2025-12-01 13:07:10.558889 | controller |         "isuid": false,
+2025-12-01 13:07:10.558900 | controller |         "mode": "0775",
+2025-12-01 13:07:10.558912 | controller |         "mtime": 1764594403.508,
+2025-12-01 13:07:10.558924 | controller |         "nlink": 11,
+2025-12-01 13:07:10.558935 | controller |         "path": "src/opendev.org/openstack/tempest",
+2025-12-01 13:07:10.558947 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.558966 | controller |         "rgrp": true,
+2025-12-01 13:07:10.558979 | controller |         "roth": true,
+2025-12-01 13:07:10.558991 | controller |         "rusr": true,
+2025-12-01 13:07:10.559002 | controller |         "size": 4096,
+2025-12-01 13:07:10.559013 | controller |         "uid": 1000,
+2025-12-01 13:07:10.559025 | controller |         "wgrp": true,
+2025-12-01 13:07:10.559036 | controller |         "woth": false,
+2025-12-01 13:07:10.559048 | controller |         "wusr": true,
+2025-12-01 13:07:10.559062 | controller |         "xgrp": true,
+2025-12-01 13:07:10.559075 | controller |         "xoth": true,
+2025-12-01 13:07:10.559088 | controller |         "xusr": true
+2025-12-01 13:07:10.559100 | controller |       },
+2025-12-01 13:07:10.559112 | controller |       {
+2025-12-01 13:07:10.559124 | controller |         "atime": 1764594403.34,
+2025-12-01 13:07:10.559135 | controller |         "ctime": 1764594403.324,
+2025-12-01 13:07:10.559147 | controller |         "dev": 64513,
+2025-12-01 13:07:10.559159 | controller |         "gid": 1000,
+2025-12-01 13:07:10.559170 | controller |         "gr_name": "zuul",
+2025-12-01 13:07:10.559182 | controller |         "inode": 4834950,
+2025-12-01 13:07:10.559193 | controller |         "isblk": false,
+2025-12-01 13:07:10.559205 | controller |         "ischr": false,
+2025-12-01 13:07:10.559216 | controller |         "isdir": true,
+2025-12-01 13:07:10.559228 | controller |         "isfifo": false,
+2025-12-01 13:07:10.559239 | controller |         "isgid": false,
+2025-12-01 13:07:10.559251 | controller |         "islnk": false,
+2025-12-01 13:07:10.559264 | controller |         "isreg": false,
+2025-12-01 13:07:10.559278 | controller |         "issock": false,
+2025-12-01 13:07:10.559293 | controller |         "isuid": false,
+2025-12-01 13:07:10.559352 | controller |         "mode": "0775",
+2025-12-01 13:07:10.559371 | controller |         "mtime": 1764594403.324,
+2025-12-01 13:07:10.559386 | controller |         "nlink": 15,
+2025-12-01 13:07:10.559401 | controller |         "path": "src/opendev.org/openstack/keystone",
+2025-12-01 13:07:10.559416 | controller |         "pw_name": "zuul",
+2025-12-01 13:07:10.559430 | controller |         "rgrp": true,
+2025-12-01 13:07:10.559445 | controller |         "roth": true,
+2025-12-01 13:07:10.559460 | controller |         "rusr": true,
+2025-12-01 13:07:10.559472 | controller |         "size": 4096,
+2025-12-01 13:07:10.559483 | controller |         "uid": 1000,
+2025-12-01 13:07:10.559495 | controller |         "wgrp": true,
+2025-12-01 13:07:10.559507 | controller |         "woth": false,
+2025-12-01 13:07:10.559518 | controller |         "wusr": true,
+2025-12-01 13:07:10.559530 | controller |         "xgrp": true,
+2025-12-01 13:07:10.559557 | controller |         "xoth": true,
+2025-12-01 13:07:10.559570 | controller |         "xusr": true
+2025-12-01 13:07:10.559582 | controller |       }
+2025-12-01 13:07:10.559594 | controller |     ],
+2025-12-01 13:07:10.559605 | controller |     "matched": 13,
+2025-12-01 13:07:10.559617 | controller |     "msg": "Not all paths examined, check warnings for details",
+2025-12-01 13:07:10.559629 | controller |     "skipped_paths": {
+2025-12-01 13:07:10.559640 | controller |       "src/opendev.org/opendev": "'src/opendev.org/opendev' is not a directory",
+2025-12-01 13:07:10.559653 | controller |       "src/opendev.org/openstack-dev": "'src/opendev.org/openstack-dev' is not a directory",
+2025-12-01 13:07:10.559665 | controller |       "src/opendev.org/openstack-infra": "'src/opendev.org/openstack-infra' is not a directory",
+2025-12-01 13:07:10.559678 | controller |       "src/opendev.org/starlingx": "'src/opendev.org/starlingx' is not a directory",
+2025-12-01 13:07:10.559690 | controller |       "src/opendev.org/x": "'src/opendev.org/x' is not a directory",
+2025-12-01 13:07:10.559701 | controller |       "src/opendev.org/zuul": "'src/opendev.org/zuul' is not a directory"
+2025-12-01 13:07:10.559713 | controller |     },
+2025-12-01 13:07:10.559725 | controller |     "warnings": [
+2025-12-01 13:07:10.559736 | controller |       "Skipped 'src/opendev.org/opendev' path due to this access issue: 'src/opendev.org/opendev' is not a directory\n",
+2025-12-01 13:07:10.559749 | controller |       "Skipped 'src/opendev.org/openstack-dev' path due to this access issue: 'src/opendev.org/openstack-dev' is not a directory\n",
+2025-12-01 13:07:10.559764 | controller |       "Skipped 'src/opendev.org/openstack-infra' path due to this access issue: 'src/opendev.org/openstack-infra' is not a directory\n",
+2025-12-01 13:07:10.559780 | controller |       "Skipped 'src/opendev.org/starlingx' path due to this access issue: 'src/opendev.org/starlingx' is not a directory\n",
+2025-12-01 13:07:10.559792 | controller |       "Skipped 'src/opendev.org/x' path due to this access issue: 'src/opendev.org/x' is not a directory\n",
+2025-12-01 13:07:10.559804 | controller |       "Skipped 'src/opendev.org/zuul' path due to this access issue: 'src/opendev.org/zuul' is not a directory\n"
+2025-12-01 13:07:10.559816 | controller |     ]
+2025-12-01 13:07:10.559828 | controller |   }
+2025-12-01 13:07:10.559839 | controller | }
+2025-12-01 13:07:10.567436 | 
+2025-12-01 13:07:10.567518 | LOOP [setup-devstack-source-dirs : Copy Zuul repos into devstack working directory]
+2025-12-01 13:07:11.950405 | controller | ok: Item: Runtime: 0:00:01.042285
+2025-12-01 13:07:12.288606 | controller | ok: Item: Runtime: 0:00:00.092045
+2025-12-01 13:07:13.466616 | controller | ok: Item: Runtime: 0:00:00.896533
+2025-12-01 13:07:13.963379 | controller | ok: Item: Runtime: 0:00:00.282921
+2025-12-01 13:07:17.323498 | controller | ok: Item: Runtime: 0:00:03.117513
+2025-12-01 13:07:18.060417 | controller | ok: Item: Runtime: 0:00:00.491878
+2025-12-01 13:07:22.378369 | controller | ok: Item: Runtime: 0:00:04.086049
+2025-12-01 13:07:23.169843 | controller | ok: Item: Runtime: 0:00:00.561286
+2025-12-01 13:07:23.602015 | controller | ok: Item: Runtime: 0:00:00.210254
+2025-12-01 13:07:25.588949 | controller | ok: Item: Runtime: 0:00:01.756159
+2025-12-01 13:07:28.534190 | controller | ok: Item: Runtime: 0:00:02.711640
+2025-12-01 13:07:29.939228 | controller | ok: Item: Runtime: 0:00:01.175242
+2025-12-01 13:07:31.166950 | controller | ok: Item: Runtime: 0:00:01.002229
+2025-12-01 13:07:31.193790 | 
+2025-12-01 13:07:31.193891 | TASK [setup-devstack-source-dirs : Find top level github projects]
+2025-12-01 13:07:31.413361 | controller | ok: Not all paths examined, check warnings for details
+2025-12-01 13:07:31.418203 | 
+2025-12-01 13:07:31.418292 | TASK [setup-devstack-source-dirs : Find actual github repos]
+2025-12-01 13:07:31.442273 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.451701 | 
+2025-12-01 13:07:31.451825 | LOOP [setup-devstack-source-dirs : Copy github repos into devstack working directory]
+2025-12-01 13:07:31.483987 | 
+2025-12-01 13:07:31.484147 | LOOP [setup-devstack-source-dirs : Setup refspec for repos into devstack working directory]
+2025-12-01 13:07:31.520643 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.521434 | 
+2025-12-01 13:07:31.524156 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.525444 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.528785 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.531738 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.534588 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.537520 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.540631 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.543457 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.546627 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.549623 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.552502 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.555534 | controller | skipping: Conditional result was False
+2025-12-01 13:07:31.581871 | 
+2025-12-01 13:07:31.581980 | TASK [setup-devstack-source-dirs : Set ownership of repos]
+2025-12-01 13:07:33.292435 | controller | changed
+2025-12-01 13:07:33.303387 | 
+2025-12-01 13:07:33.303479 | TASK [setup-devstack-log-dir : Create logs directory]
+2025-12-01 13:07:33.562553 | controller | changed
+2025-12-01 13:07:33.571598 | 
+2025-12-01 13:07:33.571668 | TASK [setup-devstack-cache : Copy cached devstack files]
+2025-12-01 13:07:34.097724 | controller | ok: Runtime: 0:00:00.054341
+2025-12-01 13:07:34.108350 | 
+2025-12-01 13:07:34.108489 | TASK [setup-devstack-cache : Set ownership of cached files]
+2025-12-01 13:07:34.362165 | controller | changed
+2025-12-01 13:07:34.370508 | 
+2025-12-01 13:07:34.370576 | TASK [start-fresh-logging : Check for /bin/journalctl file]
+2025-12-01 13:07:34.134330 | controller | /usr/bin/journalctl
+2025-12-01 13:07:34.895277 | controller | ok: Runtime: 0:00:00.007726
+2025-12-01 13:07:34.906684 | 
+2025-12-01 13:07:34.906789 | TASK [start-fresh-logging : Get current date]
+2025-12-01 13:07:34.701997 | controller | 2025-12-01 13:07:34
+2025-12-01 13:07:35.434136 | controller | ok: Runtime: 0:00:00.009447
+2025-12-01 13:07:35.446130 | 
+2025-12-01 13:07:35.446231 | TASK [start-fresh-logging : Copy current date to log-start-timestamp.txt]
+2025-12-01 13:07:36.091944 | controller | changed
+2025-12-01 13:07:36.097384 | 
+2025-12-01 13:07:36.097452 | TASK [start-fresh-logging : Stop rsyslog]
+2025-12-01 13:07:36.120529 | controller | skipping: Conditional result was False
+2025-12-01 13:07:36.130129 | 
+2025-12-01 13:07:36.130194 | TASK [start-fresh-logging : Save syslog file prior to devstack run]
+2025-12-01 13:07:36.652636 | controller | skipping: Conditional result was False
+2025-12-01 13:07:36.664978 | 
+2025-12-01 13:07:36.665102 | TASK [start-fresh-logging : Save kern.log file prior to devstack run]
+2025-12-01 13:07:37.190187 | controller | skipping: Conditional result was False
+2025-12-01 13:07:37.202861 | 
+2025-12-01 13:07:37.203006 | TASK [start-fresh-logging : Recreate syslog file]
+2025-12-01 13:07:37.227807 | controller | skipping: Conditional result was False
+2025-12-01 13:07:37.273276 | 
+2025-12-01 13:07:37.273375 | TASK [start-fresh-logging : Recreate syslog file owner and group]
+2025-12-01 13:07:37.798672 | controller | skipping: Conditional result was False
+2025-12-01 13:07:37.811195 | 
+2025-12-01 13:07:37.811308 | TASK [start-fresh-logging : Recreate syslog file permissions]
+2025-12-01 13:07:38.336945 | controller | skipping: Conditional result was False
+2025-12-01 13:07:38.349150 | 
+2025-12-01 13:07:38.349247 | TASK [start-fresh-logging : Add read permissions to all on syslog file]
+2025-12-01 13:07:38.384312 | controller | skipping: Conditional result was False
+2025-12-01 13:07:38.394116 | 
+2025-12-01 13:07:38.394226 | TASK [start-fresh-logging : Recreate kern.log file]
+2025-12-01 13:07:38.418501 | controller | skipping: Conditional result was False
+2025-12-01 13:07:38.426039 | 
+2025-12-01 13:07:38.426130 | TASK [start-fresh-logging : Recreate kern.log file owner and group]
+2025-12-01 13:07:38.953762 | controller | skipping: Conditional result was False
+2025-12-01 13:07:38.966212 | 
+2025-12-01 13:07:38.966359 | TASK [start-fresh-logging : Recreate kern.log file permissions]
+2025-12-01 13:07:39.492648 | controller | skipping: Conditional result was False
+2025-12-01 13:07:39.505463 | 
+2025-12-01 13:07:39.505568 | TASK [start-fresh-logging : Add read permissions to all on kern.log file]
+2025-12-01 13:07:39.529462 | controller | skipping: Conditional result was False
+2025-12-01 13:07:39.537345 | 
+2025-12-01 13:07:39.537416 | TASK [start-fresh-logging : Start rsyslog]
+2025-12-01 13:07:39.559933 | controller | skipping: Conditional result was False
+2025-12-01 13:07:39.571030 | 
+2025-12-01 13:07:39.571118 | TASK [write-devstack-local-conf : debug all variables from zuul]
+2025-12-01 13:07:39.613583 | controller | ok:
+2025-12-01 13:07:39.613740 | controller | {
+2025-12-01 13:07:39.613770 | controller |   "zuul": {
+2025-12-01 13:07:39.613793 | controller |     "_inheritance_path": [
+2025-12-01 13:07:39.613813 | controller |       "<Job dell-base branches: None source: zuul-config/zuul.d/jobs.yaml@master#1>",
+2025-12-01 13:07:39.613833 | controller |       "<Job devstack-base branches: None source: zuul-config/zuul.d/jobs.yaml@master#23>",
+2025-12-01 13:07:39.613858 | controller |       "<Job devstack-minimal branches: None source: zuul-config/zuul.d/jobs.yaml@master#127>",
+2025-12-01 13:07:39.613881 | controller |       "<Job devstack branches: None source: zuul-config/zuul.d/jobs.yaml@master#153>",
+2025-12-01 13:07:39.613909 | controller |       "<Job devstack-tempest branches: None source: zuul-config/zuul.d/jobs.yaml@master#276>",
+2025-12-01 13:07:39.613927 | controller |       "<Job devstack-manila-plugin-tempest-base branches: None source: zuul-config/zuul.d/jobs.yaml@master#655>",
+2025-12-01 13:07:39.613945 | controller |       "<Job powerscale-manila-tempest branches: None source: zuul-config/zuul.d/jobs.yaml@master#723>",
+2025-12-01 13:07:39.613978 | controller |       "<Job powerscale-manila-tempest branches: {MatchAny:{BranchMatcher:master}} source: zuul-config/zuul.d/projects.yaml@master#7>"
+2025-12-01 13:07:39.613996 | controller |     ],
+2025-12-01 13:07:39.614014 | controller |     "ansible_version": "9",
+2025-12-01 13:07:39.614031 | controller |     "attempts": 3,
+2025-12-01 13:07:39.614049 | controller |     "branch": "master",
+2025-12-01 13:07:39.614066 | controller |     "build": "150f529e6210443597ee7925439490e0",
+2025-12-01 13:07:39.614123 | controller |     "build_refs": [
+2025-12-01 13:07:39.614146 | controller |       {
+2025-12-01 13:07:39.614164 | controller |         "branch": "master",
+2025-12-01 13:07:39.614182 | controller |         "change": "957200",
+2025-12-01 13:07:39.614199 | controller |         "change_message": "Dell PowerScale: Added support of revert to snapshot\n\nImplements: blueprint dell-powerscale-revert-to-snapshot\nChange-Id: I960f04569964faed3a7268ab13b0ebf101ee8046\nSigned-off-by: Nilesh Thathagar <nilesh.thathagar@dell.com>\n",
+2025-12-01 13:07:39.614219 | controller |         "change_url": "https://review.opendev.org/c/openstack/manila/+/957200",
+2025-12-01 13:07:39.614237 | controller |         "commit_id": "158c04675059a5ffac08113194859042ad2a66ca",
+2025-12-01 13:07:39.614255 | controller |         "patchset": "4",
+2025-12-01 13:07:39.614272 | controller |         "project": {
+2025-12-01 13:07:39.614288 | controller |           "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.614304 | controller |           "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.614321 | controller |           "name": "openstack/manila",
+2025-12-01 13:07:39.614337 | controller |           "short_name": "manila"
+2025-12-01 13:07:39.614353 | controller |         },
+2025-12-01 13:07:39.614370 | controller |         "src_dir": "src/opendev.org/openstack/manila",
+2025-12-01 13:07:39.614386 | controller |         "topic": "bp-dell-powerscale-revert-to-snapshot"
+2025-12-01 13:07:39.614402 | controller |       }
+2025-12-01 13:07:39.614418 | controller |     ],
+2025-12-01 13:07:39.614434 | controller |     "buildset": "ce6208002d4d424286743e508dbbc534",
+2025-12-01 13:07:39.614451 | controller |     "buildset_refs": [
+2025-12-01 13:07:39.614467 | controller |       {
+2025-12-01 13:07:39.614484 | controller |         "branch": "master",
+2025-12-01 13:07:39.614501 | controller |         "change": "957200",
+2025-12-01 13:07:39.614517 | controller |         "change_message": "Dell PowerScale: Added support of revert to snapshot\n\nImplements: blueprint dell-powerscale-revert-to-snapshot\nChange-Id: I960f04569964faed3a7268ab13b0ebf101ee8046\nSigned-off-by: Nilesh Thathagar <nilesh.thathagar@dell.com>\n",
+2025-12-01 13:07:39.614534 | controller |         "change_url": "https://review.opendev.org/c/openstack/manila/+/957200",
+2025-12-01 13:07:39.614550 | controller |         "commit_id": "158c04675059a5ffac08113194859042ad2a66ca",
+2025-12-01 13:07:39.614567 | controller |         "patchset": "4",
+2025-12-01 13:07:39.614583 | controller |         "project": {
+2025-12-01 13:07:39.614599 | controller |           "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.614615 | controller |           "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.614631 | controller |           "name": "openstack/manila",
+2025-12-01 13:07:39.614648 | controller |           "short_name": "manila"
+2025-12-01 13:07:39.614664 | controller |         },
+2025-12-01 13:07:39.614680 | controller |         "src_dir": "src/opendev.org/openstack/manila",
+2025-12-01 13:07:39.614696 | controller |         "topic": "bp-dell-powerscale-revert-to-snapshot"
+2025-12-01 13:07:39.614717 | controller |       }
+2025-12-01 13:07:39.614733 | controller |     ],
+2025-12-01 13:07:39.614750 | controller |     "change": "957200",
+2025-12-01 13:07:39.614766 | controller |     "change_message": "Dell PowerScale: Added support of revert to snapshot\n\nImplements: blueprint dell-powerscale-revert-to-snapshot\nChange-Id: I960f04569964faed3a7268ab13b0ebf101ee8046\nSigned-off-by: Nilesh Thathagar <nilesh.thathagar@dell.com>\n",
+2025-12-01 13:07:39.614783 | controller |     "change_url": "https://review.opendev.org/c/openstack/manila/+/957200",
+2025-12-01 13:07:39.614799 | controller |     "child_jobs": [],
+2025-12-01 13:07:39.614815 | controller |     "commit_id": "158c04675059a5ffac08113194859042ad2a66ca",
+2025-12-01 13:07:39.614831 | controller |     "event_id": "56d618f7da644b45a04709a56fd066c1",
+2025-12-01 13:07:39.614847 | controller |     "executor": {
+2025-12-01 13:07:39.614864 | controller |       "hostname": "e71bebddd1fa",
+2025-12-01 13:07:39.614880 | controller |       "inventory_file": "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/ansible/inventory.yaml",
+2025-12-01 13:07:39.614897 | controller |       "log_root": "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/logs",
+2025-12-01 13:07:39.614913 | controller |       "result_data_file": "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/results.json",
+2025-12-01 13:07:39.614930 | controller |       "src_root": "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/src",
+2025-12-01 13:07:39.614946 | controller |       "work_root": "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work"
+2025-12-01 13:07:39.614976 | controller |     },
+2025-12-01 13:07:39.614993 | controller |     "include_vars": [],
+2025-12-01 13:07:39.615010 | controller |     "items": [
+2025-12-01 13:07:39.615026 | controller |       {
+2025-12-01 13:07:39.615042 | controller |         "branch": "master",
+2025-12-01 13:07:39.615058 | controller |         "change": "957200",
+2025-12-01 13:07:39.615074 | controller |         "change_message": "Dell PowerScale: Added support of revert to snapshot\n\nImplements: blueprint dell-powerscale-revert-to-snapshot\nChange-Id: I960f04569964faed3a7268ab13b0ebf101ee8046\nSigned-off-by: Nilesh Thathagar <nilesh.thathagar@dell.com>\n",
+2025-12-01 13:07:39.615090 | controller |         "change_url": "https://review.opendev.org/c/openstack/manila/+/957200",
+2025-12-01 13:07:39.615107 | controller |         "commit_id": "158c04675059a5ffac08113194859042ad2a66ca",
+2025-12-01 13:07:39.615124 | controller |         "patchset": "4",
+2025-12-01 13:07:39.615140 | controller |         "project": {
+2025-12-01 13:07:39.615157 | controller |           "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.615174 | controller |           "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.615190 | controller |           "name": "openstack/manila",
+2025-12-01 13:07:39.615207 | controller |           "short_name": "manila",
+2025-12-01 13:07:39.615223 | controller |           "src_dir": "src/opendev.org/openstack/manila"
+2025-12-01 13:07:39.615240 | controller |         },
+2025-12-01 13:07:39.615256 | controller |         "topic": "bp-dell-powerscale-revert-to-snapshot"
+2025-12-01 13:07:39.615272 | controller |       }
+2025-12-01 13:07:39.615288 | controller |     ],
+2025-12-01 13:07:39.615305 | controller |     "job": "powerscale-manila-tempest",
+2025-12-01 13:07:39.615321 | controller |     "jobtags": [],
+2025-12-01 13:07:39.615338 | controller |     "max_attempts": 3,
+2025-12-01 13:07:39.615358 | controller |     "message": "RGVsbCBQb3dlclNjYWxlOiBBZGRlZCBzdXBwb3J0IG9mIHJldmVydCB0byBzbmFwc2hvdAoKSW1wbGVtZW50czogYmx1ZXByaW50IGRlbGwtcG93ZXJzY2FsZS1yZXZlcnQtdG8tc25hcHNob3QKQ2hhbmdlLUlkOiBJOTYwZjA0NTY5OTY0ZmFlZDNhNzI2OGFiMTNiMGViZjEwMWVlODA0NgpTaWduZWQtb2ZmLWJ5OiBOaWxlc2ggVGhhdGhhZ2FyIDxuaWxlc2gudGhhdGhhZ2FyQGRlbGwuY29tPgo=",
+2025-12-01 13:07:39.615376 | controller |     "patchset": "4",
+2025-12-01 13:07:39.615393 | controller |     "pipeline": "dell-emc-powerscale-ci-check",
+2025-12-01 13:07:39.615412 | controller |     "playbook_context": {
+2025-12-01 13:07:39.615428 | controller |       "playbook_projects": {
+2025-12-01 13:07:39.615445 | controller |         "trusted/project_0/gerrit/zuul-config": {
+2025-12-01 13:07:39.615461 | controller |           "canonical_name": "gerrit/zuul-config",
+2025-12-01 13:07:39.615477 | controller |           "checkout": "master",
+2025-12-01 13:07:39.615493 | controller |           "commit": "f29208ca796283845bbed247c2ea279ebdc5be36"
+2025-12-01 13:07:39.615510 | controller |         },
+2025-12-01 13:07:39.615526 | controller |         "trusted/project_1/opendev.org/zuul/zuul-jobs": {
+2025-12-01 13:07:39.615542 | controller |           "canonical_name": "opendev.org/zuul/zuul-jobs",
+2025-12-01 13:07:39.615558 | controller |           "checkout": "master",
+2025-12-01 13:07:39.615574 | controller |           "commit": "e566d354c9dede33c86ed646371fa44dfc8796c5"
+2025-12-01 13:07:39.615590 | controller |         },
+2025-12-01 13:07:39.615607 | controller |         "trusted/project_2/opendev.org/openstack/openstack-zuul-jobs": {
+2025-12-01 13:07:39.615623 | controller |           "canonical_name": "opendev.org/openstack/openstack-zuul-jobs",
+2025-12-01 13:07:39.615639 | controller |           "checkout": "master",
+2025-12-01 13:07:39.615655 | controller |           "commit": "697b285337ef4ad37c177fd4e95030f55fd9688f"
+2025-12-01 13:07:39.615672 | controller |         }
+2025-12-01 13:07:39.615688 | controller |       },
+2025-12-01 13:07:39.615704 | controller |       "playbooks": [
+2025-12-01 13:07:39.615720 | controller |         {
+2025-12-01 13:07:39.615737 | controller |           "path": "trusted/project_0/gerrit/zuul-config/playbooks/devstack-tempest.yaml",
+2025-12-01 13:07:39.615753 | controller |           "roles": [
+2025-12-01 13:07:39.615769 | controller |             {
+2025-12-01 13:07:39.615785 | controller |               "checkout": "master",
+2025-12-01 13:07:39.615801 | controller |               "checkout_description": "zuul branch",
+2025-12-01 13:07:39.615817 | controller |               "link_name": "ansible/playbook_0/role_0/openstack-zuul-jobs",
+2025-12-01 13:07:39.615833 | controller |               "link_target": "trusted/project_2/opendev.org/openstack/openstack-zuul-jobs",
+2025-12-01 13:07:39.615849 | controller |               "role_path": "ansible/playbook_0/role_0/openstack-zuul-jobs/roles"
+2025-12-01 13:07:39.615866 | controller |             },
+2025-12-01 13:07:39.615882 | controller |             {
+2025-12-01 13:07:39.615898 | controller |               "checkout": "master",
+2025-12-01 13:07:39.615914 | controller |               "checkout_description": "playbook branch",
+2025-12-01 13:07:39.615931 | controller |               "link_name": "ansible/playbook_0/role_1/zuul-config",
+2025-12-01 13:07:39.615947 | controller |               "link_target": "trusted/project_0/gerrit/zuul-config",
+2025-12-01 13:07:39.615975 | controller |               "role_path": "ansible/playbook_0/role_1/zuul-config/roles"
+2025-12-01 13:07:39.615992 | controller |             },
+2025-12-01 13:07:39.616009 | controller |             {
+2025-12-01 13:07:39.616025 | controller |               "checkout": "master",
+2025-12-01 13:07:39.616042 | controller |               "checkout_description": "zuul branch",
+2025-12-01 13:07:39.616058 | controller |               "link_name": "ansible/playbook_0/role_2/zuul-jobs",
+2025-12-01 13:07:39.616074 | controller |               "link_target": "trusted/project_1/opendev.org/zuul/zuul-jobs",
+2025-12-01 13:07:39.616090 | controller |               "role_path": "ansible/playbook_0/role_2/zuul-jobs/roles"
+2025-12-01 13:07:39.616106 | controller |             }
+2025-12-01 13:07:39.616122 | controller |           ]
+2025-12-01 13:07:39.616139 | controller |         }
+2025-12-01 13:07:39.616155 | controller |       ]
+2025-12-01 13:07:39.616171 | controller |     },
+2025-12-01 13:07:39.616187 | controller |     "post_review": false,
+2025-12-01 13:07:39.616203 | controller |     "project": {
+2025-12-01 13:07:39.616222 | controller |       "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.616239 | controller |       "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.616255 | controller |       "name": "openstack/manila",
+2025-12-01 13:07:39.616272 | controller |       "short_name": "manila",
+2025-12-01 13:07:39.616288 | controller |       "src_dir": "src/opendev.org/openstack/manila"
+2025-12-01 13:07:39.616304 | controller |     },
+2025-12-01 13:07:39.616320 | controller |     "projects": {
+2025-12-01 13:07:39.616336 | controller |       "opendev.org/openstack/cinder": {
+2025-12-01 13:07:39.616352 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.616369 | controller |         "canonical_name": "opendev.org/openstack/cinder",
+2025-12-01 13:07:39.616385 | controller |         "checkout": "master",
+2025-12-01 13:07:39.616401 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.616417 | controller |         "commit": "5bc8ed7d63c53be56ac3ed245f3c94a463fb8e23",
+2025-12-01 13:07:39.616433 | controller |         "name": "openstack/cinder",
+2025-12-01 13:07:39.616449 | controller |         "required": true,
+2025-12-01 13:07:39.616466 | controller |         "short_name": "cinder",
+2025-12-01 13:07:39.616482 | controller |         "src_dir": "src/opendev.org/openstack/cinder"
+2025-12-01 13:07:39.616499 | controller |       },
+2025-12-01 13:07:39.616515 | controller |       "opendev.org/openstack/devstack": {
+2025-12-01 13:07:39.616532 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.616548 | controller |         "canonical_name": "opendev.org/openstack/devstack",
+2025-12-01 13:07:39.616564 | controller |         "checkout": "master",
+2025-12-01 13:07:39.616581 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.616597 | controller |         "commit": "4220539d470dddbdf2f75b75263a2fd4cfb0964f",
+2025-12-01 13:07:39.616613 | controller |         "name": "openstack/devstack",
+2025-12-01 13:07:39.616629 | controller |         "required": true,
+2025-12-01 13:07:39.616645 | controller |         "short_name": "devstack",
+2025-12-01 13:07:39.616661 | controller |         "src_dir": "src/opendev.org/openstack/devstack"
+2025-12-01 13:07:39.616677 | controller |       },
+2025-12-01 13:07:39.616693 | controller |       "opendev.org/openstack/glance": {
+2025-12-01 13:07:39.616710 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.616726 | controller |         "canonical_name": "opendev.org/openstack/glance",
+2025-12-01 13:07:39.616742 | controller |         "checkout": "master",
+2025-12-01 13:07:39.616758 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.616774 | controller |         "commit": "8a5aa7a98b12de24b5732eb69c5525c70fbc8fb2",
+2025-12-01 13:07:39.616790 | controller |         "name": "openstack/glance",
+2025-12-01 13:07:39.616812 | controller |         "required": true,
+2025-12-01 13:07:39.616828 | controller |         "short_name": "glance",
+2025-12-01 13:07:39.616845 | controller |         "src_dir": "src/opendev.org/openstack/glance"
+2025-12-01 13:07:39.616861 | controller |       },
+2025-12-01 13:07:39.616878 | controller |       "opendev.org/openstack/keystone": {
+2025-12-01 13:07:39.616894 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.616910 | controller |         "canonical_name": "opendev.org/openstack/keystone",
+2025-12-01 13:07:39.616926 | controller |         "checkout": "master",
+2025-12-01 13:07:39.616942 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.616968 | controller |         "commit": "7c4c8f01ec4feba56255c83209f7081d236e207e",
+2025-12-01 13:07:39.616986 | controller |         "name": "openstack/keystone",
+2025-12-01 13:07:39.617002 | controller |         "required": true,
+2025-12-01 13:07:39.617019 | controller |         "short_name": "keystone",
+2025-12-01 13:07:39.617035 | controller |         "src_dir": "src/opendev.org/openstack/keystone"
+2025-12-01 13:07:39.617055 | controller |       },
+2025-12-01 13:07:39.617071 | controller |       "opendev.org/openstack/manila": {
+2025-12-01 13:07:39.617087 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.617103 | controller |         "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.617120 | controller |         "checkout": "master",
+2025-12-01 13:07:39.617136 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.617152 | controller |         "commit": "b89674554a1ed00e90f6c0c0bf1ee1b85b57af42",
+2025-12-01 13:07:39.617168 | controller |         "name": "openstack/manila",
+2025-12-01 13:07:39.617184 | controller |         "required": false,
+2025-12-01 13:07:39.617200 | controller |         "short_name": "manila",
+2025-12-01 13:07:39.617217 | controller |         "src_dir": "src/opendev.org/openstack/manila"
+2025-12-01 13:07:39.617233 | controller |       },
+2025-12-01 13:07:39.617249 | controller |       "opendev.org/openstack/manila-tempest-plugin": {
+2025-12-01 13:07:39.617265 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.617281 | controller |         "canonical_name": "opendev.org/openstack/manila-tempest-plugin",
+2025-12-01 13:07:39.617297 | controller |         "checkout": "master",
+2025-12-01 13:07:39.617313 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.617329 | controller |         "commit": "283b664c8be0655bcf370bce10c851cf8dacd2c6",
+2025-12-01 13:07:39.617345 | controller |         "name": "openstack/manila-tempest-plugin",
+2025-12-01 13:07:39.617361 | controller |         "required": true,
+2025-12-01 13:07:39.617378 | controller |         "short_name": "manila-tempest-plugin",
+2025-12-01 13:07:39.617394 | controller |         "src_dir": "src/opendev.org/openstack/manila-tempest-plugin"
+2025-12-01 13:07:39.617410 | controller |       },
+2025-12-01 13:07:39.617427 | controller |       "opendev.org/openstack/neutron": {
+2025-12-01 13:07:39.617443 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.617459 | controller |         "canonical_name": "opendev.org/openstack/neutron",
+2025-12-01 13:07:39.617475 | controller |         "checkout": "master",
+2025-12-01 13:07:39.617492 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.617508 | controller |         "commit": "7fa7737947092c77cb2c210fd18c5adbb81e5223",
+2025-12-01 13:07:39.617524 | controller |         "name": "openstack/neutron",
+2025-12-01 13:07:39.617541 | controller |         "required": true,
+2025-12-01 13:07:39.617557 | controller |         "short_name": "neutron",
+2025-12-01 13:07:39.617573 | controller |         "src_dir": "src/opendev.org/openstack/neutron"
+2025-12-01 13:07:39.617589 | controller |       },
+2025-12-01 13:07:39.617605 | controller |       "opendev.org/openstack/nova": {
+2025-12-01 13:07:39.617622 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.617638 | controller |         "canonical_name": "opendev.org/openstack/nova",
+2025-12-01 13:07:39.617655 | controller |         "checkout": "master",
+2025-12-01 13:07:39.617671 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.617687 | controller |         "commit": "23b462d77df1a1d09c43d0918bca853ef3af1e3f",
+2025-12-01 13:07:39.617703 | controller |         "name": "openstack/nova",
+2025-12-01 13:07:39.617719 | controller |         "required": true,
+2025-12-01 13:07:39.617736 | controller |         "short_name": "nova",
+2025-12-01 13:07:39.617752 | controller |         "src_dir": "src/opendev.org/openstack/nova"
+2025-12-01 13:07:39.617768 | controller |       },
+2025-12-01 13:07:39.617784 | controller |       "opendev.org/openstack/os-test-images": {
+2025-12-01 13:07:39.617800 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.617816 | controller |         "canonical_name": "opendev.org/openstack/os-test-images",
+2025-12-01 13:07:39.617832 | controller |         "checkout": "master",
+2025-12-01 13:07:39.617851 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.617867 | controller |         "commit": "5d0367e03788764f41da8effffa14e3eac513201",
+2025-12-01 13:07:39.617883 | controller |         "name": "openstack/os-test-images",
+2025-12-01 13:07:39.617899 | controller |         "required": true,
+2025-12-01 13:07:39.617916 | controller |         "short_name": "os-test-images",
+2025-12-01 13:07:39.617931 | controller |         "src_dir": "src/opendev.org/openstack/os-test-images"
+2025-12-01 13:07:39.617947 | controller |       },
+2025-12-01 13:07:39.617974 | controller |       "opendev.org/openstack/placement": {
+2025-12-01 13:07:39.617991 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.618007 | controller |         "canonical_name": "opendev.org/openstack/placement",
+2025-12-01 13:07:39.618024 | controller |         "checkout": "master",
+2025-12-01 13:07:39.618040 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.618056 | controller |         "commit": "1c16485a11946441b0e4893ed9ee1cafadbe4527",
+2025-12-01 13:07:39.618072 | controller |         "name": "openstack/placement",
+2025-12-01 13:07:39.618089 | controller |         "required": true,
+2025-12-01 13:07:39.618105 | controller |         "short_name": "placement",
+2025-12-01 13:07:39.618121 | controller |         "src_dir": "src/opendev.org/openstack/placement"
+2025-12-01 13:07:39.618137 | controller |       },
+2025-12-01 13:07:39.618153 | controller |       "opendev.org/openstack/requirements": {
+2025-12-01 13:07:39.618169 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.618185 | controller |         "canonical_name": "opendev.org/openstack/requirements",
+2025-12-01 13:07:39.618201 | controller |         "checkout": "master",
+2025-12-01 13:07:39.618217 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.618233 | controller |         "commit": "44dbd103640a38272df3ad29048b4c5dece2c1c7",
+2025-12-01 13:07:39.618250 | controller |         "name": "openstack/requirements",
+2025-12-01 13:07:39.618266 | controller |         "required": true,
+2025-12-01 13:07:39.618282 | controller |         "short_name": "requirements",
+2025-12-01 13:07:39.618298 | controller |         "src_dir": "src/opendev.org/openstack/requirements"
+2025-12-01 13:07:39.618314 | controller |       },
+2025-12-01 13:07:39.618330 | controller |       "opendev.org/openstack/swift": {
+2025-12-01 13:07:39.618347 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.618363 | controller |         "canonical_name": "opendev.org/openstack/swift",
+2025-12-01 13:07:39.618379 | controller |         "checkout": "master",
+2025-12-01 13:07:39.618395 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.618411 | controller |         "commit": "d31b201d6b6bc4fbb34a8bf183b0965d95d29fcb",
+2025-12-01 13:07:39.618427 | controller |         "name": "openstack/swift",
+2025-12-01 13:07:39.618443 | controller |         "required": true,
+2025-12-01 13:07:39.618459 | controller |         "short_name": "swift",
+2025-12-01 13:07:39.618475 | controller |         "src_dir": "src/opendev.org/openstack/swift"
+2025-12-01 13:07:39.618492 | controller |       },
+2025-12-01 13:07:39.618508 | controller |       "opendev.org/openstack/tempest": {
+2025-12-01 13:07:39.618525 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.618541 | controller |         "canonical_name": "opendev.org/openstack/tempest",
+2025-12-01 13:07:39.618557 | controller |         "checkout": "master",
+2025-12-01 13:07:39.618573 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.618589 | controller |         "commit": "7cc9ef2b9670aac0be95a6dd6902ac2a1e91964e",
+2025-12-01 13:07:39.618605 | controller |         "name": "openstack/tempest",
+2025-12-01 13:07:39.618622 | controller |         "required": true,
+2025-12-01 13:07:39.618638 | controller |         "short_name": "tempest",
+2025-12-01 13:07:39.618657 | controller |         "src_dir": "src/opendev.org/openstack/tempest"
+2025-12-01 13:07:39.618674 | controller |       }
+2025-12-01 13:07:39.618690 | controller |     },
+2025-12-01 13:07:39.618706 | controller |     "ref": "refs/changes/00/957200/4",
+2025-12-01 13:07:39.618723 | controller |     "resources": {},
+2025-12-01 13:07:39.618739 | controller |     "tenant": "openstack",
+2025-12-01 13:07:39.618755 | controller |     "timeout": null,
+2025-12-01 13:07:39.618772 | controller |     "topic": "bp-dell-powerscale-revert-to-snapshot",
+2025-12-01 13:07:39.618788 | controller |     "voting": true
+2025-12-01 13:07:39.618804 | controller |   }
+2025-12-01 13:07:39.618821 | controller | }
+2025-12-01 13:07:39.624779 | 
+2025-12-01 13:07:39.624844 | TASK [write-devstack-local-conf : debug all variables from ansible]
+2025-12-01 13:07:39.653924 | controller | ok:
+2025-12-01 13:07:39.654051 | controller | {
+2025-12-01 13:07:39.654076 | controller |   "ansible": "VARIABLE IS NOT DEFINED!: 'ansible' is undefined. 'ansible' is undefined"
+2025-12-01 13:07:39.654094 | controller | }
+2025-12-01 13:07:39.657930 | 
+2025-12-01 13:07:39.658010 | TASK [write-devstack-local-conf : debug some variables]
+2025-12-01 13:07:39.731134 | controller | ok:
+2025-12-01 13:07:39.731292 | controller | {
+2025-12-01 13:07:39.731321 | controller |   "to_debug": {
+2025-12-01 13:07:39.731343 | controller |     "base_dir": "/opt/stack",
+2025-12-01 13:07:39.731362 | controller |     "base_services": "__omit_place_holder__53f0ebabe45749e0609a84cf4b576097e6ec7e66",
+2025-12-01 13:07:39.731381 | controller |     "local_conf": {
+2025-12-01 13:07:39.731398 | controller |       "post-config": {
+2025-12-01 13:07:39.731416 | controller |         "$MANILA_CONF": {
+2025-12-01 13:07:39.731433 | controller |           "DEFAULT": {
+2025-12-01 13:07:39.731450 | controller |             "enabled_share_backends": "powerscale",
+2025-12-01 13:07:39.731467 | controller |             "enabled_share_protocols": "NFS,CIFS",
+2025-12-01 13:07:39.731483 | controller |             "share_name_template": "CI-%s"
+2025-12-01 13:07:39.731499 | controller |           },
+2025-12-01 13:07:39.731516 | controller |           "powerscale": {
+2025-12-01 13:07:39.731533 | controller |             "driver_handles_share_servers": false,
+2025-12-01 13:07:39.731550 | controller |             "emc_nas_login": "root",
+2025-12-01 13:07:39.731567 | controller |             "emc_nas_password": "Password123!",
+2025-12-01 13:07:39.731584 | controller |             "emc_nas_root_dir": "/ifs/manila",
+2025-12-01 13:07:39.731600 | controller |             "emc_nas_server": "10.230.24.214",
+2025-12-01 13:07:39.731617 | controller |             "emc_nas_server_port": 8080,
+2025-12-01 13:07:39.731633 | controller |             "emc_share_backend": "isilon",
+2025-12-01 13:07:39.731650 | controller |             "emc_ssl_cert_verify": false,
+2025-12-01 13:07:39.731666 | controller |             "enabled_share_protocols": "NFS,CIFS",
+2025-12-01 13:07:39.731682 | controller |             "share_backend_name": "powerscale",
+2025-12-01 13:07:39.731698 | controller |             "share_driver": "manila.share.drivers.dell_emc.driver.EMCShareDriver"
+2025-12-01 13:07:39.731714 | controller |           }
+2025-12-01 13:07:39.731731 | controller |         },
+2025-12-01 13:07:39.731747 | controller |         "$NOVA_CONF": {
+2025-12-01 13:07:39.731763 | controller |           "libvirt": {
+2025-12-01 13:07:39.731780 | controller |             "volume_use_multipath": true
+2025-12-01 13:07:39.731796 | controller |           }
+2025-12-01 13:07:39.731812 | controller |         }
+2025-12-01 13:07:39.731828 | controller |       },
+2025-12-01 13:07:39.731845 | controller |       "tempest_exclude_regex": "test_create_share_with_size_bigger_than_quota",
+2025-12-01 13:07:39.731861 | controller |       "test-config": {
+2025-12-01 13:07:39.731891 | controller |         "$TEMPEST_CONFIG": {
+2025-12-01 13:07:39.731909 | controller |           "compute": {
+2025-12-01 13:07:39.731926 | controller |             "min_compute_nodes": "1"
+2025-12-01 13:07:39.731969 | controller |           },
+2025-12-01 13:07:39.731992 | controller |           "share": {
+2025-12-01 13:07:39.732011 | controller |             "backend_names": "powerscale",
+2025-12-01 13:07:39.732028 | controller |             "capability_create_share_from_snapshot_support": true,
+2025-12-01 13:07:39.732046 | controller |             "create_networks_when_multitenancy_enabled": false,
+2025-12-01 13:07:39.732063 | controller |             "default_share_type_name": "dhss_false",
+2025-12-01 13:07:39.732079 | controller |             "enable_ip_rules_for_protocols": "nfs,cifs",
+2025-12-01 13:07:39.732100 | controller |             "enable_protocols": "nfs,cifs",
+2025-12-01 13:07:39.732118 | controller |             "enable_sid_rules_for_protocols": "cifs",
+2025-12-01 13:07:39.732135 | controller |             "enable_user_rules_for_protocols": "cifs",
+2025-12-01 13:07:39.732152 | controller |             "image_with_share_tools": "manila-service-image-master",
+2025-12-01 13:07:39.732168 | controller |             "multitenancy_enabled": false,
+2025-12-01 13:07:39.732185 | controller |             "run_consistency_group_tests": false,
+2025-12-01 13:07:39.732202 | controller |             "run_driver_assisted_migration_tests": false,
+2025-12-01 13:07:39.732219 | controller |             "run_extend_tests": true,
+2025-12-01 13:07:39.732235 | controller |             "run_host_assisted_migration_tests": false,
+2025-12-01 13:07:39.732252 | controller |             "run_ipv6_tests": false,
+2025-12-01 13:07:39.732269 | controller |             "run_manage_unmanage_snapshot_tests": false,
+2025-12-01 13:07:39.732286 | controller |             "run_manage_unmanage_tests": false,
+2025-12-01 13:07:39.732303 | controller |             "run_migration_with_preserve_snapshots_tests": false,
+2025-12-01 13:07:39.732319 | controller |             "run_mount_snapshot_tests": false,
+2025-12-01 13:07:39.732335 | controller |             "run_quota_tests": true,
+2025-12-01 13:07:39.732351 | controller |             "run_replication_tests": false,
+2025-12-01 13:07:39.732368 | controller |             "run_revert_to_snapshot_tests": false,
+2025-12-01 13:07:39.732384 | controller |             "run_share_group_tests": false,
+2025-12-01 13:07:39.732400 | controller |             "run_shrink_tests": false,
+2025-12-01 13:07:39.732416 | controller |             "run_snapshot_tests": true,
+2025-12-01 13:07:39.732433 | controller |             "share_creation_retry_number": 2,
+2025-12-01 13:07:39.732450 | controller |             "share_size": 10,
+2025-12-01 13:07:39.732466 | controller |             "suppress_errors_in_cleanup": true,
+2025-12-01 13:07:39.732482 | controller |             "username_for_user_rules": "root"
+2025-12-01 13:07:39.732499 | controller |           }
+2025-12-01 13:07:39.732515 | controller |         }
+2025-12-01 13:07:39.732531 | controller |       }
+2025-12-01 13:07:39.732548 | controller |     },
+2025-12-01 13:07:39.732564 | controller |     "localrc": {
+2025-12-01 13:07:39.732580 | controller |       "ADMIN_PASSWORD": "secretadmin",
+2025-12-01 13:07:39.732596 | controller |       "CINDER_ENABLED_BACKENDS": "NFS:isilon",
+2025-12-01 13:07:39.732612 | controller |       "DATABASE_HOST": "10.19.119.96",
+2025-12-01 13:07:39.732629 | controller |       "DATABASE_PASSWORD": "secretdatabase",
+2025-12-01 13:07:39.732645 | controller |       "DATABASE_TYPE": "mysql",
+2025-12-01 13:07:39.732661 | controller |       "DEBUG_LIBVIRT_COREDUMPS": true,
+2025-12-01 13:07:39.732678 | controller |       "ENABLE_SYSCTL_MEM_TUNING": true,
+2025-12-01 13:07:39.732693 | controller |       "ENABLE_SYSCTL_NET_TUNING": true,
+2025-12-01 13:07:39.732710 | controller |       "ENABLE_ZSWAP": true,
+2025-12-01 13:07:39.732726 | controller |       "ERROR_ON_CLONE": false,
+2025-12-01 13:07:39.732743 | controller |       "FIXED_RANGE": "10.1.0.0/20",
+2025-12-01 13:07:39.732759 | controller |       "FLOATING_RANGE": "172.24.5.0/24",
+2025-12-01 13:07:39.732775 | controller |       "HOST_IP": "10.19.119.96",
+2025-12-01 13:07:39.732794 | controller |       "IPV4_ADDRS_SAFE_TO_USE": "10.1.0.0/20",
+2025-12-01 13:07:39.732814 | controller |       "LIBVIRT_TYPE": "qemu",
+2025-12-01 13:07:39.732831 | controller |       "LOGFILE": "/opt/stack/logs/devstacklog.txt",
+2025-12-01 13:07:39.732847 | controller |       "LOG_COLOR": false,
+2025-12-01 13:07:39.732864 | controller |       "MANILA_CONFIGURE_DEFAULT_TYPES": true,
+2025-12-01 13:07:39.732880 | controller |       "MANILA_DHSS_FALSE_SHARE_TYPE_EXTRA_SPECS": "share_backend_name=powerscale snapshot_support=True create_share_from_snapshot_support=True",
+2025-12-01 13:07:39.732897 | controller |       "MANILA_SERVICE_IMAGE_URL": "file:///openstack/cache/files/manila-service-image.qcow2",
+2025-12-01 13:07:39.732913 | controller |       "NETWORK_GATEWAY": "10.1.0.1",
+2025-12-01 13:07:39.732930 | controller |       "NOVA_LIBVIRT_TB_CACHE_SIZE": 128,
+2025-12-01 13:07:39.732946 | controller |       "NOVA_VNC_ENABLED": true,
+2025-12-01 13:07:39.733009 | controller |       "NOVNC_FROM_PACKAGE": true,
+2025-12-01 13:07:39.733027 | controller |       "OVN_DBS_LOG_LEVEL": "dbg",
+2025-12-01 13:07:39.733044 | controller |       "PUBLIC_NETWORK_GATEWAY": "172.24.5.1",
+2025-12-01 13:07:39.733061 | controller |       "RABBIT_HOST": "10.19.119.96",
+2025-12-01 13:07:39.733077 | controller |       "RABBIT_PASSWORD": "secretrabbit",
+2025-12-01 13:07:39.733093 | controller |       "SERVICE_HOST": "10.19.119.96",
+2025-12-01 13:07:39.733109 | controller |       "SERVICE_PASSWORD": "secretservice",
+2025-12-01 13:07:39.733125 | controller |       "SWIFT_HASH": 1234123412341234,
+2025-12-01 13:07:39.733141 | controller |       "SWIFT_REPLICAS": 1,
+2025-12-01 13:07:39.733158 | controller |       "SWIFT_START_ALL_SERVICES": false,
+2025-12-01 13:07:39.733174 | controller |       "TEMPEST_PLUGINS": "manila-tempest-plugin",
+2025-12-01 13:07:39.733190 | controller |       "TEMPEST_STORAGE_PROTOCOL": "NFS",
+2025-12-01 13:07:39.733207 | controller |       "TEMPEST_VOLUME_DRIVER": "EMC",
+2025-12-01 13:07:39.733223 | controller |       "TEMPEST_VOLUME_VENDOR": "Dell EMC",
+2025-12-01 13:07:39.733239 | controller |       "VERBOSE": true,
+2025-12-01 13:07:39.733256 | controller |       "VERBOSE_NO_TIMESTAMP": true
+2025-12-01 13:07:39.733272 | controller |     },
+2025-12-01 13:07:39.733289 | controller |     "path": "/opt/stack/devstack/local.conf",
+2025-12-01 13:07:39.733305 | controller |     "plugins": {
+2025-12-01 13:07:39.733321 | controller |       "manila": "https://opendev.org/openstack/manila.git",
+2025-12-01 13:07:39.733337 | controller |       "manila-tempest-plugin": "https://opendev.org/openstack/manila-tempest-plugin",
+2025-12-01 13:07:39.733354 | controller |       "manila-ui": "https://opendev.org/openstack/manila-ui"
+2025-12-01 13:07:39.733370 | controller |     },
+2025-12-01 13:07:39.733386 | controller |     "project": {
+2025-12-01 13:07:39.733402 | controller |       "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.733419 | controller |       "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.733435 | controller |       "name": "openstack/manila",
+2025-12-01 13:07:39.733451 | controller |       "short_name": "manila",
+2025-12-01 13:07:39.733468 | controller |       "src_dir": "src/opendev.org/openstack/manila"
+2025-12-01 13:07:39.733485 | controller |     },
+2025-12-01 13:07:39.733501 | controller |     "projects": {
+2025-12-01 13:07:39.733517 | controller |       "opendev.org/openstack/cinder": {
+2025-12-01 13:07:39.733533 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.733549 | controller |         "canonical_name": "opendev.org/openstack/cinder",
+2025-12-01 13:07:39.733566 | controller |         "checkout": "master",
+2025-12-01 13:07:39.733582 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.733598 | controller |         "commit": "5bc8ed7d63c53be56ac3ed245f3c94a463fb8e23",
+2025-12-01 13:07:39.733614 | controller |         "name": "openstack/cinder",
+2025-12-01 13:07:39.733630 | controller |         "required": true,
+2025-12-01 13:07:39.733647 | controller |         "short_name": "cinder",
+2025-12-01 13:07:39.733666 | controller |         "src_dir": "src/opendev.org/openstack/cinder"
+2025-12-01 13:07:39.733682 | controller |       },
+2025-12-01 13:07:39.733699 | controller |       "opendev.org/openstack/devstack": {
+2025-12-01 13:07:39.733715 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.733731 | controller |         "canonical_name": "opendev.org/openstack/devstack",
+2025-12-01 13:07:39.733747 | controller |         "checkout": "master",
+2025-12-01 13:07:39.733764 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.733780 | controller |         "commit": "4220539d470dddbdf2f75b75263a2fd4cfb0964f",
+2025-12-01 13:07:39.733796 | controller |         "name": "openstack/devstack",
+2025-12-01 13:07:39.733812 | controller |         "required": true,
+2025-12-01 13:07:39.733828 | controller |         "short_name": "devstack",
+2025-12-01 13:07:39.733844 | controller |         "src_dir": "src/opendev.org/openstack/devstack"
+2025-12-01 13:07:39.733861 | controller |       },
+2025-12-01 13:07:39.733877 | controller |       "opendev.org/openstack/glance": {
+2025-12-01 13:07:39.733893 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.733909 | controller |         "canonical_name": "opendev.org/openstack/glance",
+2025-12-01 13:07:39.733925 | controller |         "checkout": "master",
+2025-12-01 13:07:39.733941 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.733970 | controller |         "commit": "8a5aa7a98b12de24b5732eb69c5525c70fbc8fb2",
+2025-12-01 13:07:39.733988 | controller |         "name": "openstack/glance",
+2025-12-01 13:07:39.734005 | controller |         "required": true,
+2025-12-01 13:07:39.734021 | controller |         "short_name": "glance",
+2025-12-01 13:07:39.734038 | controller |         "src_dir": "src/opendev.org/openstack/glance"
+2025-12-01 13:07:39.734054 | controller |       },
+2025-12-01 13:07:39.734070 | controller |       "opendev.org/openstack/keystone": {
+2025-12-01 13:07:39.734086 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.734103 | controller |         "canonical_name": "opendev.org/openstack/keystone",
+2025-12-01 13:07:39.734118 | controller |         "checkout": "master",
+2025-12-01 13:07:39.734135 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.734150 | controller |         "commit": "7c4c8f01ec4feba56255c83209f7081d236e207e",
+2025-12-01 13:07:39.734166 | controller |         "name": "openstack/keystone",
+2025-12-01 13:07:39.734182 | controller |         "required": true,
+2025-12-01 13:07:39.734198 | controller |         "short_name": "keystone",
+2025-12-01 13:07:39.734214 | controller |         "src_dir": "src/opendev.org/openstack/keystone"
+2025-12-01 13:07:39.734230 | controller |       },
+2025-12-01 13:07:39.734246 | controller |       "opendev.org/openstack/manila": {
+2025-12-01 13:07:39.734263 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.734279 | controller |         "canonical_name": "opendev.org/openstack/manila",
+2025-12-01 13:07:39.734295 | controller |         "checkout": "master",
+2025-12-01 13:07:39.734311 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.734328 | controller |         "commit": "b89674554a1ed00e90f6c0c0bf1ee1b85b57af42",
+2025-12-01 13:07:39.734344 | controller |         "name": "openstack/manila",
+2025-12-01 13:07:39.734360 | controller |         "required": false,
+2025-12-01 13:07:39.734376 | controller |         "short_name": "manila",
+2025-12-01 13:07:39.734393 | controller |         "src_dir": "src/opendev.org/openstack/manila"
+2025-12-01 13:07:39.734409 | controller |       },
+2025-12-01 13:07:39.734425 | controller |       "opendev.org/openstack/manila-tempest-plugin": {
+2025-12-01 13:07:39.734442 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.734458 | controller |         "canonical_name": "opendev.org/openstack/manila-tempest-plugin",
+2025-12-01 13:07:39.734478 | controller |         "checkout": "master",
+2025-12-01 13:07:39.734494 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.734511 | controller |         "commit": "283b664c8be0655bcf370bce10c851cf8dacd2c6",
+2025-12-01 13:07:39.734527 | controller |         "name": "openstack/manila-tempest-plugin",
+2025-12-01 13:07:39.734543 | controller |         "required": true,
+2025-12-01 13:07:39.734559 | controller |         "short_name": "manila-tempest-plugin",
+2025-12-01 13:07:39.734576 | controller |         "src_dir": "src/opendev.org/openstack/manila-tempest-plugin"
+2025-12-01 13:07:39.734592 | controller |       },
+2025-12-01 13:07:39.734608 | controller |       "opendev.org/openstack/neutron": {
+2025-12-01 13:07:39.734625 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.734640 | controller |         "canonical_name": "opendev.org/openstack/neutron",
+2025-12-01 13:07:39.734657 | controller |         "checkout": "master",
+2025-12-01 13:07:39.734672 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.734689 | controller |         "commit": "7fa7737947092c77cb2c210fd18c5adbb81e5223",
+2025-12-01 13:07:39.734705 | controller |         "name": "openstack/neutron",
+2025-12-01 13:07:39.734721 | controller |         "required": true,
+2025-12-01 13:07:39.734737 | controller |         "short_name": "neutron",
+2025-12-01 13:07:39.734753 | controller |         "src_dir": "src/opendev.org/openstack/neutron"
+2025-12-01 13:07:39.734769 | controller |       },
+2025-12-01 13:07:39.734785 | controller |       "opendev.org/openstack/nova": {
+2025-12-01 13:07:39.734801 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.734824 | controller |         "canonical_name": "opendev.org/openstack/nova",
+2025-12-01 13:07:39.734840 | controller |         "checkout": "master",
+2025-12-01 13:07:39.734857 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.734873 | controller |         "commit": "23b462d77df1a1d09c43d0918bca853ef3af1e3f",
+2025-12-01 13:07:39.734889 | controller |         "name": "openstack/nova",
+2025-12-01 13:07:39.734905 | controller |         "required": true,
+2025-12-01 13:07:39.734921 | controller |         "short_name": "nova",
+2025-12-01 13:07:39.734937 | controller |         "src_dir": "src/opendev.org/openstack/nova"
+2025-12-01 13:07:39.734960 | controller |       },
+2025-12-01 13:07:39.734979 | controller |       "opendev.org/openstack/os-test-images": {
+2025-12-01 13:07:39.734996 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.735012 | controller |         "canonical_name": "opendev.org/openstack/os-test-images",
+2025-12-01 13:07:39.735028 | controller |         "checkout": "master",
+2025-12-01 13:07:39.735045 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.735061 | controller |         "commit": "5d0367e03788764f41da8effffa14e3eac513201",
+2025-12-01 13:07:39.735077 | controller |         "name": "openstack/os-test-images",
+2025-12-01 13:07:39.735093 | controller |         "required": true,
+2025-12-01 13:07:39.735109 | controller |         "short_name": "os-test-images",
+2025-12-01 13:07:39.735125 | controller |         "src_dir": "src/opendev.org/openstack/os-test-images"
+2025-12-01 13:07:39.735141 | controller |       },
+2025-12-01 13:07:39.735157 | controller |       "opendev.org/openstack/placement": {
+2025-12-01 13:07:39.735173 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.735189 | controller |         "canonical_name": "opendev.org/openstack/placement",
+2025-12-01 13:07:39.735205 | controller |         "checkout": "master",
+2025-12-01 13:07:39.735222 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.735238 | controller |         "commit": "1c16485a11946441b0e4893ed9ee1cafadbe4527",
+2025-12-01 13:07:39.735254 | controller |         "name": "openstack/placement",
+2025-12-01 13:07:39.735270 | controller |         "required": true,
+2025-12-01 13:07:39.735289 | controller |         "short_name": "placement",
+2025-12-01 13:07:39.735305 | controller |         "src_dir": "src/opendev.org/openstack/placement"
+2025-12-01 13:07:39.735322 | controller |       },
+2025-12-01 13:07:39.735338 | controller |       "opendev.org/openstack/requirements": {
+2025-12-01 13:07:39.735354 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.735370 | controller |         "canonical_name": "opendev.org/openstack/requirements",
+2025-12-01 13:07:39.735386 | controller |         "checkout": "master",
+2025-12-01 13:07:39.735402 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.735418 | controller |         "commit": "44dbd103640a38272df3ad29048b4c5dece2c1c7",
+2025-12-01 13:07:39.735435 | controller |         "name": "openstack/requirements",
+2025-12-01 13:07:39.735451 | controller |         "required": true,
+2025-12-01 13:07:39.735468 | controller |         "short_name": "requirements",
+2025-12-01 13:07:39.735484 | controller |         "src_dir": "src/opendev.org/openstack/requirements"
+2025-12-01 13:07:39.735500 | controller |       },
+2025-12-01 13:07:39.735516 | controller |       "opendev.org/openstack/swift": {
+2025-12-01 13:07:39.735533 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.735549 | controller |         "canonical_name": "opendev.org/openstack/swift",
+2025-12-01 13:07:39.735565 | controller |         "checkout": "master",
+2025-12-01 13:07:39.735582 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.735598 | controller |         "commit": "d31b201d6b6bc4fbb34a8bf183b0965d95d29fcb",
+2025-12-01 13:07:39.735614 | controller |         "name": "openstack/swift",
+2025-12-01 13:07:39.735630 | controller |         "required": true,
+2025-12-01 13:07:39.735646 | controller |         "short_name": "swift",
+2025-12-01 13:07:39.735663 | controller |         "src_dir": "src/opendev.org/openstack/swift"
+2025-12-01 13:07:39.735679 | controller |       },
+2025-12-01 13:07:39.735695 | controller |       "opendev.org/openstack/tempest": {
+2025-12-01 13:07:39.735711 | controller |         "canonical_hostname": "opendev.org",
+2025-12-01 13:07:39.735728 | controller |         "canonical_name": "opendev.org/openstack/tempest",
+2025-12-01 13:07:39.735741 | controller |         "checkout": "master",
+2025-12-01 13:07:39.735753 | controller |         "checkout_description": "zuul branch",
+2025-12-01 13:07:39.735764 | controller |         "commit": "7cc9ef2b9670aac0be95a6dd6902ac2a1e91964e",
+2025-12-01 13:07:39.735776 | controller |         "name": "openstack/tempest",
+2025-12-01 13:07:39.735788 | controller |         "required": true,
+2025-12-01 13:07:39.735799 | controller |         "short_name": "tempest",
+2025-12-01 13:07:39.735811 | controller |         "src_dir": "src/opendev.org/openstack/tempest"
+2025-12-01 13:07:39.735823 | controller |       }
+2025-12-01 13:07:39.735835 | controller |     },
+2025-12-01 13:07:39.735846 | controller |     "services": {
+2025-12-01 13:07:39.735858 | controller |       "base": false,
+2025-12-01 13:07:39.735870 | controller |       "c-api": true,
+2025-12-01 13:07:39.735882 | controller |       "c-bak": true,
+2025-12-01 13:07:39.735893 | controller |       "c-sch": true,
+2025-12-01 13:07:39.735905 | controller |       "c-vol": true,
+2025-12-01 13:07:39.735916 | controller |       "dstat": false,
+2025-12-01 13:07:39.735928 | controller |       "etcd3": true,
+2025-12-01 13:07:39.735939 | controller |       "file_tracker": true,
+2025-12-01 13:07:39.735957 | controller |       "g-api": true,
+2025-12-01 13:07:39.735970 | controller |       "horizon": false,
+2025-12-01 13:07:39.735982 | controller |       "key": true,
+2025-12-01 13:07:39.735994 | controller |       "m-api": true,
+2025-12-01 13:07:39.736006 | controller |       "m-dat": true,
+2025-12-01 13:07:39.736017 | controller |       "m-sch": true,
+2025-12-01 13:07:39.736029 | controller |       "m-shr": true,
+2025-12-01 13:07:39.736040 | controller |       "memory_tracker": true,
+2025-12-01 13:07:39.736054 | controller |       "mysql": true,
+2025-12-01 13:07:39.736066 | controller |       "n-api": true,
+2025-12-01 13:07:39.736078 | controller |       "n-api-meta": true,
+2025-12-01 13:07:39.736090 | controller |       "n-cond": true,
+2025-12-01 13:07:39.736102 | controller |       "n-cpu": true,
+2025-12-01 13:07:39.736113 | controller |       "n-novnc": true,
+2025-12-01 13:07:39.736125 | controller |       "n-sch": true,
+2025-12-01 13:07:39.736137 | controller |       "openstack-cli-server": true,
+2025-12-01 13:07:39.736148 | controller |       "ovn-controller": true,
+2025-12-01 13:07:39.736160 | controller |       "ovn-northd": true,
+2025-12-01 13:07:39.736172 | controller |       "ovs-vswitchd": true,
+2025-12-01 13:07:39.736183 | controller |       "ovsdb-server": true,
+2025-12-01 13:07:39.736195 | controller |       "placement-api": true,
+2025-12-01 13:07:39.736207 | controller |       "q-ovn-metadata-agent": true,
+2025-12-01 13:07:39.736219 | controller |       "q-svc": true,
+2025-12-01 13:07:39.736230 | controller |       "rabbit": true,
+2025-12-01 13:07:39.736242 | controller |       "s-account": true,
+2025-12-01 13:07:39.736254 | controller |       "s-container": true,
+2025-12-01 13:07:39.736265 | controller |       "s-object": true,
+2025-12-01 13:07:39.736277 | controller |       "s-proxy": true,
+2025-12-01 13:07:39.736289 | controller |       "tempest": true,
+2025-12-01 13:07:39.736301 | controller |       "tls-proxy": true
+2025-12-01 13:07:39.736312 | controller |     },
+2025-12-01 13:07:39.736324 | controller |     "tempest_plugins": "__omit_place_holder__53f0ebabe45749e0609a84cf4b576097e6ec7e66"
+2025-12-01 13:07:39.736336 | controller |   }
+2025-12-01 13:07:39.736348 | controller | }
+2025-12-01 13:07:39.743085 | 
+2025-12-01 13:07:39.743152 | TASK [write-devstack-local-conf : Write a job-specific local_conf file]
+2025-12-01 13:07:40.138059 | controller | MODULE FAILURE: localconf is : {} {'post-config': {'$MANILA_CONF': {'DEFAULT': {'enabled_share_backends': 'powerscale', 'enabled_share_protocols': 'NFS,CIFS', 'share_name_template': 'CI-%s'}, 'powerscale': {'driver_handles_share_servers': False, 'emc_nas_login': 'root', 'emc_nas_password': 'Password123!', 'emc_nas_root_dir': '/ifs/manila', 'emc_nas_server': '10.230.24.214', 'emc_nas_server_port': 8080, 'emc_share_backend': 'isilon', 'emc_ssl_cert_verify': False, 'enabled_share_protocols': 'NFS,CIFS', 'share_backend_name': 'powerscale', 'share_driver': 'manila.share.drivers.dell_emc.driver.EMCShareDriver'}}, '$NOVA_CONF': {'libvirt': {'volume_use_multipath': True}}}, 'tempest_exclude_regex': 'test_create_share_with_size_bigger_than_quota', 'test-config': {'$TEMPEST_CONFIG': {'compute': {'min_compute_nodes': '1'}, 'share': {'backend_names': 'powerscale', 'capability_create_share_from_snapshot_support': True, 'create_networks_when_multitenancy_enabled': False, 'default_share_type_name': 'dhss_false', 'enable_ip_rules_for_protocols': 'nfs,cifs', 'enable_protocols': 'nfs,cifs', 'enable_sid_rules_for_protocols': 'cifs', 'enable_user_rules_for_protocols': 'cifs', 'image_with_share_tools': 'manila-service-image-master', 'multitenancy_enabled': False, 'run_consistency_group_tests': False, 'run_driver_assisted_migration_tests': False, 'run_extend_tests': True, 'run_host_assisted_migration_tests': False, 'run_ipv6_tests': False, 'run_manage_unmanage_snapshot_tests': False, 'run_manage_unmanage_tests': False, 'run_migration_with_preserve_snapshots_tests': False, 'run_mount_snapshot_tests': False, 'run_quota_tests': True, 'run_replication_tests': False, 'run_revert_to_snapshot_tests': False, 'run_share_group_tests': False, 'run_shrink_tests': False, 'run_snapshot_tests': True, 'share_creation_retry_number': 2, 'share_size': 10, 'suppress_errors_in_cleanup': True, 'username_for_user_rules': 'root'}}}}
+failure
+2025-12-01 13:07:40.140235 | 
+2025-12-01 13:07:40.140312 | PLAY RECAP
+2025-12-01 13:07:40.140373 | controller | ok: 40 changed: 24 unreachable: 0 failed: 1 skipped: 18 rescued: 0 ignored: 0
+2025-12-01 13:07:40.140402 | 
+2025-12-01 13:07:40.250237 | PRE-RUN END RESULT_NORMAL: [trusted : gerrit/zuul-config/playbooks/pre-devstack.yaml@master]
+2025-12-01 13:07:40.262653 | POST-RUN START: [trusted : gerrit/zuul-config/playbooks/post-devstack.yaml@master]
+2025-12-01 13:07:40.801395 | 
+2025-12-01 13:07:40.801497 | PLAY [all]
+2025-12-01 13:07:40.815901 | 
+2025-12-01 13:07:40.816007 | TASK [export-devstack-journal : Ensure /home/zuul/logs exists]
+2025-12-01 13:07:41.186212 | controller | changed
+2025-12-01 13:07:41.192429 | 
+2025-12-01 13:07:41.192517 | TASK [export-devstack-journal : Export legacy stack screen log files]
+2025-12-01 13:07:42.219419 | controller | ok: Runtime: 0:00:00.535069
+2025-12-01 13:07:42.231743 | 
+2025-12-01 13:07:42.231857 | TASK [export-devstack-journal : Export legacy syslog.txt]
+2025-12-01 13:07:42.759045 | controller | ok: Runtime: 0:00:00.027436
+2025-12-01 13:07:42.769794 | 
+2025-12-01 13:07:42.769992 | TASK [export-devstack-journal : Export journal]
+2025-12-01 13:07:43.295543 | controller | ok: Runtime: 0:00:00.022458
+2025-12-01 13:07:43.307284 | 
+2025-12-01 13:07:43.307394 | TASK [export-devstack-journal : Save journal README]
+2025-12-01 13:07:44.147689 | controller | changed
+2025-12-01 13:07:44.156650 | 
+2025-12-01 13:07:44.156725 | TASK [apache-logs-conf : Ensure /home/zuul/apache exists]
+2025-12-01 13:07:44.425385 | controller | changed
+2025-12-01 13:07:44.429124 | 
+2025-12-01 13:07:44.429190 | TASK [apache-logs-conf : Find logs]
+2025-12-01 13:07:44.733610 | controller | Output suppressed because no_log was given
+2025-12-01 13:07:44.738096 | 
+2025-12-01 13:07:44.738167 | LOOP [apache-logs-conf : Dereference files]
+2025-12-01 13:07:44.770248 | 
+2025-12-01 13:07:44.770367 | LOOP [apache-logs-conf : Create hard links]
+2025-12-01 13:07:44.788924 | 
+2025-12-01 13:07:44.789145 | TASK [apache-logs-conf : Find logs]
+2025-12-01 13:07:44.814358 | 
+2025-12-01 13:07:44.814567 | LOOP [apache-logs-conf : Dereference files]
+2025-12-01 13:07:44.846505 | 
+2025-12-01 13:07:44.846629 | LOOP [apache-logs-conf : Create hard links]
+2025-12-01 13:07:44.876557 | 
+2025-12-01 13:07:44.876720 | TASK [apache-logs-conf : Ensure /home/zuul/apache_config apache_config exists]
+2025-12-01 13:07:45.113808 | controller | changed
+2025-12-01 13:07:45.119053 | 
+2025-12-01 13:07:45.119136 | TASK [apache-logs-conf : Define config paths]
+2025-12-01 13:07:45.147621 | controller | ok
+2025-12-01 13:07:45.152816 | 
+2025-12-01 13:07:45.152887 | TASK [apache-logs-conf : Discover configurations]
+2025-12-01 13:07:45.390707 | controller | Output suppressed because no_log was given
+2025-12-01 13:07:45.396122 | 
+2025-12-01 13:07:45.396189 | LOOP [apache-logs-conf : Dereference configurations]
+2025-12-01 13:07:45.425247 | 
+2025-12-01 13:07:45.425416 | LOOP [apache-logs-conf : Link configurations]
+2025-12-01 13:07:45.447133 | 
+2025-12-01 13:07:45.447251 | TASK [capture-performance-data : Generate statistics]
+2025-12-01 13:07:45.746730 | controller | /opt/stack/devstack//inc/python: line 43: -m: command not found
+2025-12-01 13:07:45.769265 | controller | Using python 3.10 to install setuptools
+2025-12-01 13:07:45.811271 | controller | /usr/bin/python3.10: No module named pip
+2025-12-01 13:07:45.820796 | controller | /bin/bash: line 4: /opt/stack/data/venv/bin/python3: No such file or directory
+2025-12-01 13:07:46.473943 | controller | ERROR
+2025-12-01 13:07:46.474399 | controller | {
+2025-12-01 13:07:46.474496 | controller |   "delta": "0:00:00.589550",
+2025-12-01 13:07:46.474566 | controller |   "end": "2025-12-01 13:07:45.822603",
+2025-12-01 13:07:46.474629 | controller |   "msg": "non-zero return code",
+2025-12-01 13:07:46.474688 | controller |   "rc": 127,
+2025-12-01 13:07:46.474749 | controller |   "start": "2025-12-01 13:07:45.233053"
+2025-12-01 13:07:46.474803 | controller | }
+2025-12-01 13:07:46.474885 | controller | ERROR: Ignoring Errors
+2025-12-01 13:07:46.492080 | 
+2025-12-01 13:07:46.492175 | TASK [devstack-project-conf : Ensure /home/zuul/etc exists]
+2025-12-01 13:07:46.748281 | controller | changed
+2025-12-01 13:07:46.752735 | 
+2025-12-01 13:07:46.752830 | LOOP [devstack-project-conf : Check which projects have a config folder]
+2025-12-01 13:07:49.509682 | controller | Output suppressed because no_log was given
+2025-12-01 13:07:49.516239 | 
+2025-12-01 13:07:49.516323 | LOOP [devstack-project-conf : Copy configuration files]
+2025-12-01 13:07:49.546565 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.547119 | 
+2025-12-01 13:07:49.549014 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.550037 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.552030 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.554229 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.556430 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.558825 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.561222 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.563718 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.566870 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.569415 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.571305 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.573520 | controller | skipping: Conditional result was False
+2025-12-01 13:07:49.591113 | 
+2025-12-01 13:07:49.591192 | TASK [devstack-project-conf : Check if openstack has a config folder]
+2025-12-01 13:07:49.819379 | controller | ok
+2025-12-01 13:07:49.826191 | 
+2025-12-01 13:07:49.826309 | TASK [devstack-project-conf : Copy configuration files]
+2025-12-01 13:07:50.351573 | controller | skipping: Conditional result was False
+2025-12-01 13:07:50.369265 | 
+2025-12-01 13:07:50.369370 | TASK [capture-system-logs : Stage various logs and reports]
+2025-12-01 13:07:50.244519 | controller | /usr/bin/python3: No module named pip
+2025-12-01 13:07:51.161923 | controller | grep: /home/zuul/apache/*.log: No such file or directory
+2025-12-01 13:07:51.897247 | controller | ok: Runtime: 0:00:01.008349
+2025-12-01 13:07:51.912984 | 
+2025-12-01 13:07:51.913083 | LOOP [stage-output : Register sources]
+2025-12-01 13:08:02.522500 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:02.536861 | 
+2025-12-01 13:08:02.537013 | TASK [stage-output : Check sudo]
+2025-12-01 13:08:03.063561 | controller | ok: Runtime: 0:00:00.023596
+2025-12-01 13:08:03.075478 | 
+2025-12-01 13:08:03.075622 | LOOP [stage-output : Set source and destination for files and folders]
+2025-12-01 13:08:03.172412 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.172678 | 
+2025-12-01 13:08:03.180906 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.184511 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.187744 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.218809 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.219519 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.221700 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.223646 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.225796 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.227843 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.230032 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.245627 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.246214 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.246726 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.247229 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.249331 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.251896 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.254235 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.256401 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.258411 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.260404 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.262501 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.264648 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.267040 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.314636 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.316947 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.340293 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.340664 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.399064 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.408762 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.420499 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.421289 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.423156 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.425185 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.441914 | controller | Output suppressed because no_log was given
+2025-12-01 13:08:03.457088 | 
+2025-12-01 13:08:03.457172 | TASK [stage-output : Build a list of source, dest dictionaries]
+2025-12-01 13:08:03.575449 | controller | ok
+2025-12-01 13:08:03.582524 | 
+2025-12-01 13:08:03.582633 | LOOP [stage-output : Ensure target folders exist]
+2025-12-01 13:08:03.877851 | controller | changed: "docs"
+2025-12-01 13:08:04.102923 | controller | changed: "artifacts"
+2025-12-01 13:08:04.318468 | controller | ok: "logs"
+2025-12-01 13:08:04.332319 | 
+2025-12-01 13:08:04.332416 | LOOP [stage-output : Copy files and folders to staging folder]
+2025-12-01 13:08:04.604172 | controller | ok: Item: Runtime: 0:00:00.007846
+2025-12-01 13:08:04.604479 | controller | changed: All items complete
+2025-12-01 13:08:04.604513 | 
+2025-12-01 13:08:04.829797 | controller | ok: Item: Runtime: 0:00:00.007654
+2025-12-01 13:08:05.048287 | controller | ok: Item: Runtime: 0:00:00.009657
+2025-12-01 13:08:05.295850 | controller | ok: Item: Runtime: 0:00:00.009227
+2025-12-01 13:08:05.517154 | controller | ok: Item: Runtime: 0:00:00.006922
+2025-12-01 13:08:05.741214 | controller | ok: Item: Runtime: 0:00:00.007396
+2025-12-01 13:08:05.958104 | controller | ok: Item: Runtime: 0:00:00.008045
+2025-12-01 13:08:06.189174 | controller | ok: Item: Runtime: 0:00:00.007929
+2025-12-01 13:08:06.418411 | controller | ok: Item: Runtime: 0:00:00.008093
+2025-12-01 13:08:06.642578 | controller | ok: Item: Runtime: 0:00:00.007616
+2025-12-01 13:08:06.880272 | controller | ok: Item: Runtime: 0:00:00.013064
+2025-12-01 13:08:07.119166 | controller | ok: Item: Runtime: 0:00:00.008282
+2025-12-01 13:08:07.353640 | controller | ok: Item: Runtime: 0:00:00.010008
+2025-12-01 13:08:07.587131 | controller | ok: Item: Runtime: 0:00:00.010833
+2025-12-01 13:08:07.815662 | controller | ok: Item: Runtime: 0:00:00.009164
+2025-12-01 13:08:07.840588 | 
+2025-12-01 13:08:07.840680 | TASK [stage-output : Make all log files readable]
+2025-12-01 13:08:08.098392 | controller | changed
+2025-12-01 13:08:08.104794 | 
+2025-12-01 13:08:08.104893 | TASK [stage-output : Rename log files that match extensions_to_txt]
+2025-12-01 13:08:08.435846 | controller | changed: Renamed files for staging.
+2025-12-01 13:08:08.441215 | 
+2025-12-01 13:08:08.441311 | TASK [stage-output : Discover log files for compression]
+2025-12-01 13:08:08.465921 | controller | skipping: Conditional result was False
+2025-12-01 13:08:08.472585 | 
+2025-12-01 13:08:08.472687 | LOOP [stage-output : Archive everything from logs]
+2025-12-01 13:08:08.509690 | 
+2025-12-01 13:08:08.509823 | TASK [fetch-devstack-log-dir : Collect devstack logs]
+2025-12-01 13:08:09.229830 | controller | changed:
+2025-12-01 13:08:09.230045 | controller | created directory /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/logs/controller
+2025-12-01 13:08:09.230082 | controller | cd+++++++++ logs/
+2025-12-01 13:08:09.230109 | controller | >f+++++++++ logs/deprecations_log.txt
+2025-12-01 13:08:09.230132 | controller | >f+++++++++ logs/devstack.journal.README.txt
+2025-12-01 13:08:09.230154 | controller | >f+++++++++ logs/devstack.journal.gz
+2025-12-01 13:08:09.230176 | controller | >f+++++++++ logs/df.txt
+2025-12-01 13:08:09.230197 | controller | >f+++++++++ logs/dpkg-l.txt
+2025-12-01 13:08:09.230217 | controller | >f+++++++++ logs/iptables.txt
+2025-12-01 13:08:09.230238 | controller | >f+++++++++ logs/listen53.txt
+2025-12-01 13:08:09.230258 | controller | >f+++++++++ logs/performance.json
+2025-12-01 13:08:09.230279 | controller | >f+++++++++ logs/pip3-freeze.txt
+2025-12-01 13:08:09.230299 | controller | >f+++++++++ logs/resolv_conf.txt
+2025-12-01 13:08:09.230330 | controller | >f+++++++++ logs/services.txt
+2025-12-01 13:08:09.230350 | controller | >f+++++++++ logs/sudoers
+2025-12-01 13:08:09.230370 | controller | >f+++++++++ logs/syslog.txt
+2025-12-01 13:08:09.230395 | controller | >f+++++++++ logs/unbound_log.txt
+2025-12-01 13:08:09.230415 | controller | cd+++++++++ logs/apache/
+2025-12-01 13:08:09.230436 | controller | cd+++++++++ logs/apache_config/
+2025-12-01 13:08:09.230456 | controller | cd+++++++++ logs/etc/
+2025-12-01 13:08:09.230476 | controller | cd+++++++++ logs/sudoers.d/
+2025-12-01 13:08:09.230495 | controller | >f+++++++++ logs/sudoers.d/50_stack_sh
+2025-12-01 13:08:09.230516 | controller | >f+++++++++ logs/sudoers.d/51_tempest_sh
+2025-12-01 13:08:09.230535 | controller | >f+++++++++ logs/sudoers.d/README
+2025-12-01 13:08:09.230555 | controller | >f+++++++++ logs/sudoers.d/zuul
+2025-12-01 13:08:09.238965 | 
+2025-12-01 13:08:09.239057 | TASK [Check if a tempest log exits]
+2025-12-01 13:08:09.500329 | controller | ok
+2025-12-01 13:08:09.505704 | 
+2025-12-01 13:08:09.505790 | TASK [Link post-devstack tempest.log]
+2025-12-01 13:08:09.529949 | controller | skipping: Conditional result was False
+2025-12-01 13:08:09.538565 | 
+2025-12-01 13:08:09.538649 | TASK [Capture most recent qemu crash dump, if any]
+2025-12-01 13:08:09.329824 | controller | /bin/bash: line 1: coredumpctl: command not found
+2025-12-01 13:08:10.067782 | controller | ERROR
+2025-12-01 13:08:10.068312 | controller | {
+2025-12-01 13:08:10.068428 | controller |   "delta": "0:00:00.008109",
+2025-12-01 13:08:10.068500 | controller |   "end": "2025-12-01 13:08:09.330629",
+2025-12-01 13:08:10.068565 | controller |   "msg": "non-zero return code",
+2025-12-01 13:08:10.068625 | controller |   "rc": 127,
+2025-12-01 13:08:10.068684 | controller |   "start": "2025-12-01 13:08:09.322520"
+2025-12-01 13:08:10.068740 | controller | }
+2025-12-01 13:08:10.068814 | controller | ERROR: Ignoring Errors
+2025-12-01 13:08:10.072577 | 
+2025-12-01 13:08:10.072731 | PLAY RECAP
+2025-12-01 13:08:10.072863 | controller | ok: 26 changed: 17 unreachable: 0 failed: 0 skipped: 12 rescued: 0 ignored: 2
+2025-12-01 13:08:10.072934 | 
+2025-12-01 13:08:10.215866 | POST-RUN END RESULT_NORMAL: [trusted : gerrit/zuul-config/playbooks/post-devstack.yaml@master]
+2025-12-01 13:08:10.227028 | POST-RUN START: [trusted : gerrit/zuul-config/playbooks/base/post-logs.yaml@master]
+2025-12-01 13:08:10.845888 | 
+2025-12-01 13:08:10.846045 | PLAY [all]
+2025-12-01 13:08:10.856794 | 
+2025-12-01 13:08:10.856899 | TASK [fetch-output : Set log path for multiple nodes]
+2025-12-01 13:08:10.904628 | controller | skipping: Conditional result was False
+2025-12-01 13:08:10.917092 | 
+2025-12-01 13:08:10.917201 | TASK [fetch-output : Set log path for single node]
+2025-12-01 13:08:10.951200 | controller | ok
+2025-12-01 13:08:10.955330 | 
+2025-12-01 13:08:10.955431 | LOOP [fetch-output : Ensure local output dirs]
+2025-12-01 13:08:11.329562 | controller -> localhost | ok: "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/logs"
+2025-12-01 13:08:11.529268 | controller -> localhost | changed: "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/artifacts"
+2025-12-01 13:08:11.747848 | controller -> localhost | changed: "/var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/docs"
+2025-12-01 13:08:11.762933 | 
+2025-12-01 13:08:11.763082 | LOOP [fetch-output : Collect logs, artifacts and docs]
+2025-12-01 13:08:12.438531 | controller | changed:
+2025-12-01 13:08:12.438761 | controller | .d..t...... ./
+2025-12-01 13:08:12.438789 | controller | >f+++++++++ deprecations_log.txt
+2025-12-01 13:08:12.438810 | controller | >f+++++++++ devstack.journal.README.txt
+2025-12-01 13:08:12.438829 | controller | >f+++++++++ devstack.journal.gz
+2025-12-01 13:08:12.438847 | controller | >f+++++++++ df.txt
+2025-12-01 13:08:12.438862 | controller | >f+++++++++ dpkg-l.txt
+2025-12-01 13:08:12.438878 | controller | >f+++++++++ iptables.txt
+2025-12-01 13:08:12.438892 | controller | >f+++++++++ listen53.txt
+2025-12-01 13:08:12.438906 | controller | >f+++++++++ performance.json
+2025-12-01 13:08:12.438920 | controller | >f+++++++++ pip3-freeze.txt
+2025-12-01 13:08:12.438934 | controller | >f+++++++++ resolv_conf.txt
+2025-12-01 13:08:12.438948 | controller | >f+++++++++ services.txt
+2025-12-01 13:08:12.438987 | controller | >f+++++++++ sudoers
+2025-12-01 13:08:12.439002 | controller | >f+++++++++ syslog.txt
+2025-12-01 13:08:12.439016 | controller | >f+++++++++ unbound_log.txt
+2025-12-01 13:08:12.439030 | controller | cd+++++++++ apache/
+2025-12-01 13:08:12.439043 | controller | cd+++++++++ apache_config/
+2025-12-01 13:08:12.439056 | controller | cd+++++++++ etc/
+2025-12-01 13:08:12.439071 | controller | cd+++++++++ sudoers.d/
+2025-12-01 13:08:12.439085 | controller | >f+++++++++ sudoers.d/50_stack_sh
+2025-12-01 13:08:12.439099 | controller | >f+++++++++ sudoers.d/51_tempest_sh
+2025-12-01 13:08:12.439112 | controller | >f+++++++++ sudoers.d/README
+2025-12-01 13:08:12.439125 | controller | >f+++++++++ sudoers.d/zuul
+2025-12-01 13:08:12.439154 | controller | changed: All items complete
+2025-12-01 13:08:12.439172 | 
+2025-12-01 13:08:12.953416 | controller | changed: .d..t...... ./
+2025-12-01 13:08:13.504450 | controller | changed: .d..t...... ./
+2025-12-01 13:08:13.530352 | 
+2025-12-01 13:08:13.530473 | LOOP [merge-output-to-logs : Move artifacts and docs to logs dir]
+2025-12-01 13:08:13.889189 | controller -> localhost | ok: Item: artifacts Runtime: 0:00:00.011259
+2025-12-01 13:08:14.118668 | controller -> localhost | ok: Item: docs Runtime: 0:00:00.007909
+2025-12-01 13:08:14.130315 | 
+2025-12-01 13:08:14.130428 | PLAY [localhost]
+2025-12-01 13:08:14.136308 | 
+2025-12-01 13:08:14.136403 | TASK [generate-zuul-manifest : Generate Zuul manifest]
+2025-12-01 13:08:14.433986 | localhost | changed
+2025-12-01 13:08:14.446492 | 
+2025-12-01 13:08:14.446595 | TASK [generate-zuul-manifest : Return Zuul manifest URL to Zuul]
+2025-12-01 13:08:14.488347 | localhost | ok
+2025-12-01 13:08:14.495099 | 
+2025-12-01 13:08:14.495192 | TASK [add-fileserver : Create SSH private key tempfile]
+2025-12-01 13:08:14.787588 | localhost | changed
+2025-12-01 13:08:14.792096 | 
+2025-12-01 13:08:14.792168 | TASK [add-fileserver : Create SSH private key from secret]
+2025-12-01 13:08:15.387259 | localhost | changed
+2025-12-01 13:08:15.390896 | 
+2025-12-01 13:08:15.390976 | TASK [add-fileserver : Add fileserver ssh key]
+2025-12-01 13:08:15.633725 | localhost | Identity added: /var/lib/zuul/builds/150f529e6210443597ee7925439490e0/work/tmp/ansible.z6ib3vb_ (root@59d2a94d90b6)
+2025-12-01 13:08:15.633917 | localhost | ok: Runtime: 0:00:00.012258
+2025-12-01 13:08:15.637438 | 
+2025-12-01 13:08:15.637501 | TASK [add-fileserver : Remove SSH private key from disk]
+2025-12-01 13:08:15.892273 | localhost | ok: Runtime: 0:00:00.006607
+2025-12-01 13:08:15.899559 | 
+2025-12-01 13:08:15.899654 | TASK [add-fileserver : Add fileserver to inventory]
+2025-12-01 13:08:15.962073 | localhost | changed
+2025-12-01 13:08:15.967181 | 
+2025-12-01 13:08:15.967257 | TASK [add-fileserver : Add fileserver server to known hosts]
+2025-12-01 13:08:16.294673 | localhost | changed
+2025-12-01 13:08:16.301888 | 
+2025-12-01 13:08:16.301979 | PLAY [10.234.188.125]
+2025-12-01 13:08:16.306086 | 
+2025-12-01 13:08:16.306143 | TASK [Set zuul-log-path fact]
+2025-12-01 13:08:16.329975 | 10.234.188.125 | ok
+2025-12-01 13:08:16.338704 | 
+2025-12-01 13:08:16.338769 | TASK [set-zuul-log-path-fact : Set log path for a build]
+2025-12-01 13:08:16.362504 | 10.234.188.125 | ok
+2025-12-01 13:08:16.365533 | 
+2025-12-01 13:08:16.365626 | TASK [upload-logs : Create log directories]
+2025-12-01 13:08:17.844533 | 10.234.188.125 | changed
+2025-12-01 13:08:17.848130 | 
+2025-12-01 13:08:17.848290 | TASK [upload-logs : Ensure logs are readable before uploading]
+2025-12-01 13:08:18.140252 | 10.234.188.125 -> localhost | ok: Runtime: 0:00:00.008848
+2025-12-01 13:08:18.147313 | 
+2025-12-01 13:08:18.147482 | TASK [upload-logs : Upload logs to log server]
+2025-12-01 13:08:18.991279 | 10.234.188.125 | Output suppressed because no_log was given
+2025-12-01 13:08:18.994056 | 
+2025-12-01 13:08:18.994201 | TASK [upload-logs : Get list of files]
+2025-12-01 13:08:19.430208 | 10.234.188.125 | ok: All paths examined
+2025-12-01 13:08:19.443525 | 
+2025-12-01 13:08:19.443598 | LOOP [upload-logs : Hide sensitive data from published files]
+2025-12-01 13:08:19.854536 | 10.234.188.125 | ok
+2025-12-01 13:08:19.855264 | 10.234.188.125 | changed: All items complete
+2025-12-01 13:08:19.855367 | 
+2025-12-01 13:08:20.135118 | 10.234.188.125 | ok
+2025-12-01 13:08:20.420745 | 10.234.188.125 | ok
+2025-12-01 13:08:20.694683 | 10.234.188.125 | ok
+2025-12-01 13:08:20.976667 | 10.234.188.125 | ok
+2025-12-01 13:08:21.279579 | 10.234.188.125 | ok
+2025-12-01 13:08:21.594649 | 10.234.188.125 | ok
+2025-12-01 13:08:21.892791 | 10.234.188.125 | ok
+2025-12-01 13:08:22.186012 | 10.234.188.125 | ok
+2025-12-01 13:08:22.545897 | 10.234.188.125 | ok
+2025-12-01 13:08:22.830783 | 10.234.188.125 | ok
+2025-12-01 13:08:23.115082 | 10.234.188.125 | ok
+2025-12-01 13:08:23.402399 | 10.234.188.125 | ok
+2025-12-01 13:08:23.691414 | 10.234.188.125 | ok
+2025-12-01 13:08:24.000312 | 10.234.188.125 | ok
+2025-12-01 13:08:24.298465 | 10.234.188.125 | ok
+2025-12-01 13:08:24.594345 | 10.234.188.125 | ok
+2025-12-01 13:08:24.890275 | 10.234.188.125 | ok
+2025-12-01 13:08:25.177780 | 10.234.188.125 | ok
+2025-12-01 13:08:25.453175 | 10.234.188.125 | ok
+2025-12-01 13:08:25.717871 | 10.234.188.125 | ok
+2025-12-01 13:08:26.014437 | 10.234.188.125 | ok
+2025-12-01 13:08:26.312709 | 10.234.188.125 | ok
+2025-12-01 13:08:26.615763 | 10.234.188.125 | ok
+2025-12-01 13:08:26.921496 | 10.234.188.125 | ok
+2025-12-01 13:08:27.214219 | 10.234.188.125 | ok
+2025-12-01 13:08:27.521736 | 10.234.188.125 | ok
+2025-12-01 13:08:27.805071 | 10.234.188.125 | ok
+2025-12-01 13:08:28.090009 | 10.234.188.125 | ok
+2025-12-01 13:08:28.397609 | 10.234.188.125 | ok
+2025-12-01 13:08:28.712094 | 10.234.188.125 | ok
+2025-12-01 13:08:29.016776 | 10.234.188.125 | ok
+2025-12-01 13:08:29.317027 | 10.234.188.125 | ok
+2025-12-01 13:08:29.617440 | 10.234.188.125 | ok
+2025-12-01 13:08:29.909672 | 10.234.188.125 | ok
+2025-12-01 13:08:30.216335 | 10.234.188.125 | ok
+2025-12-01 13:08:30.514307 | 10.234.188.125 | ok
+2025-12-01 13:08:30.815921 | 10.234.188.125 | ok
+2025-12-01 13:08:31.084704 | 10.234.188.125 | ok
+2025-12-01 13:08:31.382470 | 10.234.188.125 | ok
+2025-12-01 13:08:31.682482 | 10.234.188.125 | ok
+2025-12-01 13:08:31.717417 | 
+2025-12-01 13:08:31.717540 | LOOP [upload-logs : Compress console log and json output]
+2025-12-01 13:08:31.767552 | 10.234.188.125 | skipping: Conditional result was False
+2025-12-01 13:08:31.772847 | 10.234.188.125 | skipping: Conditional result was False
+2025-12-01 13:08:31.780542 | 
+2025-12-01 13:08:31.780733 | LOOP [upload-logs : Upload compressed console log and json output]
+2025-12-01 13:08:31.824461 | 10.234.188.125 | skipping: Conditional result was False
+2025-12-01 13:08:31.825289 | 
+2025-12-01 13:08:31.827375 | 10.234.188.125 | skipping: Conditional result was False
+2025-12-01 13:08:31.830679 | 
+2025-12-01 13:08:31.830784 | LOOP [upload-logs : Upload console log and json output]
