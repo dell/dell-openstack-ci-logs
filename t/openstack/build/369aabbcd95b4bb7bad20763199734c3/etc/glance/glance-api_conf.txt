@@ -1,0 +1,80 @@
+
+[DEFAULT]
+use_keystone_limits = True
+enforce_secure_rbac = true
+worker_self_reference_url = http://127.0.0.1:60999
+cinder_endpoint_template = https://10.19.119.17:8776/v3/%(project_id)s
+log_color = False
+logging_exception_prefix = ERROR %(name)s [01;35m%(instance)s[00m
+logging_default_format_string = %(color)s%(levelname)s %(name)s [[00;36m-%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_context_format_string = %(color)s%(levelname)s %(name)s [[01;36m%(global_request_id)s %(request_id)s [00;36m%(project_name)s %(user_name)s%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_debug_format_suffix = [00;33m{{(pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d}}[00m
+bind_port = 19292
+public_endpoint = https://10.19.119.17/image
+graceful_shutdown_timeout = 5
+show_multiple_locations = False
+show_image_direct_url = False
+transport_url = rabbit://stackrabbit:secretrabbit@10.19.119.17:5672/
+image_cache_driver = centralized_db
+image_cache_dir = /opt/stack/data/glance/cache/
+use_syslog = False
+debug = True
+
+[database]
+connection = mysql+pymysql://root:secretdatabase@10.19.119.17/glance?charset=utf8&plugin=dbcounter
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/glance/locks
+
+[paste_deploy]
+flavor = keystone+cachemanagement
+
+[keystone_authtoken]
+identity_uri = https://10.19.119.17/identity
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = glance
+auth_url = https://10.19.119.17/identity
+interface = public
+auth_type = password
+
+[oslo_messaging_notifications]
+driver = messagingv2
+
+[image_format]
+require_image_format_match = True
+
+[glance_store]
+swift_store_cacert = /opt/stack/data/ca-bundle.pem
+stores = file, http, swift
+default_swift_reference = ref1
+swift_store_config_file = /etc/glance/glance-swift-store.conf
+swift_store_create_container_on_put = True
+default_store = swift
+filesystem_store_datadir = /opt/stack/data/glance/images/
+
+[cors]
+allowed_origin = http://10.19.119.17
+
+[wsgi]
+python_interpreter = /opt/stack/data/venv/bin/python3
+
+[oslo_policy]
+enforce_new_defaults = true
+enforce_scope = true
+
+[os_brick]
+lock_path = /opt/stack/data/os_brick
+
+[oslo_limit]
+endpoint_id = 48cffff3c5fe46cbabd2957237fa73d5
+system_scope = all
+auth_url = https://10.19.119.17/identity
+auth_type = password
+username = glance
+password = secretservice
+user_domain_name = Default
