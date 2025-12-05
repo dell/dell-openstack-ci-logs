@@ -1,0 +1,126 @@
+[[local|localrc]]
+disable_all_services
+enable_service c-api
+enable_service c-bak
+enable_service c-sch
+enable_service c-vol
+disable_service dstat
+enable_service etcd3
+enable_service file_tracker
+enable_service g-api
+disable_service horizon
+enable_service key
+enable_service memory_tracker
+enable_service mysql
+enable_service n-api
+enable_service n-api-meta
+enable_service n-cond
+enable_service n-cpu
+enable_service n-novnc
+enable_service n-sch
+enable_service openstack-cli-server
+enable_service ovn-controller
+enable_service ovn-northd
+enable_service ovs-vswitchd
+enable_service ovsdb-server
+enable_service placement-api
+enable_service q-ovn-metadata-agent
+enable_service q-svc
+enable_service rabbit
+enable_service s-account
+enable_service s-container
+enable_service s-object
+enable_service s-proxy
+enable_service tempest
+enable_service tls-proxy
+ADMIN_PASSWORD="secretadmin"
+CINDER_ENABLED_BACKENDS="powerflex1,powerflex2"
+DATABASE_HOST="10.19.119.83"
+DATABASE_PASSWORD="secretdatabase"
+DATABASE_TYPE="mysql"
+DEBUG_LIBVIRT_COREDUMPS="True"
+ENABLE_SYSCTL_MEM_TUNING="True"
+ENABLE_SYSCTL_NET_TUNING="True"
+ENABLE_VOLUME_MULTIATTACH="True"
+ENABLE_ZSWAP="True"
+ERROR_ON_CLONE="False"
+FIXED_RANGE="10.1.0.0/20"
+FLOATING_RANGE="172.24.5.0/24"
+GLANCE_LIMIT_IMAGE_SIZE_TOTAL="10000"
+HOST_IP="10.19.119.83"
+IPV4_ADDRS_SAFE_TO_USE="10.1.0.0/20"
+LIBVIRT_TYPE="qemu"
+LOGFILE="/opt/stack/logs/devstacklog.txt"
+LOG_COLOR="False"
+NETWORK_GATEWAY="10.1.0.1"
+NOVA_LIBVIRT_TB_CACHE_SIZE="128"
+NOVA_VNC_ENABLED="True"
+NOVNC_FROM_PACKAGE="True"
+OVN_DBS_LOG_LEVEL="dbg"
+PUBLIC_NETWORK_GATEWAY="172.24.5.1"
+RABBIT_HOST="10.19.119.83"
+RABBIT_PASSWORD="secretrabbit"
+SERVICE_HOST="10.19.119.83"
+SERVICE_PASSWORD="secretservice"
+SWIFT_HASH="1234123412341234"
+SWIFT_REPLICAS="1"
+SWIFT_START_ALL_SERVICES="False"
+TEMPEST_EXTEND_ATTACHED_VOLUME="True"
+TEMPEST_PLUGINS="cinder-tempest-plugin"
+TEMPEST_STORAGE_PROTOCOL="scaleio"
+TEMPEST_VOLUME_DRIVER="EMC"
+TEMPEST_VOLUME_VENDOR="Dell EMC"
+VERBOSE="True"
+VERBOSE_NO_TIMESTAMP="True"
+LIBS_FROM_GIT=cinder,cinder-tempest-plugin,devstack,glance,keystone,neutron,nova,os-brick,os-test-images,placement,requirements,swift,tempest
+
+[[post-config|$CINDER_CONF]]
+[DEFAULT]
+num_volume_device_scan_tries = 180
+
+[backend_defaults]
+image_volume_cache_enabled = True
+powerflex_storage_pools = PD1:SP1
+san_ip = <hidden>
+san_login = admin
+san_password = <hidden>
+suppress_requests_ssl_warnings = True
+use_multipath_for_image_xfer = True
+volume_driver = cinder.volume.drivers.dell_emc.powerflex.driver.PowerFlexDriver
+
+[powerflex1]
+volume_backend_name = powerflex1
+
+[powerflex2]
+volume_backend_name = powerflex2
+[[post-config|$GLANCE_API_CONF]]
+[glance_store]
+default_store = file
+[[post-config|$NOVA_CONF]]
+[libvirt]
+volume_use_multipath = True
+[[test-config|$TEMPEST_CONFIG]]
+[compute]
+min_compute_nodes = 1
+
+[dell_driver]
+driver = powerflex
+
+[validation]
+run_validation = True
+ssh_timeout = 600
+
+[volume]
+build_timeout = 600
+volume_size = 8
+volume_size_extend = 8
+
+[volume-feature-enabled]
+backup = True
+consistency_group = True
+extend_attached_encrypted_volume = True
+extend_attached_volume = True
+manage_snapshot = False
+manage_volume = False
+multi_backend = True
+volume_revert = True
