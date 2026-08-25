@@ -1,0 +1,281 @@
+2026-08-25 10:30:16.081 | + ./stack.sh:main:491                      :   exec
+2026-08-25 10:30:16.082 | + ./stack.sh:main:499                      :   echo_summary 'stack.sh log /opt/stack/logs/devstacklog.txt.2026-08-25-103015'
+2026-08-25 10:30:16.082 | ++ ./stack.sh:main:491                      :   /usr/bin/python3.12 /opt/stack/devstack/tools/outfilter.py -o /opt/stack/logs/devstacklog.txt.2026-08-25-103015.summary.2026-08-25-103015
+2026-08-25 10:30:16.082 | + ./stack.sh:echo_summary:444              :   [[ -t 3 ]]
+2026-08-25 10:30:16.082 | + ./stack.sh:echo_summary:450              :   echo -e stack.sh log /opt/stack/logs/devstacklog.txt.2026-08-25-103015
+2026-08-25 10:30:16.082 | + ./stack.sh:main:501                      :   ln -sf /opt/stack/logs/devstacklog.txt.2026-08-25-103015 /opt/stack/logs/devstacklog.txt
+2026-08-25 10:30:16.082 | + ./stack.sh:main:502                      :   ln -sf /opt/stack/logs/devstacklog.txt.2026-08-25-103015.summary.2026-08-25-103015 /opt/stack/logs/devstacklog.txt.summary
+2026-08-25 10:30:16.082 | + ./stack.sh:main:517                      :   check_path_perm_sanity /opt/stack
+2026-08-25 10:30:16.082 | + functions:check_path_perm_sanity:615     :   local real_path
+2026-08-25 10:30:16.082 | ++ functions:check_path_perm_sanity:616     :   readlink -f /opt/stack
+2026-08-25 10:30:16.082 | + functions:check_path_perm_sanity:616     :   real_path=/opt/stack
+2026-08-25 10:30:16.082 | + functions:check_path_perm_sanity:617     :   local rebuilt_path=
+2026-08-25 10:30:16.086 | ++ functions:check_path_perm_sanity:618     :   tr / ' '
+2026-08-25 10:30:16.086 | ++ functions:check_path_perm_sanity:618     :   echo /opt/stack
+2026-08-25 10:30:16.093 | + functions:check_path_perm_sanity:618     :   for i in $(echo ${real_path} | tr "/" " ")
+2026-08-25 10:30:16.096 | + functions:check_path_perm_sanity:619     :   rebuilt_path=/opt
+2026-08-25 10:30:16.101 | ++ functions:check_path_perm_sanity:621     :   stat -c %a /opt
+2026-08-25 10:30:16.106 | + functions:check_path_perm_sanity:621     :   [[ 755 = 700 ]]
+2026-08-25 10:30:16.110 | + functions:check_path_perm_sanity:618     :   for i in $(echo ${real_path} | tr "/" " ")
+2026-08-25 10:30:16.113 | + functions:check_path_perm_sanity:619     :   rebuilt_path=/opt/stack
+2026-08-25 10:30:16.118 | ++ functions:check_path_perm_sanity:621     :   stat -c %a /opt/stack
+2026-08-25 10:30:16.126 | + functions:check_path_perm_sanity:621     :   [[ 755 = 700 ]]
+2026-08-25 10:30:16.130 | + ./stack.sh:main:523                      :   trap exit_trap EXIT
+2026-08-25 10:30:16.134 | + ./stack.sh:main:564                      :   trap err_trap ERR
+2026-08-25 10:30:16.138 | + ./stack.sh:main:577                      :   set -o errexit
+2026-08-25 10:30:16.143 | + ./stack.sh:main:580                      :   uname -a
+2026-08-25 10:30:16.144 | Linux np0000000801 6.8.0-137-generic #137-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 17 20:28:23 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+2026-08-25 10:30:16.148 | + ./stack.sh:main:583                      :   SSL_BUNDLE_FILE=/opt/stack/data/ca-bundle.pem
+2026-08-25 10:30:16.153 | + ./stack.sh:main:584                      :   rm -f /opt/stack/data/ca-bundle.pem
+2026-08-25 10:30:16.160 | + ./stack.sh:main:587                      :   source /opt/stack/devstack/lib/database
+2026-08-25 10:30:16.223 | + ./stack.sh:main:588                      :   source /opt/stack/devstack/lib/rpc_backend
+2026-08-25 10:30:16.255 | + ./stack.sh:main:591                      :   source /opt/stack/devstack/lib/host
+2026-08-25 10:30:16.260 | +++ lib/host:source:12                       :   trueorfalse True ENABLE_KSM
+2026-08-25 10:30:16.288 | ++ lib/host:source:12                       :   ENABLE_KSM=True
+2026-08-25 10:30:16.294 | +++ lib/host:source:13                       :   trueorfalse True ENABLE_KSMTUNED
+2026-08-25 10:30:16.322 | ++ lib/host:source:13                       :   ENABLE_KSMTUNED=True
+2026-08-25 10:30:16.328 | +++ lib/host:source:56                       :   trueorfalse False ENABLE_ZSWAP
+2026-08-25 10:30:16.355 | ++ lib/host:source:56                       :   ENABLE_ZSWAP=True
+2026-08-25 10:30:16.359 | ++ lib/host:source:59                       :   ZSWAP_COMPRESSOR=lz4
+2026-08-25 10:30:16.361 | ++ lib/host:source:60                       :   ZSWAP_ZPOOL=zsmalloc
+2026-08-25 10:30:16.368 | +++ lib/host:source:82                       :   trueorfalse False ENABLE_SYSCTL_MEM_TUNING
+2026-08-25 10:30:16.393 | ++ lib/host:source:82                       :   ENABLE_SYSCTL_MEM_TUNING=True
+2026-08-25 10:30:16.399 | +++ lib/host:source:104                      :   trueorfalse False ENABLE_SYSCTL_NET_TUNING
+2026-08-25 10:30:16.421 | ++ lib/host:source:104                      :   ENABLE_SYSCTL_NET_TUNING=True
+2026-08-25 10:30:16.426 | + ./stack.sh:main:594                      :   tune_host
+2026-08-25 10:30:16.429 | + lib/host:tune_host:125                   :   configure_host_mem
+2026-08-25 10:30:16.432 | + lib/host:configure_host_mem:99           :   configure_zswap
+2026-08-25 10:30:16.436 | + lib/host:configure_zswap:69              :   [[ True == \T\r\u\e ]]
+2026-08-25 10:30:16.438 | + lib/host:configure_zswap:72              :   is_ubuntu
+2026-08-25 10:30:16.440 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-08-25 10:30:16.442 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-08-25 10:30:16.446 | + lib/host:configure_zswap:73              :   set_zswap_parameter compressor lz4
+2026-08-25 10:30:16.450 | + lib/host:set_zswap_parameter:62          :   local name=compressor
+2026-08-25 10:30:16.453 | + lib/host:set_zswap_parameter:63          :   local value=lz4
+2026-08-25 10:30:16.455 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap lz4 /sys/module/zswap/parameters/compressor
+2026-08-25 10:30:16.458 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-08-25 10:30:16.460 | + lib/host:set_sysfs_parameter:16          :   local value=lz4
+2026-08-25 10:30:16.465 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/compressor
+2026-08-25 10:30:16.467 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/compressor ]]
+2026-08-25 10:30:16.470 | + lib/host:set_sysfs_parameter:24          :   echo lz4
+2026-08-25 10:30:16.471 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/compressor
+2026-08-25 10:30:16.483 | lz4
+2026-08-25 10:30:16.489 | + lib/host:configure_zswap:74              :   set_zswap_parameter zpool zsmalloc
+2026-08-25 10:30:16.493 | + lib/host:set_zswap_parameter:62          :   local name=zpool
+2026-08-25 10:30:16.496 | + lib/host:set_zswap_parameter:63          :   local value=zsmalloc
+2026-08-25 10:30:16.500 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap zsmalloc /sys/module/zswap/parameters/zpool
+2026-08-25 10:30:16.505 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-08-25 10:30:16.508 | + lib/host:set_sysfs_parameter:16          :   local value=zsmalloc
+2026-08-25 10:30:16.511 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/zpool
+2026-08-25 10:30:16.516 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/zpool ]]
+2026-08-25 10:30:16.518 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/zpool
+2026-08-25 10:30:16.520 | + lib/host:set_sysfs_parameter:24          :   echo zsmalloc
+2026-08-25 10:30:16.530 | zsmalloc
+2026-08-25 10:30:16.536 | + lib/host:configure_zswap:76              :   set_zswap_parameter enabled 1
+2026-08-25 10:30:16.540 | + lib/host:set_zswap_parameter:62          :   local name=enabled
+2026-08-25 10:30:16.544 | + lib/host:set_zswap_parameter:63          :   local value=1
+2026-08-25 10:30:16.548 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap 1 /sys/module/zswap/parameters/enabled
+2026-08-25 10:30:16.550 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-08-25 10:30:16.555 | + lib/host:set_sysfs_parameter:16          :   local value=1
+2026-08-25 10:30:16.558 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/enabled
+2026-08-25 10:30:16.561 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/enabled ]]
+2026-08-25 10:30:16.565 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/enabled
+2026-08-25 10:30:16.567 | + lib/host:set_sysfs_parameter:24          :   echo 1
+2026-08-25 10:30:16.577 | 1
+2026-08-25 10:30:16.610 | + lib/host:configure_zswap:78              :   sudo grep -R . /sys/module/zswap/parameters
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/same_filled_pages_enabled:Y
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/enabled:Y
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/shrinker_enabled:Y
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/max_pool_percent:20
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/compressor:lz4
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/non_same_filled_pages_enabled:Y
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/zpool:zsmalloc
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/exclusive_loads:N
+2026-08-25 10:30:16.626 | /sys/module/zswap/parameters/accept_threshold_percent:90
+2026-08-25 10:30:16.630 | + lib/host:configure_host_mem:100          :   configure_ksm
+2026-08-25 10:30:16.633 | + lib/host:configure_ksm:39                :   [[ True == \T\r\u\e ]]
+2026-08-25 10:30:16.637 | + lib/host:configure_ksm:40                :   install_package ksmtuned
+2026-08-25 10:30:16.642 | + functions-common:install_package:1438    :   update_package_repo
+2026-08-25 10:30:16.645 | + functions-common:update_package_repo:1412 :   NO_UPDATE_REPOS=False
+2026-08-25 10:30:16.649 | + functions-common:update_package_repo:1413 :   REPOS_UPDATED=False
+2026-08-25 10:30:16.654 | + functions-common:update_package_repo:1414 :   RETRY_UPDATE=False
+2026-08-25 10:30:16.657 | + functions-common:update_package_repo:1416 :   [[ False = \T\r\u\e ]]
+2026-08-25 10:30:16.661 | + functions-common:update_package_repo:1420 :   is_ubuntu
+2026-08-25 10:30:16.665 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-08-25 10:30:16.669 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-08-25 10:30:16.671 | + functions-common:update_package_repo:1421 :   apt_get_update
+2026-08-25 10:30:16.673 | + functions-common:apt_get_update:1166     :   [[ False == \T\r\u\e ]]
+2026-08-25 10:30:16.676 | + functions-common:apt_get_update:1171     :   [[ False = \T\r\u\e ]]
+2026-08-25 10:30:16.678 | + functions-common:apt_get_update:1173     :   local sudo=sudo
+2026-08-25 10:30:16.685 | ++ functions-common:apt_get_update:1174     :   id -u
+2026-08-25 10:30:16.693 | + functions-common:apt_get_update:1174     :   [[ 1001 = \0 ]]
+2026-08-25 10:30:16.698 | + functions-common:apt_get_update:1177     :   time_start apt-get-update
+2026-08-25 10:30:16.702 | + functions-common:time_start:2406         :   local name=apt-get-update
+2026-08-25 10:30:16.707 | + functions-common:time_start:2407         :   local start_time=
+2026-08-25 10:30:16.715 | + functions-common:time_start:2408         :   [[ -n '' ]]
+2026-08-25 10:30:16.722 | ++ functions-common:time_start:2411         :   date +%s%3N
+2026-08-25 10:30:16.731 | + functions-common:time_start:2411         :   _TIME_START[$name]=1787653816725
+2026-08-25 10:30:16.735 | + functions-common:apt_get_update:1179     :   local 'proxies=http_proxy= https_proxy= no_proxy= '
+2026-08-25 10:30:16.739 | + functions-common:apt_get_update:1180     :   local 'update_cmd=sudo http_proxy= https_proxy= no_proxy=  apt-get update'
+2026-08-25 10:30:16.744 | + functions-common:apt_get_update:1181     :   timeout 300 sh -c 'while ! sudo http_proxy= https_proxy= no_proxy=  apt-get update; do sleep 30; done'
+2026-08-25 10:30:16.851 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:16.852 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:16.853 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:16.854 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:17.854 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:17.855 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:17.856 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:17.857 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:19.908 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:19.910 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:19.910 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:19.911 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:24.107 | Err:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:24.107 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.108 | Err:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:24.108 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.109 | Err:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:24.109 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.109 | Err:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:24.109 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.136 | Reading package lists...
+2026-08-25 10:30:24.140 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.140 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.140 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.140 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:24.140 | W: Some index files failed to download. They have been ignored, or old ones used instead.
+2026-08-25 10:30:24.148 | + functions-common:apt_get_update:1185     :   REPOS_UPDATED=True
+2026-08-25 10:30:24.153 | + functions-common:apt_get_update:1187     :   time_stop apt-get-update
+2026-08-25 10:30:24.156 | + functions-common:time_stop:2420          :   local name
+2026-08-25 10:30:24.159 | + functions-common:time_stop:2421          :   local end_time
+2026-08-25 10:30:24.163 | + functions-common:time_stop:2422          :   local elapsed_time
+2026-08-25 10:30:24.167 | + functions-common:time_stop:2423          :   local total
+2026-08-25 10:30:24.170 | + functions-common:time_stop:2424          :   local start_time
+2026-08-25 10:30:24.173 | + functions-common:time_stop:2426          :   name=apt-get-update
+2026-08-25 10:30:24.177 | + functions-common:time_stop:2427          :   start_time=1787653816725
+2026-08-25 10:30:24.182 | + functions-common:time_stop:2429          :   [[ -z 1787653816725 ]]
+2026-08-25 10:30:24.187 | ++ functions-common:time_stop:2432          :   date +%s%3N
+2026-08-25 10:30:24.195 | + functions-common:time_stop:2432          :   end_time=1787653824190
+2026-08-25 10:30:24.199 | + functions-common:time_stop:2433          :   elapsed_time=7465
+2026-08-25 10:30:24.203 | + functions-common:time_stop:2434          :   total=0
+2026-08-25 10:30:24.208 | + functions-common:time_stop:2436          :   _TIME_START[$name]=
+2026-08-25 10:30:24.211 | + functions-common:time_stop:2437          :   _TIME_TOTAL[$name]=7465
+2026-08-25 10:30:24.215 | + functions-common:install_package:1439    :   real_install_package ksmtuned
+2026-08-25 10:30:24.219 | + functions-common:real_install_package:1426 :   is_ubuntu
+2026-08-25 10:30:24.224 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-08-25 10:30:24.228 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-08-25 10:30:24.231 | + functions-common:real_install_package:1427 :   apt_get install ksmtuned
+2026-08-25 10:30:24.265 | + functions-common:apt_get:1207            :   sudo DEBIAN_FRONTEND=noninteractive http_proxy= https_proxy= no_proxy= apt-get --option Dpkg::Options::=--force-confold --assume-yes install ksmtuned
+2026-08-25 10:30:24.292 | Reading package lists...
+2026-08-25 10:30:24.294 | Building dependency tree...
+2026-08-25 10:30:24.294 | Reading state information...
+2026-08-25 10:30:24.296 | E: Unable to locate package ksmtuned
+2026-08-25 10:30:24.304 | + functions-common:apt_get:1211            :   result=100
+2026-08-25 10:30:24.309 | + functions-common:apt_get:1214            :   time_stop apt-get
+2026-08-25 10:30:24.314 | + functions-common:time_stop:2420          :   local name
+2026-08-25 10:30:24.318 | + functions-common:time_stop:2421          :   local end_time
+2026-08-25 10:30:24.323 | + functions-common:time_stop:2422          :   local elapsed_time
+2026-08-25 10:30:24.327 | + functions-common:time_stop:2423          :   local total
+2026-08-25 10:30:24.331 | + functions-common:time_stop:2424          :   local start_time
+2026-08-25 10:30:24.337 | + functions-common:time_stop:2426          :   name=apt-get
+2026-08-25 10:30:24.344 | + functions-common:time_stop:2427          :   start_time=1787653824261
+2026-08-25 10:30:24.348 | + functions-common:time_stop:2429          :   [[ -z 1787653824261 ]]
+2026-08-25 10:30:24.354 | ++ functions-common:time_stop:2432          :   date +%s%3N
+2026-08-25 10:30:24.362 | + functions-common:time_stop:2432          :   end_time=1787653824357
+2026-08-25 10:30:24.366 | + functions-common:time_stop:2433          :   elapsed_time=96
+2026-08-25 10:30:24.370 | + functions-common:time_stop:2434          :   total=299
+2026-08-25 10:30:24.375 | + functions-common:time_stop:2436          :   _TIME_START[$name]=
+2026-08-25 10:30:24.380 | + functions-common:time_stop:2437          :   _TIME_TOTAL[$name]=395
+2026-08-25 10:30:24.384 | + functions-common:apt_get:1215            :   return 100
+2026-08-25 10:30:24.388 | + functions-common:install_package:1440    :   RETRY_UPDATE=True
+2026-08-25 10:30:24.392 | + functions-common:install_package:1440    :   update_package_repo
+2026-08-25 10:30:24.397 | + functions-common:update_package_repo:1412 :   NO_UPDATE_REPOS=False
+2026-08-25 10:30:24.400 | + functions-common:update_package_repo:1413 :   REPOS_UPDATED=True
+2026-08-25 10:30:24.404 | + functions-common:update_package_repo:1414 :   RETRY_UPDATE=True
+2026-08-25 10:30:24.408 | + functions-common:update_package_repo:1416 :   [[ False = \T\r\u\e ]]
+2026-08-25 10:30:24.413 | + functions-common:update_package_repo:1420 :   is_ubuntu
+2026-08-25 10:30:24.418 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-08-25 10:30:24.422 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-08-25 10:30:24.428 | + functions-common:update_package_repo:1421 :   apt_get_update
+2026-08-25 10:30:24.433 | + functions-common:apt_get_update:1166     :   [[ True == \T\r\u\e ]]
+2026-08-25 10:30:24.437 | + functions-common:apt_get_update:1166     :   [[ True != \T\r\u\e ]]
+2026-08-25 10:30:24.441 | + functions-common:apt_get_update:1171     :   [[ False = \T\r\u\e ]]
+2026-08-25 10:30:24.445 | + functions-common:apt_get_update:1173     :   local sudo=sudo
+2026-08-25 10:30:24.452 | ++ functions-common:apt_get_update:1174     :   id -u
+2026-08-25 10:30:24.459 | + functions-common:apt_get_update:1174     :   [[ 1001 = \0 ]]
+2026-08-25 10:30:24.462 | + functions-common:apt_get_update:1177     :   time_start apt-get-update
+2026-08-25 10:30:24.467 | + functions-common:time_start:2406         :   local name=apt-get-update
+2026-08-25 10:30:24.471 | + functions-common:time_start:2407         :   local start_time=
+2026-08-25 10:30:24.474 | + functions-common:time_start:2408         :   [[ -n '' ]]
+2026-08-25 10:30:24.480 | ++ functions-common:time_start:2411         :   date +%s%3N
+2026-08-25 10:30:24.485 | + functions-common:time_start:2411         :   _TIME_START[$name]=1787653824481
+2026-08-25 10:30:24.489 | + functions-common:apt_get_update:1179     :   local 'proxies=http_proxy= https_proxy= no_proxy= '
+2026-08-25 10:30:24.492 | + functions-common:apt_get_update:1180     :   local 'update_cmd=sudo http_proxy= https_proxy= no_proxy=  apt-get update'
+2026-08-25 10:30:24.495 | + functions-common:apt_get_update:1181     :   timeout 300 sh -c 'while ! sudo http_proxy= https_proxy= no_proxy=  apt-get update; do sleep 30; done'
+2026-08-25 10:30:24.544 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:24.544 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:24.545 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:24.546 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:25.547 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:25.548 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:25.549 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:25.550 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:27.551 | Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:27.552 | Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:27.553 | Ign:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:27.554 | Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:31.566 | Err:1 http://archive.ubuntu.com/ubuntu noble InRelease
+2026-08-25 10:30:31.568 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.568 | Err:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-08-25 10:30:31.576 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.576 | Err:3 http://archive.ubuntu.com/ubuntu noble-security InRelease
+2026-08-25 10:30:31.576 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.576 | Err:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-08-25 10:30:31.576 |   Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.601 | Reading package lists...
+2026-08-25 10:30:31.607 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.607 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.607 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-security/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.607 | W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+2026-08-25 10:30:31.607 | W: Some index files failed to download. They have been ignored, or old ones used instead.
+2026-08-25 10:30:31.620 | + functions-common:apt_get_update:1185     :   REPOS_UPDATED=True
+2026-08-25 10:30:31.625 | + functions-common:apt_get_update:1187     :   time_stop apt-get-update
+2026-08-25 10:30:31.630 | + functions-common:time_stop:2420          :   local name
+2026-08-25 10:30:31.634 | + functions-common:time_stop:2421          :   local end_time
+2026-08-25 10:30:31.638 | + functions-common:time_stop:2422          :   local elapsed_time
+2026-08-25 10:30:31.642 | + functions-common:time_stop:2423          :   local total
+2026-08-25 10:30:31.646 | + functions-common:time_stop:2424          :   local start_time
+2026-08-25 10:30:31.650 | + functions-common:time_stop:2426          :   name=apt-get-update
+2026-08-25 10:30:31.655 | + functions-common:time_stop:2427          :   start_time=1787653824481
+2026-08-25 10:30:31.664 | + functions-common:time_stop:2429          :   [[ -z 1787653824481 ]]
+2026-08-25 10:30:31.671 | ++ functions-common:time_stop:2432          :   date +%s%3N
+2026-08-25 10:30:31.679 | + functions-common:time_stop:2432          :   end_time=1787653831673
+2026-08-25 10:30:31.683 | + functions-common:time_stop:2433          :   elapsed_time=7192
+2026-08-25 10:30:31.688 | + functions-common:time_stop:2434          :   total=7465
+2026-08-25 10:30:31.692 | + functions-common:time_stop:2436          :   _TIME_START[$name]=
+2026-08-25 10:30:31.698 | + functions-common:time_stop:2437          :   _TIME_TOTAL[$name]=14657
+2026-08-25 10:30:31.702 | + functions-common:install_package:1440    :   real_install_package ksmtuned
+2026-08-25 10:30:31.707 | + functions-common:real_install_package:1426 :   is_ubuntu
+2026-08-25 10:30:31.713 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-08-25 10:30:31.718 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-08-25 10:30:31.721 | + functions-common:real_install_package:1427 :   apt_get install ksmtuned
+2026-08-25 10:30:31.760 | + functions-common:apt_get:1207            :   sudo DEBIAN_FRONTEND=noninteractive http_proxy= https_proxy= no_proxy= apt-get --option Dpkg::Options::=--force-confold --assume-yes install ksmtuned
+2026-08-25 10:30:31.791 | Reading package lists...
+2026-08-25 10:30:31.792 | Building dependency tree...
+2026-08-25 10:30:31.792 | Reading state information...
+2026-08-25 10:30:31.794 | E: Unable to locate package ksmtuned
+2026-08-25 10:30:31.801 | + functions-common:apt_get:1               :   exit_trap
+2026-08-25 10:30:31.805 | + ./stack.sh:exit_trap:525                 :   local r=100
+2026-08-25 10:30:31.810 | ++ ./stack.sh:exit_trap:526                 :   jobs -p
+2026-08-25 10:30:31.814 | + ./stack.sh:exit_trap:526                 :   jobs=
+2026-08-25 10:30:31.818 | + ./stack.sh:exit_trap:529                 :   [[ -n '' ]]
+2026-08-25 10:30:31.822 | + ./stack.sh:exit_trap:535                 :   '[' -f '' ']'
+2026-08-25 10:30:31.826 | + ./stack.sh:exit_trap:540                 :   kill_spinner
+2026-08-25 10:30:31.828 | + ./stack.sh:kill_spinner:435              :   '[' '!' -z '' ']'
+2026-08-25 10:30:31.831 | + ./stack.sh:exit_trap:542                 :   [[ 100 -ne 0 ]]
+2026-08-25 10:30:31.835 | + ./stack.sh:exit_trap:543                 :   echo 'Error on exit'
+2026-08-25 10:30:31.835 | Error on exit
+2026-08-25 10:30:31.840 | + ./stack.sh:exit_trap:545                 :   type -p generate-subunit
+2026-08-25 10:30:31.842 | + ./stack.sh:exit_trap:548                 :   [[ -z /opt/stack/logs ]]
+2026-08-25 10:30:31.845 | + ./stack.sh:exit_trap:551                 :   /usr/bin/python3.12 /opt/stack/devstack/tools/worlddump.py -d /opt/stack/logs
+2026-08-25 10:30:32.383 | + ./stack.sh:exit_trap:560                 :   exit 100
