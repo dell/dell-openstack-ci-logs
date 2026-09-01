@@ -1,0 +1,22 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh nwfilter-edit clean-traffic
+or other application using the libvirt API.
+-->
+
+<filter name='clean-traffic' chain='root'>
+  <uuid>42f751b6-ba0e-4f57-bf6d-302fc6a3c08c</uuid>
+  <filterref filter='no-mac-spoofing'/>
+  <filterref filter='no-ip-spoofing'/>
+  <rule action='accept' direction='out' priority='-650'>
+    <mac protocolid='ipv4'/>
+  </rule>
+  <filterref filter='allow-incoming-ipv4'/>
+  <filterref filter='no-arp-spoofing'/>
+  <rule action='accept' direction='inout' priority='-500'>
+    <mac protocolid='arp'/>
+  </rule>
+  <filterref filter='no-other-l2-traffic'/>
+  <filterref filter='qemu-announce-self'/>
+</filter>
