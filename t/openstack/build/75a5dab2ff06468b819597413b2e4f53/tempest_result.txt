@@ -1,0 +1,3737 @@
+==== TEMPEST RUN ====
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/setuptools/__init__.py:92: _DeprecatedInstaller: setuptools.installer and fetch_build_eggs are deprecated.
+!!
+
+        ********************************************************************************
+        Requirements should be satisfied by a PEP 517 installer.
+        If you are using pip, you can try `pip install --use-pep517`.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+        ********************************************************************************
+
+!!
+  dist.fetch_build_eggs(dist.setup_requires)
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/pbr/setupcfg.py:833: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+all develop-inst-nodeps: /opt/stack/tempest
+all installed: attrs==26.1.0,autopage==0.6.0,bcrypt==5.0.0,certifi==2026.7.22,cffi==2.1.1,charset-normalizer==3.5.0,cinder-tempest-plugin==1.22.0,cliff==4.16.0,cmd2==4.2.0,cryptography==43.0.3,debtcollector==3.1.0,defusedxml==0.7.1,fasteners==0.20,fixtures==4.3.2,idna==3.18,invoke==3.0.3,iso8601==2.1.0,jsonschema==4.26.0,jsonschema-specifications==2025.9.1,markdown-it-py==4.2.0,mdurl==0.1.2,msgpack==1.2.1,netaddr==1.3.0,oslo.concurrency==7.6.1,oslo.config==10.7.0,oslo.context==6.5.0,oslo.i18n==6.9.0,oslo.log==8.3.1,oslo.serialization==5.11.0,oslo.utils==10.2.0,packaging==26.3,paramiko==4.0.0,pbr==7.0.3,prettytable==3.18.0,prompt_toolkit==3.0.53,psutil==7.2.2,pycparser==3.0,Pygments==2.20.0,PyNaCl==1.6.2,pyparsing==3.3.2,pyperclip==1.11.0,python-dateutil==2.9.0.post0,python-subunit==1.4.6,PyYAML==6.0.3,referencing==0.37.0,requests==2.34.2,rfc3986==2.0.0,rich==15.0.0,rich-argparse==1.8.0,rpds-py==2026.6.3,setuptools==84.0.0,six==1.17.0,stestr==4.2.1,stevedore==5.9.1,-e git+file:///dev/null@0a19cf44f2b257cec6b7c070e9a6df0cc3500172#egg=tempest,testscenarios==0.6.2,testtools==2.9.1,tomlkit==0.15.1,typing_extensions==4.16.0,urllib3==2.7.0,voluptuous==0.16.0,wcwidth==0.8.2,wrapt==2.3.0
+all run-test-pre: PYTHONHASHSEED='3445270494'
+all run-test: commands[0] | find . -type f -name '*.pyc' -delete
+all run-test: commands[1] | tempest run --regex 'volume|^cinder_tempest_plugin
+' --concurrency=4 '--exclude-regex=test_volume_backup_restore|test_volume_swap_with_multiattach|test_volume_retype_multiattach|test_available_volume_retype_with_migration|test_volume_from_snapshot_retype_with_migration|test_delete_dep_chain|test_delete_dep_chain_2|test_volume_migrate_attached'
+{3} setUpClass (tempest.api.compute.admin.test_live_migration.LiveMigrationTest) ... SKIPPED: LiveMigrationTest skipped as live-migration is not available
+{0} setUpClass (tempest.api.compute.admin.test_live_migration.LiveAutoBlockMigrationV225Test) ... SKIPPED: LiveAutoBlockMigrationV225Test skipped as live-migration is not available
+{0} setUpClass (tempest.api.compute.admin.test_live_migration.LiveMigrationWithoutHostTest) ... SKIPPED: LiveMigrationWithoutHostTest skipped as live-migration is not available
+{3} tempest.api.compute.volumes.test_volume_snapshots.VolumesSnapshotsTestJSON.test_volume_snapshot_create_get_list_delete [10.398219s] ... ok
+{3} tempest.api.compute.volumes.test_volumes_get.VolumesGetTestJSON.test_volume_create_get_delete [4.410633s] ... ok
+{3} tempest.api.volume.admin.test_backends_capabilities.BackendsCapabilitiesAdminTestsJSON.test_compare_volume_stats_values [0.121121s] ... ok
+{3} tempest.api.volume.admin.test_backends_capabilities.BackendsCapabilitiesAdminTestsJSON.test_get_capabilities_backend [0.037856s] ... ok
+{1} tempest.api.compute.admin.test_volume_swap.TestVolumeSwap.test_volume_swap ... SKIPPED: Skipped until bug: https://launchpad.net/bugs/2112187 is resolved.
+{3} setUpClass (tempest.api.volume.admin.test_encrypted_volumes_extend.EncryptedVolumesExtendAttachedTest) ... SKIPPED: Attached encrypted volume extend is disabled.
+{3} tempest.api.volume.admin.test_group_snapshots.GroupSnapshotsTest.test_create_group_from_group_snapshot [21.320580s] ... ok
+{1} tempest.api.compute.admin.test_volumes_negative.VolumesAdminNegativeTest.test_update_attached_volume_with_nonexistent_volume_in_body ... SKIPPED: Skipped until bug: https://launchpad.net/bugs/2112187 is resolved.
+{3} tempest.api.volume.admin.test_group_snapshots.GroupSnapshotsTest.test_delete_group_snapshots_following_updated_volumes [28.346232s] ... ok
+{1} tempest.api.compute.admin.test_volumes_negative.VolumesAdminNegativeTest.test_update_attached_volume_with_nonexistent_volume_in_uri [15.522060s] ... ok
+{2} tempest.api.compute.admin.test_assisted_volume_snapshots.VolumesAssistedSnapshotsTest.test_volume_assisted_snapshot_create_delete [67.643707s] ... ok
+{3} tempest.api.volume.admin.test_group_snapshots.GroupSnapshotsTest.test_group_snapshot_create_show_list_delete [12.372646s] ... ok
+{3} tempest.api.volume.admin.test_group_snapshots.GroupSnapshotsV319Test.test_reset_group_snapshot_status [12.247038s] ... ok
+{3} tempest.api.volume.admin.test_groups.GroupsV320Test.test_reset_group_status [4.054142s] ... ok
+{1} tempest.api.compute.servers.test_delete_server.DeleteServersTestJSON.test_delete_server_while_in_attached_volume [15.264356s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_associate_disassociate_qos [0.717838s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_create_delete_qos_with_back_end_consumer [0.157098s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_create_delete_qos_with_both_consumer [0.177831s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_create_delete_qos_with_front_end_consumer [0.157265s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_get_qos [0.020541s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_list_qos [0.026679s] ... ok
+{3} tempest.api.volume.admin.test_qos.QosSpecsTestJSON.test_set_unset_qos_key [0.127806s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_reset_snapshot_status [0.220501s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_snapshot_force_delete_when_snapshot_is_creating [3.611927s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_snapshot_force_delete_when_snapshot_is_deleting [2.660177s] ... ok
+{0} tempest.api.compute.servers.test_device_tagging.TaggedBootDevicesTest.test_tagged_boot_devices [126.423141s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_snapshot_force_delete_when_snapshot_is_error [4.863315s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_snapshot_force_delete_when_snapshot_is_error_deleting [5.066467s] ... ok
+{3} tempest.api.volume.admin.test_snapshots_actions.SnapshotsActionsTest.test_update_snapshot_status [0.300197s] ... ok
+{3} tempest.api.volume.admin.test_volume_quota_classes.VolumeQuotaClassesTest.test_show_default_quota [0.187617s] ... ok
+{3} tempest.api.volume.admin.test_volume_quota_classes.VolumeQuotaClassesTest.test_update_default_quota [1.117346s] ... ok
+{3} tempest.api.volume.admin.test_volume_types_extra_specs.VolumeTypesExtraSpecsTest.test_volume_type_extra_spec_create_get_delete [0.173016s] ... ok
+{3} tempest.api.volume.admin.test_volume_types_extra_specs.VolumeTypesExtraSpecsTest.test_volume_type_extra_specs_list [0.107813s] ... ok
+{3} tempest.api.volume.admin.test_volume_types_extra_specs.VolumeTypesExtraSpecsTest.test_volume_type_extra_specs_update [0.248999s] ... ok
+{3} tempest.api.volume.test_versions.VersionsTest.test_list_versions [0.013938s] ... ok
+{3} tempest.api.volume.test_versions.VersionsTest.test_show_version [0.116392s] ... ok
+{1} tempest.api.compute.servers.test_server_rescue.ServerBootFromVolumeStableRescueTest.test_stable_device_rescue_bfv_blank_volume [43.369591s] ... ok
+{3} tempest.api.volume.test_volume_delete_cascade.VolumesDeleteCascade.test_volume_delete_cascade [14.642564s] ... ok
+{2} tempest.api.compute.admin.test_volume.AttachSCSIVolumeTestJSON.test_attach_scsi_disk_with_config_drive [75.614948s] ... ok
+{3} tempest.api.volume.test_volume_delete_cascade.VolumesDeleteCascade.test_volume_from_snapshot_cascade_delete [18.784626s] ... ok
+{3} tempest.api.volume.test_volume_transfers.VolumesTransfersTest.test_create_get_list_accept_volume_transfer [7.491648s] ... ok
+{3} tempest.api.volume.test_volume_transfers.VolumesTransfersTest.test_create_list_delete_volume_transfer [5.596601s] ... ok
+{1} tempest.api.compute.servers.test_server_rescue.ServerBootFromVolumeStableRescueTest.test_stable_device_rescue_bfv_image_volume [51.995058s] ... ok
+{2} tempest.api.compute.admin.test_volumes_negative.UpdateMultiattachVolumeNegativeTest.test_multiattach_rw_volume_update_failure ... SKIPPED: Skipped until bug: https://launchpad.net/bugs/2112187 is resolved.
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_attach_detach_volume_to_instance [17.176952s] ... ok
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_get_volume_attachment [11.212152s] ... ok
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_reserve_unreserve_volume [0.210532s] ... ok
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_bootable [0.156767s] ... ok
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_readonly_update [0.164174s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_boot_from_multiattach_volume [20.037239s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_boot_from_multiattach_volume_direct_lun ... SKIPPED: hw_scsi_model=virtio-scsi not set on image
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_boot_with_multiattach_volume_direct_lun ... SKIPPED: hw_scsi_model=virtio-scsi not set on image
+{0} tempest.api.compute.servers.test_device_tagging.TaggedBootDevicesTest_v242.test_tagged_boot_devices [161.274099s] ... ok
+{3} tempest.api.volume.test_volumes_actions.VolumesActionsTest.test_volume_upload [69.751190s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_list_get_volume_attachments_multiattach [63.868828s] ... ok
+{2} tempest.api.compute.servers.test_device_tagging.TaggedAttachmentsTest.test_tagged_attachment [122.883756s] ... ok
+{3} tempest.api.volume.test_volumes_backup.VolumesBackupsTest.test_backup_create_attached_volume [123.308523s] ... ok
+{2} tempest.api.compute.servers.test_server_actions.ServerActionsTestOtherB.test_resize_server_revert_with_volume_attached [26.487423s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_resize_server_with_multiattached_volume [159.716005s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeMultiAttachTest.test_snapshot_volume_backed_multiattach [24.843154s] ... ok
+{3} tempest.api.volume.test_volumes_backup.VolumesBackupsTest.test_bootable_volume_backup_and_restore [56.350010s] ... ok
+{2} tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_server_from_non_bootable_volume [5.910615s] ... ok
+{2} tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_create_server_invalid_bdm_in_2nd_dict [4.451149s] ... ok
+{0} tempest.api.compute.servers.test_server_actions.ServerActionsTestOtherA.test_rebuild_server_with_volume_attached [122.134155s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list [0.188420s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list_param_limit [0.097470s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list_param_offset_and_limit [0.175389s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list_with_detail_param_limit [0.105258s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list_with_detail_param_offset_and_limit [0.177920s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_list.VolumesTestJSON.test_volume_list_with_details [0.119611s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_invalid_size [0.169171s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_size_zero [0.024354s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_create_volume_without_passing_size [0.020518s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_delete_invalid_volume_id [0.056628s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_delete_volume_without_passing_volume_id [0.020870s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_get_volume_without_passing_volume_id [0.059146s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_volume_delete_nonexistent_volume_id [0.044990s] ... ok
+{2} tempest.api.compute.volumes.test_volumes_negative.VolumesNegativeTest.test_volume_get_nonexistent_volume_id [0.057646s] ... ok
+{3} tempest.api.volume.test_volumes_backup.VolumesBackupsTest.test_volume_backup_create_get_detailed_list_restore_delete [53.323175s] ... ok
+{2} tempest.api.volume.admin.test_multi_backend.VolumeMultiBackendTest.test_backend_name_distinction [0.078173s] ... ok
+{2} tempest.api.volume.admin.test_multi_backend.VolumeMultiBackendTest.test_backend_name_distinction_with_prefix [0.091263s] ... ok
+{2} tempest.api.volume.admin.test_multi_backend.VolumeMultiBackendTest.test_backend_name_reporting [0.101874s] ... ok
+{2} tempest.api.volume.admin.test_multi_backend.VolumeMultiBackendTest.test_backend_name_reporting_with_prefix [0.093552s] ... ok
+{2} tempest.api.volume.admin.test_volume_retype.VolumeRetypeWithoutMigrationTest.test_available_volume_retype [6.457281s] ... ok
+{2} tempest.api.volume.admin.test_volume_snapshot_quotas_negative.VolumeSnapshotQuotasNegativeTestJSON.test_quota_volume_gigabytes_snapshots [0.203497s] ... ok
+{2} tempest.api.volume.admin.test_volume_snapshot_quotas_negative.VolumeSnapshotQuotasNegativeTestJSON.test_quota_volume_snapshots [0.050935s] ... ok
+{0} tempest.api.compute.servers.test_server_actions.ServerActionsTestOtherA.test_resize_volume_backed_server_confirm [76.092256s] ... ok
+{2} tempest.api.volume.admin.test_volume_type_access.VolumeTypesAccessTest.test_volume_type_access_add [5.726876s] ... ok
+{2} tempest.api.volume.admin.test_volume_type_access.VolumeTypesAccessTest.test_volume_type_access_list [0.391070s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_create_invalid_body [0.022096s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_create_none_body [0.019713s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_create_nonexistent_type_id [0.032154s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_delete_nonexistent_volume_type_id [0.020753s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_get_nonexistent_extra_spec_name [0.024110s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_get_nonexistent_volume_type_id [0.020045s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_list_nonexistent_volume_type_id [0.044962s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_update_multiple_extra_spec [0.020018s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_update_no_body [0.019614s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_update_none_extra_spec_id [0.031484s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_update_nonexistent_extra_spec_id [0.040841s] ... ok
+{2} tempest.api.volume.admin.test_volume_types_extra_specs_negative.ExtraSpecsNegativeTest.test_update_nonexistent_type_id [0.029286s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeShelveTestJSON.test_attach_volume_shelved_or_offload_server [119.089645s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_force_detach_volume [17.867248s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_volume_force_delete_when_volume_is_attaching [5.125673s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_volume_force_delete_when_volume_is_creating [4.987884s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_volume_force_delete_when_volume_is_error [4.754624s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_volume_force_delete_when_volume_is_maintenance [4.849387s] ... ok
+{2} tempest.api.volume.admin.test_volumes_actions.VolumesActionsTest.test_volume_reset_status [5.408311s] ... ok
+{3} tempest.api.volume.test_volumes_backup.VolumesBackupsTest.test_volume_backup_incremental [122.456286s] ... ok
+{2} tempest.api.volume.test_availability_zone.AvailabilityZoneTestJSON.test_get_availability_zone_list [0.119090s] ... ok
+{2} tempest.api.volume.test_snapshot_metadata.SnapshotMetadataTestJSON.test_crud_snapshot_metadata [0.298547s] ... ok
+{2} tempest.api.volume.test_snapshot_metadata.SnapshotMetadataTestJSON.test_update_show_snapshot_metadata_item [0.236012s] ... ok
+{3} tempest.api.volume.test_volumes_clone_negative.VolumesCloneNegativeTest.test_create_from_volume_decreasing_size [7.218187s] ... ok
+{2} tempest.api.volume.test_volume_absolute_limits.AbsoluteLimitsTests.test_get_volume_absolute_limits [0.068934s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list [0.030612s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_by_name [0.066028s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_by_name [0.069979s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_pagination [0.302415s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_details_with_multiple_params [0.129817s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_pagination [0.144722s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_param_display_name_and_status [0.068361s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_detail_param_display_name_and_status [0.074908s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_detail_param_marker [0.067973s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_detail_param_metadata [0.064721s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_details [0.036432s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volume_list_with_param_metadata [0.036881s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_by_availability_zone [0.066601s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_by_bootable [0.079746s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_by_status [0.776137s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_details_by_availability_zone [0.062729s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_details_by_bootable [0.038171s] ... ok
+{3} tempest.api.volume.test_volumes_list.VolumesListTestJSON.test_volumes_list_details_by_status [0.037904s] ... ok
+{2} tempest.api.volume.test_volume_transfers.VolumesTransfersV357Test.test_create_get_list_accept_volume_transfer [6.794299s] ... ok
+{2} tempest.api.volume.test_volume_transfers.VolumesTransfersV357Test.test_create_list_delete_volume_transfer [6.644051s] ... ok
+{0} tempest.api.compute.servers.test_server_actions.ServerActionsV293TestJSON.test_rebuild_volume_backed_server [89.868808s] ... ok
+{2} setUpClass (tempest.api.volume.test_volumes_extend.VolumesExtendAttachedTest) ... SKIPPED: Attached volume extend is disabled.
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_attach_volumes_with_nonexistent_volume_id [11.116801s] ... ok
+{2} tempest.api.volume.test_volumes_extend.VolumesExtendTest.test_volume_extend [5.349375s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_from_deactivated_image [3.619157s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_from_image_with_decreasing_size [2.840522s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_invalid_size [0.017702s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_snapshot_id [0.040062s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_source_volid [0.040825s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_nonexistent_volume_type [0.031065s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_size_negative [0.018349s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_with_size_zero [0.023759s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_create_volume_without_passing_size [0.027562s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_delete_invalid_volume_id [0.047569s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_delete_volume_without_passing_volume_id [0.021281s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_detach_volumes_with_invalid_volume_id [0.033263s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_get_invalid_volume_id [0.030580s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_get_volume_without_passing_volume_id [0.021379s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_detail_with_invalid_status [0.073806s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_detail_with_nonexistent_name [0.061915s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_with_invalid_status [0.040516s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_list_volumes_with_nonexistent_name [0.040700s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_reserve_volume_with_negative_volume_status [0.122807s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_reserve_volume_with_nonexistent_volume_id [0.025539s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_unreserve_volume_with_nonexistent_volume_id [0.029547s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_empty_volume_id [0.021826s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_invalid_volume_id [0.024675s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_update_volume_with_nonexistent_volume_id [0.027711s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_delete_nonexistent_volume_id [0.022861s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_extend_with_None_size [0.014783s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_extend_with_non_number_size [0.015094s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_extend_with_nonexistent_volume_id [0.033757s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_extend_with_size_smaller_than_original_size [0.018494s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_extend_without_passing_volume_id [0.023916s] ... ok
+{3} tempest.api.volume.test_volumes_negative.VolumesNegativeTest.test_volume_get_nonexistent_volume_id [0.028901s] ... ok
+{2} tempest.api.volume.test_volumes_extend.VolumesExtendTest.test_volume_extend_when_volume_has_snapshot [10.494586s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeShelveTestJSON.test_detach_volume_shelved_or_offload_server [115.491586s] ... ok
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_snapshot_backup [39.618234s] ... ok
+{3} tempest.scenario.test_instances_with_cinder_volumes.TestInstancesWithCinderVolumes.test_instances_with_cinder_volumes_on_all_compute_nodes [93.083855s] ... ok
+{0} tempest.api.compute.servers.test_server_rescue.ServerStableDeviceRescueTest.test_stable_device_rescue_disk_virtio_with_volume_attached [114.280420s] ... ok
+{3} setUpClass (tempest.scenario.test_server_volume_attachment.TestServerVolumeAttachScenarioOldVersion) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (tempest.scenario.test_stamp_pattern.TestStampPattern) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.api.volume.admin.test_consistencygroups.ConsistencyGroupsV2Test) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.api.volume.test_multiple_volume_from_resource.CreateVolumesFromImageTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.api.volume.test_multiple_volume_from_resource.CreateVolumesFromSourceVolumeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.api.volume.test_volume_dependency.VolumeDependencyTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectMemberTests33) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectMemberTests39) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.rbac.v3.test_user_messages.ProjectReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.scenario.test_snapshots.SnapshotDataIntegrityTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{3} setUpClass (cinder_tempest_plugin.scenario.test_volume_concurrency.ConcurrentVolumeActionsTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.compute.servers.test_server_rescue_negative.ServerRescueNegativeTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.image.v2.test_images_dependency.ImageDependencyTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_group_type_specs.GroupTypeSpecsTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_groups.GroupsTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_volume_manage.VolumeManageAdminTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_volume_quotas.VolumeQuotasAdminTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_volume_quotas_negative.VolumeQuotasNegativeTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_volume_services_negative.VolumeServicesNegativeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.admin.test_volumes_list.VolumesListAdminTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.test_volume_transfers.VolumesTransfersV355Test) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.test_volumes_backup.VolumesBackupsV39Test) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.test_volumes_get.VolumesGetTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.api.volume.test_volumes_snapshots_negative.VolumesSnapshotNegativeTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (tempest.scenario.test_shelve_instance.TestShelveInstance) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.api.volume.test_multiple_volume_from_resource.CreateVolumesFromSnapshotTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.api.volume.test_volume_revert.VolumeRevertTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectAdminTests33) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectReaderTests33) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectReaderTests39) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_capabilities.ProjectReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_snapshots.ProjectMemberTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_snapshots.ProjectReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_volume_actions.ProjectReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.rbac.v3.test_volume_types.VolumeTypesAdminTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{0} setUpClass (cinder_tempest_plugin.scenario.test_volume_encrypted.TestEncryptedCinderVolumes) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_snapshot_create_delete_with_volume_in_use [76.902411s] ... ok
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_snapshot_create_get_list_update_delete [4.507055s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeTestJSON.test_attach_detach_volume [142.145340s] ... ok
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_snapshot_create_offline_delete_online [69.216568s] ... ok
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_volume_from_snapshot [12.596667s] ... ok
+{2} tempest.api.volume.test_volumes_snapshots.VolumesSnapshotTestJSON.test_volume_from_snapshot_no_size [16.118237s] ... ok
+{1} tempest.api.compute.volumes.test_attach_volume.AttachVolumeTestJSON.test_list_get_volume_attachments [61.027666s] ... ok
+{2} setUpClass (tempest.api.volume.test_volumes_snapshots_list.VolumesSnapshotListTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (tempest.scenario.test_volume_boot_pattern.TestVolumeBootPatternV346) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.api.volume.admin.test_volume_backup.VolumesBackupsTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.api.volume.test_create_from_image.VolumeAndVolumeTypeFromImageTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.api.volume.test_volume_dependency.VolumeImageDependencyTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.api.volume.test_volume_unicode.CinderUnicodeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.rbac.v3.test_backups.ProjectAdminTests39) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.rbac.v3.test_capabilities.ProjectAdminTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.rbac.v3.test_user_messages.ProjectAdminTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.rbac.v3.test_volume_types.VolumeTypesMemberTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{2} setUpClass (cinder_tempest_plugin.scenario.test_encrypted_volume_transfer.TransferEncryptedVolumeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.compute.volumes.test_attach_volume_negative.AttachVolumeNegativeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_group_types.GroupTypesTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_groups.GroupsV314Test) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_snapshot_manage.SnapshotManageAdminTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_user_messages.UserMessagesTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volume_hosts.VolumeHostsAdminTestsJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volume_pools.VolumePoolsAdminTestsJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volume_services.VolumesServicesTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volume_types.VolumeTypesTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volume_types_negative.VolumeTypesNegativeTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.admin.test_volumes_backup.VolumesBackupsAdminTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.test_extensions.ExtensionsTestJSON) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.test_image_metadata.VolumesImageMetadata) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.test_volume_metadata.VolumesMetadataTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.test_volumes_clone.VolumesCloneTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.api.volume.test_volumes_get.VolumesSummaryTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.scenario.test_server_volume_attachment.TestServerVolumeAttachmentScenario) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (tempest.scenario.test_snapshots_with_add_location.TestImageHashVerification) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.api.volume.test_multiple_volume_from_resource.CreateVolumesFromBackupTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.api.volume.test_volume_backup.VolumesBackupsTest) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.rbac.v3.test_capabilities.ProjectMemberTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.rbac.v3.test_user_messages.ProjectMemberTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.rbac.v3.test_volume_types.VolumeTypesReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.rbac.v3.test_volumes.ProjectReaderTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.scenario.test_snapshots.SnapshotDependencyTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+{1} setUpClass (cinder_tempest_plugin.scenario.test_volume_multiattach.VolumeMultiattachTests) [0.000000s] ... FAILED
+
+Captured traceback:
+~~~~~~~~~~~~~~~~~~~
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+
+    PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+    
+During handling of the above exception, another exception occurred:
+
+
+    Traceback (most recent call last):
+
+      File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+
+      File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+
+      File "/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+
+    TypeError: argument must be an int, or have a fileno() method.
+
+[Errno 13] Permission denied: '/opt/stack/tempest/.stestr/next-stream.new'
+ERROR: InvocationError for command /opt/stack/tempest/.tox/tempest/bin/tempest run --regex 'volume|^cinder_tempest_plugin
+' --concurrency=4 '--exclude-regex=test_volume_backup_restore|test_volume_swap_with_multiattach|test_volume_retype_multiattach|test_available_volume_retype_with_migration|test_volume_from_snapshot_retype_with_migration|test_delete_dep_chain|test_delete_dep_chain_2|test_volume_migrate_attached' (exited with code 1)
+___________________________________ summary ____________________________________
+ERROR:   all: commands failed
