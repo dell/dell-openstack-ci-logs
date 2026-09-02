@@ -1,0 +1,70 @@
+2026-09-02 09:02:48.121+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.16 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-138-generic, hostname: np0000000886
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-18-instance-0000000c \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-18-instance-0000000c/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-18-instance-0000000c/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-18-instance-0000000c/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-0000000c,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-18-instance-0000000c/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid ef125a3d-0126-421a-a5d8-4643819047d8 \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=33.1.0,serial=ef125a3d-0126-421a-a5d8-4643819047d8,uuid=ef125a3d-0126-421a-a5d8-4643819047d8,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=51,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/ef125a3d-0126-421a-a5d8-4643819047d8/disk.config","node-name":"libvirt-4-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-4-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-4-storage"}' \
+-device '{"driver":"ide-cd","bus":"ide.0","unit":0,"drive":"libvirt-4-format","id":"ide0-0-0","write-cache":"on"}' \
+-blockdev '{"driver":"host_device","filename":"/dev/dm-6","aio":"native","node-name":"libvirt-3-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-3-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-3-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xa","drive":"libvirt-3-format","id":"ua-e099ebef-445b-4a54-b848-416b057de979","bootindex":1,"write-cache":"on","serial":"e099ebef-445b-4a54-b848-416b057de979"}' \
+-blockdev '{"driver":"host_device","filename":"/dev/dm-9","aio":"native","node-name":"libvirt-2-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-2-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-2-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xb","drive":"libvirt-2-format","id":"ua-f523e188-20ed-4683-b722-6316452904f7","write-cache":"on","serial":"f523e188-20ed-4683-b722-6316452904f7"}' \
+-blockdev '{"driver":"host_device","filename":"/dev/dm-10","aio":"native","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-1-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xc","drive":"libvirt-1-format","id":"ua-21113b9b-adf0-4c7d-9db5-8d6e42a45b96","write-cache":"on","serial":"21113b9b-adf0-4c7d-9db5-8d6e42a45b96"}' \
+-netdev '{"type":"tap","fd":"54","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:19:77:0f","bus":"pci.0","addr":"0x3"}' \
+-netdev '{"type":"tap","fd":"56","id":"hostnet1"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet1","id":"net1","mac":"fa:16:3e:09:50:35","bus":"pci.0","addr":"0x4"}' \
+-netdev '{"type":"tap","fd":"57","id":"hostnet2"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet2","id":"net2","mac":"fa:16:3e:e2:e7:11","bus":"pci.0","addr":"0x5"}' \
+-netdev '{"type":"tap","fd":"58","id":"hostnet3"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet3","id":"net3","mac":"fa:16:3e:6f:f1:92","bus":"pci.0","addr":"0x6"}' \
+-netdev '{"type":"tap","fd":"59","id":"hostnet4"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet4","id":"net4","mac":"fa:16:3e:10:c5:6a","bus":"pci.0","addr":"0x7"}' \
+-netdev '{"type":"tap","fd":"60","id":"hostnet5"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet5","id":"net5","mac":"fa:16:3e:cd:d4:23","bus":"pci.0","addr":"0x8"}' \
+-netdev '{"type":"tap","fd":"61","id":"hostnet6"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet6","id":"net6","mac":"fa:16:3e:53:6e:fa","bus":"pci.0","addr":"0x9"}' \
+-add-fd set=0,fd=53,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:5,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0xd"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0xe"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/5 (label charserial0)
+2026-09-02T09:04:00.684538Z qemu-system-x86_64: terminating on signal 15 from pid 85388 (/usr/sbin/libvirtd)
+2026-09-02 09:04:00.885+0000: shutting down, reason=destroyed
