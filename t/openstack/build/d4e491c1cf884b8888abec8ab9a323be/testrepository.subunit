@@ -1,0 +1,29 @@
+³+@mj—×õöX@ZsetUpClass (tempest.scenario.test_volume_migrate_attached.TestVolumeMigrateRetypeAttached)”2¹³+pGÔj—×õöX@ZsetUpClass (tempest.scenario.test_volume_migrate_attached.TestVolumeMigrateRetypeAttached)-text/x-traceback;charset=utf8,language=python	tracebackG-Traceback (most recent call last):
+  File "/opt/stack/tempest/tempest/test.py", line 160, in setUpClass
+    cls.serial_rw_lock.acquire_read_lock()
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_lock.py", line 308, in acquire_read_lock
+    return self._acquire(blocking, delay, max_delay, timeout, exclusive=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_lock.py", line 344, in _acquire
+    self._do_open()
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_lock.py", line 284, in _do_open
+    self.lockfile = _interprocess_reader_writer_mechanism.get_handle(self.path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 134, in get_handle
+    return open(path, 'a+')
+           ^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: b'/opt/stack/data/tempest/tempest-serial-rw-lock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/stack/tempest/tempest/test.py", line 183, in setUpClass
+    cls.tearDownClass()
+  File "/opt/stack/tempest/tempest/test.py", line 240, in tearDownClass
+    cls.serial_rw_lock.release_read_lock()
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_lock.py", line 385, in release_read_lock
+    _interprocess_reader_writer_mechanism.unlock(self.lockfile)
+  File "/opt/stack/tempest/.tox/py3/lib/python3.12/site-packages/fasteners/process_mechanism.py", line 130, in unlock
+    fcntl.lockf(lockfile, fcntl.LOCK_UN)
+TypeError: argument must be an int, or have a fileno() method.
+=½X³+†@wj—×õöX@ZsetUpClass (tempest.scenario.test_volume_migrate_attached.TestVolumeMigrateRetypeAttached)worker-0Ê‰
