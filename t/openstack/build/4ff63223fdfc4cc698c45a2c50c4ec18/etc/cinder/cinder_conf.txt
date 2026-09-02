@@ -1,0 +1,127 @@
+
+[keystone_authtoken]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+www_authenticate_uri = https://10.19.119.166/identity
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = cinder
+auth_url = https://10.19.119.166/identity
+interface = public
+auth_type = password
+
+[DEFAULT]
+max_over_subscription_ratio = 20
+osapi_volume_workers = 8
+cinder_internal_tenant_user_id = b26a153050ff42be9be8ecee1cb5de0a
+cinder_internal_tenant_project_id = 790fd0085c814934aec94b249e0d1586
+graceful_shutdown_timeout = 5
+glance_ca_certificates_file = /opt/stack/data/ca-bundle.pem
+glance_protocol = https
+glance_api_servers = https://10.19.119.166/image
+log_color = False
+logging_exception_prefix = ERROR %(name)s [01;35m%(instance)s[00m
+logging_default_format_string = %(color)s%(levelname)s %(name)s [[00;36m-%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_context_format_string = %(color)s%(levelname)s %(name)s [[01;36m%(global_request_id)s %(request_id)s [00;36m%(project_name)s %(user_name)s%(color)s] [01;35m%(instance)s%(color)s%(message)s[00m
+logging_debug_format_suffix = [00;33m{{(pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d}}[00m
+transport_url = rabbit://stackrabbit:secretrabbit@10.19.119.166:5672/
+backup_swift_ca_cert_file = /opt/stack/data/ca-bundle.pem
+backup_swift_url = https://10.19.119.166:8080/v1/AUTH_
+backup_driver = cinder.backup.drivers.swift.SwiftBackupDriver
+default_volume_type = powerstore1
+enabled_backends = powerstore1, powerstore2
+service_down_time = 720
+report_interval = 120
+rpc_response_timeout = 120
+quota_snapshots = 10
+quota_backups = 10
+quota_volumes = 10
+my_ip = 10.19.119.166
+state_path = /opt/stack/data/cinder
+osapi_volume_extension = cinder.api.contrib.standard_extensions
+rootwrap_config = /etc/cinder/rootwrap.conf
+api_paste_config = /etc/cinder/api-paste.ini
+target_helper = lioadm
+debug = True
+
+[database]
+connection = mysql+pymysql://root:secretdatabase@10.19.119.166/cinder?charset=utf8&plugin=dbcounter
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/cinder
+
+[key_manager]
+fixed_key = bae3516cc1c0eb18b05440eba8012a4a880a2ee04d584a9c1579445e675b12defdc716ec
+backend = cinder.keymgr.conf_key_mgr.ConfKeyManager
+
+[powerstore1]
+nas_share_path = /Openstack_NFS_1
+volume_backend_name = powerstore1
+image_volume_cache_enabled = True
+
+[powerstore2]
+nas_share_path = /Openstack_NFS_2
+volume_backend_name = powerstore2
+image_volume_cache_enabled = True
+
+[oslo_middleware]
+enable_proxy_headers_parsing = True
+
+[glance]
+memcached_servers = localhost:11211
+cafile = /opt/stack/data/ca-bundle.pem
+www_authenticate_uri = https://10.19.119.166/identity
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = glance
+auth_url = https://10.19.119.166/identity
+interface = public
+auth_type = password
+
+[nova]
+region_name = RegionOne
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = nova
+auth_url = https://10.19.119.166/identity
+interface = public
+auth_type = password
+
+[coordination]
+backend_url = etcd3+http://10.19.119.166:2379?api_version=v3
+
+[oslo_policy]
+enforce_new_defaults = true
+
+[service_user]
+project_domain_name = Default
+project_name = service
+user_domain_name = Default
+password = secretservice
+username = cinder
+auth_url = https://10.19.119.166/identity
+interface = public
+auth_type = password
+send_service_user_token = True
+
+[os_brick]
+lock_path = /opt/stack/data/os_brick
+
+[backend_defaults]
+nas_host = <hidden>
+nas_secure_file_operations = False
+nas_secure_file_permissions = False
+nfs_qcow2_volumes = False
+nfs_snapshot_support = True
+nfs_sparsed_volumes = False
+suppress_requests_ssl_warnings = True
+volume_driver = cinder.volume.drivers.dell_emc.powerstore.nfs.PowerStoreNFSDriver
+
+[cache]
+memcache_pool_maxsize = 80
