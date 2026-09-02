@@ -1,0 +1,49 @@
+2026-09-02 07:13:21.701+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.16 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-138-generic, hostname: np0000000881
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-40-instance-0000001a \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-40-instance-0000001a/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-40-instance-0000001a/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-40-instance-0000001a/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-0000001a,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-40-instance-0000001a/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid 592d8fb8-c603-44a5-adaa-2616e8362e3a \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=33.1.0,serial=592d8fb8-c603-44a5-adaa-2616e8362e3a,uuid=592d8fb8-c603-44a5-adaa-2616e8362e3a,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=31,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"host_device","filename":"/dev/dm-0","aio":"native","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-1-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x4","share-rw":true,"drive":"libvirt-1-format","id":"ua-11126cb6-b0eb-4718-af8e-f642973845aa","bootindex":1,"write-cache":"on","serial":"11126cb6-b0eb-4718-af8e-f642973845aa"}' \
+-netdev '{"type":"tap","fd":"33","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:0f:17:cb","bus":"pci.0","addr":"0x3"}' \
+-add-fd set=0,fd=32,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:0,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0x5"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0x6"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/0 (label charserial0)
+2026-09-02T07:17:58.001059Z qemu-system-x86_64: terminating on signal 15 from pid 85397 (/usr/sbin/libvirtd)
+2026-09-02 07:17:58.202+0000: shutting down, reason=destroyed
