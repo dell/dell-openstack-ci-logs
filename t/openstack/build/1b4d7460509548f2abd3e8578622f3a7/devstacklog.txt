@@ -1,0 +1,138 @@
+2026-09-04 10:12:30.229 | + ./stack.sh:main:491                      :   exec
+2026-09-04 10:12:30.229 | + ./stack.sh:main:499                      :   echo_summary 'stack.sh log /opt/stack/logs/devstacklog.txt.2026-09-04-101230'
+2026-09-04 10:12:30.229 | ++ ./stack.sh:main:491                      :   /usr/bin/python3.12 /opt/stack/devstack/tools/outfilter.py -o /opt/stack/logs/devstacklog.txt.2026-09-04-101230.summary.2026-09-04-101230
+2026-09-04 10:12:30.229 | + ./stack.sh:echo_summary:444              :   [[ -t 3 ]]
+2026-09-04 10:12:30.229 | + ./stack.sh:echo_summary:450              :   echo -e stack.sh log /opt/stack/logs/devstacklog.txt.2026-09-04-101230
+2026-09-04 10:12:30.229 | + ./stack.sh:main:501                      :   ln -sf /opt/stack/logs/devstacklog.txt.2026-09-04-101230 /opt/stack/logs/devstacklog.txt
+2026-09-04 10:12:30.229 | + ./stack.sh:main:502                      :   ln -sf /opt/stack/logs/devstacklog.txt.2026-09-04-101230.summary.2026-09-04-101230 /opt/stack/logs/devstacklog.txt.summary
+2026-09-04 10:12:30.229 | + ./stack.sh:main:517                      :   check_path_perm_sanity /opt/stack
+2026-09-04 10:12:30.230 | + functions:check_path_perm_sanity:615     :   local real_path
+2026-09-04 10:12:30.230 | ++ functions:check_path_perm_sanity:616     :   readlink -f /opt/stack
+2026-09-04 10:12:30.230 | + functions:check_path_perm_sanity:616     :   real_path=/opt/stack
+2026-09-04 10:12:30.230 | + functions:check_path_perm_sanity:617     :   local rebuilt_path=
+2026-09-04 10:12:30.231 | ++ functions:check_path_perm_sanity:618     :   tr / ' '
+2026-09-04 10:12:30.232 | ++ functions:check_path_perm_sanity:618     :   echo /opt/stack
+2026-09-04 10:12:30.234 | + functions:check_path_perm_sanity:618     :   for i in $(echo ${real_path} | tr "/" " ")
+2026-09-04 10:12:30.236 | + functions:check_path_perm_sanity:619     :   rebuilt_path=/opt
+2026-09-04 10:12:30.238 | ++ functions:check_path_perm_sanity:621     :   stat -c %a /opt
+2026-09-04 10:12:30.241 | + functions:check_path_perm_sanity:621     :   [[ 755 = 700 ]]
+2026-09-04 10:12:30.243 | + functions:check_path_perm_sanity:618     :   for i in $(echo ${real_path} | tr "/" " ")
+2026-09-04 10:12:30.245 | + functions:check_path_perm_sanity:619     :   rebuilt_path=/opt/stack
+2026-09-04 10:12:30.247 | ++ functions:check_path_perm_sanity:621     :   stat -c %a /opt/stack
+2026-09-04 10:12:30.250 | + functions:check_path_perm_sanity:621     :   [[ 755 = 700 ]]
+2026-09-04 10:12:30.251 | + ./stack.sh:main:523                      :   trap exit_trap EXIT
+2026-09-04 10:12:30.253 | + ./stack.sh:main:564                      :   trap err_trap ERR
+2026-09-04 10:12:30.255 | + ./stack.sh:main:577                      :   set -o errexit
+2026-09-04 10:12:30.257 | + ./stack.sh:main:580                      :   uname -a
+2026-09-04 10:12:30.258 | Linux np0000000934 6.8.0-138-generic #138-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 22:41:49 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+2026-09-04 10:12:30.260 | + ./stack.sh:main:583                      :   SSL_BUNDLE_FILE=/opt/stack/data/ca-bundle.pem
+2026-09-04 10:12:30.262 | + ./stack.sh:main:584                      :   rm -f /opt/stack/data/ca-bundle.pem
+2026-09-04 10:12:30.264 | + ./stack.sh:main:587                      :   source /opt/stack/devstack/lib/database
+2026-09-04 10:12:30.310 | + ./stack.sh:main:588                      :   source /opt/stack/devstack/lib/rpc_backend
+2026-09-04 10:12:30.328 | + ./stack.sh:main:591                      :   source /opt/stack/devstack/lib/host
+2026-09-04 10:12:30.331 | +++ lib/host:source:12                       :   trueorfalse True ENABLE_KSM
+2026-09-04 10:12:30.351 | ++ lib/host:source:12                       :   ENABLE_KSM=True
+2026-09-04 10:12:30.356 | +++ lib/host:source:13                       :   trueorfalse True ENABLE_KSMTUNED
+2026-09-04 10:12:30.384 | ++ lib/host:source:13                       :   ENABLE_KSMTUNED=True
+2026-09-04 10:12:30.391 | +++ lib/host:source:56                       :   trueorfalse False ENABLE_ZSWAP
+2026-09-04 10:12:30.415 | ++ lib/host:source:56                       :   ENABLE_ZSWAP=True
+2026-09-04 10:12:30.418 | ++ lib/host:source:59                       :   ZSWAP_COMPRESSOR=lz4
+2026-09-04 10:12:30.421 | ++ lib/host:source:60                       :   ZSWAP_ZPOOL=zsmalloc
+2026-09-04 10:12:30.427 | +++ lib/host:source:82                       :   trueorfalse False ENABLE_SYSCTL_MEM_TUNING
+2026-09-04 10:12:30.449 | ++ lib/host:source:82                       :   ENABLE_SYSCTL_MEM_TUNING=True
+2026-09-04 10:12:30.454 | +++ lib/host:source:104                      :   trueorfalse False ENABLE_SYSCTL_NET_TUNING
+2026-09-04 10:12:30.480 | ++ lib/host:source:104                      :   ENABLE_SYSCTL_NET_TUNING=True
+2026-09-04 10:12:30.484 | + ./stack.sh:main:594                      :   tune_host
+2026-09-04 10:12:30.488 | + lib/host:tune_host:125                   :   configure_host_mem
+2026-09-04 10:12:30.491 | + lib/host:configure_host_mem:99           :   configure_zswap
+2026-09-04 10:12:30.494 | + lib/host:configure_zswap:69              :   [[ True == \T\r\u\e ]]
+2026-09-04 10:12:30.498 | + lib/host:configure_zswap:72              :   is_ubuntu
+2026-09-04 10:12:30.503 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-09-04 10:12:30.506 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-09-04 10:12:30.510 | + lib/host:configure_zswap:73              :   set_zswap_parameter compressor lz4
+2026-09-04 10:12:30.514 | + lib/host:set_zswap_parameter:62          :   local name=compressor
+2026-09-04 10:12:30.519 | + lib/host:set_zswap_parameter:63          :   local value=lz4
+2026-09-04 10:12:30.523 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap lz4 /sys/module/zswap/parameters/compressor
+2026-09-04 10:12:30.527 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-09-04 10:12:30.531 | + lib/host:set_sysfs_parameter:16          :   local value=lz4
+2026-09-04 10:12:30.535 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/compressor
+2026-09-04 10:12:30.538 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/compressor ]]
+2026-09-04 10:12:30.543 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/compressor
+2026-09-04 10:12:30.543 | + lib/host:set_sysfs_parameter:24          :   echo lz4
+2026-09-04 10:12:30.554 | lz4
+2026-09-04 10:12:30.558 | + lib/host:configure_zswap:74              :   set_zswap_parameter zpool zsmalloc
+2026-09-04 10:12:30.562 | + lib/host:set_zswap_parameter:62          :   local name=zpool
+2026-09-04 10:12:30.566 | + lib/host:set_zswap_parameter:63          :   local value=zsmalloc
+2026-09-04 10:12:30.569 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap zsmalloc /sys/module/zswap/parameters/zpool
+2026-09-04 10:12:30.571 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-09-04 10:12:30.575 | + lib/host:set_sysfs_parameter:16          :   local value=zsmalloc
+2026-09-04 10:12:30.579 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/zpool
+2026-09-04 10:12:30.582 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/zpool ]]
+2026-09-04 10:12:30.588 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/zpool
+2026-09-04 10:12:30.588 | + lib/host:set_sysfs_parameter:24          :   echo zsmalloc
+2026-09-04 10:12:30.600 | zsmalloc
+2026-09-04 10:12:30.605 | + lib/host:configure_zswap:76              :   set_zswap_parameter enabled 1
+2026-09-04 10:12:30.608 | + lib/host:set_zswap_parameter:62          :   local name=enabled
+2026-09-04 10:12:30.611 | + lib/host:set_zswap_parameter:63          :   local value=1
+2026-09-04 10:12:30.614 | + lib/host:set_zswap_parameter:65          :   set_sysfs_parameter zswap 1 /sys/module/zswap/parameters/enabled
+2026-09-04 10:12:30.617 | + lib/host:set_sysfs_parameter:15          :   local name=zswap
+2026-09-04 10:12:30.619 | + lib/host:set_sysfs_parameter:16          :   local value=1
+2026-09-04 10:12:30.622 | + lib/host:set_sysfs_parameter:17          :   local param_file=/sys/module/zswap/parameters/enabled
+2026-09-04 10:12:30.625 | + lib/host:set_sysfs_parameter:19          :   [[ ! -e /sys/module/zswap/parameters/enabled ]]
+2026-09-04 10:12:30.629 | + lib/host:set_sysfs_parameter:24          :   echo 1
+2026-09-04 10:12:30.630 | + lib/host:set_sysfs_parameter:24          :   sudo tee /sys/module/zswap/parameters/enabled
+2026-09-04 10:12:30.643 | 1
+2026-09-04 10:12:30.670 | + lib/host:configure_zswap:78              :   sudo grep -R . /sys/module/zswap/parameters
+2026-09-04 10:12:30.682 | /sys/module/zswap/parameters/same_filled_pages_enabled:Y
+2026-09-04 10:12:30.682 | /sys/module/zswap/parameters/enabled:Y
+2026-09-04 10:12:30.682 | /sys/module/zswap/parameters/shrinker_enabled:Y
+2026-09-04 10:12:30.682 | /sys/module/zswap/parameters/max_pool_percent:20
+2026-09-04 10:12:30.682 | /sys/module/zswap/parameters/compressor:lz4
+2026-09-04 10:12:30.683 | /sys/module/zswap/parameters/non_same_filled_pages_enabled:Y
+2026-09-04 10:12:30.683 | /sys/module/zswap/parameters/zpool:zsmalloc
+2026-09-04 10:12:30.683 | /sys/module/zswap/parameters/exclusive_loads:N
+2026-09-04 10:12:30.683 | /sys/module/zswap/parameters/accept_threshold_percent:90
+2026-09-04 10:12:30.686 | + lib/host:configure_host_mem:100          :   configure_ksm
+2026-09-04 10:12:30.690 | + lib/host:configure_ksm:39                :   [[ True == \T\r\u\e ]]
+2026-09-04 10:12:30.692 | + lib/host:configure_ksm:40                :   install_package ksmtuned
+2026-09-04 10:12:30.694 | + functions-common:install_package:1438    :   update_package_repo
+2026-09-04 10:12:30.697 | + functions-common:update_package_repo:1412 :   NO_UPDATE_REPOS=False
+2026-09-04 10:12:30.700 | + functions-common:update_package_repo:1413 :   REPOS_UPDATED=False
+2026-09-04 10:12:30.702 | + functions-common:update_package_repo:1414 :   RETRY_UPDATE=False
+2026-09-04 10:12:30.705 | + functions-common:update_package_repo:1416 :   [[ False = \T\r\u\e ]]
+2026-09-04 10:12:30.708 | + functions-common:update_package_repo:1420 :   is_ubuntu
+2026-09-04 10:12:30.710 | + functions-common:is_ubuntu:546           :   [[ -z deb ]]
+2026-09-04 10:12:30.712 | + functions-common:is_ubuntu:549           :   '[' deb = deb ']'
+2026-09-04 10:12:30.715 | + functions-common:update_package_repo:1421 :   apt_get_update
+2026-09-04 10:12:30.718 | + functions-common:apt_get_update:1166     :   [[ False == \T\r\u\e ]]
+2026-09-04 10:12:30.720 | + functions-common:apt_get_update:1171     :   [[ False = \T\r\u\e ]]
+2026-09-04 10:12:30.723 | + functions-common:apt_get_update:1173     :   local sudo=sudo
+2026-09-04 10:12:30.728 | ++ functions-common:apt_get_update:1174     :   id -u
+2026-09-04 10:12:30.734 | + functions-common:apt_get_update:1174     :   [[ 1001 = \0 ]]
+2026-09-04 10:12:30.736 | + functions-common:apt_get_update:1177     :   time_start apt-get-update
+2026-09-04 10:12:30.739 | + functions-common:time_start:2406         :   local name=apt-get-update
+2026-09-04 10:12:30.742 | + functions-common:time_start:2407         :   local start_time=
+2026-09-04 10:12:30.745 | + functions-common:time_start:2408         :   [[ -n '' ]]
+2026-09-04 10:12:30.750 | ++ functions-common:time_start:2411         :   date +%s%3N
+2026-09-04 10:12:30.755 | + functions-common:time_start:2411         :   _TIME_START[$name]=1788516750752
+2026-09-04 10:12:30.759 | + functions-common:apt_get_update:1179     :   local 'proxies=http_proxy= https_proxy= no_proxy= '
+2026-09-04 10:12:30.763 | + functions-common:apt_get_update:1180     :   local 'update_cmd=sudo http_proxy= https_proxy= no_proxy=  apt-get update'
+2026-09-04 10:12:30.766 | + functions-common:apt_get_update:1181     :   timeout 300 sh -c 'while ! sudo http_proxy= https_proxy= no_proxy=  apt-get update; do sleep 30; done'
+2026-09-04 10:12:48.475 | Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+2026-09-04 10:12:48.945 | Get:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-09-04 10:12:49.059 | Get:3 http://archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-09-04 10:12:49.170 | Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-09-04 10:13:42.406 | Get:5 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1,401 kB]
+2026-09-04 10:13:57.803 | Get:6 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [15.0 MB]
+2026-09-04 10:17:30.777 | + functions-common:apt_get_update:1182     :   die 1182 'Failed to update apt repos, we'\''re dead now'
+2026-09-04 10:17:30.783 | + functions-common:die:290                 :   local exitcode=0
+2026-09-04 10:17:30.786 | [Call Trace]
+2026-09-04 10:17:30.786 | ./stack.sh:594:tune_host
+2026-09-04 10:17:30.786 | /opt/stack/devstack/lib/host:125:configure_host_mem
+2026-09-04 10:17:30.786 | /opt/stack/devstack/lib/host:100:configure_ksm
+2026-09-04 10:17:30.786 | /opt/stack/devstack/lib/host:40:install_package
+2026-09-04 10:17:30.786 | /opt/stack/devstack/functions-common:1438:update_package_repo
+2026-09-04 10:17:30.786 | /opt/stack/devstack/functions-common:1421:apt_get_update
+2026-09-04 10:17:30.786 | /opt/stack/devstack/functions-common:1182:die
+2026-09-04 10:17:30.790 | [ERROR] /opt/stack/devstack/functions-common:1182 Failed to update apt repos, we're dead now
+2026-09-04 10:17:31.797 | Error on exit
