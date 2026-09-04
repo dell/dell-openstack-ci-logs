@@ -1,0 +1,164 @@
+2026-09-04 16:52:20.740+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.16 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-138-generic, hostname: np0000000946
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-26-instance-00000012 \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-26-instance-00000012/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-26-instance-00000012/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-26-instance-00000012/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-00000012,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-26-instance-00000012/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid 27e2abe2-67f3-4760-919a-1c51b376c61c \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=33.1.0,serial=27e2abe2-67f3-4760-919a-1c51b376c61c,uuid=27e2abe2-67f3-4760-919a-1c51b376c61c,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=47,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/_base/12a66314dd5cd17afeace4776fc52bc87161a0c2","node-name":"libvirt-2-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-2-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-2-storage"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/27e2abe2-67f3-4760-919a-1c51b376c61c/disk","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"qcow2","file":"libvirt-1-storage","backing":"libvirt-2-format"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x4","drive":"libvirt-1-format","id":"virtio-disk0","bootindex":1,"write-cache":"on"}' \
+-netdev '{"type":"tap","fd":"54","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:0c:c4:f5","bus":"pci.0","addr":"0x3"}' \
+-add-fd set=0,fd=53,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:5,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0x5"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0x6"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/5 (label charserial0)
+2026-09-04T16:53:19.095071Z qemu-system-x86_64: terminating on signal 15 from pid 112195 (/usr/sbin/libvirtd)
+2026-09-04 16:53:19.295+0000: shutting down, reason=destroyed
+2026-09-04 16:53:21.749+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.16 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-138-generic, hostname: np0000000946
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-30-instance-00000012 \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-30-instance-00000012/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-30-instance-00000012/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-30-instance-00000012/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-00000012,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-30-instance-00000012/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid 27e2abe2-67f3-4760-919a-1c51b376c61c \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=33.1.0,serial=27e2abe2-67f3-4760-919a-1c51b376c61c,uuid=27e2abe2-67f3-4760-919a-1c51b376c61c,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=47,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/_base/12a66314dd5cd17afeace4776fc52bc87161a0c2","node-name":"libvirt-5-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-5-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-5-storage"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/27e2abe2-67f3-4760-919a-1c51b376c61c/disk","node-name":"libvirt-3-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-3-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"qcow2","file":"libvirt-3-storage","backing":"libvirt-5-format"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x4","drive":"libvirt-3-format","id":"virtio-disk0","write-cache":"on"}' \
+-blockdev '{"driver":"host_device","filename":"/dev/disk/by-id/emc-vol-60ef6cef3ad3350f-9e371969000000b4","aio":"native","node-name":"libvirt-2-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-2-format","read-only":false,"discard":"unmap","cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-2-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x5","drive":"libvirt-2-format","id":"ua-4c4b4785-ed0a-47a0-80ae-90f3fe2a8809","write-cache":"on","serial":"4c4b4785-ed0a-47a0-80ae-90f3fe2a8809"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/_base/cfed0c85863d10bac008b52e995fb2196edbb585","node-name":"libvirt-4-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-4-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-4-storage"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/27e2abe2-67f3-4760-919a-1c51b376c61c/disk.rescue","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"qcow2","file":"libvirt-1-storage","backing":"libvirt-4-format"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x6","drive":"libvirt-1-format","id":"virtio-disk2","bootindex":1,"write-cache":"on"}' \
+-netdev '{"type":"tap","fd":"54","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:0c:c4:f5","bus":"pci.0","addr":"0x3"}' \
+-add-fd set=0,fd=53,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:5,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0x7"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0x8"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/5 (label charserial0)
+2026-09-04T16:53:24.946000Z qemu-system-x86_64: terminating on signal 15 from pid 112195 (/usr/sbin/libvirtd)
+2026-09-04 16:53:25.146+0000: shutting down, reason=destroyed
+2026-09-04 16:53:25.224+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.16 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-138-generic, hostname: np0000000946
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-31-instance-00000012 \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-31-instance-00000012/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-31-instance-00000012/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-31-instance-00000012/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-00000012,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-31-instance-00000012/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid 27e2abe2-67f3-4760-919a-1c51b376c61c \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=33.1.0,serial=27e2abe2-67f3-4760-919a-1c51b376c61c,uuid=27e2abe2-67f3-4760-919a-1c51b376c61c,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=47,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/_base/12a66314dd5cd17afeace4776fc52bc87161a0c2","node-name":"libvirt-3-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-3-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-3-storage"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/27e2abe2-67f3-4760-919a-1c51b376c61c/disk","node-name":"libvirt-2-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-2-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"qcow2","file":"libvirt-2-storage","backing":"libvirt-3-format"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x4","drive":"libvirt-2-format","id":"virtio-disk0","bootindex":1,"write-cache":"on"}' \
+-blockdev '{"driver":"host_device","filename":"/dev/disk/by-id/emc-vol-60ef6cef3ad3350f-9e371969000000b4","aio":"native","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"discard":"unmap","cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-1-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0x7","drive":"libvirt-1-format","id":"ua-4c4b4785-ed0a-47a0-80ae-90f3fe2a8809","write-cache":"on","serial":"4c4b4785-ed0a-47a0-80ae-90f3fe2a8809"}' \
+-netdev '{"type":"tap","fd":"54","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:0c:c4:f5","bus":"pci.0","addr":"0x3"}' \
+-add-fd set=0,fd=53,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:5,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0x5"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0x6"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/5 (label charserial0)
+2026-09-04T16:54:05.273359Z qemu-system-x86_64: terminating on signal 15 from pid 112195 (/usr/sbin/libvirtd)
+2026-09-04 16:54:05.474+0000: shutting down, reason=destroyed
