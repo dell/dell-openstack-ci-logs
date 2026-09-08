@@ -1,0 +1,86 @@
+Sep 08 14:11:48.194875 np0000000948 systemd[1]: Started devstack@c-vol.service - Devstack devstack@c-vol.service.
+Sep 08 14:11:50.219553 np0000000948 cinder-volume[90078]: DEBUG oslo_concurrency.lockutils [-] Acquiring lock "singleton_lock" {{(pid=90078) lock /opt/stack/data/venv/lib/python3.12/site-packages/oslo_concurrency/lockutils.py:313}}
+Sep 08 14:11:50.221555 np0000000948 cinder-volume[90078]: DEBUG oslo_concurrency.lockutils [-] Acquired lock "singleton_lock" {{(pid=90078) lock /opt/stack/data/venv/lib/python3.12/site-packages/oslo_concurrency/lockutils.py:316}}
+Sep 08 14:11:50.221555 np0000000948 cinder-volume[90078]: DEBUG oslo_concurrency.lockutils [-] Releasing lock "singleton_lock" {{(pid=90078) lock /opt/stack/data/venv/lib/python3.12/site-packages/oslo_concurrency/lockutils.py:334}}
+Sep 08 14:11:50.697608 np0000000948 cinder-volume[90078]: INFO dbcounter [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Registered counter for database cinder
+Sep 08 14:11:50.715007 np0000000948 cinder-volume[90078]: DEBUG oslo_db.sqlalchemy.engines [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] MySQL server mode set to STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_ENGINE_SUBSTITUTION {{(pid=90078) _check_effective_sql_mode /opt/stack/data/venv/lib/python3.12/site-packages/oslo_db/sqlalchemy/engines.py:397}}
+Sep 08 14:11:50.852272 np0000000948 cinder-volume[90078]: DEBUG dbcounter [-] [90078] Writer thread running {{(pid=90078) stat_writer /opt/stack/data/venv/lib/python3.12/site-packages/dbcounter.py:102}}
+Sep 08 14:11:50.860455 np0000000948 cinder-volume[90078]: INFO cinder.rpc [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Automatically selected cinder-scheduler objects version 1.39 as minimum service version.
+Sep 08 14:11:50.864044 np0000000948 cinder-volume[90078]: INFO cinder.rpc [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Automatically selected cinder-scheduler RPC version 3.12 as minimum service version.
+Sep 08 14:11:50.872263 np0000000948 cinder-volume[90078]: DEBUG oslo_db.sqlalchemy.engines [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] MySQL server mode set to STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_ENGINE_SUBSTITUTION {{(pid=90078) _check_effective_sql_mode /opt/stack/data/venv/lib/python3.12/site-packages/oslo_db/sqlalchemy/engines.py:397}}
+Sep 08 14:11:51.037680 np0000000948 cinder-volume[90078]: INFO cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Determined volume DB was empty at startup.
+Sep 08 14:11:51.038248 np0000000948 cinder-volume[90078]: DEBUG cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Cinder Volume DB check: vol_db_empty=True {{(pid=90078) __init__ /opt/stack/cinder/cinder/volume/manager.py:288}}
+Sep 08 14:11:51.045811 np0000000948 cinder-volume[90078]: INFO cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Service not found for updating active_backend_id, assuming default for driver init.
+Sep 08 14:11:51.046178 np0000000948 cinder-volume[90078]: WARNING cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Suppressing requests library SSL Warnings
+Sep 08 14:11:51.046578 np0000000948 cinder-volume[90078]: WARNING stevedore.named [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Could not load cinder.keymgr.conf_key_mgr.ConfKeyManager
+Sep 08 14:11:51.046966 np0000000948 cinder-volume[90078]: WARNING castellan.key_manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Deprecation Warning : cinder.keymgr.conf_key_mgr.ConfKeyManager is not a stevedore based driver, trying to load it as a class: stevedore.exception.NoMatches: No 'castellan.drivers' driver found, looking for 'cinder.keymgr.conf_key_mgr.ConfKeyManager'
+Sep 08 14:11:51.048227 np0000000948 cinder-volume[90078]: WARNING cinder.keymgr.conf_key_mgr [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] This key manager is insecure and is not recommended for production deployments: stevedore.exception.NoMatches: No 'castellan.drivers' driver found, looking for 'cinder.keymgr.conf_key_mgr.ConfKeyManager'
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Volume service np0000000948@powerflex1 failed to start.: ImportError: Class PowerFlexNVMeDriver cannot be found (['Traceback (most recent call last):\n', '  File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class\n    return getattr(sys.modules[mod_str], class_str)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', "AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?\n"])
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume Traceback (most recent call last):
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     return getattr(sys.modules[mod_str], class_str)
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume During handling of the above exception, another exception occurred:
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume Traceback (most recent call last):
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/cmd/volume.py", line 106, in _launch_service
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     server = service.Service.create(host=host,
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/service.py", line 421, in create
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     service_obj = cls(host, binary, topic, manager,
+Sep 08 14:11:51.166895 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/service.py", line 159, in __init__
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     self.manager = manager_class(host=self.host,
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/volume/manager.py", line 311, in __init__
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     self.driver = importutils.import_object(
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 44, in import_object
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     return import_class(import_str)(*args, **kwargs)
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume            ^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 34, in import_class
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     raise ImportError('Class %s cannot be found (%s)' %
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume ImportError: Class PowerFlexNVMeDriver cannot be found (['Traceback (most recent call last):\n', '  File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class\n    return getattr(sys.modules[mod_str], class_str)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', "AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?\n"])
+Sep 08 14:11:51.167616 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.178558 np0000000948 cinder-volume[90078]: DEBUG oslo_db.sqlalchemy.engines [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] MySQL server mode set to STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_ENGINE_SUBSTITUTION {{(pid=90078) _check_effective_sql_mode /opt/stack/data/venv/lib/python3.12/site-packages/oslo_db/sqlalchemy/engines.py:397}}
+Sep 08 14:11:51.188941 np0000000948 cinder-volume[90078]: INFO cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Determined volume DB was empty at startup.
+Sep 08 14:11:51.188941 np0000000948 cinder-volume[90078]: DEBUG cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Cinder Volume DB check: vol_db_empty=True {{(pid=90078) __init__ /opt/stack/cinder/cinder/volume/manager.py:288}}
+Sep 08 14:11:51.204919 np0000000948 cinder-volume[90078]: INFO cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Service not found for updating active_backend_id, assuming default for driver init.
+Sep 08 14:11:51.204919 np0000000948 cinder-volume[90078]: WARNING cinder.volume.manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Suppressing requests library SSL Warnings
+Sep 08 14:11:51.206002 np0000000948 cinder-volume[90078]: WARNING stevedore.named [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Could not load cinder.keymgr.conf_key_mgr.ConfKeyManager
+Sep 08 14:11:51.206647 np0000000948 cinder-volume[90078]: WARNING castellan.key_manager [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Deprecation Warning : cinder.keymgr.conf_key_mgr.ConfKeyManager is not a stevedore based driver, trying to load it as a class: stevedore.exception.NoMatches: No 'castellan.drivers' driver found, looking for 'cinder.keymgr.conf_key_mgr.ConfKeyManager'
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] Volume service np0000000948@powerflex2 failed to start.: ImportError: Class PowerFlexNVMeDriver cannot be found (['Traceback (most recent call last):\n', '  File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class\n    return getattr(sys.modules[mod_str], class_str)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', "AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?\n"])
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume Traceback (most recent call last):
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     return getattr(sys.modules[mod_str], class_str)
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume During handling of the above exception, another exception occurred:
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume Traceback (most recent call last):
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/cmd/volume.py", line 106, in _launch_service
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     server = service.Service.create(host=host,
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/service.py", line 421, in create
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     service_obj = cls(host, binary, topic, manager,
+Sep 08 14:11:51.215054 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/service.py", line 159, in __init__
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     self.manager = manager_class(host=self.host,
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/cinder/cinder/volume/manager.py", line 311, in __init__
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     self.driver = importutils.import_object(
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 44, in import_object
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     return import_class(import_str)(*args, **kwargs)
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume            ^^^^^^^^^^^^^^^^^^^^^^^^
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume   File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 34, in import_class
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume     raise ImportError('Class %s cannot be found (%s)' %
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume ImportError: Class PowerFlexNVMeDriver cannot be found (['Traceback (most recent call last):\n', '  File "/opt/stack/data/venv/lib/python3.12/site-packages/oslo_utils/importutils.py", line 32, in import_class\n    return getattr(sys.modules[mod_str], class_str)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', "AttributeError: module 'cinder.volume.drivers.dell_emc.powerflex.driver' has no attribute 'PowerFlexNVMeDriver'. Did you mean: 'PowerFlexDriver'?\n"])
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume 
+Sep 08 14:11:51.215699 np0000000948 cinder-volume[90078]: ERROR cinder.cmd.volume [None req-fd8cf74a-99bc-4c60-b71f-22d5b5c1d303 None None] No volume service(s) started successfully, terminating.
+Sep 08 14:11:51.979262 np0000000948 systemd[1]: devstack@c-vol.service: Main process exited, code=exited, status=1/FAILURE
+Sep 08 14:11:51.979285 np0000000948 systemd[1]: devstack@c-vol.service: Failed with result 'exit-code'.
+Sep 08 14:11:51.979706 np0000000948 systemd[1]: devstack@c-vol.service: Consumed 3.533s CPU time.
