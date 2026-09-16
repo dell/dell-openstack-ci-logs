@@ -1,0 +1,128 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh edit instance-0000001a
+or other application using the libvirt API.
+-->
+
+<domain type='qemu'>
+  <name>instance-0000001a</name>
+  <uuid>c7d26a4d-1918-4879-8aa1-5e775ec39490</uuid>
+  <metadata>
+    <nova:instance xmlns:nova="http://openstack.org/xmlns/libvirt/nova/1.1">
+      <nova:package version="34.1.0"/>
+      <nova:name>tempest-AttachVolumeNegativeTest-server-1990373704</nova:name>
+      <nova:creationTime>2026-09-16 17:51:11</nova:creationTime>
+      <nova:flavor name="m1.nano" id="42">
+        <nova:memory>192</nova:memory>
+        <nova:disk>1</nova:disk>
+        <nova:swap>0</nova:swap>
+        <nova:ephemeral>0</nova:ephemeral>
+        <nova:vcpus>1</nova:vcpus>
+        <nova:extraSpecs>
+          <nova:extraSpec name="hw_rng:allowed">True</nova:extraSpec>
+        </nova:extraSpecs>
+      </nova:flavor>
+      <nova:image uuid="82883a60-ca02-423e-a754-c318b67394b8">
+        <nova:containerFormat>bare</nova:containerFormat>
+        <nova:diskFormat>qcow2</nova:diskFormat>
+        <nova:minDisk>1</nova:minDisk>
+        <nova:minRam>0</nova:minRam>
+        <nova:properties>
+          <nova:property name="hw_rng_model">virtio</nova:property>
+        </nova:properties>
+      </nova:image>
+      <nova:owner>
+        <nova:user uuid="4048ed4c28d24748a4f12da40f3cbfe2">tempest-AttachVolumeNegativeTest-2069981545-project-member</nova:user>
+        <nova:project uuid="eeb4ebea5be7447c9c537c7d052e6000">tempest-AttachVolumeNegativeTest-2069981545</nova:project>
+      </nova:owner>
+      <nova:root type="image" uuid="82883a60-ca02-423e-a754-c318b67394b8"/>
+      <nova:ports>
+        <nova:port uuid="5b06176a-a452-4e8a-a116-8ca351c451dd">
+          <nova:ip type="fixed" address="10.1.0.7" ipVersion="4"/>
+        </nova:port>
+      </nova:ports>
+    </nova:instance>
+  </metadata>
+  <memory unit='KiB'>196608</memory>
+  <currentMemory unit='KiB'>196608</currentMemory>
+  <vcpu placement='static'>1</vcpu>
+  <iothreads>1</iothreads>
+  <sysinfo type='smbios'>
+    <system>
+      <entry name='manufacturer'>OpenStack Foundation</entry>
+      <entry name='product'>OpenStack Nova</entry>
+      <entry name='version'>34.1.0</entry>
+      <entry name='serial'>c7d26a4d-1918-4879-8aa1-5e775ec39490</entry>
+      <entry name='uuid'>c7d26a4d-1918-4879-8aa1-5e775ec39490</entry>
+      <entry name='family'>Virtual Machine</entry>
+    </system>
+  </sysinfo>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-noble'>hvm</type>
+    <boot dev='hd'/>
+    <smbios mode='sysinfo'/>
+  </os>
+  <features>
+    <acpi/>
+    <vmcoreinfo state='on'/>
+    <tcg>
+      <tb-cache unit='KiB'>131072</tb-cache>
+    </tcg>
+  </features>
+  <cpu mode='custom' match='exact' check='none'>
+    <model fallback='allow'>Nehalem</model>
+    <topology sockets='1' dies='1' cores='1' threads='1'/>
+  </cpu>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' cache='none'/>
+      <source file='/opt/stack/data/nova/instances/c7d26a4d-1918-4879-8aa1-5e775ec39490/disk'/>
+      <target dev='vda' bus='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/>
+    </disk>
+    <controller type='usb' index='0' model='none'/>
+    <controller type='pci' index='0' model='pci-root'/>
+    <interface type='ethernet'>
+      <mac address='fa:16:3e:92:b6:2c'/>
+      <target dev='tap5b06176a-a4' managed='no'/>
+      <model type='virtio'/>
+      <driver name='qemu'/>
+      <mtu size='1442'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
+    <serial type='pty'>
+      <log file='/opt/stack/data/nova/instances/c7d26a4d-1918-4879-8aa1-5e775ec39490/console.log' append='off'/>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <log file='/opt/stack/data/nova/instances/c7d26a4d-1918-4879-8aa1-5e775ec39490/console.log' append='off'/>
+      <target type='serial' port='0'/>
+    </console>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'>
+      <listen type='address' address='0.0.0.0'/>
+    </graphics>
+    <audio id='1' type='none'/>
+    <video>
+      <model type='virtio' heads='1' primary='yes'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    </video>
+    <memballoon model='virtio' autodeflate='on' freePageReporting='on'>
+      <stats period='10'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+    </memballoon>
+    <rng model='virtio'>
+      <backend model='random'>/dev/urandom</backend>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
+    </rng>
+  </devices>
+</domain>
