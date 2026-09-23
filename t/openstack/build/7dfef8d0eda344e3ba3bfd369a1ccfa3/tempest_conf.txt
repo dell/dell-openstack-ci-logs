@@ -1,0 +1,124 @@
+
+[image]
+images_manifest_file = /opt/stack/os-test-images/images/manifest.yaml
+
+[image-feature-enabled]
+os_glance_reserved = True
+import_image = False
+image_format_enforcement = True
+
+[network]
+default_network = 10.1.0.0/20
+public_router_id = 
+public_network_id = 3b6ea346-f7d9-4296-adb5-f2d59f1077b5
+project_networks_reachable = false
+project_network_cidr = 10.1.0.0/20
+
+[DEFAULT]
+debug = True
+log_file = tempest.log
+use_stderr = False
+use_syslog = False
+
+[oslo_concurrency]
+lock_path = /opt/stack/data/tempest
+
+[compute]
+max_microversion = latest
+flavor_ref_alt = 84
+flavor_ref = 42
+image_ref_alt = efc37f00-c8ba-46e8-8799-cee77c5a99e6
+image_ref = efc37f00-c8ba-46e8-8799-cee77c5a99e6
+build_timeout = 196
+
+[volume]
+volume_type_multiattach = multiattach
+storage_protocol = nfs
+vendor_name = Dell
+backend_names = powerstore1,powerstore2
+max_microversion = latest
+backup_driver = swift
+build_timeout = 196
+
+[identity]
+ca_certificates_file = /opt/stack/data/ca-bundle.pem
+auth_version = v3
+user_unique_last_password_count = 2
+user_lockout_duration = 10
+user_lockout_failure_attempts = 2
+uri_v3 = https://10.19.119.98/identity/v3
+
+[auth]
+admin_domain_name = Default
+admin_project_name = admin
+admin_password = secretadmin
+admin_username = admin
+
+[identity-feature-enabled]
+access_rules = True
+application_credentials = True
+project_tags = True
+security_compliance = True
+
+[validation]
+network_for_ssh = private
+image_alt_ssh_user = cirros
+image_ssh_user = cirros
+ssh_timeout = 196
+ip_version_for_ssh = 4
+run_validation = True
+connect_method = floating
+
+[compute-feature-enabled]
+swap_volume = True
+stable_rescue = True
+shelve_migrate = True
+nova_policy_roles = admin,manager,member,reader,service
+vnc_console = True
+volume_multiattach = True
+scheduler_enabled_filters = ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter,SameHostFilter,DifferentHostFilter
+hostname_fqdn_sanitization = True
+attach_encrypted_volume = True
+live_migrate_back_and_forth = False
+block_migration_for_live_migration = False
+change_password = False
+live_migration = False
+resize = True
+personality = False
+
+[network-feature-enabled]
+port_security = True
+ipv6_subnet_attributes = True
+ipv6 = True
+
+[enforce_scope]
+cinder = true
+glance = true
+placement = true
+nova = true
+keystone = true
+neutron = True
+
+[scenario]
+dhcp_client = dhcpcd
+img_file = /opt/stack/devstack/files/cirros-0.6.3-x86_64-disk.img
+
+[volume-feature-enabled]
+multi_backend = True
+extend_attached_encrypted_volume = False
+volume_revert = False
+extend_attached_volume = False
+manage_volume = False
+manage_snapshot = False
+
+[placement]
+max_microversion = latest
+
+[service_available]
+horizon = False
+swift = True
+cinder = True
+neutron = True
+nova = True
+glance = True
+key = True
