@@ -1,0 +1,709 @@
+all:
+  children:
+    tempest:
+      hosts:
+        controller: null
+    zuul_unreachable:
+      hosts: {}
+  hosts:
+    controller:
+      ansible_connection: ssh
+      ansible_host: <hidden>
+      ansible_port: 22
+      ansible_python_interpreter: auto
+      ansible_user: zuul
+      configure_swap_size: 8192
+      devstack_local_conf:
+        post-config:
+          $CINDER_CONF:
+            DEFAULT:
+              enabled_backends: powerstore1, powerstore2
+              max_over_subscription_ratio: 20
+              osapi_volume_workers: 8
+            backend_defaults:
+              powerstore_nvme: true
+              san_ip: <hidden>
+              san_login: <hidden>
+              san_password: <hidden>
+              suppress_requests_ssl_warnings: true
+              use_multipath_for_image_xfer: true
+              volume_driver: cinder.volume.drivers.dell_emc.powerstore.driver.PowerStoreDriver
+            cache:
+              memcache_pool_maxsize: 80
+            oslo_policy:
+              enforce_new_defaults: false
+            powerstore1:
+              volume_backend_name: powerstore1
+            powerstore2:
+              volume_backend_name: powerstore2
+          $NOVA_CONF:
+            libvirt:
+              volume_use_multipath: true
+        test-config:
+          $TEMPEST_CONFIG:
+            compute:
+              build_timeout: 300
+              min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+                | length }}'
+            dell_driver:
+              driver: powerstore
+            validation:
+              run_validation: true
+            volume:
+              build_timeout: 300
+            volume-feature-enabled:
+              backup: true
+              consistency_group: true
+              extend_attached_encrypted_volume: true
+              extend_attached_volume: true
+              manage_snapshot: false
+              manage_volume: false
+              multi_backend: true
+              volume_revert: true
+      devstack_localrc:
+        ADMIN_PASSWORD: secretadmin
+        CINDER_ENABLED_BACKENDS: powerstore1,powerstore2
+        CINDER_ENFORCE_NEW_DEFAULTS: false
+        DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        DATABASE_PASSWORD: secretdatabase
+        DATABASE_TYPE: mysql
+        DEBUG_LIBVIRT_COREDUMPS: true
+        ENABLE_CHASSIS_AS_GW: true
+        ENABLE_SYSCTL_MEM_TUNING: true
+        ENABLE_SYSCTL_NET_TUNING: true
+        ENABLE_VOLUME_MULTIATTACH: true
+        ENABLE_ZSWAP: true
+        ENFORCE_NEW_DEFAULTS: false
+        ERROR_ON_CLONE: false
+        FIXED_RANGE: 10.1.0.0/20
+        FLOATING_RANGE: 172.24.5.0/24
+        HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+        IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+        LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+        LOGFILE: /opt/stack/logs/devstacklog.txt
+        LOG_COLOR: false
+        NETWORK_GATEWAY: 10.1.0.1
+        NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+        NOVA_VNC_ENABLED: true
+        NOVNC_FROM_PACKAGE: true
+        OVN_DBS_LOG_LEVEL: dbg
+        OVN_NATIVE_DHCP: true
+        PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+        Q_AGENT: ovn
+        Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+        Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+        RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        RABBIT_PASSWORD: secretrabbit
+        SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        SERVICE_PASSWORD: secretservice
+        SWIFT_HASH: 1234123412341234
+        SWIFT_REPLICAS: 1
+        SWIFT_START_ALL_SERVICES: false
+        TEMPEST_EXTEND_ATTACHED_VOLUME: true
+        TEMPEST_PLUGINS: cinder-tempest-plugin
+        TEMPEST_STORAGE_PROTOCOL: NVMe
+        TEMPEST_VOLUME_DRIVER: EMC
+        TEMPEST_VOLUME_VENDOR: Dell EMC
+        VERBOSE: true
+        VERBOSE_NO_TIMESTAMP: true
+      devstack_services:
+        base: false
+        c-api: true
+        c-bak: true
+        c-sch: true
+        c-vol: true
+        dstat: false
+        etcd3: true
+        file_tracker: true
+        g-api: true
+        horizon: false
+        key: true
+        memory_tracker: true
+        mysql: true
+        n-api: true
+        n-api-meta: true
+        n-cond: true
+        n-cpu: true
+        n-novnc: true
+        n-sch: true
+        openstack-cli-server: true
+        ovn-controller: true
+        ovn-northd: true
+        ovs-vswitchd: true
+        ovsdb-server: true
+        placement-api: true
+        q-ovn-agent: true
+        q-svc: true
+        rabbit: true
+        s-account: true
+        s-container: true
+        s-object: true
+        s-proxy: true
+        tempest: true
+        tls-proxy: true
+      extensions_to_txt:
+        auto: true
+        conf: true
+        localrc: true
+        log: true
+        stackenv: true
+        yaml: true
+        yml: true
+      nodepool:
+        az: nova
+        cloud: ci-cloud
+        external_id: 0b3997dc-e838-4ac5-b5ab-b3b23c535ba2
+        host_id: d05ece891cf88d86783ece846ab9fd2a0585014d55a1b2a74e7a59f5
+        interface_ip: 10.234.188.213
+        label: nodepool-noble-nvme
+        node_properties: {}
+        private_ipv4: 10.19.119.244
+        private_ipv6: null
+        provider: ci-cloud
+        public_ipv4: 10.234.188.213
+        public_ipv6: ''
+        region: null
+        slot: null
+      run_devstack: true
+      run_tempest_tests: true
+      tempest_concurrency: 4
+      tempest_exclude_regex: test_volume_swap_with_multiattach|test_volume_retype_multiattach|test_available_volume_retype_with_migration|test_volume_from_snapshot_retype_with_migration|test_volume_migrate_attached
+      tempest_test_regex: 'volume|^cinder_tempest_plugin
+
+        '
+      test_results_stage_name: test_results
+      tox_envlist: all
+      zuul_copy_output:
+        /etc/ceph: logs
+        /etc/glusterfs/glusterd.vol: logs
+        /etc/libvirt: logs
+        /etc/lvm: logs
+        /etc/resolv.conf: logs
+        /etc/sudoers: logs
+        /etc/sudoers.d: logs
+        /var/log/ceph: logs
+        /var/log/glusterfs: logs
+        /var/log/libvirt: logs
+        /var/log/mysql: logs
+        /var/log/openvswitch: logs
+        /var/log/postgresql: logs
+        /var/log/rabbitmq: logs
+        /var/log/unbound.log: logs
+        '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+        '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+        '{{ devstack_base_dir }}/tempest/tempest.log': logs
+        '{{ devstack_conf_dir }}/.localrc.auto': logs
+        '{{ devstack_conf_dir }}/.stackenv': logs
+        '{{ devstack_conf_dir }}/local.conf': logs
+        '{{ devstack_conf_dir }}/localrc': logs
+        '{{ devstack_full_log}}': logs
+        '{{ devstack_log_dir }}/devstacklog.txt': logs
+        '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+        '{{ devstack_log_dir }}/dstat-csv.log': logs
+        '{{ devstack_log_dir }}/qemu.coredump': logs
+        '{{ devstack_log_dir }}/tcpdump.pcap': logs
+        '{{ devstack_log_dir }}/tempest_result.txt': logs
+        '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+        '{{ stage_dir }}/apache': logs
+        '{{ stage_dir }}/apache_config': logs
+        '{{ stage_dir }}/audit.log': logs
+        '{{ stage_dir }}/core': logs
+        '{{ stage_dir }}/deprecations.log': logs
+        '{{ stage_dir }}/df.txt': logs
+        '{{ stage_dir }}/dpkg-l.txt': logs
+        '{{ stage_dir }}/etc': logs
+        '{{ stage_dir }}/iptables.txt': logs
+        '{{ stage_dir }}/listen53.txt': logs
+        '{{ stage_dir }}/performance.json': logs
+        '{{ stage_dir }}/pip2-freeze.txt': logs
+        '{{ stage_dir }}/pip3-freeze.txt': logs
+        '{{ stage_dir }}/rpm-qa.txt': logs
+        '{{ stage_dir }}/services.txt': logs
+        '{{ stage_dir }}/stackviz': logs
+        '{{ stage_dir }}/verify_tempest_conf.log': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
+  vars:
+    configure_swap_size: 8192
+    devstack_local_conf:
+      post-config:
+        $CINDER_CONF:
+          DEFAULT:
+            enabled_backends: powerstore1, powerstore2
+            max_over_subscription_ratio: 20
+            osapi_volume_workers: 8
+          backend_defaults:
+            powerstore_nvme: true
+            san_ip: <hidden>
+            san_login: <hidden>
+            san_password: <hidden>
+            suppress_requests_ssl_warnings: true
+            use_multipath_for_image_xfer: true
+            volume_driver: cinder.volume.drivers.dell_emc.powerstore.driver.PowerStoreDriver
+          cache:
+            memcache_pool_maxsize: 80
+          oslo_policy:
+            enforce_new_defaults: false
+          powerstore1:
+            volume_backend_name: powerstore1
+          powerstore2:
+            volume_backend_name: powerstore2
+        $NOVA_CONF:
+          libvirt:
+            volume_use_multipath: true
+      test-config:
+        $TEMPEST_CONFIG:
+          compute:
+            build_timeout: 300
+            min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+              | length }}'
+          dell_driver:
+            driver: powerstore
+          validation:
+            run_validation: true
+          volume:
+            build_timeout: 300
+          volume-feature-enabled:
+            backup: true
+            consistency_group: true
+            extend_attached_encrypted_volume: true
+            extend_attached_volume: true
+            manage_snapshot: false
+            manage_volume: false
+            multi_backend: true
+            volume_revert: true
+    devstack_localrc:
+      ADMIN_PASSWORD: secretadmin
+      CINDER_ENABLED_BACKENDS: powerstore1,powerstore2
+      CINDER_ENFORCE_NEW_DEFAULTS: false
+      DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+        }}'
+      DATABASE_PASSWORD: secretdatabase
+      DATABASE_TYPE: mysql
+      DEBUG_LIBVIRT_COREDUMPS: true
+      ENABLE_CHASSIS_AS_GW: true
+      ENABLE_SYSCTL_MEM_TUNING: true
+      ENABLE_SYSCTL_NET_TUNING: true
+      ENABLE_VOLUME_MULTIATTACH: true
+      ENABLE_ZSWAP: true
+      ENFORCE_NEW_DEFAULTS: false
+      ERROR_ON_CLONE: false
+      FIXED_RANGE: 10.1.0.0/20
+      FLOATING_RANGE: 172.24.5.0/24
+      HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+      LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+      LOGFILE: /opt/stack/logs/devstacklog.txt
+      LOG_COLOR: false
+      NETWORK_GATEWAY: 10.1.0.1
+      NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+      NOVA_VNC_ENABLED: true
+      NOVNC_FROM_PACKAGE: true
+      OVN_DBS_LOG_LEVEL: dbg
+      OVN_NATIVE_DHCP: true
+      PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+      Q_AGENT: ovn
+      Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+      Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+      RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      RABBIT_PASSWORD: secretrabbit
+      SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      SERVICE_PASSWORD: secretservice
+      SWIFT_HASH: 1234123412341234
+      SWIFT_REPLICAS: 1
+      SWIFT_START_ALL_SERVICES: false
+      TEMPEST_EXTEND_ATTACHED_VOLUME: true
+      TEMPEST_PLUGINS: cinder-tempest-plugin
+      TEMPEST_STORAGE_PROTOCOL: NVMe
+      TEMPEST_VOLUME_DRIVER: EMC
+      TEMPEST_VOLUME_VENDOR: Dell EMC
+      VERBOSE: true
+      VERBOSE_NO_TIMESTAMP: true
+    devstack_services:
+      base: false
+      c-api: true
+      c-bak: true
+      c-sch: true
+      c-vol: true
+      dstat: false
+      etcd3: true
+      file_tracker: true
+      g-api: true
+      horizon: false
+      key: true
+      memory_tracker: true
+      mysql: true
+      n-api: true
+      n-api-meta: true
+      n-cond: true
+      n-cpu: true
+      n-novnc: true
+      n-sch: true
+      openstack-cli-server: true
+      ovn-controller: true
+      ovn-northd: true
+      ovs-vswitchd: true
+      ovsdb-server: true
+      placement-api: true
+      q-ovn-agent: true
+      q-svc: true
+      rabbit: true
+      s-account: true
+      s-container: true
+      s-object: true
+      s-proxy: true
+      tempest: true
+      tls-proxy: true
+    extensions_to_txt:
+      auto: true
+      conf: true
+      localrc: true
+      log: true
+      stackenv: true
+      yaml: true
+      yml: true
+    run_devstack: true
+    run_tempest_tests: true
+    tempest_concurrency: 4
+    tempest_exclude_regex: test_volume_swap_with_multiattach|test_volume_retype_multiattach|test_available_volume_retype_with_migration|test_volume_from_snapshot_retype_with_migration|test_volume_migrate_attached
+    tempest_test_regex: 'volume|^cinder_tempest_plugin
+
+      '
+    test_results_stage_name: test_results
+    tox_envlist: all
+    zuul:
+      _inheritance_path:
+      - '<Job dell-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#1>'
+      - '<Job devstack-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#23>'
+      - '<Job devstack-minimal branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#128>'
+      - '<Job devstack branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#154>'
+      - '<Job devstack-tempest branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#290>'
+      - '<Job devstack-cinder-plugin-tempest-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#333>'
+      - '<Job powerstore-cinder-base branches: None source: zuul-config/zuul.d/jobs/powerstore.yaml@master#1>'
+      - '<Job powerstore-nvme-tcp-cinder-tempest branches: None source: zuul-config/zuul.d/jobs/powerstore.yaml@master#101>'
+      - '<Job powerstore-nvme-tcp-cinder-tempest branches: {MatchAny:{BranchMatcher:^(master|stable/.*)$}}
+        source: zuul-config/zuul.d/projects.yaml@master#22>'
+      ansible_version: '9'
+      attempts: 1
+      branch: master
+      build: d8081317bd2547efb97c655c27173b85
+      build_refs:
+      - branch: master
+        change: '987177'
+        change_message: "Dell PowerStore: Add manage/unmanage snapshot support\n\nAdded
+          support for managing (importing) and unmanaging existing\nPowerStore snapshots
+          in Cinder. This includes:\n- manage_existing_snapshot and manage_existing_snapshot_get_size\n
+          \ in the adapter and driver\n- get_snapshot_details_by_id and get_snapshot_details_by_name\n
+          \ client methods\n- Unit tests for all new functionality\n- Driver documentation
+          and release notes\n\nImplements blueprint dell-powerstore-manage-unmanage-volume-snapshot\nDepends-On:
+          Ia2b136acc8229d27e16d4363be16de4041bb7dd8\nChange-Id: I2df84091848978250741ed29f582222738b45f97\nSigned-off-by:
+          Abhishek Gupta <Abhishek_Gupta14@Dell.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/987177
+        commit_id: 26e4cc1fb0f91b4b0e00d15567fb2b6a33a8dfee
+        patchset: '5'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+        topic: bp/dell-powerstore-snapshot
+      buildset: aa49a7a862d242469a0ec9982c083eca
+      buildset_refs:
+      - branch: master
+        change: '987177'
+        change_message: "Dell PowerStore: Add manage/unmanage snapshot support\n\nAdded
+          support for managing (importing) and unmanaging existing\nPowerStore snapshots
+          in Cinder. This includes:\n- manage_existing_snapshot and manage_existing_snapshot_get_size\n
+          \ in the adapter and driver\n- get_snapshot_details_by_id and get_snapshot_details_by_name\n
+          \ client methods\n- Unit tests for all new functionality\n- Driver documentation
+          and release notes\n\nImplements blueprint dell-powerstore-manage-unmanage-volume-snapshot\nDepends-On:
+          Ia2b136acc8229d27e16d4363be16de4041bb7dd8\nChange-Id: I2df84091848978250741ed29f582222738b45f97\nSigned-off-by:
+          Abhishek Gupta <Abhishek_Gupta14@Dell.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/987177
+        commit_id: 26e4cc1fb0f91b4b0e00d15567fb2b6a33a8dfee
+        patchset: '5'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+        topic: bp/dell-powerstore-snapshot
+      change: '987177'
+      change_message: "Dell PowerStore: Add manage/unmanage snapshot support\n\nAdded
+        support for managing (importing) and unmanaging existing\nPowerStore snapshots
+        in Cinder. This includes:\n- manage_existing_snapshot and manage_existing_snapshot_get_size\n
+        \ in the adapter and driver\n- get_snapshot_details_by_id and get_snapshot_details_by_name\n
+        \ client methods\n- Unit tests for all new functionality\n- Driver documentation
+        and release notes\n\nImplements blueprint dell-powerstore-manage-unmanage-volume-snapshot\nDepends-On:
+        Ia2b136acc8229d27e16d4363be16de4041bb7dd8\nChange-Id: I2df84091848978250741ed29f582222738b45f97\nSigned-off-by:
+        Abhishek Gupta <Abhishek_Gupta14@Dell.com>\n"
+      change_url: https://review.opendev.org/c/openstack/cinder/+/987177
+      child_jobs: []
+      commit_id: 26e4cc1fb0f91b4b0e00d15567fb2b6a33a8dfee
+      event_id: 01e1d907bb90475e873159153b64c90a
+      executor:
+        hostname: b82b0a36b7a2
+        inventory_file: /var/lib/zuul/builds/d8081317bd2547efb97c655c27173b85/ansible/inventory.yaml
+        log_root: /var/lib/zuul/builds/d8081317bd2547efb97c655c27173b85/work/logs
+        result_data_file: /var/lib/zuul/builds/d8081317bd2547efb97c655c27173b85/work/results.json
+        src_root: /var/lib/zuul/builds/d8081317bd2547efb97c655c27173b85/work/src
+        work_root: /var/lib/zuul/builds/d8081317bd2547efb97c655c27173b85/work
+      include_vars: []
+      items:
+      - branch: master
+        change: '987177'
+        change_message: "Dell PowerStore: Add manage/unmanage snapshot support\n\nAdded
+          support for managing (importing) and unmanaging existing\nPowerStore snapshots
+          in Cinder. This includes:\n- manage_existing_snapshot and manage_existing_snapshot_get_size\n
+          \ in the adapter and driver\n- get_snapshot_details_by_id and get_snapshot_details_by_name\n
+          \ client methods\n- Unit tests for all new functionality\n- Driver documentation
+          and release notes\n\nImplements blueprint dell-powerstore-manage-unmanage-volume-snapshot\nDepends-On:
+          Ia2b136acc8229d27e16d4363be16de4041bb7dd8\nChange-Id: I2df84091848978250741ed29f582222738b45f97\nSigned-off-by:
+          Abhishek Gupta <Abhishek_Gupta14@Dell.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/987177
+        commit_id: 26e4cc1fb0f91b4b0e00d15567fb2b6a33a8dfee
+        patchset: '5'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+          src_dir: src/opendev.org/openstack/cinder
+        topic: bp/dell-powerstore-snapshot
+      job: powerstore-nvme-tcp-cinder-tempest
+      jobtags: []
+      max_attempts: 3
+      message: RGVsbCBQb3dlclN0b3JlOiBBZGQgbWFuYWdlL3VubWFuYWdlIHNuYXBzaG90IHN1cHBvcnQKCkFkZGVkIHN1cHBvcnQgZm9yIG1hbmFnaW5nIChpbXBvcnRpbmcpIGFuZCB1bm1hbmFnaW5nIGV4aXN0aW5nClBvd2VyU3RvcmUgc25hcHNob3RzIGluIENpbmRlci4gVGhpcyBpbmNsdWRlczoKLSBtYW5hZ2VfZXhpc3Rpbmdfc25hcHNob3QgYW5kIG1hbmFnZV9leGlzdGluZ19zbmFwc2hvdF9nZXRfc2l6ZQogIGluIHRoZSBhZGFwdGVyIGFuZCBkcml2ZXIKLSBnZXRfc25hcHNob3RfZGV0YWlsc19ieV9pZCBhbmQgZ2V0X3NuYXBzaG90X2RldGFpbHNfYnlfbmFtZQogIGNsaWVudCBtZXRob2RzCi0gVW5pdCB0ZXN0cyBmb3IgYWxsIG5ldyBmdW5jdGlvbmFsaXR5Ci0gRHJpdmVyIGRvY3VtZW50YXRpb24gYW5kIHJlbGVhc2Ugbm90ZXMKCkltcGxlbWVudHMgYmx1ZXByaW50IGRlbGwtcG93ZXJzdG9yZS1tYW5hZ2UtdW5tYW5hZ2Utdm9sdW1lLXNuYXBzaG90CkRlcGVuZHMtT246IElhMmIxMzZhY2M4MjI5ZDI3ZTE2ZDQzNjNiZTE2ZGU0MDQxYmI3ZGQ4CkNoYW5nZS1JZDogSTJkZjg0MDkxODQ4OTc4MjUwNzQxZWQyOWY1ODIyMjI3MzhiNDVmOTcKU2lnbmVkLW9mZi1ieTogQWJoaXNoZWsgR3VwdGEgPEFiaGlzaGVrX0d1cHRhMTRARGVsbC5jb20+Cg==
+      patchset: '5'
+      pipeline: dell-emc-powerstore-ci-check
+      playbook_context:
+        playbook_projects:
+          trusted/project_0/gerrit/zuul-config:
+            canonical_name: gerrit/zuul-config
+            checkout: master
+            commit: aaeaf6db45d341ae915d0334245e673c638b2ec2
+          trusted/project_1/opendev.org/zuul/zuul-jobs:
+            canonical_name: opendev.org/zuul/zuul-jobs
+            checkout: master
+            commit: be52461cd48abccbf95b13a58b2551ac673d8ad7
+          trusted/project_2/opendev.org/openstack/openstack-zuul-jobs:
+            canonical_name: opendev.org/openstack/openstack-zuul-jobs
+            checkout: master
+            commit: 913885b578b905e66c7f0b0ddfd8c996e7859cef
+        playbooks:
+        - path: trusted/project_0/gerrit/zuul-config/playbooks/devstack-tempest.yaml
+          roles:
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_0/openstack-zuul-jobs
+            link_target: trusted/project_2/opendev.org/openstack/openstack-zuul-jobs
+            role_path: ansible/playbook_0/role_0/openstack-zuul-jobs/roles
+          - checkout: master
+            checkout_description: playbook branch
+            link_name: ansible/playbook_0/role_1/zuul-config
+            link_target: trusted/project_0/gerrit/zuul-config
+            role_path: ansible/playbook_0/role_1/zuul-config/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_2/zuul-jobs
+            link_target: trusted/project_1/opendev.org/zuul/zuul-jobs
+            role_path: ansible/playbook_0/role_2/zuul-jobs/roles
+      post_review: false
+      project:
+        canonical_hostname: opendev.org
+        canonical_name: opendev.org/openstack/cinder
+        name: openstack/cinder
+        short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+      projects:
+        opendev.org/openstack/cinder:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          checkout: master
+          checkout_description: zuul branch
+          commit: 26e4cc1fb0f91b4b0e00d15567fb2b6a33a8dfee
+          name: openstack/cinder
+          required: true
+          short_name: cinder
+          src_dir: src/opendev.org/openstack/cinder
+        opendev.org/openstack/cinder-tempest-plugin:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder-tempest-plugin
+          checkout: master
+          checkout_description: zuul branch
+          commit: d4894b4df9916d5f7b1968a4e3093f40af4eed44
+          name: openstack/cinder-tempest-plugin
+          required: true
+          short_name: cinder-tempest-plugin
+          src_dir: src/opendev.org/openstack/cinder-tempest-plugin
+        opendev.org/openstack/devstack:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/devstack
+          checkout: master
+          checkout_description: zuul branch
+          commit: cec77a55b3084e40346fba8d4b87e913cd09a454
+          name: openstack/devstack
+          required: true
+          short_name: devstack
+          src_dir: src/opendev.org/openstack/devstack
+        opendev.org/openstack/glance:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/glance
+          checkout: master
+          checkout_description: zuul branch
+          commit: 6ae99824ef121a17c5eaf94fec11a9e6557cd0bf
+          name: openstack/glance
+          required: true
+          short_name: glance
+          src_dir: src/opendev.org/openstack/glance
+        opendev.org/openstack/keystone:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/keystone
+          checkout: master
+          checkout_description: zuul branch
+          commit: e226ae14f5da354af9fed86296bb0e110ab020ec
+          name: openstack/keystone
+          required: true
+          short_name: keystone
+          src_dir: src/opendev.org/openstack/keystone
+        opendev.org/openstack/neutron:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/neutron
+          checkout: master
+          checkout_description: zuul branch
+          commit: 7a3841bb4f5a47c3694767c3440f6f417a3ae15b
+          name: openstack/neutron
+          required: true
+          short_name: neutron
+          src_dir: src/opendev.org/openstack/neutron
+        opendev.org/openstack/nova:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/nova
+          checkout: master
+          checkout_description: zuul branch
+          commit: 3fd760b416ecc09230b540a90d4265995d96264e
+          name: openstack/nova
+          required: true
+          short_name: nova
+          src_dir: src/opendev.org/openstack/nova
+        opendev.org/openstack/os-brick:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/os-brick
+          checkout: master
+          checkout_description: zuul branch
+          commit: b6c49eea9e3b5b5e374682b1f83c130bfc2797e2
+          name: openstack/os-brick
+          required: true
+          short_name: os-brick
+          src_dir: src/opendev.org/openstack/os-brick
+        opendev.org/openstack/os-test-images:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/os-test-images
+          checkout: master
+          checkout_description: zuul branch
+          commit: 840ecd26fa6ba394512d9ddca91eb93dc4dd176a
+          name: openstack/os-test-images
+          required: true
+          short_name: os-test-images
+          src_dir: src/opendev.org/openstack/os-test-images
+        opendev.org/openstack/placement:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/placement
+          checkout: master
+          checkout_description: zuul branch
+          commit: 7e72a5cdbedf03214c31d2d188951a349e834c94
+          name: openstack/placement
+          required: true
+          short_name: placement
+          src_dir: src/opendev.org/openstack/placement
+        opendev.org/openstack/requirements:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/requirements
+          checkout: master
+          checkout_description: zuul branch
+          commit: bcfa839c56bca4ba10da9671eb980ce7694fb907
+          name: openstack/requirements
+          required: true
+          short_name: requirements
+          src_dir: src/opendev.org/openstack/requirements
+        opendev.org/openstack/swift:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/swift
+          checkout: master
+          checkout_description: zuul branch
+          commit: 3129f9c186328307cf26c2d2923428a95a2f1c73
+          name: openstack/swift
+          required: true
+          short_name: swift
+          src_dir: src/opendev.org/openstack/swift
+        opendev.org/openstack/tempest:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/tempest
+          checkout: master
+          checkout_description: zuul branch
+          commit: b098f924927a1a08d32dde6044858957ef7154d5
+          name: openstack/tempest
+          required: true
+          short_name: tempest
+          src_dir: src/opendev.org/openstack/tempest
+      ref: refs/changes/77/987177/5
+      resources: {}
+      tenant: openstack
+      timeout: null
+      topic: bp/dell-powerstore-snapshot
+      voting: true
+    zuul_copy_output:
+      /etc/ceph: logs
+      /etc/glusterfs/glusterd.vol: logs
+      /etc/libvirt: logs
+      /etc/lvm: logs
+      /etc/resolv.conf: logs
+      /etc/sudoers: logs
+      /etc/sudoers.d: logs
+      /var/log/ceph: logs
+      /var/log/glusterfs: logs
+      /var/log/libvirt: logs
+      /var/log/mysql: logs
+      /var/log/openvswitch: logs
+      /var/log/postgresql: logs
+      /var/log/rabbitmq: logs
+      /var/log/unbound.log: logs
+      '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+      '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+      '{{ devstack_base_dir }}/tempest/tempest.log': logs
+      '{{ devstack_conf_dir }}/.localrc.auto': logs
+      '{{ devstack_conf_dir }}/.stackenv': logs
+      '{{ devstack_conf_dir }}/local.conf': logs
+      '{{ devstack_conf_dir }}/localrc': logs
+      '{{ devstack_full_log}}': logs
+      '{{ devstack_log_dir }}/devstacklog.txt': logs
+      '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+      '{{ devstack_log_dir }}/dstat-csv.log': logs
+      '{{ devstack_log_dir }}/qemu.coredump': logs
+      '{{ devstack_log_dir }}/tcpdump.pcap': logs
+      '{{ devstack_log_dir }}/tempest_result.txt': logs
+      '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+      '{{ stage_dir }}/apache': logs
+      '{{ stage_dir }}/apache_config': logs
+      '{{ stage_dir }}/audit.log': logs
+      '{{ stage_dir }}/core': logs
+      '{{ stage_dir }}/deprecations.log': logs
+      '{{ stage_dir }}/df.txt': logs
+      '{{ stage_dir }}/dpkg-l.txt': logs
+      '{{ stage_dir }}/etc': logs
+      '{{ stage_dir }}/iptables.txt': logs
+      '{{ stage_dir }}/listen53.txt': logs
+      '{{ stage_dir }}/performance.json': logs
+      '{{ stage_dir }}/pip2-freeze.txt': logs
+      '{{ stage_dir }}/pip3-freeze.txt': logs
+      '{{ stage_dir }}/rpm-qa.txt': logs
+      '{{ stage_dir }}/services.txt': logs
+      '{{ stage_dir }}/stackviz': logs
+      '{{ stage_dir }}/verify_tempest_conf.log': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
