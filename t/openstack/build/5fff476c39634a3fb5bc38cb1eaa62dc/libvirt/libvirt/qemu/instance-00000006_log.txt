@@ -1,0 +1,70 @@
+2026-10-26 12:40:36.590+0000: starting up libvirt version: 10.0.0, package: 10.0.0-2ubuntu8.19 (Ubuntu), qemu version: 8.2.2Debian 1:8.2.2+ds-0ubuntu1.18, kernel: 6.8.0-146-generic, hostname: np0000003827
+LC_ALL=C \
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin \
+USER=root \
+HOME=/var/lib/libvirt/qemu/domain-8-instance-00000006 \
+XDG_DATA_HOME=/var/lib/libvirt/qemu/domain-8-instance-00000006/.local/share \
+XDG_CACHE_HOME=/var/lib/libvirt/qemu/domain-8-instance-00000006/.cache \
+XDG_CONFIG_HOME=/var/lib/libvirt/qemu/domain-8-instance-00000006/.config \
+/usr/bin/qemu-system-x86_64 \
+-name guest=instance-00000006,debug-threads=on \
+-S \
+-object '{"qom-type":"secret","id":"masterKey0","format":"raw","file":"/var/lib/libvirt/qemu/domain-8-instance-00000006/master-key.aes"}' \
+-machine pc-i440fx-noble,usb=off,dump-guest-core=off,memory-backend=pc.ram,acpi=on \
+-accel tcg,tb-size=128 \
+-cpu Nehalem \
+-m size=196608k \
+-object '{"qom-type":"memory-backend-ram","id":"pc.ram","size":201326592}' \
+-overcommit mem-lock=off \
+-smp 1,sockets=1,dies=1,cores=1,threads=1 \
+-object '{"qom-type":"iothread","id":"iothread1"}' \
+-uuid 4d9d0d71-5bae-4a42-9f83-24b7d3f2c8ee \
+-smbios 'type=1,manufacturer=OpenStack Foundation,product=OpenStack Nova,version=34.1.0,serial=4d9d0d71-5bae-4a42-9f83-24b7d3f2c8ee,uuid=4d9d0d71-5bae-4a42-9f83-24b7d3f2c8ee,family=Virtual Machine' \
+-no-user-config \
+-nodefaults \
+-chardev socket,id=charmonitor,fd=35,server=on,wait=off \
+-mon chardev=charmonitor,id=monitor,mode=control \
+-rtc base=utc \
+-no-shutdown \
+-boot strict=on \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/instances/4d9d0d71-5bae-4a42-9f83-24b7d3f2c8ee/disk.config","node-name":"libvirt-4-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-4-format","read-only":true,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-4-storage"}' \
+-device '{"driver":"ide-cd","bus":"ide.0","unit":0,"drive":"libvirt-4-format","id":"ide0-0-0","write-cache":"on"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/mnt/322ec8faf2d3c9c8749943d52e93d06e/volume-bb98f92d-abea-4268-9545-cbdec264742a","aio":"native","node-name":"libvirt-3-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-3-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-3-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xa","drive":"libvirt-3-format","id":"ua-bb98f92d-abea-4268-9545-cbdec264742a","bootindex":1,"write-cache":"on","serial":"bb98f92d-abea-4268-9545-cbdec264742a"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/mnt/322ec8faf2d3c9c8749943d52e93d06e/volume-666dfda5-34c7-4863-b26b-9050e18c6103","aio":"native","node-name":"libvirt-2-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-2-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-2-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xb","drive":"libvirt-2-format","id":"ua-666dfda5-34c7-4863-b26b-9050e18c6103","write-cache":"on","serial":"666dfda5-34c7-4863-b26b-9050e18c6103"}' \
+-blockdev '{"driver":"file","filename":"/opt/stack/data/nova/mnt/322ec8faf2d3c9c8749943d52e93d06e/volume-0c496ba5-00a7-4dbb-bb86-1faadaf2e458","aio":"native","node-name":"libvirt-1-storage","auto-read-only":true,"discard":"unmap","cache":{"direct":true,"no-flush":false}}' \
+-blockdev '{"node-name":"libvirt-1-format","read-only":false,"cache":{"direct":true,"no-flush":false},"driver":"raw","file":"libvirt-1-storage"}' \
+-device '{"driver":"virtio-blk-pci","bus":"pci.0","addr":"0xc","drive":"libvirt-1-format","id":"ua-0c496ba5-00a7-4dbb-bb86-1faadaf2e458","write-cache":"on","serial":"0c496ba5-00a7-4dbb-bb86-1faadaf2e458"}' \
+-netdev '{"type":"tap","fd":"38","id":"hostnet0"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet0","id":"net0","mac":"fa:16:3e:86:9c:21","bus":"pci.0","addr":"0x3"}' \
+-netdev '{"type":"tap","fd":"43","id":"hostnet1"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet1","id":"net1","mac":"fa:16:3e:b8:79:9b","bus":"pci.0","addr":"0x4"}' \
+-netdev '{"type":"tap","fd":"45","id":"hostnet2"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet2","id":"net2","mac":"fa:16:3e:50:28:ef","bus":"pci.0","addr":"0x5"}' \
+-netdev '{"type":"tap","fd":"46","id":"hostnet3"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet3","id":"net3","mac":"fa:16:3e:55:6d:91","bus":"pci.0","addr":"0x6"}' \
+-netdev '{"type":"tap","fd":"47","id":"hostnet4"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet4","id":"net4","mac":"fa:16:3e:f4:89:93","bus":"pci.0","addr":"0x7"}' \
+-netdev '{"type":"tap","fd":"48","id":"hostnet5"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet5","id":"net5","mac":"fa:16:3e:58:a7:d2","bus":"pci.0","addr":"0x8"}' \
+-netdev '{"type":"tap","fd":"49","id":"hostnet6"}' \
+-device '{"driver":"virtio-net-pci","host_mtu":1442,"netdev":"hostnet6","id":"net6","mac":"fa:16:3e:f6:1e:14","bus":"pci.0","addr":"0x9"}' \
+-add-fd set=0,fd=37,opaque=serial0-log \
+-chardev pty,id=charserial0,logfile=/dev/fdset/0,logappend=on \
+-device '{"driver":"isa-serial","chardev":"charserial0","id":"serial0","index":0}' \
+-audiodev '{"id":"audio1","driver":"none"}' \
+-vnc 0.0.0.0:1,audiodev=audio1 \
+-device '{"driver":"virtio-vga","id":"video0","max_outputs":1,"bus":"pci.0","addr":"0x2"}' \
+-device '{"driver":"virtio-balloon-pci","id":"balloon0","deflate-on-oom":true,"free-page-reporting":true,"bus":"pci.0","addr":"0xd"}' \
+-object '{"qom-type":"rng-random","id":"objrng0","filename":"/dev/urandom"}' \
+-device '{"driver":"virtio-rng-pci","rng":"objrng0","id":"rng0","bus":"pci.0","addr":"0xe"}' \
+-device '{"driver":"vmcoreinfo"}' \
+-sandbox on,obsolete=deny,elevateprivileges=deny,spawn=deny,resourcecontrol=deny \
+-msg timestamp=on
+char device redirected to /dev/pts/1 (label charserial0)
+2026-10-26T12:41:49.293177Z qemu-system-x86_64: terminating on signal 15 from pid 87934 (/usr/sbin/libvirtd)
+2026-10-26 12:41:49.495+0000: shutting down, reason=destroyed
