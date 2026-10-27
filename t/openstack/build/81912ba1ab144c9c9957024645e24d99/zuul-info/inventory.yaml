@@ -1,0 +1,815 @@
+all:
+  children:
+    tempest:
+      hosts:
+        controller: null
+    zuul_unreachable:
+      hosts: {}
+  hosts:
+    controller:
+      ansible_connection: ssh
+      ansible_host: <hidden>
+      ansible_port: 22
+      ansible_python_interpreter: auto
+      ansible_user: zuul
+      configure_swap_size: 8192
+      devstack_local_conf:
+        post-config:
+          $CINDER_CONF:
+            DEFAULT:
+              num_volume_device_scan_tries: 180
+              osapi_volume_workers: 8
+            backend_defaults:
+              image_volume_cache_enabled: true
+              powerflex_storage_pools: PD1:SP1
+              san_ip: <hidden>
+              san_login: <hidden>
+              san_password: <hidden>
+              suppress_requests_ssl_warnings: true
+              use_multipath_for_image_xfer: true
+              volume_driver: cinder.volume.drivers.dell_emc.powerflex.driver.PowerFlexDriver
+            cache:
+              memcache_pool_maxsize: 80
+            oslo_policy:
+              enforce_new_defaults: false
+            powerflex1:
+              volume_backend_name: powerflex1
+            powerflex2:
+              volume_backend_name: powerflex2
+          $GLANCE_API_CONF:
+            glance_store:
+              default_store: file
+          $NOVA_CONF:
+            libvirt:
+              volume_use_multipath: true
+        test-config:
+          $TEMPEST_CONFIG:
+            compute:
+              min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+                | length }}'
+            dell_driver:
+              driver: powerflex
+            validation:
+              run_validation: true
+              ssh_timeout: 600
+            volume:
+              build_timeout: 600
+              volume_size: 8
+              volume_size_extend: 8
+            volume-feature-enabled:
+              backup: true
+              consistency_group: true
+              extend_attached_encrypted_volume: true
+              extend_attached_volume: true
+              manage_snapshot: false
+              manage_volume: false
+              multi_backend: true
+              volume_revert: true
+      devstack_localrc:
+        ADMIN_PASSWORD: secretadmin
+        CINDER_ENABLED_BACKENDS: powerflex1,powerflex2
+        CINDER_ENFORCE_NEW_DEFAULTS: false
+        DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        DATABASE_PASSWORD: secretdatabase
+        DATABASE_TYPE: mysql
+        DEBUG_LIBVIRT_COREDUMPS: true
+        ENABLE_CHASSIS_AS_GW: true
+        ENABLE_SYSCTL_MEM_TUNING: true
+        ENABLE_SYSCTL_NET_TUNING: true
+        ENABLE_VOLUME_MULTIATTACH: true
+        ENABLE_ZSWAP: true
+        ENFORCE_NEW_DEFAULTS: false
+        ERROR_ON_CLONE: false
+        FIXED_RANGE: 10.1.0.0/20
+        FLOATING_RANGE: 172.24.5.0/24
+        GLANCE_LIMIT_IMAGE_SIZE_TOTAL: 10000
+        HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+        IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+        LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+        LOGFILE: /opt/stack/logs/devstacklog.txt
+        LOG_COLOR: false
+        NETWORK_GATEWAY: 10.1.0.1
+        NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+        NOVA_VNC_ENABLED: true
+        NOVNC_FROM_PACKAGE: true
+        OVN_DBS_LOG_LEVEL: dbg
+        OVN_NATIVE_DHCP: true
+        PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+        Q_AGENT: ovn
+        Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+        Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+        RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        RABBIT_PASSWORD: secretrabbit
+        SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        SERVICE_PASSWORD: secretservice
+        SWIFT_HASH: 1234123412341234
+        SWIFT_REPLICAS: 1
+        SWIFT_START_ALL_SERVICES: false
+        TEMPEST_EXTEND_ATTACHED_VOLUME: true
+        TEMPEST_PLUGINS: cinder-tempest-plugin
+        TEMPEST_STORAGE_PROTOCOL: scaleio
+        TEMPEST_VOLUME_DRIVER: EMC
+        TEMPEST_VOLUME_VENDOR: Dell EMC
+        VERBOSE: true
+        VERBOSE_NO_TIMESTAMP: true
+      devstack_services:
+        base: false
+        c-api: true
+        c-bak: true
+        c-sch: true
+        c-vol: true
+        dstat: false
+        etcd3: true
+        file_tracker: true
+        g-api: true
+        horizon: false
+        key: true
+        memory_tracker: true
+        mysql: true
+        n-api: true
+        n-api-meta: true
+        n-cond: true
+        n-cpu: true
+        n-novnc: true
+        n-sch: true
+        openstack-cli-server: true
+        ovn-controller: true
+        ovn-northd: true
+        ovs-vswitchd: true
+        ovsdb-server: true
+        placement-api: true
+        q-ovn-agent: true
+        q-svc: true
+        rabbit: true
+        s-account: true
+        s-container: true
+        s-object: true
+        s-proxy: true
+        tempest: true
+        tls-proxy: true
+      extensions_to_txt:
+        auto: true
+        conf: true
+        localrc: true
+        log: true
+        stackenv: true
+        yaml: true
+        yml: true
+      mdm_ip: 10.234.188.118,10.234.188.116,10.234.188.114
+      nodepool:
+        az: nova
+        cloud: ci-cloud
+        external_id: 26623f1d-1806-4692-8428-9560130e0b2d
+        host_id: d05ece891cf88d86783ece846ab9fd2a0585014d55a1b2a74e7a59f5
+        interface_ip: 10.234.188.217
+        label: nodepool-noble
+        node_properties: {}
+        private_ipv4: 10.19.119.119
+        private_ipv6: null
+        provider: ci-cloud
+        public_ipv4: 10.234.188.217
+        public_ipv6: ''
+        region: null
+        slot: null
+      powerflex1_san_password: <hidden>
+      powerflex2_san_password: <hidden>
+      powerflex_sdc_deb: EMC-ScaleIO-sdc-4.5-4000.111.Ubuntu.24.04.x86_64.deb
+      run_devstack: true
+      run_tempest_tests: true
+      tempest_concurrency: 4
+      tempest_exclude_regex: test_volume_migrate_attached.TestVolumeMigrateRetypeAttached|test_volume_swap_with_multiattach|test_volume_retype_multiattach
+      tempest_test_regex: 'volume|^cinder_tempest_plugin
+
+        '
+      test_results_stage_name: test_results
+      tox_envlist: all
+      zuul_copy_output:
+        /etc/ceph: logs
+        /etc/emc/scaleio/drv_cfg.txt: logs
+        /etc/glusterfs/glusterd.vol: logs
+        /etc/libvirt: logs
+        /etc/lvm: logs
+        /etc/resolv.conf: logs
+        /etc/sudoers: logs
+        /etc/sudoers.d: logs
+        /opt/emc/scaleio/openstack/connector.conf: logs
+        /var/log/ceph: logs
+        /var/log/glusterfs: logs
+        /var/log/libvirt: logs
+        /var/log/mysql: logs
+        /var/log/openvswitch: logs
+        /var/log/postgresql: logs
+        /var/log/rabbitmq: logs
+        /var/log/unbound.log: logs
+        '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+        '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+        '{{ devstack_base_dir }}/tempest/tempest.log': logs
+        '{{ devstack_conf_dir }}/.localrc.auto': logs
+        '{{ devstack_conf_dir }}/.stackenv': logs
+        '{{ devstack_conf_dir }}/local.conf': logs
+        '{{ devstack_conf_dir }}/localrc': logs
+        '{{ devstack_full_log}}': logs
+        '{{ devstack_log_dir }}/devstacklog.txt': logs
+        '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+        '{{ devstack_log_dir }}/dstat-csv.log': logs
+        '{{ devstack_log_dir }}/qemu.coredump': logs
+        '{{ devstack_log_dir }}/tcpdump.pcap': logs
+        '{{ devstack_log_dir }}/tempest_result.txt': logs
+        '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+        '{{ stage_dir }}/apache': logs
+        '{{ stage_dir }}/apache_config': logs
+        '{{ stage_dir }}/audit.log': logs
+        '{{ stage_dir }}/core': logs
+        '{{ stage_dir }}/deprecations.log': logs
+        '{{ stage_dir }}/df.txt': logs
+        '{{ stage_dir }}/dpkg-l.txt': logs
+        '{{ stage_dir }}/etc': logs
+        '{{ stage_dir }}/iptables.txt': logs
+        '{{ stage_dir }}/listen53.txt': logs
+        '{{ stage_dir }}/performance.json': logs
+        '{{ stage_dir }}/pip2-freeze.txt': logs
+        '{{ stage_dir }}/pip3-freeze.txt': logs
+        '{{ stage_dir }}/rpm-qa.txt': logs
+        '{{ stage_dir }}/services.txt': logs
+        '{{ stage_dir }}/stackviz': logs
+        '{{ stage_dir }}/verify_tempest_conf.log': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
+  vars:
+    configure_swap_size: 8192
+    devstack_local_conf:
+      post-config:
+        $CINDER_CONF:
+          DEFAULT:
+            num_volume_device_scan_tries: 180
+            osapi_volume_workers: 8
+          backend_defaults:
+            image_volume_cache_enabled: true
+            powerflex_storage_pools: PD1:SP1
+            san_ip: <hidden>
+            san_login: <hidden>
+            san_password: <hidden>
+            suppress_requests_ssl_warnings: true
+            use_multipath_for_image_xfer: true
+            volume_driver: cinder.volume.drivers.dell_emc.powerflex.driver.PowerFlexDriver
+          cache:
+            memcache_pool_maxsize: 80
+          oslo_policy:
+            enforce_new_defaults: false
+          powerflex1:
+            volume_backend_name: powerflex1
+          powerflex2:
+            volume_backend_name: powerflex2
+        $GLANCE_API_CONF:
+          glance_store:
+            default_store: file
+        $NOVA_CONF:
+          libvirt:
+            volume_use_multipath: true
+      test-config:
+        $TEMPEST_CONFIG:
+          compute:
+            min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+              | length }}'
+          dell_driver:
+            driver: powerflex
+          validation:
+            run_validation: true
+            ssh_timeout: 600
+          volume:
+            build_timeout: 600
+            volume_size: 8
+            volume_size_extend: 8
+          volume-feature-enabled:
+            backup: true
+            consistency_group: true
+            extend_attached_encrypted_volume: true
+            extend_attached_volume: true
+            manage_snapshot: false
+            manage_volume: false
+            multi_backend: true
+            volume_revert: true
+    devstack_localrc:
+      ADMIN_PASSWORD: secretadmin
+      CINDER_ENABLED_BACKENDS: powerflex1,powerflex2
+      CINDER_ENFORCE_NEW_DEFAULTS: false
+      DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+        }}'
+      DATABASE_PASSWORD: secretdatabase
+      DATABASE_TYPE: mysql
+      DEBUG_LIBVIRT_COREDUMPS: true
+      ENABLE_CHASSIS_AS_GW: true
+      ENABLE_SYSCTL_MEM_TUNING: true
+      ENABLE_SYSCTL_NET_TUNING: true
+      ENABLE_VOLUME_MULTIATTACH: true
+      ENABLE_ZSWAP: true
+      ENFORCE_NEW_DEFAULTS: false
+      ERROR_ON_CLONE: false
+      FIXED_RANGE: 10.1.0.0/20
+      FLOATING_RANGE: 172.24.5.0/24
+      GLANCE_LIMIT_IMAGE_SIZE_TOTAL: 10000
+      HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+      LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+      LOGFILE: /opt/stack/logs/devstacklog.txt
+      LOG_COLOR: false
+      NETWORK_GATEWAY: 10.1.0.1
+      NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+      NOVA_VNC_ENABLED: true
+      NOVNC_FROM_PACKAGE: true
+      OVN_DBS_LOG_LEVEL: dbg
+      OVN_NATIVE_DHCP: true
+      PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+      Q_AGENT: ovn
+      Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+      Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+      RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      RABBIT_PASSWORD: secretrabbit
+      SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      SERVICE_PASSWORD: secretservice
+      SWIFT_HASH: 1234123412341234
+      SWIFT_REPLICAS: 1
+      SWIFT_START_ALL_SERVICES: false
+      TEMPEST_EXTEND_ATTACHED_VOLUME: true
+      TEMPEST_PLUGINS: cinder-tempest-plugin
+      TEMPEST_STORAGE_PROTOCOL: scaleio
+      TEMPEST_VOLUME_DRIVER: EMC
+      TEMPEST_VOLUME_VENDOR: Dell EMC
+      VERBOSE: true
+      VERBOSE_NO_TIMESTAMP: true
+    devstack_services:
+      base: false
+      c-api: true
+      c-bak: true
+      c-sch: true
+      c-vol: true
+      dstat: false
+      etcd3: true
+      file_tracker: true
+      g-api: true
+      horizon: false
+      key: true
+      memory_tracker: true
+      mysql: true
+      n-api: true
+      n-api-meta: true
+      n-cond: true
+      n-cpu: true
+      n-novnc: true
+      n-sch: true
+      openstack-cli-server: true
+      ovn-controller: true
+      ovn-northd: true
+      ovs-vswitchd: true
+      ovsdb-server: true
+      placement-api: true
+      q-ovn-agent: true
+      q-svc: true
+      rabbit: true
+      s-account: true
+      s-container: true
+      s-object: true
+      s-proxy: true
+      tempest: true
+      tls-proxy: true
+    extensions_to_txt:
+      auto: true
+      conf: true
+      localrc: true
+      log: true
+      stackenv: true
+      yaml: true
+      yml: true
+    mdm_ip: 10.234.188.118,10.234.188.116,10.234.188.114
+    powerflex1_san_password: <hidden>
+    powerflex2_san_password: <hidden>
+    powerflex_sdc_deb: EMC-ScaleIO-sdc-4.5-4000.111.Ubuntu.24.04.x86_64.deb
+    run_devstack: true
+    run_tempest_tests: true
+    tempest_concurrency: 4
+    tempest_exclude_regex: test_volume_migrate_attached.TestVolumeMigrateRetypeAttached|test_volume_swap_with_multiattach|test_volume_retype_multiattach
+    tempest_test_regex: 'volume|^cinder_tempest_plugin
+
+      '
+    test_results_stage_name: test_results
+    tox_envlist: all
+    zuul:
+      _inheritance_path:
+      - '<Job dell-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#1>'
+      - '<Job devstack-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#23>'
+      - '<Job devstack-minimal branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#128>'
+      - '<Job devstack branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#154>'
+      - '<Job devstack-tempest branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#290>'
+      - '<Job devstack-cinder-plugin-tempest-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#333>'
+      - '<Job powerflex-cinder-base branches: None source: zuul-config/zuul.d/jobs/powerflex.yaml@master#1>'
+      - '<Job powerflex-v4-cinder-tempest branches: None source: zuul-config/zuul.d/jobs/powerflex.yaml@master#44>'
+      - '<Job powerflex-v4-cinder-tempest branches: {MatchAny:{BranchMatcher:^(master|stable/.*)$}}
+        source: zuul-config/zuul.d/projects.yaml@master#22>'
+      ansible_version: '9'
+      attempts: 1
+      branch: master
+      build: 81912ba1ab144c9c9957024645e24d99
+      build_refs:
+      - branch: master
+        change: '1012441'
+        change_message: "RBD: deferred deletion for eligible volumes\n\nThe RBD driver
+          can remove a volume directly even when deferred\ndeletion is enabled. A
+          successful direct removal bypasses the\nconfigured delay, leaving no backend
+          retention window. This is\nrelated to the behavior reported in bug #2126853.\n\nThe
+          main purpose of this proposal is backend soft deletion: retain\neligible
+          deleted volumes in RBD trash before permanent removal.\nThis gives operators
+          a configurable window to investigate accidental\ndeletions and attempt backend
+          recovery.\n\nThe proposed changes cover three related areas:\n\n1. Honor
+          the configured retention delay.\n\n   When enable_deferred_deletion is enabled,
+          move quota-accounted\n   volumes in deleting status that reach the normal
+          deletion path\n   to trash using deferred_deletion_delay.\n\n   Preserve
+          the existing .deleted handling for volumes with dependent\n   Cinder clones.
+          Keep requests outside the eligibility checks on\n   their existing deletion
+          paths.\n\n2. Keep periodic trash cleanup running after failures.\n\n   Start
+          the purge loop with stop_on_exception=False so an unexpected\n   connection
+          or trash-listing failure does not permanently stop\n   subsequent scheduled
+          cleanup attempts.\n\n3. Handle unexpired trash entries correctly.\n\n   Catch
+          rbd.PermissionError alongside OSError and retain the EPERM\n   check. An
+          unexpired entry is an expected condition; other failures\n   must remain
+          visible in the logs.\n\nReuse the existing deferred deletion configuration
+          and preserve its\ndisabled-by-default behavior.\n\nThis proposal provides
+          retention of backend data. It does not add a\nCinder undelete API or preserve
+          the active Cinder volume resource.\nQuota can be released while retained
+          data still occupies Ceph space.\nRecovery of encrypted volumes is not guaranteed
+          by retaining their\nRBD images alone.\n\nClone dependency handling, retry
+          behavior and regression coverage\nare being completed before this change
+          is marked ready for review.\n\nRelated-Bug: #2126853\nAssisted-By: GPT\nChange-Id:
+          I04eba40ebbce0e06fe4f78914dc4988c86aa6601\nSigned-off-by: Amir Modarresi
+          <seyedamirmodaresi@gmail.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/1012441
+        commit_id: 27c044daac649934e75b2b325022c7fb0ead93e6
+        patchset: '2'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+        topic: rbd-deferred-deletion
+      buildset: 545ccb27d6184f8ba0f3ed354196228d
+      buildset_refs:
+      - branch: master
+        change: '1012441'
+        change_message: "RBD: deferred deletion for eligible volumes\n\nThe RBD driver
+          can remove a volume directly even when deferred\ndeletion is enabled. A
+          successful direct removal bypasses the\nconfigured delay, leaving no backend
+          retention window. This is\nrelated to the behavior reported in bug #2126853.\n\nThe
+          main purpose of this proposal is backend soft deletion: retain\neligible
+          deleted volumes in RBD trash before permanent removal.\nThis gives operators
+          a configurable window to investigate accidental\ndeletions and attempt backend
+          recovery.\n\nThe proposed changes cover three related areas:\n\n1. Honor
+          the configured retention delay.\n\n   When enable_deferred_deletion is enabled,
+          move quota-accounted\n   volumes in deleting status that reach the normal
+          deletion path\n   to trash using deferred_deletion_delay.\n\n   Preserve
+          the existing .deleted handling for volumes with dependent\n   Cinder clones.
+          Keep requests outside the eligibility checks on\n   their existing deletion
+          paths.\n\n2. Keep periodic trash cleanup running after failures.\n\n   Start
+          the purge loop with stop_on_exception=False so an unexpected\n   connection
+          or trash-listing failure does not permanently stop\n   subsequent scheduled
+          cleanup attempts.\n\n3. Handle unexpired trash entries correctly.\n\n   Catch
+          rbd.PermissionError alongside OSError and retain the EPERM\n   check. An
+          unexpired entry is an expected condition; other failures\n   must remain
+          visible in the logs.\n\nReuse the existing deferred deletion configuration
+          and preserve its\ndisabled-by-default behavior.\n\nThis proposal provides
+          retention of backend data. It does not add a\nCinder undelete API or preserve
+          the active Cinder volume resource.\nQuota can be released while retained
+          data still occupies Ceph space.\nRecovery of encrypted volumes is not guaranteed
+          by retaining their\nRBD images alone.\n\nClone dependency handling, retry
+          behavior and regression coverage\nare being completed before this change
+          is marked ready for review.\n\nRelated-Bug: #2126853\nAssisted-By: GPT\nChange-Id:
+          I04eba40ebbce0e06fe4f78914dc4988c86aa6601\nSigned-off-by: Amir Modarresi
+          <seyedamirmodaresi@gmail.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/1012441
+        commit_id: 27c044daac649934e75b2b325022c7fb0ead93e6
+        patchset: '2'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+        topic: rbd-deferred-deletion
+      change: '1012441'
+      change_message: "RBD: deferred deletion for eligible volumes\n\nThe RBD driver
+        can remove a volume directly even when deferred\ndeletion is enabled. A successful
+        direct removal bypasses the\nconfigured delay, leaving no backend retention
+        window. This is\nrelated to the behavior reported in bug #2126853.\n\nThe
+        main purpose of this proposal is backend soft deletion: retain\neligible deleted
+        volumes in RBD trash before permanent removal.\nThis gives operators a configurable
+        window to investigate accidental\ndeletions and attempt backend recovery.\n\nThe
+        proposed changes cover three related areas:\n\n1. Honor the configured retention
+        delay.\n\n   When enable_deferred_deletion is enabled, move quota-accounted\n
+        \  volumes in deleting status that reach the normal deletion path\n   to trash
+        using deferred_deletion_delay.\n\n   Preserve the existing .deleted handling
+        for volumes with dependent\n   Cinder clones. Keep requests outside the eligibility
+        checks on\n   their existing deletion paths.\n\n2. Keep periodic trash cleanup
+        running after failures.\n\n   Start the purge loop with stop_on_exception=False
+        so an unexpected\n   connection or trash-listing failure does not permanently
+        stop\n   subsequent scheduled cleanup attempts.\n\n3. Handle unexpired trash
+        entries correctly.\n\n   Catch rbd.PermissionError alongside OSError and retain
+        the EPERM\n   check. An unexpired entry is an expected condition; other failures\n
+        \  must remain visible in the logs.\n\nReuse the existing deferred deletion
+        configuration and preserve its\ndisabled-by-default behavior.\n\nThis proposal
+        provides retention of backend data. It does not add a\nCinder undelete API
+        or preserve the active Cinder volume resource.\nQuota can be released while
+        retained data still occupies Ceph space.\nRecovery of encrypted volumes is
+        not guaranteed by retaining their\nRBD images alone.\n\nClone dependency handling,
+        retry behavior and regression coverage\nare being completed before this change
+        is marked ready for review.\n\nRelated-Bug: #2126853\nAssisted-By: GPT\nChange-Id:
+        I04eba40ebbce0e06fe4f78914dc4988c86aa6601\nSigned-off-by: Amir Modarresi <seyedamirmodaresi@gmail.com>\n"
+      change_url: https://review.opendev.org/c/openstack/cinder/+/1012441
+      child_jobs: []
+      commit_id: 27c044daac649934e75b2b325022c7fb0ead93e6
+      event_id: 837fe533562842e08a1610dc23bb275e
+      executor:
+        hostname: b82b0a36b7a2
+        inventory_file: /var/lib/zuul/builds/81912ba1ab144c9c9957024645e24d99/ansible/inventory.yaml
+        log_root: /var/lib/zuul/builds/81912ba1ab144c9c9957024645e24d99/work/logs
+        result_data_file: /var/lib/zuul/builds/81912ba1ab144c9c9957024645e24d99/work/results.json
+        src_root: /var/lib/zuul/builds/81912ba1ab144c9c9957024645e24d99/work/src
+        work_root: /var/lib/zuul/builds/81912ba1ab144c9c9957024645e24d99/work
+      include_vars: []
+      items:
+      - branch: master
+        change: '1012441'
+        change_message: "RBD: deferred deletion for eligible volumes\n\nThe RBD driver
+          can remove a volume directly even when deferred\ndeletion is enabled. A
+          successful direct removal bypasses the\nconfigured delay, leaving no backend
+          retention window. This is\nrelated to the behavior reported in bug #2126853.\n\nThe
+          main purpose of this proposal is backend soft deletion: retain\neligible
+          deleted volumes in RBD trash before permanent removal.\nThis gives operators
+          a configurable window to investigate accidental\ndeletions and attempt backend
+          recovery.\n\nThe proposed changes cover three related areas:\n\n1. Honor
+          the configured retention delay.\n\n   When enable_deferred_deletion is enabled,
+          move quota-accounted\n   volumes in deleting status that reach the normal
+          deletion path\n   to trash using deferred_deletion_delay.\n\n   Preserve
+          the existing .deleted handling for volumes with dependent\n   Cinder clones.
+          Keep requests outside the eligibility checks on\n   their existing deletion
+          paths.\n\n2. Keep periodic trash cleanup running after failures.\n\n   Start
+          the purge loop with stop_on_exception=False so an unexpected\n   connection
+          or trash-listing failure does not permanently stop\n   subsequent scheduled
+          cleanup attempts.\n\n3. Handle unexpired trash entries correctly.\n\n   Catch
+          rbd.PermissionError alongside OSError and retain the EPERM\n   check. An
+          unexpired entry is an expected condition; other failures\n   must remain
+          visible in the logs.\n\nReuse the existing deferred deletion configuration
+          and preserve its\ndisabled-by-default behavior.\n\nThis proposal provides
+          retention of backend data. It does not add a\nCinder undelete API or preserve
+          the active Cinder volume resource.\nQuota can be released while retained
+          data still occupies Ceph space.\nRecovery of encrypted volumes is not guaranteed
+          by retaining their\nRBD images alone.\n\nClone dependency handling, retry
+          behavior and regression coverage\nare being completed before this change
+          is marked ready for review.\n\nRelated-Bug: #2126853\nAssisted-By: GPT\nChange-Id:
+          I04eba40ebbce0e06fe4f78914dc4988c86aa6601\nSigned-off-by: Amir Modarresi
+          <seyedamirmodaresi@gmail.com>\n"
+        change_url: https://review.opendev.org/c/openstack/cinder/+/1012441
+        commit_id: 27c044daac649934e75b2b325022c7fb0ead93e6
+        patchset: '2'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          name: openstack/cinder
+          short_name: cinder
+          src_dir: src/opendev.org/openstack/cinder
+        topic: rbd-deferred-deletion
+      job: powerflex-v4-cinder-tempest
+      jobtags: []
+      max_attempts: 3
+      message: UkJEOiBkZWZlcnJlZCBkZWxldGlvbiBmb3IgZWxpZ2libGUgdm9sdW1lcwoKVGhlIFJCRCBkcml2ZXIgY2FuIHJlbW92ZSBhIHZvbHVtZSBkaXJlY3RseSBldmVuIHdoZW4gZGVmZXJyZWQKZGVsZXRpb24gaXMgZW5hYmxlZC4gQSBzdWNjZXNzZnVsIGRpcmVjdCByZW1vdmFsIGJ5cGFzc2VzIHRoZQpjb25maWd1cmVkIGRlbGF5LCBsZWF2aW5nIG5vIGJhY2tlbmQgcmV0ZW50aW9uIHdpbmRvdy4gVGhpcyBpcwpyZWxhdGVkIHRvIHRoZSBiZWhhdmlvciByZXBvcnRlZCBpbiBidWcgIzIxMjY4NTMuCgpUaGUgbWFpbiBwdXJwb3NlIG9mIHRoaXMgcHJvcG9zYWwgaXMgYmFja2VuZCBzb2Z0IGRlbGV0aW9uOiByZXRhaW4KZWxpZ2libGUgZGVsZXRlZCB2b2x1bWVzIGluIFJCRCB0cmFzaCBiZWZvcmUgcGVybWFuZW50IHJlbW92YWwuClRoaXMgZ2l2ZXMgb3BlcmF0b3JzIGEgY29uZmlndXJhYmxlIHdpbmRvdyB0byBpbnZlc3RpZ2F0ZSBhY2NpZGVudGFsCmRlbGV0aW9ucyBhbmQgYXR0ZW1wdCBiYWNrZW5kIHJlY292ZXJ5LgoKVGhlIHByb3Bvc2VkIGNoYW5nZXMgY292ZXIgdGhyZWUgcmVsYXRlZCBhcmVhczoKCjEuIEhvbm9yIHRoZSBjb25maWd1cmVkIHJldGVudGlvbiBkZWxheS4KCiAgIFdoZW4gZW5hYmxlX2RlZmVycmVkX2RlbGV0aW9uIGlzIGVuYWJsZWQsIG1vdmUgcXVvdGEtYWNjb3VudGVkCiAgIHZvbHVtZXMgaW4gZGVsZXRpbmcgc3RhdHVzIHRoYXQgcmVhY2ggdGhlIG5vcm1hbCBkZWxldGlvbiBwYXRoCiAgIHRvIHRyYXNoIHVzaW5nIGRlZmVycmVkX2RlbGV0aW9uX2RlbGF5LgoKICAgUHJlc2VydmUgdGhlIGV4aXN0aW5nIC5kZWxldGVkIGhhbmRsaW5nIGZvciB2b2x1bWVzIHdpdGggZGVwZW5kZW50CiAgIENpbmRlciBjbG9uZXMuIEtlZXAgcmVxdWVzdHMgb3V0c2lkZSB0aGUgZWxpZ2liaWxpdHkgY2hlY2tzIG9uCiAgIHRoZWlyIGV4aXN0aW5nIGRlbGV0aW9uIHBhdGhzLgoKMi4gS2VlcCBwZXJpb2RpYyB0cmFzaCBjbGVhbnVwIHJ1bm5pbmcgYWZ0ZXIgZmFpbHVyZXMuCgogICBTdGFydCB0aGUgcHVyZ2UgbG9vcCB3aXRoIHN0b3Bfb25fZXhjZXB0aW9uPUZhbHNlIHNvIGFuIHVuZXhwZWN0ZWQKICAgY29ubmVjdGlvbiBvciB0cmFzaC1saXN0aW5nIGZhaWx1cmUgZG9lcyBub3QgcGVybWFuZW50bHkgc3RvcAogICBzdWJzZXF1ZW50IHNjaGVkdWxlZCBjbGVhbnVwIGF0dGVtcHRzLgoKMy4gSGFuZGxlIHVuZXhwaXJlZCB0cmFzaCBlbnRyaWVzIGNvcnJlY3RseS4KCiAgIENhdGNoIHJiZC5QZXJtaXNzaW9uRXJyb3IgYWxvbmdzaWRlIE9TRXJyb3IgYW5kIHJldGFpbiB0aGUgRVBFUk0KICAgY2hlY2suIEFuIHVuZXhwaXJlZCBlbnRyeSBpcyBhbiBleHBlY3RlZCBjb25kaXRpb247IG90aGVyIGZhaWx1cmVzCiAgIG11c3QgcmVtYWluIHZpc2libGUgaW4gdGhlIGxvZ3MuCgpSZXVzZSB0aGUgZXhpc3RpbmcgZGVmZXJyZWQgZGVsZXRpb24gY29uZmlndXJhdGlvbiBhbmQgcHJlc2VydmUgaXRzCmRpc2FibGVkLWJ5LWRlZmF1bHQgYmVoYXZpb3IuCgpUaGlzIHByb3Bvc2FsIHByb3ZpZGVzIHJldGVudGlvbiBvZiBiYWNrZW5kIGRhdGEuIEl0IGRvZXMgbm90IGFkZCBhCkNpbmRlciB1bmRlbGV0ZSBBUEkgb3IgcHJlc2VydmUgdGhlIGFjdGl2ZSBDaW5kZXIgdm9sdW1lIHJlc291cmNlLgpRdW90YSBjYW4gYmUgcmVsZWFzZWQgd2hpbGUgcmV0YWluZWQgZGF0YSBzdGlsbCBvY2N1cGllcyBDZXBoIHNwYWNlLgpSZWNvdmVyeSBvZiBlbmNyeXB0ZWQgdm9sdW1lcyBpcyBub3QgZ3VhcmFudGVlZCBieSByZXRhaW5pbmcgdGhlaXIKUkJEIGltYWdlcyBhbG9uZS4KCkNsb25lIGRlcGVuZGVuY3kgaGFuZGxpbmcsIHJldHJ5IGJlaGF2aW9yIGFuZCByZWdyZXNzaW9uIGNvdmVyYWdlCmFyZSBiZWluZyBjb21wbGV0ZWQgYmVmb3JlIHRoaXMgY2hhbmdlIGlzIG1hcmtlZCByZWFkeSBmb3IgcmV2aWV3LgoKUmVsYXRlZC1CdWc6ICMyMTI2ODUzCkFzc2lzdGVkLUJ5OiBHUFQKQ2hhbmdlLUlkOiBJMDRlYmE0MGViYmNlMGUwNmZlNGY3ODkxNGRjNDk4OGM4NmFhNjYwMQpTaWduZWQtb2ZmLWJ5OiBBbWlyIE1vZGFycmVzaSA8c2V5ZWRhbWlybW9kYXJlc2lAZ21haWwuY29tPgo=
+      patchset: '2'
+      pipeline: dell-emc-powerflex-v4-ci-check
+      playbook_context:
+        playbook_projects:
+          trusted/project_0/gerrit/zuul-config:
+            canonical_name: gerrit/zuul-config
+            checkout: master
+            commit: aaeaf6db45d341ae915d0334245e673c638b2ec2
+          trusted/project_1/opendev.org/zuul/zuul-jobs:
+            canonical_name: opendev.org/zuul/zuul-jobs
+            checkout: master
+            commit: be52461cd48abccbf95b13a58b2551ac673d8ad7
+          trusted/project_2/opendev.org/openstack/openstack-zuul-jobs:
+            canonical_name: opendev.org/openstack/openstack-zuul-jobs
+            checkout: master
+            commit: 913885b578b905e66c7f0b0ddfd8c996e7859cef
+        playbooks:
+        - path: trusted/project_0/gerrit/zuul-config/playbooks/devstack-tempest.yaml
+          roles:
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_0/openstack-zuul-jobs
+            link_target: trusted/project_2/opendev.org/openstack/openstack-zuul-jobs
+            role_path: ansible/playbook_0/role_0/openstack-zuul-jobs/roles
+          - checkout: master
+            checkout_description: playbook branch
+            link_name: ansible/playbook_0/role_1/zuul-config
+            link_target: trusted/project_0/gerrit/zuul-config
+            role_path: ansible/playbook_0/role_1/zuul-config/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_2/zuul-jobs
+            link_target: trusted/project_1/opendev.org/zuul/zuul-jobs
+            role_path: ansible/playbook_0/role_2/zuul-jobs/roles
+      post_review: false
+      project:
+        canonical_hostname: opendev.org
+        canonical_name: opendev.org/openstack/cinder
+        name: openstack/cinder
+        short_name: cinder
+        src_dir: src/opendev.org/openstack/cinder
+      projects:
+        opendev.org/openstack/cinder:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          checkout: master
+          checkout_description: zuul branch
+          commit: 27c044daac649934e75b2b325022c7fb0ead93e6
+          name: openstack/cinder
+          required: true
+          short_name: cinder
+          src_dir: src/opendev.org/openstack/cinder
+        opendev.org/openstack/cinder-tempest-plugin:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder-tempest-plugin
+          checkout: master
+          checkout_description: zuul branch
+          commit: d4894b4df9916d5f7b1968a4e3093f40af4eed44
+          name: openstack/cinder-tempest-plugin
+          required: true
+          short_name: cinder-tempest-plugin
+          src_dir: src/opendev.org/openstack/cinder-tempest-plugin
+        opendev.org/openstack/devstack:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/devstack
+          checkout: master
+          checkout_description: zuul branch
+          commit: 11862b2cae9d643eac81a85fa2ad75148cea71c3
+          name: openstack/devstack
+          required: true
+          short_name: devstack
+          src_dir: src/opendev.org/openstack/devstack
+        opendev.org/openstack/glance:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/glance
+          checkout: master
+          checkout_description: zuul branch
+          commit: 7c9932e4f2296e7b2864bb5a632fb7198b5bfe04
+          name: openstack/glance
+          required: true
+          short_name: glance
+          src_dir: src/opendev.org/openstack/glance
+        opendev.org/openstack/keystone:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/keystone
+          checkout: master
+          checkout_description: zuul branch
+          commit: e226ae14f5da354af9fed86296bb0e110ab020ec
+          name: openstack/keystone
+          required: true
+          short_name: keystone
+          src_dir: src/opendev.org/openstack/keystone
+        opendev.org/openstack/neutron:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/neutron
+          checkout: master
+          checkout_description: zuul branch
+          commit: 0544508d91d43abd4bd55dface638df18bfc8285
+          name: openstack/neutron
+          required: true
+          short_name: neutron
+          src_dir: src/opendev.org/openstack/neutron
+        opendev.org/openstack/nova:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/nova
+          checkout: master
+          checkout_description: zuul branch
+          commit: 299d4c2d15461f0ea91443f4b9ea6032048810e5
+          name: openstack/nova
+          required: true
+          short_name: nova
+          src_dir: src/opendev.org/openstack/nova
+        opendev.org/openstack/os-brick:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/os-brick
+          checkout: master
+          checkout_description: zuul branch
+          commit: b6c49eea9e3b5b5e374682b1f83c130bfc2797e2
+          name: openstack/os-brick
+          required: true
+          short_name: os-brick
+          src_dir: src/opendev.org/openstack/os-brick
+        opendev.org/openstack/os-test-images:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/os-test-images
+          checkout: master
+          checkout_description: zuul branch
+          commit: 840ecd26fa6ba394512d9ddca91eb93dc4dd176a
+          name: openstack/os-test-images
+          required: true
+          short_name: os-test-images
+          src_dir: src/opendev.org/openstack/os-test-images
+        opendev.org/openstack/placement:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/placement
+          checkout: master
+          checkout_description: zuul branch
+          commit: 7e72a5cdbedf03214c31d2d188951a349e834c94
+          name: openstack/placement
+          required: true
+          short_name: placement
+          src_dir: src/opendev.org/openstack/placement
+        opendev.org/openstack/requirements:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/requirements
+          checkout: master
+          checkout_description: zuul branch
+          commit: 371d2f3563a30b30a60df14a813dfbc90f3e4750
+          name: openstack/requirements
+          required: true
+          short_name: requirements
+          src_dir: src/opendev.org/openstack/requirements
+        opendev.org/openstack/swift:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/swift
+          checkout: master
+          checkout_description: zuul branch
+          commit: 6adb10d738f62f8171318e13b31a78e3440a842e
+          name: openstack/swift
+          required: true
+          short_name: swift
+          src_dir: src/opendev.org/openstack/swift
+        opendev.org/openstack/tempest:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/tempest
+          checkout: master
+          checkout_description: zuul branch
+          commit: 67485c440d79c2582cb472f7327c3241c84499a5
+          name: openstack/tempest
+          required: true
+          short_name: tempest
+          src_dir: src/opendev.org/openstack/tempest
+      ref: refs/changes/41/1012441/2
+      resources: {}
+      tenant: openstack
+      timeout: null
+      topic: rbd-deferred-deletion
+      voting: true
+    zuul_copy_output:
+      /etc/ceph: logs
+      /etc/emc/scaleio/drv_cfg.txt: logs
+      /etc/glusterfs/glusterd.vol: logs
+      /etc/libvirt: logs
+      /etc/lvm: logs
+      /etc/resolv.conf: logs
+      /etc/sudoers: logs
+      /etc/sudoers.d: logs
+      /opt/emc/scaleio/openstack/connector.conf: logs
+      /var/log/ceph: logs
+      /var/log/glusterfs: logs
+      /var/log/libvirt: logs
+      /var/log/mysql: logs
+      /var/log/openvswitch: logs
+      /var/log/postgresql: logs
+      /var/log/rabbitmq: logs
+      /var/log/unbound.log: logs
+      '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+      '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+      '{{ devstack_base_dir }}/tempest/tempest.log': logs
+      '{{ devstack_conf_dir }}/.localrc.auto': logs
+      '{{ devstack_conf_dir }}/.stackenv': logs
+      '{{ devstack_conf_dir }}/local.conf': logs
+      '{{ devstack_conf_dir }}/localrc': logs
+      '{{ devstack_full_log}}': logs
+      '{{ devstack_log_dir }}/devstacklog.txt': logs
+      '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+      '{{ devstack_log_dir }}/dstat-csv.log': logs
+      '{{ devstack_log_dir }}/qemu.coredump': logs
+      '{{ devstack_log_dir }}/tcpdump.pcap': logs
+      '{{ devstack_log_dir }}/tempest_result.txt': logs
+      '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+      '{{ stage_dir }}/apache': logs
+      '{{ stage_dir }}/apache_config': logs
+      '{{ stage_dir }}/audit.log': logs
+      '{{ stage_dir }}/core': logs
+      '{{ stage_dir }}/deprecations.log': logs
+      '{{ stage_dir }}/df.txt': logs
+      '{{ stage_dir }}/dpkg-l.txt': logs
+      '{{ stage_dir }}/etc': logs
+      '{{ stage_dir }}/iptables.txt': logs
+      '{{ stage_dir }}/listen53.txt': logs
+      '{{ stage_dir }}/performance.json': logs
+      '{{ stage_dir }}/pip2-freeze.txt': logs
+      '{{ stage_dir }}/pip3-freeze.txt': logs
+      '{{ stage_dir }}/rpm-qa.txt': logs
+      '{{ stage_dir }}/services.txt': logs
+      '{{ stage_dir }}/stackviz': logs
+      '{{ stage_dir }}/verify_tempest_conf.log': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
