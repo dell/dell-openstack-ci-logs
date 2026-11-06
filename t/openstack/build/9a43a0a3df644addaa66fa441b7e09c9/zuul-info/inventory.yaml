@@ -1,0 +1,872 @@
+all:
+  children:
+    tempest:
+      hosts:
+        controller: null
+    zuul_unreachable:
+      hosts: {}
+  hosts:
+    controller:
+      ansible_connection: ssh
+      ansible_host: <hidden>
+      ansible_port: 22
+      ansible_python_interpreter: auto
+      ansible_user: zuul
+      configure_swap_size: 8192
+      devstack_local_conf:
+        post-config:
+          $CINDER_CONF:
+            DEFAULT:
+              osapi_volume_workers: 8
+            cache:
+              memcache_pool_maxsize: 80
+          $MANILA_CONF:
+            DEFAULT:
+              enabled_share_backends: london
+              enabled_share_protocols: NFS,CIFS
+              share_name_template: CI-%s
+            london:
+              dell_nas_backend_host: <hidden>
+              dell_nas_login: <hidden>
+              dell_nas_password: <hidden>
+              dell_nas_server: <hidden>
+              driver_handles_share_servers: false
+              emc_share_backend: powerstore
+              enabled_share_protocols: NFS,CIFS
+              share_backend_name: london
+              share_driver: manila.share.drivers.dell_emc.driver.EMCShareDriver
+          $NOVA_CONF:
+            libvirt:
+              volume_use_multipath: true
+        test-config:
+          $TEMPEST_CONFIG:
+            compute:
+              min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+                | length }}'
+            share:
+              backend_names: london
+              capability_create_share_from_snapshot_support: true
+              create_networks_when_multitenancy_enabled: false
+              default_share_type_name: dhss_false
+              enable_ip_rules_for_protocols: nfs
+              enable_protocols: nfs,cifs
+              enable_sid_rules_for_protocols: cifs
+              enable_user_rules_for_protocols: cifs
+              image_with_share_tools: manila-service-image-master
+              multitenancy_enabled: false
+              run_consistency_group_tests: false
+              run_driver_assisted_migration_tests: false
+              run_extend_tests: true
+              run_host_assisted_migration_tests: false
+              run_ipv6_tests: false
+              run_manage_unmanage_snapshot_tests: true
+              run_manage_unmanage_tests: true
+              run_migration_with_preserve_snapshots_tests: false
+              run_mount_snapshot_tests: false
+              run_quota_tests: true
+              run_replication_tests: false
+              run_revert_to_snapshot_tests: true
+              run_share_group_tests: false
+              run_shrink_tests: false
+              run_snapshot_tests: true
+              share_creation_retry_number: 2
+              share_size: 10
+              suppress_errors_in_cleanup: true
+      devstack_localrc:
+        ADMIN_PASSWORD: secretadmin
+        CINDER_ENABLED_BACKENDS: NFS:powerstore
+        DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        DATABASE_PASSWORD: secretdatabase
+        DATABASE_TYPE: mysql
+        DEBUG_LIBVIRT_COREDUMPS: true
+        ENABLE_CHASSIS_AS_GW: true
+        ENABLE_SYSCTL_MEM_TUNING: true
+        ENABLE_SYSCTL_NET_TUNING: true
+        ENABLE_ZSWAP: true
+        ERROR_ON_CLONE: false
+        FIXED_RANGE: 10.1.0.0/20
+        FLOATING_RANGE: 172.24.5.0/24
+        HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+        IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+        LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+        LOGFILE: /opt/stack/logs/devstacklog.txt
+        LOG_COLOR: false
+        MANILA_CONFIGURE_DEFAULT_TYPES: true
+        MANILA_DHSS_FALSE_SHARE_TYPE_EXTRA_SPECS: share_backend_name=london snapshot_support=True
+          create_share_from_snapshot_support=True revert_to_snapshot_support=True
+        MANILA_SERVICE_IMAGE_URL: file:///openstack/cache/files/manila-service-image.qcow2
+        NETWORK_GATEWAY: 10.1.0.1
+        NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+        NOVA_VNC_ENABLED: true
+        NOVNC_FROM_PACKAGE: true
+        OVN_DBS_LOG_LEVEL: dbg
+        OVN_NATIVE_DHCP: true
+        PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+        Q_AGENT: ovn
+        Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+        Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+        RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        RABBIT_PASSWORD: secretrabbit
+        SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+          }}'
+        SERVICE_PASSWORD: secretservice
+        SWIFT_HASH: 1234123412341234
+        SWIFT_REPLICAS: 1
+        SWIFT_START_ALL_SERVICES: false
+        TEMPEST_PLUGINS: manila-tempest-plugin
+        TEMPEST_STORAGE_PROTOCOL: NFS
+        TEMPEST_VOLUME_DRIVER: EMC
+        TEMPEST_VOLUME_VENDOR: Dell EMC
+        VERBOSE: true
+        VERBOSE_NO_TIMESTAMP: true
+      devstack_plugins:
+        manila: https://opendev.org/openstack/manila.git
+        manila-tempest-plugin: https://opendev.org/openstack/manila-tempest-plugin
+        manila-ui: https://opendev.org/openstack/manila-ui
+      devstack_services:
+        base: false
+        c-api: true
+        c-bak: true
+        c-sch: true
+        c-vol: true
+        dstat: false
+        etcd3: true
+        file_tracker: true
+        g-api: true
+        horizon: false
+        key: true
+        m-api: true
+        m-dat: true
+        m-sch: true
+        m-shr: true
+        memory_tracker: true
+        mysql: true
+        n-api: true
+        n-api-meta: true
+        n-cond: true
+        n-cpu: true
+        n-novnc: true
+        n-sch: true
+        openstack-cli-server: true
+        ovn-controller: true
+        ovn-northd: true
+        ovs-vswitchd: true
+        ovsdb-server: true
+        placement-api: true
+        q-ovn-agent: true
+        q-svc: true
+        rabbit: true
+        s-account: true
+        s-container: true
+        s-object: true
+        s-proxy: true
+        tempest: true
+        tls-proxy: true
+      extensions_to_txt:
+        auto: true
+        conf: true
+        localrc: true
+        log: true
+        stackenv: true
+        yaml: true
+        yml: true
+      nodepool:
+        az: nova
+        cloud: ci-cloud
+        external_id: 76ca306b-5f54-4634-a054-a1f5dcd55756
+        host_id: d05ece891cf88d86783ece846ab9fd2a0585014d55a1b2a74e7a59f5
+        interface_ip: 10.234.188.219
+        label: nodepool-noble
+        node_properties: {}
+        private_ipv4: 10.19.119.144
+        private_ipv6: null
+        provider: ci-cloud
+        public_ipv4: 10.234.188.219
+        public_ipv6: ''
+        region: null
+        slot: null
+      run_devstack: true
+      run_tempest_tests: true
+      tempest_concurrency: 4
+      tempest_exclude_regex: test_create_share_with_size_bigger_than_quota|test_share_type_azs_share_groups_az_in_create_req|test_create_duplicate_single_host_rules_3_fd2c_b029_bba6_df54__1_128|test_create_duplicate_single_host_rules_4_10_10_30_40_32
+      tempest_test_regex: manila_tempest_tests.tests.api
+      test_results_stage_name: test_results
+      tox_envlist: venv-tempest
+      zuul_copy_output:
+        /etc/ceph: logs
+        /etc/glusterfs/glusterd.vol: logs
+        /etc/libvirt: logs
+        /etc/lvm: logs
+        /etc/resolv.conf: logs
+        /etc/sudoers: logs
+        /etc/sudoers.d: logs
+        /var/log/ceph: logs
+        /var/log/glusterfs: logs
+        /var/log/libvirt: logs
+        /var/log/mysql: logs
+        /var/log/openvswitch: logs
+        /var/log/postgresql: logs
+        /var/log/rabbitmq: logs
+        /var/log/unbound.log: logs
+        '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+        '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+        '{{ devstack_base_dir }}/tempest/tempest.log': logs
+        '{{ devstack_conf_dir }}/.localrc.auto': logs
+        '{{ devstack_conf_dir }}/.stackenv': logs
+        '{{ devstack_conf_dir }}/local.conf': logs
+        '{{ devstack_conf_dir }}/localrc': logs
+        '{{ devstack_full_log}}': logs
+        '{{ devstack_log_dir }}/devstacklog.txt': logs
+        '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+        '{{ devstack_log_dir }}/dstat-csv.log': logs
+        '{{ devstack_log_dir }}/qemu.coredump': logs
+        '{{ devstack_log_dir }}/tcpdump.pcap': logs
+        '{{ devstack_log_dir }}/tempest_result.txt': logs
+        '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+        '{{ stage_dir }}/apache': logs
+        '{{ stage_dir }}/apache_config': logs
+        '{{ stage_dir }}/audit.log': logs
+        '{{ stage_dir }}/core': logs
+        '{{ stage_dir }}/deprecations.log': logs
+        '{{ stage_dir }}/df.txt': logs
+        '{{ stage_dir }}/dpkg-l.txt': logs
+        '{{ stage_dir }}/etc': logs
+        '{{ stage_dir }}/iptables.txt': logs
+        '{{ stage_dir }}/listen53.txt': logs
+        '{{ stage_dir }}/performance.json': logs
+        '{{ stage_dir }}/pip2-freeze.txt': logs
+        '{{ stage_dir }}/pip3-freeze.txt': logs
+        '{{ stage_dir }}/rpm-qa.txt': logs
+        '{{ stage_dir }}/services.txt': logs
+        '{{ stage_dir }}/stackviz': logs
+        '{{ stage_dir }}/verify_tempest_conf.log': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+        '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
+  vars:
+    configure_swap_size: 8192
+    devstack_local_conf:
+      post-config:
+        $CINDER_CONF:
+          DEFAULT:
+            osapi_volume_workers: 8
+          cache:
+            memcache_pool_maxsize: 80
+        $MANILA_CONF:
+          DEFAULT:
+            enabled_share_backends: london
+            enabled_share_protocols: NFS,CIFS
+            share_name_template: CI-%s
+          london:
+            dell_nas_backend_host: <hidden>
+            dell_nas_login: <hidden>
+            dell_nas_password: <hidden>
+            dell_nas_server: <hidden>
+            driver_handles_share_servers: false
+            emc_share_backend: powerstore
+            enabled_share_protocols: NFS,CIFS
+            share_backend_name: london
+            share_driver: manila.share.drivers.dell_emc.driver.EMCShareDriver
+        $NOVA_CONF:
+          libvirt:
+            volume_use_multipath: true
+      test-config:
+        $TEMPEST_CONFIG:
+          compute:
+            min_compute_nodes: '{{ groups[''compute''] | default([''controller''])
+              | length }}'
+          share:
+            backend_names: london
+            capability_create_share_from_snapshot_support: true
+            create_networks_when_multitenancy_enabled: false
+            default_share_type_name: dhss_false
+            enable_ip_rules_for_protocols: nfs
+            enable_protocols: nfs,cifs
+            enable_sid_rules_for_protocols: cifs
+            enable_user_rules_for_protocols: cifs
+            image_with_share_tools: manila-service-image-master
+            multitenancy_enabled: false
+            run_consistency_group_tests: false
+            run_driver_assisted_migration_tests: false
+            run_extend_tests: true
+            run_host_assisted_migration_tests: false
+            run_ipv6_tests: false
+            run_manage_unmanage_snapshot_tests: true
+            run_manage_unmanage_tests: true
+            run_migration_with_preserve_snapshots_tests: false
+            run_mount_snapshot_tests: false
+            run_quota_tests: true
+            run_replication_tests: false
+            run_revert_to_snapshot_tests: true
+            run_share_group_tests: false
+            run_shrink_tests: false
+            run_snapshot_tests: true
+            share_creation_retry_number: 2
+            share_size: 10
+            suppress_errors_in_cleanup: true
+    devstack_localrc:
+      ADMIN_PASSWORD: secretadmin
+      CINDER_ENABLED_BACKENDS: NFS:powerstore
+      DATABASE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4'']
+        }}'
+      DATABASE_PASSWORD: secretdatabase
+      DATABASE_TYPE: mysql
+      DEBUG_LIBVIRT_COREDUMPS: true
+      ENABLE_CHASSIS_AS_GW: true
+      ENABLE_SYSCTL_MEM_TUNING: true
+      ENABLE_SYSCTL_NET_TUNING: true
+      ENABLE_ZSWAP: true
+      ERROR_ON_CLONE: false
+      FIXED_RANGE: 10.1.0.0/20
+      FLOATING_RANGE: 172.24.5.0/24
+      HOST_IP: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      IPV4_ADDRS_SAFE_TO_USE: 10.1.0.0/20
+      LIBVIRT_TYPE: '{{ devstack_libvirt_type | default("qemu") }}'
+      LOGFILE: /opt/stack/logs/devstacklog.txt
+      LOG_COLOR: false
+      MANILA_CONFIGURE_DEFAULT_TYPES: true
+      MANILA_DHSS_FALSE_SHARE_TYPE_EXTRA_SPECS: share_backend_name=london snapshot_support=True
+        create_share_from_snapshot_support=True revert_to_snapshot_support=True
+      MANILA_SERVICE_IMAGE_URL: file:///openstack/cache/files/manila-service-image.qcow2
+      NETWORK_GATEWAY: 10.1.0.1
+      NOVA_LIBVIRT_TB_CACHE_SIZE: 128
+      NOVA_VNC_ENABLED: true
+      NOVNC_FROM_PACKAGE: true
+      OVN_DBS_LOG_LEVEL: dbg
+      OVN_NATIVE_DHCP: true
+      PUBLIC_NETWORK_GATEWAY: 172.24.5.1
+      Q_AGENT: ovn
+      Q_ML2_PLUGIN_MECHANISM_DRIVERS: ovn
+      Q_ML2_PLUGIN_TYPE_DRIVERS: flat,geneve
+      RABBIT_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      RABBIT_PASSWORD: secretrabbit
+      SERVICE_HOST: '{{ hostvars[''controller''][''nodepool''][''private_ipv4''] }}'
+      SERVICE_PASSWORD: secretservice
+      SWIFT_HASH: 1234123412341234
+      SWIFT_REPLICAS: 1
+      SWIFT_START_ALL_SERVICES: false
+      TEMPEST_PLUGINS: manila-tempest-plugin
+      TEMPEST_STORAGE_PROTOCOL: NFS
+      TEMPEST_VOLUME_DRIVER: EMC
+      TEMPEST_VOLUME_VENDOR: Dell EMC
+      VERBOSE: true
+      VERBOSE_NO_TIMESTAMP: true
+    devstack_plugins:
+      manila: https://opendev.org/openstack/manila.git
+      manila-tempest-plugin: https://opendev.org/openstack/manila-tempest-plugin
+      manila-ui: https://opendev.org/openstack/manila-ui
+    devstack_services:
+      base: false
+      c-api: true
+      c-bak: true
+      c-sch: true
+      c-vol: true
+      dstat: false
+      etcd3: true
+      file_tracker: true
+      g-api: true
+      horizon: false
+      key: true
+      m-api: true
+      m-dat: true
+      m-sch: true
+      m-shr: true
+      memory_tracker: true
+      mysql: true
+      n-api: true
+      n-api-meta: true
+      n-cond: true
+      n-cpu: true
+      n-novnc: true
+      n-sch: true
+      openstack-cli-server: true
+      ovn-controller: true
+      ovn-northd: true
+      ovs-vswitchd: true
+      ovsdb-server: true
+      placement-api: true
+      q-ovn-agent: true
+      q-svc: true
+      rabbit: true
+      s-account: true
+      s-container: true
+      s-object: true
+      s-proxy: true
+      tempest: true
+      tls-proxy: true
+    extensions_to_txt:
+      auto: true
+      conf: true
+      localrc: true
+      log: true
+      stackenv: true
+      yaml: true
+      yml: true
+    run_devstack: true
+    run_tempest_tests: true
+    tempest_concurrency: 4
+    tempest_exclude_regex: test_create_share_with_size_bigger_than_quota|test_share_type_azs_share_groups_az_in_create_req|test_create_duplicate_single_host_rules_3_fd2c_b029_bba6_df54__1_128|test_create_duplicate_single_host_rules_4_10_10_30_40_32
+    tempest_test_regex: manila_tempest_tests.tests.api
+    test_results_stage_name: test_results
+    tox_envlist: venv-tempest
+    zuul:
+      _inheritance_path:
+      - '<Job dell-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#1>'
+      - '<Job devstack-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#23>'
+      - '<Job devstack-minimal branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#128>'
+      - '<Job devstack branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#154>'
+      - '<Job devstack-tempest branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#290>'
+      - '<Job devstack-manila-plugin-tempest-base branches: None source: zuul-config/zuul.d/jobs/common.yaml@master#377>'
+      - '<Job powerstore-manila-tempest branches: None source: zuul-config/zuul.d/jobs/powerstore.yaml@master#188>'
+      - '<Job powerstore-manila-tempest branches: {MatchAny:{BranchMatcher:^(master|stable/.*)$}}
+        source: zuul-config/zuul.d/projects.yaml@master#7>'
+      ansible_version: '9'
+      attempts: 1
+      branch: master
+      build: 9a43a0a3df644addaa66fa441b7e09c9
+      build_refs:
+      - branch: master
+        change: '1014456'
+        change_message: 'Dell PowerStore: Add DHSS=True mode support
+
+
+          Add Driver Handles Share Servers (DHSS=True) mode to the Dell PowerStore
+
+          Manila driver for automatic NAS server management. This enables
+
+          multi-tenant isolation with per-share-network NAS servers.
+
+
+          Key changes:
+
+          - Add NAS server CRUD operations to PowerStore client
+
+          - Add file interface, NFS server, SMB server management
+
+          - Implement setup_server/teardown_server for share server lifecycle
+
+          - Add _get_nas_server_id/_get_nas_server_name for dual-mode support
+
+          - Add CIDR-to-prefix-length conversion utility
+
+          - Support both DHSS=True and DHSS=False in single driver
+
+          - Add comprehensive unit tests for all new functionality
+
+          - Update documentation with DHSS=True configuration guide
+
+          - Add release note for the new feature
+
+
+          Blueprint: dell-powerstore-dhss-true
+
+          Change-Id: Iab817b81434bfae1365875a6c6dc8870f800fc13
+
+          Signed-off-by: Siddharth Kumar <siddharth.kumar1@dell.com>
+
+          Generated-By: Devin <https://devin.ai>
+
+          '
+        change_url: https://review.opendev.org/c/openstack/manila/+/1014456
+        commit_id: e728e68184c088ec2e7a37b92158ea31ba983c70
+        patchset: '1'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/manila
+          name: openstack/manila
+          short_name: manila
+        src_dir: src/opendev.org/openstack/manila
+        topic: null
+      buildset: 723748c1e46942f7832b5175a62515b5
+      buildset_refs:
+      - branch: master
+        change: '1014456'
+        change_message: 'Dell PowerStore: Add DHSS=True mode support
+
+
+          Add Driver Handles Share Servers (DHSS=True) mode to the Dell PowerStore
+
+          Manila driver for automatic NAS server management. This enables
+
+          multi-tenant isolation with per-share-network NAS servers.
+
+
+          Key changes:
+
+          - Add NAS server CRUD operations to PowerStore client
+
+          - Add file interface, NFS server, SMB server management
+
+          - Implement setup_server/teardown_server for share server lifecycle
+
+          - Add _get_nas_server_id/_get_nas_server_name for dual-mode support
+
+          - Add CIDR-to-prefix-length conversion utility
+
+          - Support both DHSS=True and DHSS=False in single driver
+
+          - Add comprehensive unit tests for all new functionality
+
+          - Update documentation with DHSS=True configuration guide
+
+          - Add release note for the new feature
+
+
+          Blueprint: dell-powerstore-dhss-true
+
+          Change-Id: Iab817b81434bfae1365875a6c6dc8870f800fc13
+
+          Signed-off-by: Siddharth Kumar <siddharth.kumar1@dell.com>
+
+          Generated-By: Devin <https://devin.ai>
+
+          '
+        change_url: https://review.opendev.org/c/openstack/manila/+/1014456
+        commit_id: e728e68184c088ec2e7a37b92158ea31ba983c70
+        patchset: '1'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/manila
+          name: openstack/manila
+          short_name: manila
+        src_dir: src/opendev.org/openstack/manila
+        topic: null
+      change: '1014456'
+      change_message: 'Dell PowerStore: Add DHSS=True mode support
+
+
+        Add Driver Handles Share Servers (DHSS=True) mode to the Dell PowerStore
+
+        Manila driver for automatic NAS server management. This enables
+
+        multi-tenant isolation with per-share-network NAS servers.
+
+
+        Key changes:
+
+        - Add NAS server CRUD operations to PowerStore client
+
+        - Add file interface, NFS server, SMB server management
+
+        - Implement setup_server/teardown_server for share server lifecycle
+
+        - Add _get_nas_server_id/_get_nas_server_name for dual-mode support
+
+        - Add CIDR-to-prefix-length conversion utility
+
+        - Support both DHSS=True and DHSS=False in single driver
+
+        - Add comprehensive unit tests for all new functionality
+
+        - Update documentation with DHSS=True configuration guide
+
+        - Add release note for the new feature
+
+
+        Blueprint: dell-powerstore-dhss-true
+
+        Change-Id: Iab817b81434bfae1365875a6c6dc8870f800fc13
+
+        Signed-off-by: Siddharth Kumar <siddharth.kumar1@dell.com>
+
+        Generated-By: Devin <https://devin.ai>
+
+        '
+      change_url: https://review.opendev.org/c/openstack/manila/+/1014456
+      child_jobs: []
+      commit_id: e728e68184c088ec2e7a37b92158ea31ba983c70
+      event_id: 1a68fb658ad74d67882f64f59044af11
+      executor:
+        hostname: b82b0a36b7a2
+        inventory_file: /var/lib/zuul/builds/9a43a0a3df644addaa66fa441b7e09c9/ansible/inventory.yaml
+        log_root: /var/lib/zuul/builds/9a43a0a3df644addaa66fa441b7e09c9/work/logs
+        result_data_file: /var/lib/zuul/builds/9a43a0a3df644addaa66fa441b7e09c9/work/results.json
+        src_root: /var/lib/zuul/builds/9a43a0a3df644addaa66fa441b7e09c9/work/src
+        work_root: /var/lib/zuul/builds/9a43a0a3df644addaa66fa441b7e09c9/work
+      include_vars: []
+      items:
+      - branch: master
+        change: '1014456'
+        change_message: 'Dell PowerStore: Add DHSS=True mode support
+
+
+          Add Driver Handles Share Servers (DHSS=True) mode to the Dell PowerStore
+
+          Manila driver for automatic NAS server management. This enables
+
+          multi-tenant isolation with per-share-network NAS servers.
+
+
+          Key changes:
+
+          - Add NAS server CRUD operations to PowerStore client
+
+          - Add file interface, NFS server, SMB server management
+
+          - Implement setup_server/teardown_server for share server lifecycle
+
+          - Add _get_nas_server_id/_get_nas_server_name for dual-mode support
+
+          - Add CIDR-to-prefix-length conversion utility
+
+          - Support both DHSS=True and DHSS=False in single driver
+
+          - Add comprehensive unit tests for all new functionality
+
+          - Update documentation with DHSS=True configuration guide
+
+          - Add release note for the new feature
+
+
+          Blueprint: dell-powerstore-dhss-true
+
+          Change-Id: Iab817b81434bfae1365875a6c6dc8870f800fc13
+
+          Signed-off-by: Siddharth Kumar <siddharth.kumar1@dell.com>
+
+          Generated-By: Devin <https://devin.ai>
+
+          '
+        change_url: https://review.opendev.org/c/openstack/manila/+/1014456
+        commit_id: e728e68184c088ec2e7a37b92158ea31ba983c70
+        patchset: '1'
+        project:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/manila
+          name: openstack/manila
+          short_name: manila
+          src_dir: src/opendev.org/openstack/manila
+        topic: null
+      job: powerstore-manila-tempest
+      jobtags: []
+      max_attempts: 3
+      message: RGVsbCBQb3dlclN0b3JlOiBBZGQgREhTUz1UcnVlIG1vZGUgc3VwcG9ydAoKQWRkIERyaXZlciBIYW5kbGVzIFNoYXJlIFNlcnZlcnMgKERIU1M9VHJ1ZSkgbW9kZSB0byB0aGUgRGVsbCBQb3dlclN0b3JlCk1hbmlsYSBkcml2ZXIgZm9yIGF1dG9tYXRpYyBOQVMgc2VydmVyIG1hbmFnZW1lbnQuIFRoaXMgZW5hYmxlcwptdWx0aS10ZW5hbnQgaXNvbGF0aW9uIHdpdGggcGVyLXNoYXJlLW5ldHdvcmsgTkFTIHNlcnZlcnMuCgpLZXkgY2hhbmdlczoKLSBBZGQgTkFTIHNlcnZlciBDUlVEIG9wZXJhdGlvbnMgdG8gUG93ZXJTdG9yZSBjbGllbnQKLSBBZGQgZmlsZSBpbnRlcmZhY2UsIE5GUyBzZXJ2ZXIsIFNNQiBzZXJ2ZXIgbWFuYWdlbWVudAotIEltcGxlbWVudCBzZXR1cF9zZXJ2ZXIvdGVhcmRvd25fc2VydmVyIGZvciBzaGFyZSBzZXJ2ZXIgbGlmZWN5Y2xlCi0gQWRkIF9nZXRfbmFzX3NlcnZlcl9pZC9fZ2V0X25hc19zZXJ2ZXJfbmFtZSBmb3IgZHVhbC1tb2RlIHN1cHBvcnQKLSBBZGQgQ0lEUi10by1wcmVmaXgtbGVuZ3RoIGNvbnZlcnNpb24gdXRpbGl0eQotIFN1cHBvcnQgYm90aCBESFNTPVRydWUgYW5kIERIU1M9RmFsc2UgaW4gc2luZ2xlIGRyaXZlcgotIEFkZCBjb21wcmVoZW5zaXZlIHVuaXQgdGVzdHMgZm9yIGFsbCBuZXcgZnVuY3Rpb25hbGl0eQotIFVwZGF0ZSBkb2N1bWVudGF0aW9uIHdpdGggREhTUz1UcnVlIGNvbmZpZ3VyYXRpb24gZ3VpZGUKLSBBZGQgcmVsZWFzZSBub3RlIGZvciB0aGUgbmV3IGZlYXR1cmUKCkJsdWVwcmludDogZGVsbC1wb3dlcnN0b3JlLWRoc3MtdHJ1ZQpDaGFuZ2UtSWQ6IElhYjgxN2I4MTQzNGJmYWUxMzY1ODc1YTZjNmRjODg3MGY4MDBmYzEzClNpZ25lZC1vZmYtYnk6IFNpZGRoYXJ0aCBLdW1hciA8c2lkZGhhcnRoLmt1bWFyMUBkZWxsLmNvbT4KR2VuZXJhdGVkLUJ5OiBEZXZpbiA8aHR0cHM6Ly9kZXZpbi5haT4K
+      patchset: '1'
+      pipeline: dell-emc-powerstore-ci-check
+      playbook_context:
+        playbook_projects:
+          trusted/project_0/gerrit/zuul-config:
+            canonical_name: gerrit/zuul-config
+            checkout: master
+            commit: 26e528968bab701966e2aaa57846293bb9dc0df7
+          trusted/project_1/opendev.org/zuul/zuul-jobs:
+            canonical_name: opendev.org/zuul/zuul-jobs
+            checkout: master
+            commit: e32aba41d8c56949186b63be5ae6dea3cc72b035
+          trusted/project_2/opendev.org/openstack/openstack-zuul-jobs:
+            canonical_name: opendev.org/openstack/openstack-zuul-jobs
+            checkout: master
+            commit: 4c1657533551f94b1652fa8ddbd9d689d8b090db
+        playbooks:
+        - path: trusted/project_0/gerrit/zuul-config/playbooks/devstack-tempest.yaml
+          roles:
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_0/openstack-zuul-jobs
+            link_target: trusted/project_2/opendev.org/openstack/openstack-zuul-jobs
+            role_path: ansible/playbook_0/role_0/openstack-zuul-jobs/roles
+          - checkout: master
+            checkout_description: playbook branch
+            link_name: ansible/playbook_0/role_1/zuul-config
+            link_target: trusted/project_0/gerrit/zuul-config
+            role_path: ansible/playbook_0/role_1/zuul-config/roles
+          - checkout: master
+            checkout_description: zuul branch
+            link_name: ansible/playbook_0/role_2/zuul-jobs
+            link_target: trusted/project_1/opendev.org/zuul/zuul-jobs
+            role_path: ansible/playbook_0/role_2/zuul-jobs/roles
+      post_review: false
+      project:
+        canonical_hostname: opendev.org
+        canonical_name: opendev.org/openstack/manila
+        name: openstack/manila
+        short_name: manila
+        src_dir: src/opendev.org/openstack/manila
+      projects:
+        opendev.org/openstack/cinder:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/cinder
+          checkout: master
+          checkout_description: zuul branch
+          commit: b5de51c977077ee767cb4937f7b2d256382f7ed3
+          name: openstack/cinder
+          required: true
+          short_name: cinder
+          src_dir: src/opendev.org/openstack/cinder
+        opendev.org/openstack/devstack:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/devstack
+          checkout: master
+          checkout_description: zuul branch
+          commit: 991524263fbb83bd3e232b04a929e143504a68b2
+          name: openstack/devstack
+          required: true
+          short_name: devstack
+          src_dir: src/opendev.org/openstack/devstack
+        opendev.org/openstack/glance:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/glance
+          checkout: master
+          checkout_description: zuul branch
+          commit: d9356a84b3a98bba33d851d8be4ca36c5345a0fb
+          name: openstack/glance
+          required: true
+          short_name: glance
+          src_dir: src/opendev.org/openstack/glance
+        opendev.org/openstack/keystone:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/keystone
+          checkout: master
+          checkout_description: zuul branch
+          commit: 142d1d7909168133ab134cd176181ef221d8ef07
+          name: openstack/keystone
+          required: true
+          short_name: keystone
+          src_dir: src/opendev.org/openstack/keystone
+        opendev.org/openstack/manila:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/manila
+          checkout: master
+          checkout_description: zuul branch
+          commit: 49b6ff25f92ca805670953379eb79927f705836a
+          name: openstack/manila
+          required: false
+          short_name: manila
+          src_dir: src/opendev.org/openstack/manila
+        opendev.org/openstack/manila-tempest-plugin:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/manila-tempest-plugin
+          checkout: master
+          checkout_description: zuul branch
+          commit: ae4a708c93854da8da24f348abc51a6606306568
+          name: openstack/manila-tempest-plugin
+          required: true
+          short_name: manila-tempest-plugin
+          src_dir: src/opendev.org/openstack/manila-tempest-plugin
+        opendev.org/openstack/neutron:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/neutron
+          checkout: master
+          checkout_description: zuul branch
+          commit: 24ce3c725d925daa0e3249d8053a0dda995fc79b
+          name: openstack/neutron
+          required: true
+          short_name: neutron
+          src_dir: src/opendev.org/openstack/neutron
+        opendev.org/openstack/nova:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/nova
+          checkout: master
+          checkout_description: zuul branch
+          commit: f1abd0783bc1661de70f34629dc26a0d3e4b0dd1
+          name: openstack/nova
+          required: true
+          short_name: nova
+          src_dir: src/opendev.org/openstack/nova
+        opendev.org/openstack/os-test-images:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/os-test-images
+          checkout: master
+          checkout_description: zuul branch
+          commit: 840ecd26fa6ba394512d9ddca91eb93dc4dd176a
+          name: openstack/os-test-images
+          required: true
+          short_name: os-test-images
+          src_dir: src/opendev.org/openstack/os-test-images
+        opendev.org/openstack/placement:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/placement
+          checkout: master
+          checkout_description: zuul branch
+          commit: 4046d6b1918bc07467cc6020986e36b60877c8af
+          name: openstack/placement
+          required: true
+          short_name: placement
+          src_dir: src/opendev.org/openstack/placement
+        opendev.org/openstack/requirements:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/requirements
+          checkout: master
+          checkout_description: zuul branch
+          commit: 4e7932c879b889553e5629a4884ed98b0d2786a6
+          name: openstack/requirements
+          required: true
+          short_name: requirements
+          src_dir: src/opendev.org/openstack/requirements
+        opendev.org/openstack/swift:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/swift
+          checkout: master
+          checkout_description: zuul branch
+          commit: b55fef18f561bee1447308060221b8c49edd273b
+          name: openstack/swift
+          required: true
+          short_name: swift
+          src_dir: src/opendev.org/openstack/swift
+        opendev.org/openstack/tempest:
+          canonical_hostname: opendev.org
+          canonical_name: opendev.org/openstack/tempest
+          checkout: master
+          checkout_description: zuul branch
+          commit: 2c70bae1c7de14544b99bae0c331f4ac76e14d83
+          name: openstack/tempest
+          required: true
+          short_name: tempest
+          src_dir: src/opendev.org/openstack/tempest
+      ref: refs/changes/56/1014456/1
+      resources: {}
+      tenant: openstack
+      timeout: null
+      topic: null
+      voting: true
+    zuul_copy_output:
+      /etc/ceph: logs
+      /etc/glusterfs/glusterd.vol: logs
+      /etc/libvirt: logs
+      /etc/lvm: logs
+      /etc/resolv.conf: logs
+      /etc/sudoers: logs
+      /etc/sudoers.d: logs
+      /var/log/ceph: logs
+      /var/log/glusterfs: logs
+      /var/log/libvirt: logs
+      /var/log/mysql: logs
+      /var/log/openvswitch: logs
+      /var/log/postgresql: logs
+      /var/log/rabbitmq: logs
+      /var/log/unbound.log: logs
+      '{{ devstack_base_dir }}/tempest/etc/accounts.yaml': logs
+      '{{ devstack_base_dir }}/tempest/etc/tempest.conf': logs
+      '{{ devstack_base_dir }}/tempest/tempest.log': logs
+      '{{ devstack_conf_dir }}/.localrc.auto': logs
+      '{{ devstack_conf_dir }}/.stackenv': logs
+      '{{ devstack_conf_dir }}/local.conf': logs
+      '{{ devstack_conf_dir }}/localrc': logs
+      '{{ devstack_full_log}}': logs
+      '{{ devstack_log_dir }}/devstacklog.txt': logs
+      '{{ devstack_log_dir }}/devstacklog.txt.summary': logs
+      '{{ devstack_log_dir }}/dstat-csv.log': logs
+      '{{ devstack_log_dir }}/qemu.coredump': logs
+      '{{ devstack_log_dir }}/tcpdump.pcap': logs
+      '{{ devstack_log_dir }}/tempest_result.txt': logs
+      '{{ devstack_log_dir }}/worlddump-latest.txt': logs
+      '{{ stage_dir }}/apache': logs
+      '{{ stage_dir }}/apache_config': logs
+      '{{ stage_dir }}/audit.log': logs
+      '{{ stage_dir }}/core': logs
+      '{{ stage_dir }}/deprecations.log': logs
+      '{{ stage_dir }}/df.txt': logs
+      '{{ stage_dir }}/dpkg-l.txt': logs
+      '{{ stage_dir }}/etc': logs
+      '{{ stage_dir }}/iptables.txt': logs
+      '{{ stage_dir }}/listen53.txt': logs
+      '{{ stage_dir }}/performance.json': logs
+      '{{ stage_dir }}/pip2-freeze.txt': logs
+      '{{ stage_dir }}/pip3-freeze.txt': logs
+      '{{ stage_dir }}/rpm-qa.txt': logs
+      '{{ stage_dir }}/services.txt': logs
+      '{{ stage_dir }}/stackviz': logs
+      '{{ stage_dir }}/verify_tempest_conf.log': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.html': logs
+      '{{ stage_dir }}/{{ test_results_stage_name }}.subunit': logs
