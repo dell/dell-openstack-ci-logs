@@ -1,0 +1,1095 @@
+==== TEMPEST RUN ====
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/setuptools/__init__.py:92: _DeprecatedInstaller: setuptools.installer and fetch_build_eggs are deprecated.
+!!
+
+        ********************************************************************************
+        Requirements should be satisfied by a PEP 517 installer.
+        If you are using pip, you can try `pip install --use-pep517`.
+
+        This deprecation is overdue, please update your project and remove deprecated
+        calls to avoid build errors in the future.
+        ********************************************************************************
+
+!!
+  dist.fetch_build_eggs(dist.setup_requires)
+/opt/stack/tempest/.tox/tempest/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+all develop-inst-nodeps: /opt/stack/tempest
+all installed: attrs==26.1.0,autopage==0.6.0,barbican_tempest_plugin==4.7.0,bcrypt==5.0.0,certifi==2026.10.23,cffi==2.1.1,charset-normalizer==3.5.2,cliff==4.17.0,cmd2==4.4.1,cryptography==50.0.2,ddt==1.7.2,debtcollector==3.1.0,defusedxml==0.7.1,fasteners==0.20,fixtures==4.3.2,idna==3.20,invoke==3.0.3,iso8601==2.1.0,jsonschema==4.26.0,jsonschema-specifications==2025.9.1,manila-tempest-plugin @ file:///opt/stack/manila-tempest-plugin,markdown-it-py==4.2.0,mdurl==0.1.2,msgpack==1.2.4,netaddr==1.3.0,oslo.concurrency==7.6.1,oslo.config==10.8.1,oslo.context==6.5.0,oslo.i18n==6.9.0,oslo.log==8.3.2,oslo.serialization==5.11.0,oslo.utils==10.3.0,packaging==26.3,paramiko==5.1.0,pbr==7.1.3,prettytable==3.18.0,prompt_toolkit==3.0.53,psutil==7.2.2,pycparser==3.12,Pygments==2.21.0,PyNaCl==1.6.2,pyparsing==3.3.2,pyperclip==1.11.0,python-dateutil==2.9.0.post0,python-subunit==1.4.6,PyYAML==6.0.3,referencing==0.37.0,requests==2.34.2,rfc3986==2.0.0,rich==15.0.0,rich-argparse==1.8.0,rpds-py==2026.9.1,setuptools==84.2.1,six==1.17.0,stestr==4.2.1,stevedore==5.10.0,-e git+file:///dev/null@1bf0f91617830906f1cf3f48f577d47faefea7d2#egg=tempest,testscenarios==0.7.0,testtools==2.9.1,tomlkit==0.15.2,typing_extensions==4.16.0,urllib3==2.8.0,voluptuous==0.16.0,wcwidth==0.9.4,wrapt==2.5.2
+all run-test-pre: PYTHONHASHSEED='6288368'
+all run-test: commands[0] | find . -type f -name '*.pyc' -delete
+all run-test: commands[1] | tempest run --regex manila_tempest_tests.tests.api --concurrency=4 '--exclude-regex=test_create_share_with_size_bigger_than_quota|test_get_share_export_location_by_different_project_user|test_list_share_export_locations_by_different_project_user'
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationCancelNFSTest) ... SKIPPED: Share migration tests are disabled.
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_force_delete_nonexistent_share [0.366698s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_force_delete_nonexistent_share_instance [0.046826s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_force_delete_nonexistent_snapshot [0.045076s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_migration_API_invalid_microversion_1_migrate_share [0.373699s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_migration_API_invalid_microversion_2_migration_complete [0.020180s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_migration_API_invalid_microversion_3_reset_task_state [0.026997s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_migration_API_invalid_microversion_4_migration_get_progress [0.016073s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_migration_API_invalid_microversion_5_migration_cancel [0.015790s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_ensure_share_server_creation_when_dhss_enabled [0.043678s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_reset_nonexistent_share_instance_state [0.026608s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_reset_nonexistent_share_state [0.025863s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_reset_nonexistent_snapshot_state [0.019553s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_reset_task_state_share_not_found [0.046556s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsAPIOnlyNegativeTest.test_try_list_share_instance_with_member [0.016678s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationOfShareWithSnapshotNFSTest) ... SKIPPED: Share migration tests are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_get_share_export_location [0.213530s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_get_share_export_location_by_member [0.951363s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_get_share_instance_export_location [0.206356s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_list_share_export_locations [0.084905s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_list_share_export_locations_by_member [0.093925s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_list_share_export_locations_with_preferred_flag [0.085855s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_list_share_instance_export_locations [0.091293s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_list_share_instance_export_locations_with_preferred_flag [0.086495s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations.ExportLocationsTest.test_share_contains_all_export_locations_of_all_share_instances [0.181692s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationTwoPhaseNFSTest) ... SKIPPED: Share migration tests are disabled.
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_create_share_group_with_exceeding_quota_limit ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_extend_share_force_1_True [10.087860s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_create_share_over_quota_limit [3.501261s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_reset_share_instance_state_to_unacceptable_state [0.024087s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_reset_share_state_to_unacceptable_state [0.016206s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_reset_snapshot_state_to_unacceptable_state [0.012372s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_reset_task_state_invalid_state [0.017396s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_force_delete_share_instance_with_member [0.325499s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_force_delete_share_with_member [0.017968s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_force_delete_snapshot_with_member [0.018587s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_get_instances_of_share_with_member [0.014197s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_get_share_instance_with_member [0.014870s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_reset_share_instance_state_with_member [0.018087s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_reset_share_state_with_member [0.013951s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_admin_actions_negative.AdminActionsNegativeTest.test_try_reset_snapshot_state_with_member [0.013393s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_create_snapshot_over_quota_limit [6.875285s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_get_quotas_with_empty_tenant_id [0.017467s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_quotas_providing_share_type_and_user_id_1_show [0.060986s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_quotas_providing_share_type_and_user_id_2_reset [0.053135s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_quotas_providing_share_type_and_user_id_3_update [0.074517s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_reset_quotas_with_empty_tenant_id [0.015538s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_group_quotas_using_too_old_microversion_1_share_groups [0.042227s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_group_quotas_using_too_old_microversion_2_share_group_snapshots [0.039096s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_replica_quotas_using_too_old_microversion_1_share_replicas [0.040009s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_replica_quotas_using_too_old_microversion_2_replica_gigabytes [0.036039s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_nonexistent_share_type_1_show [0.020196s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_nonexistent_share_type_2_reset [0.027519s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_nonexistent_share_type_3_update [0.046744s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_too_old_microversion_1_show [0.043910s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_too_old_microversion_2_reset [0.053072s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_share_type_quotas_using_too_old_microversion_3_update [0.082021s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quota_detail_with_wrong_versions [0.018208s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_01___quota_sets____2_0____show_quotas__ [0.011502s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_02___quota_sets____2_0____default_quotas__ [0.013328s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_03___quota_sets____2_0____reset_quotas__ [0.016341s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_04___quota_sets____2_0____update_quotas__ [0.018280s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_05___quota_sets____2_6____show_quotas__ [0.012778s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_06___quota_sets____2_6____default_quotas__ [0.015617s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_07___quota_sets____2_6____reset_quotas__ [0.011460s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_08___quota_sets____2_6____update_quotas__ [0.015105s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_09___os_quota_sets____2_7____show_quotas__ [0.011896s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_10___os_quota_sets____2_7____default_quotas__ [0.013299s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_11___os_quota_sets____2_7____reset_quotas__ [0.015490s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_show_quotas_with_wrong_versions_12___os_quota_sets____2_7____update_quotas__ [0.019741s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_gigabytes_bigger_than_tenant_quota [0.080331s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_replicas_bigger_than_tenant_quota_1_share_replicas [0.078742s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_replicas_bigger_than_tenant_quota_2_replica_gigabytes [0.080459s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_share_networks_bigger_than_tenant_quota [0.082314s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_shares_bigger_than_tenant_quota [0.083721s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_snap_gigabytes_bigger_than_tenant_quota [0.088326s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_set_user_quota_snaps_bigger_than_tenant_quota [0.072941s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_update_share_type_quota_for_share_groups_1_share_groups [0.069992s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_update_share_type_quota_for_share_groups_2_share_group_snapshots [0.065328s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_update_share_type_quota_for_share_networks_1_id [0.104152s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_try_update_share_type_quota_for_share_networks_2_name [0.111208s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_1 [0.035373s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_extend_share_force_2_False [9.823467s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_2 [0.032776s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_3 [0.033282s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_4 [0.040198s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_5 [0.038380s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_quota_with_wrong_data_6 [0.036541s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_replica_quotas_wrong_data_1 [0.040871s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_replica_quotas_wrong_data_2 [0.034285s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_sg_quota_with_wrong_data_1 ... SKIPPED: Share Group tests disabled.
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_sg_quota_with_wrong_data_2 ... SKIPPED: Share Group tests disabled.
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_share_type_quotas_bigger_than_project_quota_1_11 [0.177436s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_quotas_negative.SharesAdminQuotasNegativeTest.test_update_share_type_quotas_bigger_than_project_quota_2__1 [0.187551s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsNegativeTest.test_get_inexistent_share_export_location [0.039803s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsNegativeTest.test_get_inexistent_share_instance_export_location [0.077198s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsNegativeTest.test_get_share_instance_export_locations_as_member [0.519496s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsNegativeTest.test_list_share_instance_export_locations_as_member [0.014012s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_force_delete_share [6.610903s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsAPIOnlyNegativeTest.test_get_export_locations_by_nonexistent_share [0.312830s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_export_locations_negative.ExportLocationsAPIOnlyNegativeTest.test_get_export_locations_by_nonexistent_share_instance [0.030862s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_multi_backend.ShareMultiBackendTest) ... SKIPPED: Manila multi-backend tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_force_delete_share_instance [6.661660s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_scheduler_hints.SharesSchedulerHintsAdminTest) ... SKIPPED: Manila multi-backend tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationOppositeDriverModesNFSTest) ... SKIPPED: Share migration tests are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs.QosTypeSpecsAdminTest.test_delete_one_qos_type_spec [0.556287s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs.QosTypeSpecsAdminTest.test_get_all_qos_type_specs [0.089038s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs.QosTypeSpecsAdminTest.test_get_one_qos_type_spec [0.093031s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs.QosTypeSpecsAdminTest.test_update_qos_type_spec [0.114911s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services [0.600514s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_all_tenants [0.194916s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_detailed_filter_by_ss_attributes [0.220344s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_filter_by_share_network ... SKIPPED: Only for multitenancy.
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_invalid_filters [0.195731s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_with_detail_1_2_42 [0.203547s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_with_detail_2_2_44 [0.184535s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationWithDifferentSnapshotSupportNFSTest) ... SKIPPED: Share migration tests are disabled.
+{3} manila_tempest_tests.tests.api.admin.test_security_services.SecurityServiceAdminTest.test_list_security_services_with_detail_3_2_99 [0.208134s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_group_types.ShareGroupTypesTest) ... SKIPPED: Share Group tests disabled.
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_group_types_negative.ShareGroupTypesAdminNegativeTest) ... SKIPPED: Share Group tests disabled.
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_groups_negative.ShareGroupsNegativeTest) ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_force_delete_snapshot [6.823680s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_instance_state_1_error [0.494032s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_instance_state_2_available [0.283858s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_instance_state_3_error_deleting [0.281502s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_instance_state_4_deleting [0.235528s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_migration_negative.MigrationNegativeTest) ... SKIPPED: Share migration tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_quotas_negative.ReplicaQuotasNegativeTest) ... SKIPPED: Replication tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_replication.ReplicationAdminTest) ... SKIPPED: Replication tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_instance_state_5_creating [0.245118s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state_1_error [0.229354s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state_2_available [0.194156s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state_3_error_deleting [0.212398s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state_4_deleting [0.279769s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_create_spec_with_empty_qos_type_id [0.375536s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_create_spec_with_invalid_qos_type_id [0.023683s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_create_spec_with_invalid_specs [0.059023s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_state_5_creating [0.256066s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_create_specs_with_user [0.315196s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_delete_spec_key_with_empty_qos_type_id [0.015900s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_delete_spec_key_with_invalid_qos_type_id [0.016988s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_delete_specs_with_user [0.055779s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_delete_with_invalid_key [0.057622s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_share_task_state [0.475495s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_get_spec_with_empty_key [0.049567s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_get_spec_with_invalid_key [0.064371s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_get_specs_with_empty_qos_type_id [0.028885s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_get_specs_with_invalid_qos_type_id [0.019587s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_list_spec_with_invalid_qos_type_id [0.016385s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_set_too_long_key [0.055538s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_set_too_long_value_with_creation [0.062219s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_set_too_long_value_with_update [0.087606s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_update_spec_with_empty_key [0.045344s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_update_spec_with_empty_qos_type_id [0.012311s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_update_spec_with_invalid_qos_type_id [0.020013s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_qos_types_specs_negative.QosTypeSpecsAdminNegativeTest.test_try_update_spec_with_user [0.042603s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_instances_negative.ShareInstancesNegativeTest.test_list_share_instances_with_export_location_and_invalid_version_1_path [0.044871s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_instances_negative.ShareInstancesNegativeTest.test_list_share_instances_with_export_location_and_invalid_version_2_id [0.055743s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_instances_negative.ShareInstancesNegativeTest.test_list_share_instances_with_export_location_not_exist_1_path [0.031074s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_instances_negative.ShareInstancesNegativeTest.test_list_share_instances_with_export_location_not_exist_2_id [0.036951s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_binary [0.389224s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_host [0.026362s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_params [0.052433s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_state [0.018647s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_status [0.011364s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_get_service_by_invalid_zone [0.020617s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_list_services_with_non_admin_user [0.256079s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_list_services_with_wrong_versions_1___os_services____2_7__ [0.015781s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_list_services_with_wrong_versions_2___services____2_6__ [0.018458s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_snapshot_state_1_error [3.897480s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_services_negative.ServicesAdminNegativeTest.test_list_services_with_wrong_versions_3___services____2_0__ [0.016948s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage.ManageGLUSTERFSShareTest) ... SKIPPED: glusterfs tests are disabled
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage.ManageMapRFSShareTest) ... SKIPPED: maprfs tests are disabled
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageHDFSShareNegativeTest) ... SKIPPED: hdfs tests are disabled
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerErrorStatusOperationCIFS) ... SKIPPED: Multitenancy tests are disabled.
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerErrorStatusOperationNFS) ... SKIPPED: Multitenancy tests are disabled.
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationInvalidStatesCIFS) ... SKIPPED: Multitenancy tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_snapshot_state_2_available [3.619996s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_default_quotas [0.031065s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_quotas [0.032567s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_quotas_for_user [0.028312s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_replica_quotas_for_user_using_too_old_microversion [0.028468s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_sg_quotas_for_user_using_too_old_microversion [0.032454s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_sg_quotas_using_too_old_microversion [0.025069s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_share_type_quotas_1___id___True_ [0.183556s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_groups.ShareGroupsTest) ... SKIPPED: Share Group tests disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage.ManageCephFSShareTest) ... SKIPPED: cephfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageGLUSTERFSShareNegativeTest) ... SKIPPED: glusterfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers.ShareServersAdminTest) ... SKIPPED: Share servers can be tested only with multitenant drivers.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration.ShareServerMigrationBasicNFS) ... SKIPPED: Multitenancy tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationInvalidParametersNFS) ... SKIPPED: Multitenancy tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationStartInvalidStatesNFS) ... SKIPPED: Multitenancy tests are disabled.
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationStartNegativesNFS) ... SKIPPED: Multitenancy tests are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasTest.test_show_share_type_quotas_2___name___False_ [0.192458s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_snapshot_state_3_error_deleting [3.652024s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_snapshot_state_4_deleting [3.653174s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_instances_of_share_v2_3 [0.047616s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_share_instance_1_2_3 [0.083723s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_share_instance_2_2_9 [0.078579s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_share_instance_3_2_10 [0.074665s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_share_instance_4_2_30 [0.066371s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_get_share_instance_5_2_54 [0.084802s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_list_share_instances_v2_3 [0.037208s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_list_share_instances_with_export_location_path_and_id_1_path [0.200456s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_instances.ShareInstancesTest.test_list_share_instances_with_export_location_path_and_id_2_id [0.215839s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances.ShareSnapshotInstancesTest.test_get_snapshot_instance [0.070099s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances.ShareSnapshotInstancesTest.test_list_snapshot_instances [0.043192s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances.ShareSnapshotInstancesTest.test_list_snapshot_instances_by_snapshot_1_True [0.030438s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances.ShareSnapshotInstancesTest.test_list_snapshot_instances_by_snapshot_2_False [0.035243s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_admin_actions.AdminActionsTest.test_reset_snapshot_state_5_creating [3.701410s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_get_share [0.043126s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_get_snapshot [0.052004s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares [0.043100s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_or_with_detail_filter_by_export_location_1___path___True_ [0.117300s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_or_with_detail_filter_by_export_location_2___id___True_ [0.147464s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_or_with_detail_filter_by_export_location_3___path___False_ [0.139105s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_or_with_detail_filter_by_export_location_4___id___False_ [0.115499s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail [0.039264s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_active_status [0.038362s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_existed_name [0.035323s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_extra_specs [0.114127s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_fake_name [0.020810s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_fake_status [0.020300s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_host [0.062851s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_metadata [0.046686s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_share_network_id ... SKIPPED: Only for multitenancy.
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_share_type_id [0.074798s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_filter_by_snapshot_id [0.036961s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_shares_with_detail_with_asc_sorting [0.035784s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_snapshots [0.054109s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_shares_actions.SharesActionsAdminTest.test_list_snapshots_with_detail [0.056428s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances.ShareSnapshotInstancesTest.test_reset_snapshot_instance_status_and_delete [6.793768s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageCephFSSnapshotTest) ... SKIPPED: cephfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageGLUSTERFSSnapshotTest) ... SKIPPED: glusterfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageHDFSSnapshotTest) ... SKIPPED: hdfs tests are disabled
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsReadAdminTest.test_get_all_share_type_extra_specs [0.027266s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsReadAdminTest.test_get_one_share_type_extra_spec [0.020969s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage.ManageCIFSShareTest.test_manage [13.129950s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_create_es_with_empty_shr_type_id [0.329926s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_create_es_with_empty_specs [0.046408s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_create_es_with_invalid_shr_type_id [0.025094s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_create_es_with_invalid_specs [0.063826s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_create_extra_specs_with_user [0.357766s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_es_key_with_empty_shr_type_id [0.012443s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_es_key_with_invalid_shr_type_id [0.021199s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_extra_specs_with_user [0.056318s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_required_spec_snapshot_support_version_1_2_0 [0.083959s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_required_spec_snapshot_support_version_2_2_23 [0.071561s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_spec_driver_handles_share_servers [0.060978s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_delete_with_invalid_key [0.061411s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_spec_with_empty_key [0.055366s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_spec_with_invalid_key [0.072313s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_spec_with_user [0.061023s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_specs_with_empty_shr_type_id [0.020547s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_specs_with_invalid_shr_type_id [0.022665s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_get_extra_specs_with_user [0.054880s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_list_es_with_empty_shr_type_id [0.016935s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_list_es_with_invalid_shr_type_id [0.019958s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_list_extra_specs_with_user [0.051108s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_read_extra_specs_on_share_type_with_user [0.055371s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_set_too_long_key [0.062807s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_set_too_long_value_with_creation [0.053708s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_set_too_long_value_with_update [0.081433s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_set_too_long_value_with_update_of_one_key [0.087493s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_extra_spec_with_user [0.056103s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_extra_specs_with_user [0.064880s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_spec_with_empty_key [0.048828s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_spec_with_empty_shr_type_id [0.015087s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_spec_with_invalid_shr_type_id [0.021932s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_with_invalid_shr_type_id [0.019497s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs_negative.ExtraSpecsAdminNegativeTest.test_try_update_with_invalid_specs [0.045549s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationWithShareExtendingNFSTest) ... SKIPPED: Share migration tests are disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_migration.MigrationWithShareShrinkingNFSTest) ... SKIPPED: Share migration tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_qos_types.QosTypesTest.test_qos_type_create_delete [0.448107s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageMapRFSSnapshotNegativeTest) ... SKIPPED: maprfs tests are disabled
+{2} manila_tempest_tests.tests.api.admin.test_share_manage.ManageCIFSShareTest.test_manage_show_user_id [13.196418s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageNFSSnapshotTest.test_manage_different_versions_1_2_12 [13.226799s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_user_messages_negative.UserMessageNegativeTest.test_delete_message_of_other_tenants [7.135152s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_user_messages_negative.UserMessageNegativeTest.test_delete_nonexistent_message [3.660534s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage.ManageCIFSShareTest.test_manage_with_is_public_True [13.214489s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_user_messages_negative.UserMessageNegativeTest.test_list_messages_with_invalid_time_format [3.681941s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageNFSSnapshotTest.test_manage_different_versions_2_2_16 [13.153278s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_quotas_usages [17.198852s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_reset_share_type_quotas_1___id___True_ [0.504078s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_reset_share_type_quotas_2___name___False_ [0.455459s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_reset_tenant_quotas [0.243555s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_set_share_type_quota_bigger_than_users_quota [0.319430s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_share_group_quotas_usages ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_gigabytes [0.103799s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_replica_quotas_1_share_replicas [0.101253s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_replica_quotas_2_replica_gigabytes [0.118932s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_share_groups ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_share_networks [0.108005s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_shares [0.119994s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_snapshot_gigabytes [0.104088s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_quota_for_snapshots [0.145754s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_gigabytes [0.144763s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_replica_quotas_1_share_replicas [0.132538s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_replica_quotas_2_replica_gigabytes [0.129599s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_share_group_snapshots ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_share_networks [0.122633s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_shares [0.148524s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_snapshot_gigabytes [0.129527s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_unlimited_user_quota_for_snapshots [0.129089s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_share_type_quota_1___id___True_ [0.615319s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_share_type_quota_2___name___False_ [0.623714s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_share_type_quotas_bigger_than_project_quota_1_11 [0.193842s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_share_type_quotas_bigger_than_project_quota_2__1 [0.198361s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_encryption_keys [0.111705s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_gigabytes [0.120725s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_share_groups_1_share_groups ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_share_groups_2_share_group_snapshots ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_share_networks [0.132481s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_shares [0.107850s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_snapshot_gigabytes [0.109177s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_tenant_quota_snapshots [0.137889s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_gigabytes [0.153649s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_replica_related_1___share_replicas___False_ [0.130383s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_replica_related_2___share_replicas___True_ [0.126066s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_replica_related_3___replica_gigabytes___False_ [0.101007s] ... ok
+{3} manila_tempest_tests.tests.api.admin.test_user_messages_negative.UserMessageNegativeTest.test_show_message_of_other_tenants [6.596325s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_replica_related_4___replica_gigabytes___True_ [0.147054s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_share_groups_1_share_groups ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_share_groups_2_share_group_snapshots ... SKIPPED: Share Group tests disabled.
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_share_networks [0.131062s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_shares [0.160995s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_snapshot_gigabytes [0.134747s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quota_snapshots [0.156963s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quotas_bigger_than_project_quota_1_11 [0.196320s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_quotas.SharesAdminQuotasUpdateTest.test_update_user_quotas_bigger_than_project_quota_2__1 [0.240106s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_replication_actions.ReplicationActionsAdminTest) ... SKIPPED: Replication tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list [0.134917s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_detail [0.040684s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_detail_with_filters [0.050921s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_detail_with_filters_negative [0.026524s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_filters [0.045814s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_filters_negative [0.030583s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_1__True___name__ [0.070903s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_2__True___id__ [0.080179s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_3__False___name__ [0.061984s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_4__False___id__ [0.067852s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_negative_1__True___name__ [0.073242s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_negative_2__True___id__ [0.068700s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_negative_3__False___name__ [0.078543s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_scheduler_stats.SchedulerStatsAdminTest.test_pool_list_with_share_type_filter_with_detail_negative_4__False___id__ [0.076229s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage.ManageCIFSShareTest.test_manage_with_os_share_manage_url [13.151550s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage.ManageHDFSShareTest) ... SKIPPED: hdfs tests are disabled
+{3} manila_tempest_tests.tests.api.admin.test_user_messages_negative.UserMessageNegativeTest.test_show_nonexistent_message [6.644667s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageNFSSnapshotTest.test_manage_different_versions_3_2_73 [13.153502s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_all_filters [0.170449s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_availability_zone [0.038581s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_binary_name [0.033028s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_host_name [0.036825s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_state [0.044564s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_get_services_by_status [0.036398s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_services.ServicesAdminTest.test_list_services [0.037728s] ... ok
+{3} manila_tempest_tests.tests.api.test_access_rules_metadata_negative.AccessesMetadataNegativeTest.test_try_delete_unexisting_access_metadata [0.074641s] ... ok
+{3} manila_tempest_tests.tests.api.test_access_rules_metadata_negative.AccessesMetadataNegativeTest.test_try_upd_access_metadata_error_1 [0.078469s] ... ok
+{3} manila_tempest_tests.tests.api.test_access_rules_metadata_negative.AccessesMetadataNegativeTest.test_try_upd_access_metadata_error_2 [0.063144s] ... ok
+{3} manila_tempest_tests.tests.api.test_access_rules_metadata_negative.AccessesMetadataNegativeTest.test_try_upd_access_metadata_error_3 [0.070899s] ... ok
+{1} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageNFSSnapshotTest.test_manage_different_versions_4_2_99 [13.293625s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_manage.ManageNFSShareTest.test_manage [13.225455s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_delete_share_in_manage_error [16.722918s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageGLUSTERFSSnapshotNegativeTest) ... SKIPPED: glusterfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageHDFSSnapshotNegativeTest) ... SKIPPED: hdfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.test_metadata.SharesMetadataCEPHFSTest) ... SKIPPED: CEPHFS filesystem metadata tests are disabled for the cephfs protocol.
+{3} setUpClass (manila_tempest_tests.tests.api.test_backup_negative.ShareBackupNegativeTest) ... SKIPPED: Share backup tests are disabled.
+{3} manila_tempest_tests.tests.api.test_limits.ShareLimitsTest.test_limits_keys [0.205638s] ... ok
+{3} manila_tempest_tests.tests.api.test_limits.ShareLimitsTest.test_limits_values [0.036630s] ... ok
+{3} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataAPIOnlyNegativeTest.test_try_set_metadata_to_unexisting_share [0.147580s] ... ok
+{3} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataAPIOnlyNegativeTest.test_try_update_all_metadata_for_unexisting_share [0.029092s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_default_quotas [0.161286s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_quota_detail_2_52_no_share_replica_quotas [0.027720s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas [0.023247s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_1___2_25___True_ [0.039048s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_2___2_25___False_ [0.045936s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_3___2_53___True_ [0.035448s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_4___2_53___False_ [0.022993s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_5___2_99___True_ [0.026269s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_detail_6___2_99___False_ [0.030518s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas.SharesQuotasTest.test_show_quotas_for_user [0.021250s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_manage.ManageNFSShareTest.test_manage_show_user_id [13.275147s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_get_quotas_detail_with_wrong_version_1_2_6 [0.101650s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_get_quotas_detail_with_wrong_version_2_2_7 [0.014894s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_get_quotas_detail_with_wrong_version_3_2_24 [0.019838s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_get_quotas_with_empty_tenant_id [0.011528s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_try_reset_quotas_with_user [0.012280s] ... ok
+{3} manila_tempest_tests.tests.api.test_quotas_negative.SharesQuotasNegativeTest.test_try_update_quotas_with_user [0.011893s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.test_replication.ReplicationActionsTest) ... SKIPPED: Replication tests are disabled.
+{3} setUpClass (manila_tempest_tests.tests.api.test_replication_export_locations.ReplicationExportLocationsTest) ... SKIPPED: Replication tests are disabled.
+{1} manila_tempest_tests.tests.api.test_public_shares.PublicSharesTest.test_list_shares_public_with_detail [13.569940s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_create_resource_lock [0.661098s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_get_resource_lock [0.026761s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_list_resource_locks [0.035855s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_manage.ManageNFSShareTest.test_manage_with_is_public_True [13.175751s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_manage_invalid_param_manage_error [26.282205s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_list_resource_locks_filtered [3.637427s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_list_resource_locks_sorted_and_paginated [0.221648s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockCRUTest.test_update_resource_lock [0.072600s] ... ok
+{1} manila_tempest_tests.tests.api.test_public_shares.PublicSharesTest.test_update_share_set_is_public [6.726414s] ... ok
+{1} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockDeleteTest.test_delete_lock [3.669646s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_manage.ManageNFSShareTest.test_manage_with_os_share_manage_url [13.274155s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_manage_invalid_param_raises_exception [13.276944s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageMapRFSShareNegativeTest) ... SKIPPED: maprfs tests are disabled
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_manage_negative.ManageShareServersNegativeTest) ... SKIPPED: Multitenancy tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances_negative.SnapshotInstancesNegativeNoResourceTest.test_get_snapshot_instance_with_non_existent_instance [0.139824s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances_negative.SnapshotInstancesNegativeNoResourceTest.test_list_snapshot_instances_by_non_admin [0.119673s] ... ok
+{1} manila_tempest_tests.tests.api.test_resource_locks.ResourceLockDeleteTest.test_delete_locked_resource [6.952576s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestWithShares.test_create_resource_lock_invalid_lock_reason_too_long [0.020450s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestWithShares.test_create_resource_lock_invalid_resource_action [0.019574s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestWithShares.test_delete_resource_lock_created_by_different_user [0.779467s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestWithShares.test_update_resource_lock_created_by_different_user [0.798465s] ... ok
+{3} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestWithShares.test_update_resource_lock_invalid_param [0.093330s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.test_rules.ShareCephxRulesForCephFSTest) ... SKIPPED: Cephx rule tests for cephfs protocol are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_manage_share_duplicate [13.459077s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_manage_share_without_share_server_id ... SKIPPED: Multitenancy tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances_negative.SnapshotInstancesNegativeTest.test_get_snapshot_instance_by_non_admin [0.262792s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances_negative.SnapshotInstancesNegativeTest.test_list_snapshot_instances_with_snapshot_by_non_admin [0.022077s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_snapshot_instances_negative.SnapshotInstancesNegativeTest.test_reset_snapshot_instance_status_by_non_admin [0.072957s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_unmanage_share_transitional_state [7.339560s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_unmanage_share_with_server_unsupported ... SKIPPED: Multitenancy tests are disabled.
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_add_access_rule_on_share_with_no_host [3.829993s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_allow_access_multiple_visibility_locks_not_allowed [7.059800s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_01_1_2_3_256 [0.035071s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_02_1_1_1__ [0.029685s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_03_1_2_3_4_33 [0.028846s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_04_1_2_3__ [0.032495s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_05_1_2_3___23 [0.025842s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_06_1_2_3_1_23 [0.034019s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_07_1_2_3_1__1 [0.032315s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_08_1_2_3_1_ [0.039380s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_09_ad80__abaa_0_c2_2__3 [0.031684s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_10_AD80_ABAA___26 [0.039396s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_11_2001_DB8_2de_0_0_0_0_e13_200a [0.029209s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_access_rule_with_wrong_level [0.035287s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_get_share_with_share_type [6.626737s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_private_share_type_access [0.279521s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_delete [0.128319s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_get_1_2_0 [0.045651s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_get_2_2_6 [0.057172s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_get_3_2_7 [0.082263s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_get_4_2_40 [0.063257s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_get_5_2_41 [0.055609s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_list_1_2_0 [0.063011s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_list_2_2_6 [0.070686s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_list_3_2_7 [0.064148s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_list_4_2_40 [0.082400s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_list_5_2_41 [0.083807s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_show_list_with_is_default_key_1_2_45 [0.094208s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_show_list_with_is_default_key_2_2_46 [0.098270s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_show_list_with_is_default_key_3_2_99 [0.067001s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_01_2_50_name_description_public [0.065716s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_02_2_50_name [0.074794s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_03_2_50_description_public [0.068064s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_04_2_50_public [0.057473s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_05_2_50 [0.079599s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_06_2_99_name_description_public [0.081999s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_07_2_99_name [0.075618s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_08_2_99_description [0.076302s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_09_2_99_public [0.072113s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_create_update_10_2_99 [0.064248s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_unset_description_1___2_50___None______None_ [0.075948s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types.ShareTypesAdminTest.test_share_type_unset_description_2___2_99___None______None_ [0.064623s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCIFSShareNegativeTest.test_unmanage_share_with_snapshot [13.509040s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageCephFSShareNegativeTest) ... SKIPPED: cephfs tests are disabled
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_1_2_9 [6.938941s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsWriteAdminTest.test_delete_one_share_type_extra_spec [0.265875s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsWriteAdminTest.test_delete_snapshot_support_extra_spec_1_2_24 [0.231214s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsWriteAdminTest.test_delete_snapshot_support_extra_spec_2_2_99 [0.219774s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsWriteAdminTest.test_update_all_share_type_extra_specs [0.167091s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_extra_specs.ExtraSpecsWriteAdminTest.test_update_one_share_type_extra_spec [0.159751s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_add_share_type_allowed_for_public [0.230300s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_add_share_type_by_nonexistent_id [0.017501s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_type_with_description_in_wrong_version_1_2_0 [0.012384s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_type_with_description_in_wrong_version_2_2_6 [0.013699s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_type_with_description_in_wrong_version_3_2_40 [0.012874s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_type_with_empty_name [0.010938s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_type_with_too_big_name [0.015846s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_with_non_allowed_share_type [0.254587s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_create_share_with_nonexistent_share_type [0.026838s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_get_share_type_by_nonexistent_id [0.035250s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_remove_share_type_allowed_for_public [0.083464s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_remove_share_type_by_nonexistent_id [0.033762s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_try_create_duplicate_of_share_type [0.078766s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_share_types_negative.ShareTypesAdminNegativeTest.test_try_delete_share_type_by_nonexistent_id [0.034590s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_2_2_99 [9.824689s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsAPIOnlyNegativeTest.test_list_export_locations_by_nonexistent_snapshot [0.225219s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsAPIOnlyNegativeTest.test_list_export_locations_by_nonexistent_snapshot_instance [0.024785s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsAPIOnlyNegativeTest.test_list_inexistent_snapshot_instance_export_locations_by_member [0.208884s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_single_host_rules_1_10_20_30_40 [6.793568s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageMapRFSSnapshotTest) ... SKIPPED: maprfs tests are disabled
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_delete_share_in_manage_error [19.695394s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_single_host_rules_2_fd8c_b029_bba6_ac54__1 [6.817919s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageCIFSSnapshotNegativeTest.test_manage_already_exists [6.764189s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_single_host_rules_3_fd2c_b029_bba6_df54__1_128 [6.839179s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_create_duplicate_single_host_rules_4_10_10_30_40_32 [6.874179s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_manage_invalid_param_manage_error [26.151812s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_deny_access_unrestrict_other_user_rule [6.833942s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageCIFSSnapshotNegativeTest.test_manage_invalid_provider_location [16.541574s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageCIFSSnapshotNegativeTest.test_manage_not_found [0.031647s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageCIFSSnapshotNegativeTest.test_unmanage_snapshot_with_server_unsupported ... SKIPPED: Multitenancy tests are disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageCephFSSnapshotNegativeTest) ... SKIPPED: cephfs tests are disabled
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_deny_access_without_unrestrict_as_owner_user_1_True [9.926357s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_manage_invalid_param_raises_exception [13.312070s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForNFSNegativeTest.test_deny_access_without_unrestrict_as_owner_user_2_False [6.863512s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageNFSSnapshotNegativeTest.test_manage_already_exists [6.765965s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_manage_share_duplicate [13.576734s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_manage_share_without_share_server_id ... SKIPPED: Multitenancy tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageNFSSnapshotNegativeTest.test_manage_invalid_provider_location [16.534869s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageNFSSnapshotNegativeTest.test_manage_not_found [0.019437s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_snapshot_manage_negative.ManageNFSSnapshotNegativeTest.test_unmanage_snapshot_with_server_unsupported ... SKIPPED: Multitenancy tests are disabled.
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareRulesNegativeTest.test_create_access_rule_ip_to_snapshot [0.037468s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareRulesNegativeTest.test_create_access_rule_ip_with_wrong_type [0.033014s] ... ok
+{1} manila_tempest_tests.tests.api.test_rules_negative.ShareRulesNegativeTest.test_delete_access_rule_with_wrong_id [0.049897s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_unmanage_share_transitional_state [10.347918s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_unmanage_share_with_server_unsupported ... SKIPPED: Multitenancy tests are disabled.
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_delete_message [6.783262s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForNFSNegativeTest) ... SKIPPED: USER rule tests for nfs protocol are disabled
+{2} manila_tempest_tests.tests.api.admin.test_share_manage_negative.ManageNFSShareNegativeTest.test_unmanage_share_with_snapshot [13.300861s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_create_delete_security_service [0.611857s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_list_messages [6.585152s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_get_security_service_1_2_43 [0.693659s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_get_security_service_2_2_44 [0.211478s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_get_security_service_3_2_99 [0.216236s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services [0.184997s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_get_share_network [0.170307s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_detailed_filter_by_ss_attributes [0.192561s] ... ok
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_latest_snapshot_1_2_27 [83.223504s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_filter_by_invalid_opt [0.179772s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_filter_by_share_network ... SKIPPED: Only for multitenancy.
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks [0.331549s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_all_filter_opts [0.069870s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_all_tenants [0.066356s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_filter_by_network_detail_opts [0.066480s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_filter_by_project_id [0.037040s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_with_detail_1_2_42 [0.288433s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_filter_by_ss [0.104237s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_like_filter [0.035453s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_list_share_networks_with_detail [0.030946s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_with_detail_2_2_44 [0.158476s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_try_list_share_networks_all_tenants [0.039351s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_networks.ShareNetworkAdminTest.test_try_list_share_networks_project_id [0.037980s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_list_security_services_with_detail_3_2_99 [0.159448s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_try_list_security_services_all_tenants_ignored [0.337637s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_try_update_valid_keys_sh_server_exists ... SKIPPED: Only for multitenancy.
+{1} manila_tempest_tests.tests.api.test_security_services.SecurityServicesTest.test_update_security_service [0.387831s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_manage.ManageShareServersTest) ... SKIPPED: Multitenancy tests are disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration.ShareServerMigrationBasicCIFS) ... SKIPPED: Multitenancy tests are disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationInvalidParametersCIFS) ... SKIPPED: Multitenancy tests are disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.admin.test_share_servers_migration_negative.ShareServerMigrationStartNegativesCIFS) ... SKIPPED: Multitenancy tests are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_delete_share_server_with_member [0.152130s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_delete_share_server_with_nonexistent_id [0.208964s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_fake_host [0.060029s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_fake_project [0.043123s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_fake_share_network [0.049267s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_fake_share_network_subnet_id [0.045971s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_fake_status [0.051100s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_wrong_filter_key [0.015093s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_list_share_servers_with_wrong_filter_value [0.024337s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_show_share_server_details_with_inexistent_id [0.024220s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_show_share_server_with_inexistent_id [0.052141s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_try_list_share_servers_with_member [0.016866s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_try_show_share_server_details_with_member [0.015916s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_share_servers_negative.ShareServersNegativeAdminTest.test_try_show_share_server_with_member [0.016185s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_add_empty_sec_service_id_to_share_network [0.050465s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_add_nonexistant_sec_service_to_share_network [0.049549s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_add_sec_service_to_nonexistant_share_network [0.033914s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_add_sec_service_to_share_network_with_empty_id [0.015210s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_add_sec_service_twice_to_share_network [0.123138s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_delete_nonexistant_sec_service_from_share_network [0.058136s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_delete_nonexistant_ss_from_nonexistant_sn [0.031776s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_delete_sec_service_from_nonexistant_share_network [0.025570s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_delete_ss_from_sn_used_by_share_server ... SKIPPED: Only for multitenancy.
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_list_sec_services_for_nonexistant_share_network [0.024248s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_try_delete_ss_that_assigned_to_sn [0.612967s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_mapping_negative.SecServicesMappingNegativeTest.test_try_map_two_ss_with_same_type_to_sn [0.604124s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_list_messages_filtered [13.243902s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_get_deleted_security_service [0.230791s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_create_security_service_with_empty_type [0.027518s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_create_security_service_with_wrong_type [0.026673s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_delete_security_service_with_wrong_type [0.029496s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_delete_security_service_without_id [0.013944s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_get_security_service_with_wrong_id [0.016520s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_get_security_service_without_id [0.012426s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_update_invalid_keys_sh_server_exists ... SKIPPED: Only for multitenancy.
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_update_nonexistant_security_service [0.107007s] ... ok
+{1} manila_tempest_tests.tests.api.test_security_services_negative.SecurityServicesNegativeTest.test_try_update_security_service_with_empty_id [0.020483s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations.SnapshotExportLocationsTest.test_get_snapshot_export_location [0.161853s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.test_share_encryption_negative.SharesEncryptionNegativeTest) ... SKIPPED: Encryption tests are disabled.
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations.SnapshotExportLocationsTest.test_get_snapshot_instance_export_location [0.126421s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations.SnapshotExportLocationsTest.test_list_snapshot_export_location [0.062846s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations.SnapshotExportLocationsTest.test_snapshot_contains_all_export_locations_of_all_snapshot_instances [0.136076s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_and_update_metadata_by_key [0.683893s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_get_delete_metadata [0.744986s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_in_subnet_creation [0.645004s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_key_already_exist [0.846124s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_max_size_key [0.108136s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_max_size_value [0.116968s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_min_size_key [0.112121s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_min_size_value [0.113587s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_set_metadata_not_delete_pre_metadata [1.013624s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_upd_metadata_max_size_key [0.218077s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_upd_metadata_max_size_value [0.165950s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_upd_metadata_min_size_key [0.134467s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata.ShareNetworkSubnetMetadataTest.test_upd_metadata_min_size_value [0.123718s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_list_messages_sorted_and_paginated [19.813168s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_delete_unexisting_metadata [0.346015s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_set_metadata_to_unexisting_subnet [0.344969s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_set_metadata_with_empty_key [0.018041s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_set_metadata_with_too_big_key [0.016791s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_set_metadata_with_too_big_value [0.014584s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_upd_metadata_with_empty_key [0.013727s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_upd_metadata_with_too_big_key [0.019008s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_upd_metadata_with_too_big_value [0.019905s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_network_subnet_metadata_negative.ShareNetworkSubnetMetadataNegativeTest.test_try_update_all_metadata_to_unexisting_subnet [0.322412s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsNegativeTest.test_get_inexistent_snapshot_export_location [0.071226s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsNegativeTest.test_get_inexistent_snapshot_instance_export_location [0.063634s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsNegativeTest.test_get_snapshot_export_location_by_different_project_user [0.303520s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsNegativeTest.test_get_snapshot_instance_export_location_by_member [0.076778s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_export_locations_negative.SnapshotExportLocationsNegativeTest.test_list_snapshot_export_locations_by_different_project_user [0.030797s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_check_add_share_network_subnet_az_not_found [0.457164s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_check_add_share_network_subnet_share_network_not_found [0.026302s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_create_share_network_inexistent_az [0.016731s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_delete_share_network_contains_more_than_one_subnet [0.630458s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_list_shares_with_like_filter_not_exist [0.031687s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_delete_share_network_with_existing_shares ... SKIPPED: Can run only with drivers that do handle share servers creation. Skipping.
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_delete_share_network_with_wrong_type [0.030475s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_delete_share_network_without_id [0.013940s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_get_deleted_share_network [0.299424s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_get_share_network_with_wrong_id [0.029448s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_get_share_network_without_id [0.020500s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_list_share_networks_wrong_created_before_value [0.018474s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_list_share_networks_wrong_created_since_value [0.018410s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_update_invalid_keys_sh_server_exists ... SKIPPED: Only for multitenancy.
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_update_nonexistant_share_network [0.030181s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_networks_negative.ShareNetworksNegativeTest.test_try_update_share_network_with_empty_id [0.020177s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_list_messages_with_since_and_before_filters [13.295460s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_create_and_get_share_type_1_az1______az2__az_3__ [0.143295s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_create_and_get_share_type_2_az1_az2_az_3 [0.171332s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_create_and_get_share_type_3_az1____az2____az_3 [0.222506s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_1_az1 [0.260060s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_2_az2 [0.247052s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_3_az_3 [0.281085s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_4_az1___az_3 [0.269541s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_5_az_3__az1 [0.273248s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_filter_by_availability_zones_6_az2__az_3__az1 [0.272470s] ... ok
+{0} manila_tempest_tests.tests.api.admin.test_user_messages.UserMessageTest.test_show_message [6.672799s] ... ok
+{0} manila_tempest_tests.tests.api.test_availability_zones_negative.AvailabilityZonesNegativeTest.test_list_availability_zones_api_not_found [0.111973s] ... ok
+{0} manila_tempest_tests.tests.api.test_availability_zones_negative.AvailabilityZonesNegativeTest.test_list_availability_zones_api_not_found_with_legacy_url [0.013642s] ... ok
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_latest_snapshot_2_2_99 [61.784837s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageCIFSSnapshotTest.test_manage_different_versions_1_2_12 [13.129423s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_old_version_api_ignores_spec [22.514522s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_and_update_metadata_by_key [6.992608s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_share_groups_az_in_create_req_1_True [3.449025s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_share_groups_az_in_create_req_2_False [3.341677s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_get_delete_metadata [7.132300s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageCIFSSnapshotTest.test_manage_different_versions_2_2_16 [13.132462s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_shares_az_in_create_req_1_True [6.591715s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_in_share_creation [6.669301s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_type_availability_zones.ShareTypeAvailabilityZonesTest.test_share_type_azs_shares_az_in_create_req_2_False [6.614363s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_key_already_exist [7.497770s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_max_size_key [0.146841s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_max_size_value [0.160826s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_min_size_key [0.209697s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_min_size_value [0.199264s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageCIFSSnapshotTest.test_manage_different_versions_3_2_73 [13.116018s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_1_2_50 [0.015420s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_2_2_99 [0.012445s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_3_2_50_bad_public [0.012356s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_4_2_99_bad_public [0.010913s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_5_2_50_description [0.010886s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_bad_request_6_2_99_description [0.012364s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_conflict_1_2_50 [0.022797s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_share_type_update_conflict_2_2_99 [0.029486s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_try_add_access_to_share_type_with_user [0.101383s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_try_create_share_type_with_user [0.015640s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_try_delete_share_type_with_user [0.017953s] ... ok
+{1} manila_tempest_tests.tests.api.test_share_types_negative.ShareTypesNegativeTest.test_try_remove_access_from_share_type_with_user [0.018431s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_set_metadata_not_delete_pre_metadata [7.565570s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.test_shares.SharesGLUSTERFSTest) ... SKIPPED: glusterfs tests are disabled
+{1} setUpClass (manila_tempest_tests.tests.api.test_shares.SharesHDFSTest) ... SKIPPED: hdfs tests are disabled
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_upd_metadata_max_size_key [0.307175s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_upd_metadata_max_size_value [0.230564s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_upd_metadata_min_size_key [0.256642s] ... ok
+{0} manila_tempest_tests.tests.api.test_metadata.SharesMetadataTest.test_upd_metadata_min_size_value [0.256947s] ... ok
+{2} manila_tempest_tests.tests.api.admin.test_snapshot_manage.ManageCIFSSnapshotTest.test_manage_different_versions_4_2_99 [13.165993s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_root_version [0.018522s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_v2_invalid_version [0.119701s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_v2_max_version [0.016440s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_v2_min_version [0.014306s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_v2_no_version [0.012365s] ... ok
+{0} manila_tempest_tests.tests.api.test_microversions.MicroversionsTest.test_microversions_v2_unacceptable_version [0.035698s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_delete_metadata_of_other_tenants_public_share [0.122941s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_delete_other_tenants_public_share [0.032353s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_set_metadata_of_other_tenants_public_share [0.059525s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_update_metadata_of_other_tenants_public_share [0.074611s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_update_other_tenants_public_share [0.033993s] ... ok
+{0} manila_tempest_tests.tests.api.test_public_shares_negative.PublicSharesNegativeTest.test_update_share_with_wrong_public_value [0.036157s] ... ok
+{1} manila_tempest_tests.tests.api.test_shares.SharesNFSTest.test_create_delete_snapshot [13.371617s] ... ok
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_previous_snapshot_1_2_27 [59.276927s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.test_replication.ReplicationTest) ... SKIPPED: Replication tests are disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.test_replication_export_locations_negative.ReplicationExportLocationsNegativeTest) ... SKIPPED: Replication tests are disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.test_replication_negative.ReplicationNegativeTest) ... SKIPPED: Replication tests are disabled.
+{1} manila_tempest_tests.tests.api.test_shares.SharesNFSTest.test_create_get_delete_share [6.632739s] ... ok
+{2} manila_tempest_tests.tests.api.test_access_rules_metadata.AccessRulesMetadataTest.test_list_access_filter_by_metadata [6.902448s] ... ok
+{2} manila_tempest_tests.tests.api.test_access_rules_metadata.AccessRulesMetadataTest.test_set_get_delete_access_metadata [7.047737s] ... ok
+{2} manila_tempest_tests.tests.api.test_access_rules_metadata.AccessRulesMetadataTest.test_update_metadata_by_key [0.143457s] ... ok
+{2} manila_tempest_tests.tests.api.test_availability_zones.AvailabilityZonesTest.test_list_availability_zones [0.132422s] ... ok
+{2} manila_tempest_tests.tests.api.test_availability_zones.AvailabilityZonesTest.test_list_availability_zones_legacy_url_api [0.030109s] ... ok
+{1} manila_tempest_tests.tests.api.test_shares.SharesNFSTest.test_create_share_from_snapshot [23.064627s] ... ok
+{1} manila_tempest_tests.tests.api.test_shares.SharesNFSTest.test_create_share_from_snapshot_share_network_not_provided ... SKIPPED: Only for multitenancy.
+{2} setUpClass (manila_tempest_tests.tests.api.test_backup.ShareBackupTest) ... SKIPPED: Share backup tests are disabled.
+{2} manila_tempest_tests.tests.api.test_extensions.ExtensionsTest.test_extensions [0.202558s] ... ok
+{1} setUpClass (manila_tempest_tests.tests.api.test_shares_from_snapshot_across_pools.SharesFromSnapshotAcrossPools) ... SKIPPED: Create share from snapshot in another pool or az tests are disabled.
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_delete_unexisting_metadata [0.067934s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_set_metadata_with_empty_key [0.038387s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_set_metadata_with_too_big_key [0.043217s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_set_metadata_with_too_big_value [0.034503s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_update_metadata_with_empty_key [0.034054s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_update_metadata_with_too_big_key [0.035634s] ... ok
+{2} manila_tempest_tests.tests.api.test_metadata_negative.SharesMetadataNegativeTest.test_try_update_metadata_with_too_big_value [0.037938s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_delete_unexisting_metadata [0.058618s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_set_metadata_to_unexisting_snapshot [0.025721s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_set_metadata_with_empty_key [0.018188s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_set_metadata_with_too_big_key [0.016102s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_set_metadata_with_too_big_value [0.015458s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_upd_metadata_with_empty_key [0.034734s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_upd_metadata_with_too_big_key [0.014057s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_upd_metadata_with_too_big_value [0.027925s] ... ok
+{1} manila_tempest_tests.tests.api.test_snapshot_metadata_negative.ShareSnapshotMetadataNegativeTest.test_try_update_all_metadata_to_unexisting_snapshot [0.027229s] ... ok
+{2} manila_tempest_tests.tests.api.test_qos_types_negative.QosTypesNegativeTest.test_qos_type_create_with_same_name [0.175877s] ... ok
+{2} manila_tempest_tests.tests.api.test_qos_types_negative.QosTypesNegativeTest.test_share_create_with_invalid_share_type_extra_specs [0.120525s] ... ok
+{2} manila_tempest_tests.tests.api.test_qos_types_negative.QosTypesNegativeTest.test_try_create_qos_type_with_nonadmin_user [0.098767s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.test_replication_negative.ReplicationAPIOnlyNegativeTest) ... SKIPPED: Replication tests are disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.test_replication_snapshots.ReplicationSnapshotTest) ... SKIPPED: Replication tests are disabled.
+{2} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestAPIOnly.test_create_resource_lock_invalid_resource [0.226285s] ... ok
+{2} manila_tempest_tests.tests.api.test_resource_locks_negative.ResourceLockNegativeTestAPIOnly.test_delete_resource_lock_invalid [0.024843s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.test_rules.ShareCertRulesForGLUSTERFSTest) ... SKIPPED: Cert rule tests for glusterfs protocol are disabled
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_previous_snapshot_2_2_99 [59.283149s] ... ok
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_replicated_snapshot_1_2_27 ... SKIPPED: Replication tests are disabled.
+{3} manila_tempest_tests.tests.api.test_revert_to_snapshot.RevertToSnapshotTest.test_revert_to_replicated_snapshot_2_2_99 ... SKIPPED: Replication tests are disabled.
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rule_with_cidr_1___2_9___4_ [6.744234s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rule_with_cidr_2___2_37___4_ [6.650730s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rule_with_cidr_3___2_99___4_ [6.700908s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_error_share_to_snapshot_1_2_27 [6.901649s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rule_with_cidr_1___2_9___4_ [6.729649s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rule_with_cidr_4___2_38___6_ [6.648344s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_error_share_to_snapshot_2_2_99 [6.838191s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rule_with_cidr_2___2_37___4_ [6.675660s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rule_with_cidr_5___2_99___6_ [6.722810s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_error_snapshot_1_2_27 [6.762995s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rule_with_cidr_3___2_99___4_ [6.670249s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rules_with_one_ip_1___2_9___4_ [6.754331s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_error_snapshot_2_2_99 [6.733403s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rule_with_cidr_4___2_38___6_ [6.623992s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rules_with_one_ip_2___2_37___4_ [6.719274s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_invalid_snapshot_1_2_27 [6.649228s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rule_with_cidr_5___2_99___6_ [6.666037s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rules_with_one_ip_3___2_99___4_ [6.700362s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_invalid_snapshot_2_2_99 [6.642026s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_missing_snapshot_1_2_27 [0.043881s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_missing_snapshot_2_2_99 [0.038958s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rules_with_one_ip_1___2_9___4_ [9.813293s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rules_with_one_ip_4___2_38___6_ [6.710136s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rules_with_one_ip_2___2_37___4_ [6.669132s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_access_rules_with_one_ip_5___2_99___6_ [6.738585s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_second_latest_snapshot_1_2_27 [13.169225s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rules_with_one_ip_3___2_99___4_ [6.642567s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_ro_access_rule_1_2_9 [6.734904s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rules_with_one_ip_4___2_38___6_ [6.683449s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_ro_access_rule_2_2_27 [7.147292s] ... ok
+{0} manila_tempest_tests.tests.api.test_revert_to_snapshot_negative.RevertToSnapshotNegativeTest.test_revert_to_second_latest_snapshot_2_2_99 [13.194685s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_access_rules_with_one_ip_5___2_99___6_ [6.687226s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_ro_access_rule_1_2_9 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_ro_access_rule_2_2_27 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_ro_access_rule_3_2_28 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_create_delete_ro_access_rule_4_2_99 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{3} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForCIFSTest.test_update_access_rule ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_ro_access_rule_3_2_28 [6.733865s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.test_rules.ShareIpRulesForLUSTRETest) ... SKIPPED: IP rule tests for lustre protocol are disabled
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_create_delete_ro_access_rule_4_2_99 [6.774237s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.test_rules_negative.ShareCephxRulesForCephFSNegativeTest) ... SKIPPED: CEPHX rule tests for cephfs protocol are disabled
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_access_rules_deleted_if_share_deleted_1_2_9 ... SKIPPED: API version 2.9 does not support cephx access type, need version >= 2.13.
+{3} setUpClass (manila_tempest_tests.tests.api.test_rules_negative.ShareCertRulesForGLUSTERFSNegativeTest) ... SKIPPED: CERT rule tests for glusterfs protocol are disabled
+{2} manila_tempest_tests.tests.api.test_rules.ShareIpRulesForNFSTest.test_update_access_rule [10.121288s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_access_rules_deleted_if_share_deleted_2_2_27 [12.908487s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_to_snapshot [0.028371s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_empty_key [0.037092s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_too_big_key [0.042380s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_too_little_key [0.037322s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_wrong_input_1 [0.038931s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_wrong_input_2 [0.039542s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_user_with_wrong_share_id [0.030399s] ... ok
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_create_access_rule_with_wrong_level [0.041365s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_ro_access_rule_1_2_9 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_ro_access_rule_2_2_27 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_ro_access_rule_3_2_28 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_ro_access_rule_4_2_99 ... SKIPPED: RO access rule tests are disabled for CIFS protocol.
+{3} manila_tempest_tests.tests.api.test_rules_negative.ShareUserRulesForCIFSNegativeTest.test_update_access_rule_with_wrong_level [6.762910s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_access_rules_deleted_if_share_deleted_3_2_28 [12.865067s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_user_rule_1_2_9 [6.828667s] ... ok
+{3} manila_tempest_tests.tests.api.test_security_services_mapping.SecurityServicesMappingTest.test_map_ss_to_sn_and_delete [0.689318s] ... ok
+{3} manila_tempest_tests.tests.api.test_security_services_mapping.SecurityServicesMappingTest.test_map_ss_to_sn_and_list [0.516103s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_user_rule_2_2_27 [6.691501s] ... ok
+{3} manila_tempest_tests.tests.api.test_security_services_mapping.SecurityServicesMappingTest.test_remap_ss_to_sn [0.577074s] ... ok
+{3} setUpClass (manila_tempest_tests.tests.api.test_share_encryption.ShareEncryptionNFSTest) ... SKIPPED: Encryption tests are disabled.
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_access_rules_deleted_if_share_deleted_4_2_99 [10.159705s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_network_subnets.ShareNetworkSubnetsTest.test_create_delete_subnet [0.586550s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_network_subnets.ShareNetworkSubnetsTest.test_create_share_on_share_network_with_multiple_subnets_1_True ... SKIPPED: Only for multitenancy.
+{3} manila_tempest_tests.tests.api.test_share_network_subnets.ShareNetworkSubnetsTest.test_create_share_on_share_network_with_multiple_subnets_2_False ... SKIPPED: Only for multitenancy.
+{3} manila_tempest_tests.tests.api.test_share_network_subnets.ShareNetworkSubnetsTest.test_create_share_on_subnet_with_availability_zone ... SKIPPED: Only for multitenancy.
+{3} manila_tempest_tests.tests.api.test_share_network_subnets.ShareNetworkSubnetsTest.test_show_share_network_subnet [0.640973s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_user_rule_3_2_28 [6.708690s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_admin_delete_restricted_rules [6.755705s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules.ShareUserRulesForCIFSTest.test_create_delete_user_rule_4_2_99 [6.658388s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_accept_transfer_with_incorrect_auth_key [3.745344s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_admin_listing_restricted_rules [6.786798s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_access_rules_1_2_9 ... SKIPPED: API version 2.9 does not support cephx access type, need version >= 2.13.
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_accept_transfer_without_auth_key [3.558605s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_delete_nonexistent_transfer [0.022675s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_delete_transfer_of_other_tenants [3.553631s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_show_nonexistent_transfer [0.025264s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_access_rules_2_2_27 [6.849946s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_transfers_negative.ShareTransferNegativeTest.test_show_transfer_of_other_tenants [3.650937s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_access_rules_3_2_28 [6.798929s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_add_access_rule_on_share_with_no_host [3.811134s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_access_rules_4_2_45 [6.747625s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_allow_access_multiple_visibility_locks_not_allowed [7.039017s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_01_1_2_3_256 [0.036700s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_02_1_1_1__ [0.034494s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_03_1_2_3_4_33 [0.035435s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_04_1_2_3__ [0.031497s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_05_1_2_3___23 [0.040386s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_06_1_2_3_1_23 [0.028913s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_07_1_2_3_1__1 [0.033985s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_08_1_2_3_1_ [0.026204s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_09_ad80__abaa_0_c2_2__3 [0.027163s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_10_AD80_ABAA___26 [0.029968s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_ip_with_wrong_target_11_2001_DB8_2de_0_0_0_0_e13_200a [0.030877s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_access_rule_with_wrong_level [0.034315s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_access_rules_5_2_99 [6.747662s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_create_with_invalid_az_spec_1_az1______az2__az_3___ [0.018660s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_create_with_invalid_az_spec_2_az1__az_3 [0.017079s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_create_with_invalid_az_spec_3__az2___az_3 [0.018370s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_filter_by_invalid_azs_extra_spec [0.158262s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_share_groups_unsupported [0.148792s] ... ok
+{3} manila_tempest_tests.tests.api.test_share_type_availability_zones_negative.ShareTypeAvailabilityZonesNegativeTest.test_share_type_azs_shares_unsupported_az [0.052540s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_of_ip_rule_1_2_9 [6.731583s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_restricted_rules_from_other_user_1___2_81___True_ [7.224585s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_of_ip_rule_2_2_99 [6.800669s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_restricted_rules_from_other_user_2___2_81___False_ [6.869871s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_single_host_rules_1_10_20_30_40 [6.812823s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_restricted_rules_from_other_user_3___2_99___True_ [6.860349s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_single_host_rules_2_fd8c_b029_bba6_ac54__1 [6.806475s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_extend_share [9.876001s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_export_locations_removed [0.040035s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_v2_1 [0.042019s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_access_rules_status [0.051931s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_create_share_from_snapshot_support [0.047455s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_replication_type_key [0.039986s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_revert_to_snapshot_support [0.033198s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_share_type_name_key [0.045118s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_snapshot_support_key [0.036834s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_share_with_user_id [0.033980s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_snapshot_1_2_0 [0.063954s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_snapshot_2_2_16 [0.068476s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_get_snapshot_3_2_99 [0.056517s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares [0.044385s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_filter_by_availability_zone_1_True [0.109129s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_filter_by_availability_zone_2_False [0.086561s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_and_create_share_from_snapshot_support [0.041797s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_and_snapshot_support_key [0.038242s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_export_locations_removed [0.034862s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_active_status [0.041298s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_all_tenants [0.065342s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_existed_description [0.042322s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_existed_name [0.037436s] ... ok
+{0} manila_tempest_tests.tests.api.test_rules.ShareRulesTest.test_list_restricted_rules_from_other_user_4___2_99___False_ [6.837259s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_fake_name [0.051504s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_fake_status [0.021697s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_inexact_name [0.053662s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_metadata [0.042822s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_share_network_id ... SKIPPED: Only for multitenancy.
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_filter_by_snapshot_id [0.049535s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_replication_type_key [0.044869s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_share_type_name_key [0.041033s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_v2_1 [0.057928s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_with_access_rules_status [0.039286s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_with_asc_sorting [0.047810s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_with_count [0.060288s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_detail_with_revert_to_snapshot_support [0.035352s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_shares_with_user_id [0.045697s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots [0.056922s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_1_2_0 [0.061892s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_2_2_16 [0.049252s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_3_2_36 [0.061222s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_4_2_99 [0.061045s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_and_asc_sorting [0.063699s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_filter_by_description [0.072569s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_filter_by_status_and_name [0.062011s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_list_snapshots_with_detail_use_limit [0.145390s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_shrink_share ... SKIPPED: Share shrink tests are disabled.
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_single_host_rules_3_fd2c_b029_bba6_df54__1_128 [6.756424s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesActionsTest.test_soft_delete_and_restore_share [3.738112s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.test_rules.ShareUserRulesForNFSTest) ... SKIPPED: USER rule tests for nfs protocol are disabled
+{0} setUpClass (manila_tempest_tests.tests.api.test_scheduler_hints.SharesSchedulerHintsTest) ... SKIPPED: Manila multi-backend is disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.test_scheduler_hints_negative.SharesSchedulerHintsNegativeTest) ... SKIPPED: Manila multi-backend is disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.test_share_encryption.ShareEncryptionCIFSTest) ... SKIPPED: Encryption tests are disabled.
+{0} setUpClass (manila_tempest_tests.tests.api.test_share_group_actions.ShareGroupRenameTest) ... SKIPPED: Share Group tests disabled.
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_create_duplicate_single_host_rules_4_10_10_30_40_32 [6.816686s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_create_delete_share_network [0.320013s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_create_two_share_networks_with_same_net_and_subnet [0.612899s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_gateway_mtu_neutron_net_id_with_neutron ... SKIPPED: Only for setups with network creation.
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_get_share_network [0.039324s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_list_share_networks [0.056383s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_list_share_networks_all_filter_opts [0.063293s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_list_share_networks_filter_by_ss [0.083610s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_list_share_networks_like_filter [0.043977s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_list_share_networks_with_detail [0.076140s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_recreate_share_network [0.567776s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_try_list_share_networks_all_tenants [0.055387s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_try_list_share_networks_project_id [0.052976s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_update_share_network [0.446339s] ... ok
+{0} manila_tempest_tests.tests.api.test_share_networks.ShareNetworksTest.test_update_valid_keys_sh_server_exists ... SKIPPED: Only for multitenancy.
+{0} setUpClass (manila_tempest_tests.tests.api.test_share_servers_multiple_subnet.ShareServerMultipleSubnetTest) ... SKIPPED: Multitenancy tests are disabled.
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_deny_access_unrestrict_other_user_rule [6.826422s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_deny_access_without_unrestrict_as_owner_user_1_True [6.801342s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareIpRulesForCIFSNegativeTest.test_deny_access_without_unrestrict_as_owner_user_2_False [6.857285s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesRenameTest.test_rename_snapshot [0.220651s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions.SharesRenameTest.test_update_share [0.166239s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares.SharesCIFSTest.test_create_delete_snapshot [13.399561s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares.SharesCIFSTest.test_create_get_delete_share [6.682347s] ... ok
+{2} manila_tempest_tests.tests.api.test_rules_negative.ShareRulesAPIOnlyNegativeTest.test_create_access_rule_ip_with_wrong_share_id [0.234103s] ... ok
+{2} manila_tempest_tests.tests.api.test_scheduler_stats_negative.SchedulerStatsNegativeTest.test_try_list_pools_detailed_with_user [0.047103s] ... ok
+{2} manila_tempest_tests.tests.api.test_scheduler_stats_negative.SchedulerStatsNegativeTest.test_try_list_pools_with_user [0.012547s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.test_share_group_actions.ShareGroupActionsTest) ... SKIPPED: Share Group tests disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.test_share_groups.ShareGroupsTest) ... SKIPPED: Share Group tests disabled.
+{2} setUpClass (manila_tempest_tests.tests.api.test_share_groups_negative.ShareGroupsNegativeTest) ... SKIPPED: Share Group tests disabled.
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_add_share_network_subnet_az_not_found [0.051097s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_add_share_network_subnet_in_same_az_exists_1_True ... SKIPPED: Skipped. Test requires microversion < than '2.70'.
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_add_share_network_subnet_in_same_az_exists_2_False ... SKIPPED: Skipped. Test requires microversion < than '2.70'.
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_add_share_network_subnet_missing_parameters [0.021860s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_add_share_network_subnet_share_network_not_found [0.026213s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_delete_contains_shares ... SKIPPED: Can run only with drivers that do handle share servers creation. Skipping.
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_delete_contains_unmanaged_share_servers ... SKIPPED: Can run only with drivers that do handle share servers creation. Skipping.
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_delete_subnet_not_found [0.043274s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_delete_subnet_share_network_not_found [0.024835s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_get_deleted_subnet [0.324513s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_show_subnet_not_found [0.057303s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_network_subnets_negative.ShareNetworkSubnetsNegativeTest.test_show_subnet_share_network_not_found [0.027480s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.test_share_servers_multiple_subnet_negative.ShareServerMultipleSubNegativeTest) ... SKIPPED: Multitenancy tests are disabled.
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_get_share_from_other_project [0.114471s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_availability_zone_and_invalid_version [0.036866s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_availability_zone_not_exist [0.022497s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_description_not_exist [0.032962s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_export_location_and_invalid_version_1_path [0.038682s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_export_location_and_invalid_version_2_id [0.036891s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_export_location_not_exist_1_path [0.034685s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_export_location_not_exist_2_id [0.031649s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_like_filter_and_invalid_version [0.035966s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_like_filter_not_exist [0.032247s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_shares_with_name_not_exist [0.019193s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_snapshots_with_description_not_exist [0.032904s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_list_snapshots_with_name_not_exist [0.036839s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_restore_share_with_wrong_id [0.022230s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_extend_over_quota [0.126907s] ... ok
+{2} manila_tempest_tests.tests.api.test_share_transfers.ShareTransferTest.test_create_and_accept_share_transfer [7.373347s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_extend_with_invalid_share_state [6.670720s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_extend_with_less_size [0.043407s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_extend_with_same_size [0.043186s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_force_extend_non_admin_user [0.040600s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_shrink_with_greater_size ... SKIPPED: Share shrink tests are disabled.
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_shrink_with_invalid_share_state ... SKIPPED: Share shrink tests are disabled.
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_share_shrink_with_same_size ... SKIPPED: Share shrink tests are disabled.
+{0} manila_tempest_tests.tests.api.test_shares.SharesCIFSTest.test_create_share_from_snapshot [20.035957s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares.SharesCIFSTest.test_create_share_from_snapshot_share_network_not_provided ... SKIPPED: Only for multitenancy.
+{0} setUpClass (manila_tempest_tests.tests.api.test_shares.SharesCephFSTest) ... SKIPPED: cephfs tests are disabled
+{2} manila_tempest_tests.tests.api.test_share_transfers.ShareTransferTest.test_create_and_delete_share_transfer [6.844819s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_soft_delete_share_from_other_project [6.646577s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_non_existent_az [0.163138s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_size_greater_than_specified_in_share_type [0.025765s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_size_less_than_specified_in_share_type [0.031628s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_with_invalid_protocol [0.023591s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_with_invalid_size [0.022953s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_with_out_passing_size [0.021839s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_with_wrong_public_value [0.013645s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_share_with_zero_size [0.020271s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_create_snapshot_with_wrong_id [0.020274s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_delete_share_with_wrong_id [0.019162s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_delete_share_without_passing_share_id [0.013980s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_delete_snapshot_with_wrong_id [0.024436s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_get_share_with_wrong_id [0.022946s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_get_share_without_passing_share_id [0.010463s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_list_by_share_server_by_user [0.015142s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_list_by_user_with_host_filter [0.014366s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_list_shares_nonadmin_with_nonexistent_share_server_filter [0.013094s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_manage_share_by_user [0.011805s] ... ok
+{0} manila_tempest_tests.tests.api.test_shares_negative.SharesAPIOnlyNegativeTest.test_unmanage_share_by_user [0.016242s] ... ok
+{2} setUpClass (manila_tempest_tests.tests.api.test_shares.SharesMapRFSTest) ... SKIPPED: maprfs tests are disabled
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_soft_delete_share_has_been_soft_deleted [6.773812s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_soft_delete_share_with_invalid_share_state [6.814463s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_actions_negative.SharesActionsNegativeTest.test_soft_delete_share_with_wrong_id [0.029773s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_and_update_metadata_by_key [7.229992s] ... ok
+{0} manila_tempest_tests.tests.api.test_snapshot_rules.ShareSnapshotIpRulesForNFSTest.test_create_delete_access_rules_1_1_1_1_1 [6.906626s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_get_delete_metadata [7.379881s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_negative.SharesNegativeTest.test_create_share_from_snap_with_different_share_network ... SKIPPED: Only for multitenancy.
+{0} manila_tempest_tests.tests.api.test_snapshot_rules.ShareSnapshotIpRulesForNFSTest.test_create_delete_access_rules_2_1_2_3_4_32 [6.824820s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_in_snapshot_creation [6.828822s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_negative.SharesNegativeTest.test_create_share_from_snap_with_less_size [13.356633s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_negative.SharesNegativeTest.test_create_share_with_nonexistant_share_network ... SKIPPED: Only for multitenancy.
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_key_already_exist [7.541537s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_max_size_key [0.199930s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_max_size_value [0.173226s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_min_size_key [0.182952s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_min_size_value [0.192656s] ... ok
+{3} manila_tempest_tests.tests.api.test_shares_negative.SharesNegativeTest.test_try_delete_share_with_existing_snapshot [6.670452s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_set_metadata_not_delete_pre_metadata [7.857349s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_upd_metadata_max_size_key [0.417758s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_upd_metadata_max_size_value [0.309391s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_upd_metadata_min_size_key [0.301908s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_metadata.ShareSnapshotMetadataTest.test_upd_metadata_min_size_value [0.299014s] ... ok
+{0} manila_tempest_tests.tests.api.test_snapshot_rules.ShareSnapshotUserRulesForCIFSTest.test_create_delete_access_rules [6.736206s] ... ok
+{0} setUpClass (manila_tempest_tests.tests.api.test_snapshot_rules.SnapshotInheritShareAccessTest) ... SKIPPED: Backend does not support snapshot_inherit_share_access_support.
+{0} setUpClass (manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotInheritShareAccessNegativeTest) ... SKIPPED: Backend does not support snapshot_inherit_share_access.
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_01_1_2_3_256 [0.020775s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_02_1_1_1__ [0.028329s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_03_1_2_3_4_33 [0.016118s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_04_1_2_3__ [0.017358s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_05_1_2_3___23 [0.013043s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_06_1_2_3_1_23 [0.014144s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_07_1_2_3_1_ [0.016919s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_08_1_2_3_1__1 [0.021170s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_09_fe80_217_f2ff_fe07_ed62 [0.015906s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_10_2001_db8__1_148 [0.020091s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_11_ffff_ffff_ffff_ffff_ffff_ffff_ffff_ffff_ffff [0.014240s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_access_rule_ip_with_wrong_target_12_2001_0db8_0000_85a3_0000_0000_ac1f_8001_64 [0.020550s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_1_1_2_3_4 [14.231484s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_2_fd8c_b029_bba6_ac54__1 [14.072879s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_3_fd8c_b029_bba6_ac54__1_128 [14.265624s] ... ok
+{2} manila_tempest_tests.tests.api.test_snapshot_rules_negative.SnapshotIpRulesForNFSNegativeTest.test_create_duplicate_of_ip_rule_4_1_2_3_4_32 [14.157262s] ... ok
+
+======
+Totals
+======
+Ran: 1040 tests in 893.3841 sec.
+ - Passed: 904
+ - Skipped: 136
+ - Expected Fail: 0
+ - Unexpected Success: 0
+ - Failed: 0
+Sum of execute time for each test: 1921.2413 sec.
+
+==============
+Worker Balance
+==============
+ - Worker 0 (276 tests) => 0:13:39.754922
+ - Worker 1 (230 tests) => 0:07:54.407937
+ - Worker 2 (238 tests) => 0:14:48.352616
+ - Worker 3 (296 tests) => 0:13:26.508937
+___________________________________ summary ____________________________________
+  all: commands succeeded
+  congratulations :)
